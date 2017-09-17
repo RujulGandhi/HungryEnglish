@@ -69,6 +69,8 @@ import retrofit.mime.TypedFile;
 
 import static app.com.HungryEnglish.R.id.usernameStudentEdit;
 import static app.com.HungryEnglish.Util.Constant.BASEURL;
+import static app.com.HungryEnglish.Util.Constant.ROLE_TEACHER;
+import static app.com.HungryEnglish.Util.Constant.SHARED_PREFS.KEY_IS_ACTIVE;
 import static app.com.HungryEnglish.Util.Constant.SHARED_PREFS.KEY_USER_ID;
 import static app.com.HungryEnglish.Util.Constant.SHARED_PREFS.KEY_USER_ROLE;
 import static app.com.HungryEnglish.Util.Utils.getPath;
@@ -108,6 +110,7 @@ public class TeacherProfileActivity extends BaseActivity implements
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.ACCESS_COARSE_LOCATION,
             Manifest.permission.ACCESS_FINE_LOCATION};
+
     private ActivityTeacherProfileBinding binding;
 
     @Override
@@ -116,6 +119,7 @@ public class TeacherProfileActivity extends BaseActivity implements
         binding = DataBindingUtil.setContentView(this, R.layout.activity_teacher_profile);
 
         mContext = TeacherProfileActivity.this;
+
         checkPermissions();
         getDataFromIntent();
         idMapping();
@@ -146,19 +150,18 @@ public class TeacherProfileActivity extends BaseActivity implements
             role = extras.getString("role");
             CallFrom = extras.getString("callFrom");
         }
-
-        gps = new GPSTracker(this);
-        if (gps.canGetLocation()) {
-
-            double latitude = gps.getLatitude();
-            double longitude = gps.getLongitude();
-
-            getAddress(latitude, longitude);
-
+        if (read(KEY_USER_ROLE).equalsIgnoreCase(ROLE_TEACHER) && read(KEY_IS_ACTIVE).equalsIgnoreCase("1")) {
+            gps = new GPSTracker(this);
+            if (gps.canGetLocation()) {
+                double latitude = gps.getLatitude();
+                double longitude = gps.getLongitude();
+                getAddress(latitude, longitude);
+            }
         }
     }
 
     private void idMapping() {
+
         profileImage = (ImageView) findViewById(R.id.profile_image);
         idProofImage = (ImageView) findViewById(R.id.idProofImage);
         ivCVFileStatus = (ImageView) findViewById(R.id.ivCVFileStatus);
@@ -254,11 +257,9 @@ public class TeacherProfileActivity extends BaseActivity implements
             case R.id.ivViewCv:
                 createDirectory(resumePath, Constant.FILE_TYPE_RESUME);
                 break;
-
             case R.id.ivViewAudio:
                 createDirectory(audioPath, Constant.FILE_TYPE_AUDIO);
                 break;
-
             case R.id.profile_image:
                 uploadImage(SELECT_PHOTO);
                 break;
@@ -397,8 +398,6 @@ public class TeacherProfileActivity extends BaseActivity implements
                         Picasso.with(getApplicationContext()).load(R.drawable.ic_file).placeholder(R.drawable.ic_user_default).error(R.drawable.ic_user_default).into(ivAudioFileStatus);
                     }
                     break;
-
-
             }
         } else {
             toast("You cancel current task.");
@@ -475,9 +474,7 @@ public class TeacherProfileActivity extends BaseActivity implements
         Log.i("HashMap", "SomeText: " + new Gson().toJson(files) + " second = " + new Gson().toJson(getTeacherProfileDetail()));
 
         if (pathProfilePic == null && pathIdProofPic == null && pathCvDoc == null && pathAudioFile == null) {
-
             ApiHandler.getApiService().createTeacherProfile(getTeacherProfileDetail(), new Callback<TeacherProfileMainResponse>() {
-
                 @Override
                 public void success(TeacherProfileMainResponse teacherProfileMainResponse, Response response) {
                     Utils.dismissDialog();
@@ -495,6 +492,7 @@ public class TeacherProfileActivity extends BaseActivity implements
                     }
                     if (teacherProfileMainResponse.getStatus().equals("true")) {
                         toast(teacherProfileMainResponse.getMsg());
+                        write(KEY_IS_ACTIVE, "2");
 //                        startActivity(MainActivity.class);
                         finish();
                     }
@@ -544,7 +542,6 @@ public class TeacherProfileActivity extends BaseActivity implements
                     }
                     if (teacherProfileMainResponse.getStatus().equals("true")) {
                         toast(teacherProfileMainResponse.getMsg());
-//                        startActivity(MainActivity.class);
                         finish();
                     }
                 }
@@ -664,13 +661,32 @@ public class TeacherProfileActivity extends BaseActivity implements
 
 
             @Override
-            public void success(Address address, Response response) {
+            public void success(final Address address, Response response) {
 
                 Utils.dismissDialog();
                 if (address != null) {
-                    Log.d("address", address.getData());
-                    binding.latlng.setText(address.getData());
-
+                    final Dialog dialog = new Dialog(TeacherProfileActivity.this);
+                    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                    dialog.setContentView(R.layout.address_confirm);
+                    dialog.setCancelable(false);
+                    TextView tvLogout = (TextView) dialog.findViewById(R.id.address_confirm_msg);
+                    tvLogout.setText("Do you want to set " + address.getData() + " address as Home location. ?");
+                    TextView tvOkay = (TextView) dialog.findViewById(R.id.address_positive);
+                    TextView tvCancel = (TextView) dialog.findViewById(R.id.address_negative);
+                    tvOkay.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            currnetPlaceEdit.setText(address.getData());
+                            dialog.dismiss();
+                        }
+                    });
+                    tvCancel.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialog.dismiss();
+                        }
+                    });
+                    dialog.show();
                 }
 
             }

@@ -89,6 +89,9 @@
     <string name="mobile_no_validation">Mobile number must be 9 digit</string>
     <string name="otp_validation">Enter Valid OTP</string>
     <string name="email_send_successfully">Email Send Successfully</string>
+    <string name="home_location">Home Location</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
 </resources>
 
 

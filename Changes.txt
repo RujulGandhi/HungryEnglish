@@ -5,3 +5,20 @@ ForgotPassword  - String Update
 MainActivity - String Update
 TeacherProfileActivity - String Update - teacherPackage
 TeacherProfileeActivity = STringUpdate, set placeholder and error message- teacherPackage
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
