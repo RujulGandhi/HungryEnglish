@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="E:\AndroidProjectsBackup\HungryEnglish\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="1d5abf41ebbd82ddcd6a8a6c11b2e687cc291d79">
+        <dex dex="E:\AndroidProjectsBackup\HungryEnglish\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_d2e6d5143b8fa4769835533a7925288c769803fe\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\AndroidProjectsBackup\HungryEnglish\app\libs\mail.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="428e267abff0d10802ccde86b915da2c20471160">
+        <dex dex="E:\AndroidProjectsBackup\HungryEnglish\app\build\intermediates\pre-dexed\debug\mail_449c88ff68ce09e339b0fdb9619f10691598ae2a.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\AndroidProjectsBackup\HungryEnglish\app\libs\mail.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="428e267abff0d10802ccde86b915da2c20471160">
+        <dex dex="E:\AndroidProjectsBackup\HungryEnglish\app\build\intermediates\transforms\dex\debug\folders\1000\2\mail_449c88ff68ce09e339b0fdb9619f10691598ae2a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\AndroidProjectsBackup\HungryEnglish\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="E:\AndroidProjectsBackup\HungryEnglish\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_cc4693060b990e16bd89a31d4ba4910b9c5e4969\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\AndroidProjectsBackup\HungryEnglish\app\libs\jxl.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="7faf62e0697f7a88954622dfe8c8de33ed142ac7">
+        <dex dex="E:\AndroidProjectsBackup\HungryEnglish\app\build\intermediates\pre-dexed\debug\jxl_8724e2f786b6b324d2a4f8d60af2660b3c56de27.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\AndroidProjectsBackup\HungryEnglish\app\libs\additionnal.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="bd9e8dc422bb8c8405359947fe9f4282b49f57f4">
+        <dex dex="E:\AndroidProjectsBackup\HungryEnglish\app\build\intermediates\transforms\dex\debug\folders\1000\2\additionnal_15c7ab9d0d94ee51088829af5b3b6a064bf41042\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\AndroidProjectsBackup\HungryEnglish\app\libs\activation.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d1257cbff6faa44c1f325ae0d9413522d4644383">
+        <dex dex="E:\AndroidProjectsBackup\HungryEnglish\app\build\intermediates\pre-dexed\debug\activation_933c034daa8252c223b38807af7120f4d8c14d93.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\AndroidProjectsBackup\HungryEnglish\app\libs\jxl.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="7faf62e0697f7a88954622dfe8c8de33ed142ac7">
+        <dex dex="E:\AndroidProjectsBackup\HungryEnglish\app\build\intermediates\transforms\dex\debug\folders\1000\2\jxl_8724e2f786b6b324d2a4f8d60af2660b3c56de27\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\AndroidProjectsBackup\HungryEnglish\app\libs\additionnal.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="bd9e8dc422bb8c8405359947fe9f4282b49f57f4">
+        <dex dex="E:\AndroidProjectsBackup\HungryEnglish\app\build\intermediates\pre-dexed\debug\additionnal_15c7ab9d0d94ee51088829af5b3b6a064bf41042.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\AndroidProjectsBackup\HungryEnglish\app\libs\activation.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d1257cbff6faa44c1f325ae0d9413522d4644383">
+        <dex dex="E:\AndroidProjectsBackup\HungryEnglish\app\build\intermediates\transforms\dex\debug\folders\1000\2\activation_933c034daa8252c223b38807af7120f4d8c14d93\classes.dex" />
+    </item>
+
+</items>
