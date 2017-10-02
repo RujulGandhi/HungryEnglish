@@ -56,6 +56,7 @@
             android:name=".Activity.Teacher.Contactus"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Activity.Admin.ReportActivity" />
+        <activity android:name=".Activity.Admin.RatingActivity"></activity>
         <activity android:name=".Activity.Admin.ReportDetails" />
 
         <!--
@@ -99,9 +100,13 @@
 
         <service
             android:name=".GeocodeAddressIntentService"
-            android:exported="false"/>
+            android:exported="false" />
 
         <activity android:name=".Main2Activity"></activity>
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="e9ea167ff0b78b83c9ac8d2c1db7cfe18599f786" />
     </application>
 
 </manifest>

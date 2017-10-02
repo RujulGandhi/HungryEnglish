@@ -3,7 +3,6 @@ package app.com.HungryEnglish.Adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,7 +55,6 @@ public class TeacherListAdapter extends RecyclerView.Adapter<TeacherListAdapter.
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.row_teacher_list, parent, false);
-
         return new MyViewHolder(itemView);
     }
 
@@ -79,16 +77,11 @@ public class TeacherListAdapter extends RecyclerView.Adapter<TeacherListAdapter.
             }
         });
         if (teacherList.get(position).getTeacherInfo() != null) {
-
             holder.tvSpecialSkills.setText(mContext.getString(R.string.special_skils_label) + " " + teacherList.get(position).getTeacherInfo().getSkills());
-
             holder.tvTeacherAvaibility.setText(mContext.getString(R.string.teacher_avaibility_label) + " " + teacherList.get(position).getTeacherInfo().getAvailableTime());
-
             holder.tvClosestStation.setText(teacherList.get(position).getTeacherInfo().getAddress());
-
-            String profilePicUrl = Constant.BASEURL + "" + teacherList.get(position).getTeacherInfo().getProfileImage();
-            Log.e("URL", "" + profilePicUrl);
-            Picasso.with(mContext).load(profilePicUrl).error(R.drawable.ic_user_default).into(holder.ivProfilePic);
+            String profilePicUrl = Constant.BASEURL + teacherList.get(position).getTeacherInfo().getProfileImage();
+            Picasso.with(mContext).load(profilePicUrl).error(R.drawable.ic_user_default).placeholder(R.drawable.ic_user_default).into(holder.ivProfilePic);
 
             if (Utils.ReadSharePrefrence(mContext, Constant.SHARED_PREFS.KEY_USER_ROLE).equals("student")) {
                 holder.tvReportTeacher.setVisibility(View.VISIBLE);

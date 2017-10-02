@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by Vnnovate on 7/18/2017.
  */
 
-public class RemoveTeacherFromListMainResponse {
+public class BasicResponse {
     @SerializedName("status")
     @Expose
     private String status;

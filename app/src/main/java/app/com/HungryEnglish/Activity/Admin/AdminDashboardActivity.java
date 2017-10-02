@@ -56,7 +56,7 @@ public class AdminDashboardActivity extends BaseActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_logout, menu);
+        inflater.inflate(R.menu.menu_admin, menu);
         // return true so that the menu pop up is opened
         return true;
     }
@@ -88,6 +88,9 @@ public class AdminDashboardActivity extends BaseActivity {
                     }
                 });
                 dialog.show();
+                break;
+            case R.id.rate:
+                startActivity(RatingActivity.class);
                 break;
         }
         return true;

@@ -30,7 +30,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
 import java.io.BufferedInputStream;
@@ -54,6 +53,7 @@ import app.com.HungryEnglish.Activity.LoginActivity;
 import app.com.HungryEnglish.Model.Address;
 import app.com.HungryEnglish.Model.ForgotPassord.ForgotPasswordModel;
 import app.com.HungryEnglish.Model.Profile.TeacherProfileMainResponse;
+import app.com.HungryEnglish.Model.RemoveTeacher.BasicResponse;
 import app.com.HungryEnglish.Model.Teacher.TeacherProfileMain;
 import app.com.HungryEnglish.R;
 import app.com.HungryEnglish.Services.ApiHandler;
@@ -117,9 +117,7 @@ public class TeacherProfileActivity extends BaseActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_teacher_profile);
-
         mContext = TeacherProfileActivity.this;
-
         checkPermissions();
         getDataFromIntent();
         idMapping();
@@ -222,7 +220,7 @@ public class TeacherProfileActivity extends BaseActivity implements
             layoutIdProof.setVisibility(View.GONE);
             layoutCV.setVisibility(View.GONE);
             emailLayout.setVisibility(View.GONE);
-
+            binding.studentRatingLinear.setVisibility(View.VISIBLE);
 
         } else if (CallFrom.equals("Admin")) {
             btnSubmiTeacherProfile.setText(getApplicationContext().getString(R.string.submit));
@@ -248,7 +246,11 @@ public class TeacherProfileActivity extends BaseActivity implements
             ivViewCv.setOnClickListener(this);
             ivViewAudio.setOnClickListener(this);
             btn_id_proof.setOnClickListener(this);
+            binding.ratingBar.setClickable(false);
+            binding.ratingBar.setTouchRating(false);
         }
+
+
     }
 
     @Override
@@ -410,7 +412,7 @@ public class TeacherProfileActivity extends BaseActivity implements
             return;
         }
         HashMap<String, String> map = new HashMap<>();
-        if (role.equalsIgnoreCase("")) {
+        if (role.equalsIgnoreCase("teacher")) {
             map.put("uId", read(KEY_USER_ID));
             map.put("role", read(KEY_USER_ROLE));
         } else {
@@ -424,6 +426,9 @@ public class TeacherProfileActivity extends BaseActivity implements
                 emailEdit.setText(teacherProfileMain.getData().getEmail());
                 userNameEdit.setText(teacherProfileMain.getData().getUsername());
                 etMobileOrWechatId.setText(String.valueOf(teacherProfileMain.getData().getMobNo()));
+                int rating = teacherProfileMain.getData().getRating().equalsIgnoreCase("") ? 0 : Integer.parseInt(teacherProfileMain.getData().getRating());
+                binding.ratingBar.setCount(rating);
+
                 if (teacherProfileMain.getInfo() != null) {
                     avaibilityDateTeacherEdit.setText(teacherProfileMain.getInfo().getAvailableTime());
                     currnetPlaceEdit.setText(teacherProfileMain.getInfo().getAddress());
@@ -471,7 +476,6 @@ public class TeacherProfileActivity extends BaseActivity implements
         TypedFile proImage = null, idProof = null, resume = null, audiofile = null;
 
         Map<String, TypedFile> files = new HashMap<String, TypedFile>();
-        Log.i("HashMap", "SomeText: " + new Gson().toJson(files) + " second = " + new Gson().toJson(getTeacherProfileDetail()));
 
         if (pathProfilePic == null && pathIdProofPic == null && pathCvDoc == null && pathAudioFile == null) {
             ApiHandler.getApiService().createTeacherProfile(getTeacherProfileDetail(), new Callback<TeacherProfileMainResponse>() {
@@ -554,8 +558,40 @@ public class TeacherProfileActivity extends BaseActivity implements
                 }
             });
         }
+    }
 
 
+    private void updateRating() {
+        Utils.showDialog(TeacherProfileActivity.this);
+        ApiHandler.getApiService().updateRating(getRatingInfo(), new Callback<BasicResponse>() {
+
+            @Override
+            public void success(BasicResponse teacherProfileMainResponse, Response response) {
+                Utils.dismissDialog();
+                if (teacherProfileMainResponse == null) {
+                    toast(getString(R.string.something_wrong));
+                    return;
+                }
+                if (teacherProfileMainResponse.getStatus() == null) {
+                    toast(getString(R.string.something_wrong));
+                    return;
+                }
+                if (teacherProfileMainResponse.getStatus().equals("false")) {
+                    toast(getString(R.string.student_rating_sucess_msg));
+                    return;
+                }
+                if (teacherProfileMainResponse.getStatus().equals("true")) {
+                    toast(teacherProfileMainResponse.getMsg());
+                }
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                Utils.dismissDialog();
+                error.printStackTrace();
+                toast(getString(R.string.something_wrong));
+            }
+        });
     }
 
     private Map<String, String> getTeacherProfileDetail() {
@@ -571,6 +607,15 @@ public class TeacherProfileActivity extends BaseActivity implements
         map.put("address", String.valueOf(currnetPlaceEdit.getText()));
         map.put("skill", String.valueOf(specialSkillTeacherEdit.getText()));
         map.put("mob_no", String.valueOf(etMobileOrWechatId.getText()));
+        return map;
+    }
+
+    private Map<String, String> getRatingInfo() {
+        Map<String, String> map = new HashMap<>();
+        map.put("studentId", read(KEY_USER_ID));
+        map.put("teacherId", id);
+        map.put("rating", String.valueOf(binding.studentRate.getCount()));
+        map.put("action", "rating");
         return map;
     }
 
@@ -613,27 +658,18 @@ public class TeacherProfileActivity extends BaseActivity implements
 
 
     private void RequestToTeacher() {
-
-
         Utils.showDialog(mContext);
         HashMap<String, String> map = new HashMap<>();
         map.put("teacherId", id);
         map.put("studentId", Utils.ReadSharePrefrence(mContext, Constant.SHARED_PREFS.KEY_USER_ID));
-
 //        http://smartsquad.16mb.com/HungryEnglish/api/add_request.php?teacherId=1&studentId=2
         ApiHandler.getApiService().addRequest(map, new retrofit.Callback<ForgotPasswordModel>() {
-
-
             @Override
             public void success(ForgotPasswordModel forgotPasswordModel, Response response) {
-
                 Utils.dismissDialog();
-
-
                 if (forgotPasswordModel.getStatus().toString().equals("true")) {
                     toast(forgotPasswordModel.getMsg());
                     sendEmail(Utils.ReadSharePrefrence(mContext, Constant.SHARED_PREFS.KEY_USER_NAME), String.valueOf(userNameEdit.getText()));
-
                     onBackPressed();
                 }
             }
@@ -649,7 +685,6 @@ public class TeacherProfileActivity extends BaseActivity implements
 
 
     private void getAddress(Double lat, Double lng) {
-
         Utils.showDialog(mContext);
         HashMap<String, String> map = new HashMap<>();
         map.put("action", "get_address");
@@ -658,36 +693,38 @@ public class TeacherProfileActivity extends BaseActivity implements
 
 //        http://smartsquad.16mb.com/HungryEnglish/api/add_request.php?teacherId=1&studentId=2
         ApiHandler.getApiService().getAddress(map, new retrofit.Callback<Address>() {
-
-
             @Override
             public void success(final Address address, Response response) {
+                if (address != null) {
+                    if (address.getData().equalsIgnoreCase("false")) {
+                        final Dialog dialog = new Dialog(TeacherProfileActivity.this);
+                        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                        dialog.setContentView(R.layout.address_confirm);
+                        dialog.setCancelable(false);
+                        TextView tvLogout = (TextView) dialog.findViewById(R.id.address_confirm_msg);
+                        tvLogout.setText("Do you want to set " + address.getData() + " address as Home location ?");
+                        TextView tvOkay = (TextView) dialog.findViewById(R.id.address_positive);
+                        TextView tvCancel = (TextView) dialog.findViewById(R.id.address_negative);
+                        tvOkay.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                currnetPlaceEdit.setText(address.getData());
+                                dialog.dismiss();
+                            }
+                        });
+                        tvCancel.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                dialog.dismiss();
+                            }
+                        });
+                        dialog.show();
+                    }
+
+                }
 
                 Utils.dismissDialog();
-                if (address != null) {
-                    final Dialog dialog = new Dialog(TeacherProfileActivity.this);
-                    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                    dialog.setContentView(R.layout.address_confirm);
-                    dialog.setCancelable(false);
-                    TextView tvLogout = (TextView) dialog.findViewById(R.id.address_confirm_msg);
-                    tvLogout.setText("Do you want to set " + address.getData() + " address as Home location. ?");
-                    TextView tvOkay = (TextView) dialog.findViewById(R.id.address_positive);
-                    TextView tvCancel = (TextView) dialog.findViewById(R.id.address_negative);
-                    tvOkay.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            currnetPlaceEdit.setText(address.getData());
-                            dialog.dismiss();
-                        }
-                    });
-                    tvCancel.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            dialog.dismiss();
-                        }
-                    });
-                    dialog.show();
-                }
+
 
             }
 
@@ -715,6 +752,13 @@ public class TeacherProfileActivity extends BaseActivity implements
         email.m.set_subject("Hungry English CLUB");
         email.execute();
 
+
+    }
+
+    public void rateTeacher(View view) {
+        binding.studentRate.getCount();
+
+        updateRating();
 
     }
 

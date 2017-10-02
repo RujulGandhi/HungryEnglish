@@ -19,7 +19,7 @@ public class ReportModel {
     private String msg;
     @SerializedName("data")
     @Expose
-    private List<Datum> data = null;
+    private List<ReportInfo> data = null;
 
     public String getStatus() {
         return status;
@@ -37,11 +37,11 @@ public class ReportModel {
         this.msg = msg;
     }
 
-    public List<Datum> getData() {
+    public List<ReportInfo> getData() {
         return data;
     }
 
-    public void setData(List<Datum> data) {
+    public void setData(List<ReportInfo> data) {
         this.data = data;
     }
 }

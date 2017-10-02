@@ -3,12 +3,48 @@
 
     <item
         is-multidex="false"
+        jar="C:\Users\good\.android\build-cache\ad9d0fc8fac5b62a0d9fa13fd2f4005aeee2aa53\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="005d20a198159b87f65812fc5c51b2d84c5eba0a">
+        <dex dex="E:\AndroidProjectsBackup\HungryEnglish\app\build\intermediates\pre-dexed\debug\classes_5b080369a091c334f2c7685c8074d917862db71d.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="E:\AndroidProjectsBackup\HungryEnglish\app\libs\mail.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
         sha1="428e267abff0d10802ccde86b915da2c20471160">
         <dex dex="E:\AndroidProjectsBackup\HungryEnglish\app\build\intermediates\pre-dexed\debug\mail_449c88ff68ce09e339b0fdb9619f10691598ae2a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\good\.android\build-cache\ad8fea1859c761870c1401b6ea60baea3264c235\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="914f5d3e3ace66080e59613708f06d129a222e25">
+        <dex dex="E:\AndroidProjectsBackup\HungryEnglish\app\build\intermediates\pre-dexed\debug\classes_5d2473d22965c58b10e3b2cc2cfeced74ffd3f7e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\good\.android\build-cache\5e28656a1c6df5fb8f9b2a8fc2682f5b05b034a7\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="62e9322b0ed4fadcbd50c95741f1cd50ce5c7e12">
+        <dex dex="E:\AndroidProjectsBackup\HungryEnglish\app\build\intermediates\pre-dexed\debug\classes_cd6738eb44f0a03d9c763a718c9e49bae44b96fc.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\good\.android\build-cache\3ed0d1bdc430efb90350e00ec47c17a04b3453de\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="646439081688c43e04ec4aa7ba6915ddfdcc337f">
+        <dex dex="E:\AndroidProjectsBackup\HungryEnglish\app\build\intermediates\pre-dexed\debug\classes_7b2581096c57916657bd378ba208ca440975513b.jar" />
     </item>
     <item
         is-multidex="false"
@@ -30,12 +66,39 @@
     </item>
     <item
         is-multidex="false"
+        jar="C:\Users\good\.android\build-cache\7634ee614559032c250342b0ee9ba28031225fb3\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="7045152f3bd1870740b9bcb1cddff495e189774e">
+        <dex dex="E:\AndroidProjectsBackup\HungryEnglish\app\build\intermediates\pre-dexed\debug\classes_bad40b541322d619f2ab17e94ba77242788a1159.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="E:\AndroidProjectsBackup\HungryEnglish\app\libs\additionnal.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
         sha1="bd9e8dc422bb8c8405359947fe9f4282b49f57f4">
         <dex dex="E:\AndroidProjectsBackup\HungryEnglish\app\build\intermediates\pre-dexed\debug\additionnal_15c7ab9d0d94ee51088829af5b3b6a064bf41042.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\good\.android\build-cache\db46916e88430f0dc58bbc5664dc47ef64d0df57\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="461929440e66685425a298693507f6fb27b0a872">
+        <dex dex="E:\AndroidProjectsBackup\HungryEnglish\app\build\intermediates\pre-dexed\debug\classes_b787e4c56aaf82f36005e1e2dce1b271791c5e5b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\good\.android\build-cache\687ceb6f453a35b84ad9c8cd27830f1f177aa342\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="204f607419af8247cc1b2a61f50663c65f841c12">
+        <dex dex="E:\AndroidProjectsBackup\HungryEnglish\app\build\intermediates\pre-dexed\debug\classes_87ea12c7ffb4065b1d829e47d7529d23cd2ee1c0.jar" />
     </item>
 
 </items>

@@ -1,6 +1,7 @@
 package app.com.HungryEnglish.Services;
 
 
+import java.util.HashMap;
 import java.util.Map;
 
 import app.com.HungryEnglish.Model.Address;
@@ -8,7 +9,8 @@ import app.com.HungryEnglish.Model.ForgotPassord.ForgotPasswordModel;
 import app.com.HungryEnglish.Model.Profile.StudentGetProfileMainResponse;
 import app.com.HungryEnglish.Model.Profile.StudentProfileMainResponse;
 import app.com.HungryEnglish.Model.Profile.TeacherProfileMainResponse;
-import app.com.HungryEnglish.Model.RemoveTeacher.RemoveTeacherFromListMainResponse;
+import app.com.HungryEnglish.Model.Rate.RateBasicResponse;
+import app.com.HungryEnglish.Model.RemoveTeacher.BasicResponse;
 import app.com.HungryEnglish.Model.Report.ReportModel;
 import app.com.HungryEnglish.Model.StudentList.StudentListMainResponse;
 import app.com.HungryEnglish.Model.Teacher.InfoMainResponse;
@@ -51,10 +53,10 @@ public interface WebServices {
     public void getCountList(@QueryMap Map<String, String> map, Callback<CountListMainResponse> callback);
 
     @POST("/delete_user.php")
-    public void getRemoveTeacherFromList(@QueryMap Map<String, String> map, Callback<RemoveTeacherFromListMainResponse> callback);
+    public void getRemoveTeacherFromList(@QueryMap Map<String, String> map, Callback<BasicResponse> callback);
 
     @POST("/delete_user.php")
-    public void getRemoveStudentFromList(@QueryMap Map<String, String> map, Callback<RemoveTeacherFromListMainResponse> callback);
+    public void getRemoveStudentFromList(@QueryMap Map<String, String> map, Callback<BasicResponse> callback);
 
     @POST("/getuserbystatus.php")
     public void getStudentList(@QueryMap Map<String, String> map, Callback<StudentListMainResponse> callback);
@@ -93,9 +95,17 @@ public interface WebServices {
     void getReportList(Callback<ReportModel> callback);
 
     @GET("/get_data.php")
-    public void getAddress(@QueryMap Map<String, String> map,Callback<Address> callback);
+    public void getAddress(@QueryMap Map<String, String> map, Callback<Address> callback);
+
+    @POST("/get_data.php")
+    public void updateRating(@QueryMap Map<String, String> map, Callback<BasicResponse> callback);
 
 
+    @POST("/rate.php")
+    public void getAllRating(@QueryMap Map<String, String> map, Callback<RateBasicResponse> callback);
+
+    @POST("/rate.php")
+    void updateRate(@QueryMap HashMap<String, String> hashMap, Callback<BasicResponse> callback);
 }
 
 

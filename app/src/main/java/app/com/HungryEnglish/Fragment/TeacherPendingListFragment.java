@@ -18,9 +18,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import app.com.HungryEnglish.Adapter.TeacherListAdapter;
 import app.com.HungryEnglish.Adapter.TeacherPendingAdapter;
-import app.com.HungryEnglish.Model.RemoveTeacher.RemoveTeacherFromListMainResponse;
+import app.com.HungryEnglish.Model.RemoveTeacher.BasicResponse;
 import app.com.HungryEnglish.Model.Teacher.TeacherListMainResponse;
 import app.com.HungryEnglish.Model.Teacher.TeacherListResponse;
 import app.com.HungryEnglish.Model.Teacher.TeacherPendingRequestMainResponse;
@@ -199,9 +198,9 @@ public class TeacherPendingListFragment extends Fragment {
             return;
         } else {
             Utils.showDialog(mContext);
-            ApiHandler.getApiService().getRemoveTeacherFromList(removeTeacherDetail(), new retrofit.Callback<RemoveTeacherFromListMainResponse>() {
+            ApiHandler.getApiService().getRemoveTeacherFromList(removeTeacherDetail(), new retrofit.Callback<BasicResponse>() {
                 @Override
-                public void success(RemoveTeacherFromListMainResponse teacherListMainResponse, Response response) {
+                public void success(BasicResponse teacherListMainResponse, Response response) {
                     Utils.dismissDialog();
                     if (teacherListMainResponse == null) {
                         Toast.makeText(mContext, "Something Wrong", Toast.LENGTH_SHORT).show();

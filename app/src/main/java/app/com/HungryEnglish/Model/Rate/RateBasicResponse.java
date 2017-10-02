@@ -1,0 +1,44 @@
+package app.com.HungryEnglish.Model.Rate;
+
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
+
+public class RateBasicResponse {
+
+@SerializedName("status")
+@Expose
+private String status;
+@SerializedName("msg")
+@Expose
+private String msg;
+@SerializedName("data")
+@Expose
+private List<RateInfo> data = null;
+
+public String getStatus() {
+return status;
+}
+
+public void setStatus(String status) {
+this.status = status;
+}
+
+public String getMsg() {
+return msg;
+}
+
+public void setMsg(String msg) {
+this.msg = msg;
+}
+
+public List<RateInfo> getData() {
+return data;
+}
+
+public void setData(List<RateInfo> data) {
+this.data = data;
+}
+
+}

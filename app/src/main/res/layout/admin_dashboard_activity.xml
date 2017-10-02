@@ -25,9 +25,9 @@
                 android:id="@+id/llStudentList"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:layout_marginRight="@dimen/_2sdp"
                 android:layout_marginEnd="@dimen/_2sdp"
+                android:layout_marginRight="@dimen/_2sdp"
+                android:layout_weight="1"
                 android:background="@color/white"
                 android:orientation="vertical">
 
@@ -35,8 +35,8 @@
                     android:layout_width="@dimen/_120sdp"
                     android:layout_height="@dimen/_120sdp"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="@dimen/_25sdp"
                     android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_25sdp"
                     android:gravity="center">
 
                     <ImageView
@@ -56,8 +56,8 @@
                         android:background="@drawable/badget_shape"
                         android:gravity="center"
                         android:text="0"
-                        android:textSize="13sp"
                         android:textColor="@color/white"
+                        android:textSize="13sp"
                         android:textStyle="bold" />
 
                 </RelativeLayout>
@@ -65,9 +65,10 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/_10sdp"
                     android:layout_alignParentBottom="true"
-                    android:background="@color/colorPrimary">
+                    android:background="@color/colorPrimary"
+                    android:padding="@dimen/_10sdp">
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -85,9 +86,9 @@
                 android:id="@+id/llTeacherList"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
                 android:layout_marginLeft="@dimen/_2sdp"
                 android:layout_marginStart="@dimen/_2sdp"
+                android:layout_weight="1"
                 android:background="@color/colorPrimary"
                 android:orientation="vertical">
 
@@ -95,8 +96,8 @@
                     android:layout_width="@dimen/_120sdp"
                     android:layout_height="@dimen/_120sdp"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="@dimen/_25sdp"
                     android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_25sdp"
                     android:gravity="center">
 
                     <ImageView
@@ -117,24 +118,26 @@
                         android:background="@drawable/badget_shape"
                         android:gravity="center"
                         android:text="0"
-                        android:textSize="13sp"
                         android:textColor="@color/white"
+                        android:textSize="13sp"
                         android:textStyle="bold" />
 
                 </RelativeLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/_10sdp"
                     android:layout_alignParentBottom="true"
-                    android:background="@color/colorPrimary">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/teacher_list"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_18sdp" />
+                    android:background="@color/colorPrimary"
+                    android:padding="@dimen/_10sdp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/teacher_list"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_18sdp" />
                 </LinearLayout>
             </RelativeLayout>
 
@@ -146,56 +149,56 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:orientation="horizontal"
+            android:paddingBottom="@dimen/_5sdp"
             android:paddingLeft="@dimen/_5sdp"
             android:paddingRight="@dimen/_5sdp"
-            android:paddingBottom="@dimen/_5sdp"
             android:weightSum="2">
 
             <RelativeLayout
                 android:id="@+id/llAddImageOrLink"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:layout_marginRight="@dimen/_2sdp"
                 android:layout_marginEnd="@dimen/_2sdp"
+                android:layout_marginRight="@dimen/_2sdp"
+                android:layout_weight="1"
                 android:background="@color/colorPrimary"
                 android:gravity="center_vertical"
                 android:orientation="vertical">
 
 
-            <RelativeLayout
-                android:layout_width="@dimen/_120sdp"
-                android:layout_height="@dimen/_120sdp"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/_25sdp"
-                android:layout_gravity="center"
-                android:gravity="center">
-
-
-                <ImageView
+                <RelativeLayout
                     android:layout_width="@dimen/_120sdp"
                     android:layout_height="@dimen/_120sdp"
+                    android:layout_centerHorizontal="true"
                     android:layout_gravity="center"
-                    android:padding="@dimen/_20sdp"
-                    android:background="@drawable/dashboard_shape"
-                    android:src="@drawable/ic_image_link" />
+                    android:layout_marginTop="@dimen/_25sdp"
+                    android:gravity="center">
+
+
+                    <ImageView
+                        android:layout_width="@dimen/_120sdp"
+                        android:layout_height="@dimen/_120sdp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/dashboard_shape"
+                        android:padding="@dimen/_20sdp"
+                        android:src="@drawable/ic_image_link" />
 
                 </RelativeLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/_10sdp"
                     android:layout_alignParentBottom="true"
-                    android:background="@color/colorPrimary">
+                    android:background="@color/colorPrimary"
+                    android:padding="@dimen/_10sdp">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/add_image_link"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_18sdp" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/add_image_link"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_18sdp" />
 
                 </LinearLayout>
             </RelativeLayout>
@@ -204,52 +207,55 @@
                 android:id="@+id/llreport"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
                 android:layout_marginLeft="@dimen/_2sdp"
                 android:layout_marginStart="@dimen/_2sdp"
+                android:layout_weight="1"
                 android:background="@color/white"
                 android:orientation="vertical">
 
-               <RelativeLayout
-                android:layout_width="@dimen/_120sdp"
-                android:layout_height="@dimen/_120sdp"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/_25sdp"
-                android:layout_gravity="center"
-                android:gravity="center">
-
-                <ImageView
+                <RelativeLayout
                     android:layout_width="@dimen/_120sdp"
                     android:layout_height="@dimen/_120sdp"
+                    android:layout_centerHorizontal="true"
                     android:layout_gravity="center"
-                    android:padding="@dimen/_20sdp"
-                    android:background="@drawable/dashboard_shape"
-                    android:src="@drawable/ic_report" />
+                    android:layout_marginTop="@dimen/_25sdp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="@dimen/_120sdp"
+                        android:layout_height="@dimen/_120sdp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/dashboard_shape"
+                        android:padding="@dimen/_20sdp"
+                        android:src="@drawable/ic_report" />
 
 
-            </RelativeLayout>
+                </RelativeLayout>
 
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/_10sdp"
                     android:layout_alignParentBottom="true"
-                    android:background="@color/colorPrimary">
+                    android:background="@color/colorPrimary"
+                    android:padding="@dimen/_10sdp">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/report"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_18sdp" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/report"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_18sdp" />
                 </LinearLayout>
 
-        </RelativeLayout>
+            </RelativeLayout>
 
+
+        </LinearLayout>
 
 
     </LinearLayout>
-    </LinearLayout>
+
+
 </ScrollView>

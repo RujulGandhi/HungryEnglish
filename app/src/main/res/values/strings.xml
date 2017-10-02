@@ -92,6 +92,9 @@
     <string name="home_location">Home Location</string>
     <string name="no">No</string>
     <string name="yes">Yes</string>
+    <string name="rating_title">You can rate teacher</string>
+    <string name="student_rating_sucess_msg">Thank you for your valuable feedback!</string>
+    <string name="rate">rate</string>
 </resources>
 
 

@@ -21,7 +21,7 @@ import java.util.Locale;
 
 import app.com.HungryEnglish.Activity.BaseActivity;
 import app.com.HungryEnglish.Adapter.ReportAdapter;
-import app.com.HungryEnglish.Model.Report.Datum;
+import app.com.HungryEnglish.Model.Report.ReportInfo;
 import app.com.HungryEnglish.Model.Report.ReportModel;
 import app.com.HungryEnglish.R;
 import app.com.HungryEnglish.Services.ApiHandler;
@@ -46,7 +46,7 @@ public class ReportActivity extends BaseActivity {
 
     RecyclerView reportList;
     Button btnGenerateReport;
-    List<Datum> reportArraylist;
+    List<ReportInfo> reportArraylist;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -202,7 +202,7 @@ public class ReportActivity extends BaseActivity {
                         return;
                     }
                     if (reportModel.getStatus().equals("true")) {
-                        reportArraylist = new ArrayList<Datum>();
+                        reportArraylist = new ArrayList<ReportInfo>();
                         reportArraylist = reportModel.getData();
 
                         ReportAdapter reportAdapter = new ReportAdapter(ReportActivity.this, reportArraylist);

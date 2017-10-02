@@ -55,7 +55,6 @@ public class TeacherListActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teacher_list);
-
         idMapping();
         if (Utils.ReadSharePrefrence(getApplicationContext(), Constant.SHARED_PREFS.KEY_USER_ROLE).equalsIgnoreCase("student")) {
             callTeacherListApi();

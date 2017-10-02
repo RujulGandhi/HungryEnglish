@@ -5,10 +5,9 @@ import android.support.annotation.Nullable;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import app.com.HungryEnglish.Activity.BaseActivity;
-import app.com.HungryEnglish.Model.Report.Datum;
+import app.com.HungryEnglish.Model.Report.ReportInfo;
 import app.com.HungryEnglish.R;
 
 /**
@@ -16,7 +15,7 @@ import app.com.HungryEnglish.R;
  */
 
 public class ReportDetails extends BaseActivity {
-    private ArrayList<? extends Datum> reportList;
+    private ArrayList<? extends ReportInfo> reportList;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

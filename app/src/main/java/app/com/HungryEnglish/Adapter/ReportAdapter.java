@@ -1,27 +1,18 @@
 package app.com.HungryEnglish.Adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import app.com.HungryEnglish.Activity.Admin.ReportDetails;
-import app.com.HungryEnglish.Activity.Teacher.TeacherProfileActivity;
 import app.com.HungryEnglish.Fragment.TeacherApprovedListFragment;
-import app.com.HungryEnglish.Model.Report.Datum;
-import app.com.HungryEnglish.Model.Teacher.TeacherListResponse;
+import app.com.HungryEnglish.Model.Report.ReportInfo;
 import app.com.HungryEnglish.R;
-import app.com.HungryEnglish.Util.Constant;
-import app.com.HungryEnglish.Util.Utils;
 
 /**
  * Created by Bhadresh Chavada on 01-08-2017.
@@ -29,13 +20,13 @@ import app.com.HungryEnglish.Util.Utils;
 
 public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.MyViewHolder> {
 
-    private List<Datum> reportList;
+    private List<ReportInfo> reportList;
     private Context mContext;
     TeacherApprovedListFragment activity;
     //    private OnRemoveTeacherClickListener mListener;
     private int pos;
 
-    public ReportAdapter(Context mContext, List<Datum> reportList) {
+    public ReportAdapter(Context mContext, List<ReportInfo> reportList) {
         this.mContext = mContext;
         this.reportList = reportList;
     }

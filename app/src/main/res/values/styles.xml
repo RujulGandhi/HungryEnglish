@@ -29,4 +29,31 @@
         <item name="colorControlActivated">@color/colorPrimary</item>
         <item name="android:textColorPrimary">@color/colorPrimaryDark</item>
     </style>
+
+    <style name="rating_bar">
+        <item name="rb_empty">@mipmap/unfill_rate</item>
+        <item name="rb_fill">@mipmap/fill_rate</item>
+        <item name="rb_max_count">5</item>
+    </style>
+
+
+    <style name="title_textview">
+        <item name="android:layout_margin">@dimen/_10sdp</item>
+        <item name="android:textSize">@dimen/_22sdp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="regular_textview">
+        <item name="android:layout_margin">@dimen/_10sdp</item>
+        <item name="android:textSize">@dimen/_16sdp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="small_textview">
+        <item name="android:layout_margin">@dimen/_10sdp</item>
+        <item name="android:textSize">@dimen/_12sdp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
 </resources>

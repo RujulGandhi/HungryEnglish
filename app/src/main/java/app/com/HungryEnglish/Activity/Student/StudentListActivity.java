@@ -1,10 +1,5 @@
 package app.com.HungryEnglish.Activity.Student;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -13,10 +8,16 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import app.com.HungryEnglish.Activity.Admin.AdminDashboardActivity;
 import app.com.HungryEnglish.Activity.BaseActivity;
 import app.com.HungryEnglish.Adapter.StudentListAdapter;
-import app.com.HungryEnglish.Model.RemoveTeacher.RemoveTeacherFromListMainResponse;
+import app.com.HungryEnglish.Model.RemoveTeacher.BasicResponse;
 import app.com.HungryEnglish.Model.StudentList.StudentData;
 import app.com.HungryEnglish.Model.StudentList.StudentListMainResponse;
 import app.com.HungryEnglish.R;
@@ -37,13 +38,12 @@ public class StudentListActivity extends BaseActivity {
     public static Context mContext;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_student_list);
-        mContext = StudentListActivity.this;
+        protected void onCreate(@Nullable Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_student_list);
+            mContext = StudentListActivity.this;
 
         idMapping();
-
         callStudentListApi();
     }
 
@@ -126,21 +126,21 @@ public class StudentListActivity extends BaseActivity {
             return;
         }
         Utils.showDialog(mContext);
-        ApiHandler.getApiService().getRemoveStudentFromList(removeStudentDetail(id, role), new retrofit.Callback<RemoveTeacherFromListMainResponse>() {
+        ApiHandler.getApiService().getRemoveStudentFromList(removeStudentDetail(id, role), new retrofit.Callback<BasicResponse>() {
             @Override
-            public void success(RemoveTeacherFromListMainResponse removeTeacherFromListMainResponse, Response response) {
+            public void success(BasicResponse basicResponse, Response response) {
                 Utils.dismissDialog();
-                if (removeTeacherFromListMainResponse == null || removeTeacherFromListMainResponse.getStatus() == null) {
+                if (basicResponse == null || basicResponse.getStatus() == null) {
                     Toast.makeText(mContext, "Something Wrong", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                if (removeTeacherFromListMainResponse.getStatus().equals("false")) {
-                    Toast.makeText(mContext, "" + removeTeacherFromListMainResponse.getMsg(), Toast.LENGTH_SHORT).show();
+                if (basicResponse.getStatus().equals("false")) {
+                    Toast.makeText(mContext, "" + basicResponse.getMsg(), Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (removeTeacherFromListMainResponse.getStatus().equals("true")) {
-                    Toast.makeText(mContext, removeTeacherFromListMainResponse.getMsg(), Toast.LENGTH_SHORT).show();
+                if (basicResponse.getStatus().equals("true")) {
+                    Toast.makeText(mContext, basicResponse.getMsg(), Toast.LENGTH_SHORT).show();
                     studentList.remove(position);
                     studentListAdapter.notifyDataSetChanged();
                 }

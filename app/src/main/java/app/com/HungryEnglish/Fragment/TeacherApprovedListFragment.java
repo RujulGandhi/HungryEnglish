@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 import app.com.HungryEnglish.Adapter.TeacherApprovedAdapter;
-import app.com.HungryEnglish.Model.RemoveTeacher.RemoveTeacherFromListMainResponse;
+import app.com.HungryEnglish.Model.RemoveTeacher.BasicResponse;
 import app.com.HungryEnglish.Model.Teacher.TeacherListMainResponse;
 import app.com.HungryEnglish.Model.Teacher.TeacherListResponse;
 import app.com.HungryEnglish.R;
@@ -121,24 +121,24 @@ public class TeacherApprovedListFragment extends Fragment {
             return;
         }
         Utils.showDialog(mContext);
-        ApiHandler.getApiService().getRemoveTeacherFromList(removeTeacherDetail(id, role), new retrofit.Callback<RemoveTeacherFromListMainResponse>() {
+        ApiHandler.getApiService().getRemoveTeacherFromList(removeTeacherDetail(id, role), new retrofit.Callback<BasicResponse>() {
             @Override
-            public void success(RemoveTeacherFromListMainResponse removeTeacherFromListMainResponse, Response response) {
+            public void success(BasicResponse basicResponse, Response response) {
                 Utils.dismissDialog();
-                if (removeTeacherFromListMainResponse == null) {
+                if (basicResponse == null) {
                     Toast.makeText(mContext, "Something Wrong", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (removeTeacherFromListMainResponse.getStatus() == null) {
+                if (basicResponse.getStatus() == null) {
                     Toast.makeText(mContext, "Something Wrong", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (removeTeacherFromListMainResponse.getStatus().equals("false")) {
-                    Toast.makeText(mContext, "" + removeTeacherFromListMainResponse.getMsg(), Toast.LENGTH_SHORT).show();
+                if (basicResponse.getStatus().equals("false")) {
+                    Toast.makeText(mContext, "" + basicResponse.getMsg(), Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (removeTeacherFromListMainResponse.getStatus().equals("true")) {
-                    Toast.makeText(mContext, removeTeacherFromListMainResponse.getMsg(), Toast.LENGTH_SHORT).show();
+                if (basicResponse.getStatus().equals("true")) {
+                    Toast.makeText(mContext, basicResponse.getMsg(), Toast.LENGTH_SHORT).show();
 //                    teacherApprovedAdapter = new TeacherApprovedAdapter(mContext, teacherList);
 //                    LinearLayoutManager mLayoutManager = new LinearLayoutManager(mContext);
 //                    mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);

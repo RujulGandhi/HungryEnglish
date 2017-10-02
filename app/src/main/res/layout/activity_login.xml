@@ -48,7 +48,6 @@
                 android:paddingStart="@dimen/_30sdp">
 
 
-
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="100dp"
@@ -65,12 +64,12 @@
 
                     <EditText
                         android:id="@+id/edt_username"
+                        style="@style/StyledTilEditTextTheme"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
                         android:hint="@string/user_name_email"
                         android:inputType="text"
-                        style="@style/StyledTilEditTextTheme"
                         android:padding="@dimen/_10sdp"
                         android:textColor="@android:color/black"
                         android:textSize="@dimen/_12sdp" />
@@ -83,18 +82,18 @@
                     android:layout_marginTop="@dimen/_5sdp">
 
                     <EditText
-                        style="@style/StyledTilEditTextTheme"
                         android:id="@+id/edt_password"
+                        style="@style/StyledTilEditTextTheme"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
                         android:hint="@string/password"
+                        android:imeOptions="actionDone"
                         android:inputType="textPassword"
                         android:padding="@dimen/_10sdp"
                         android:textColor="@android:color/black"
                         android:textSize="@dimen/_12sdp" />
                 </android.support.design.widget.TextInputLayout>
-
 
 
                 <Button

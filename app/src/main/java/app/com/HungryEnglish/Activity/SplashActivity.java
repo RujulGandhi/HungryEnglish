@@ -11,6 +11,8 @@ import app.com.HungryEnglish.Activity.Teacher.TeacherListActivity;
 import app.com.HungryEnglish.R;
 import app.com.HungryEnglish.Util.Constant;
 import app.com.HungryEnglish.Util.Utils;
+import com.crashlytics.android.Crashlytics;
+import io.fabric.sdk.android.Fabric;
 
 /**
  * Created by Vnnovate on 6/29/2017.
@@ -23,6 +25,7 @@ public class SplashActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_splash);
 
         new Handler().postDelayed(new Runnable() {
