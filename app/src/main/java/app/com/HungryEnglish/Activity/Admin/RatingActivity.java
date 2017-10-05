@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
+import android.view.View;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -39,7 +40,6 @@ public class RatingActivity extends BaseActivity {
 
     // CALL LOGIN API HERE
     private void getRatingList() {
-
         if (!Utils.checkNetwork(this)) {
             Utils.showCustomDialog(getResources().getString(R.string.internet_error), getResources().getString(R.string.internet_connection_error), this);
             return;
@@ -51,12 +51,21 @@ public class RatingActivity extends BaseActivity {
             public void success(RateBasicResponse rateData, Response response) {
                 Utils.dismissDialog();
 
-                adapter = new RatingAdapter(RatingActivity.this, rateData.getData());
-                LinearLayoutManager mLayoutManager = new LinearLayoutManager(RatingActivity.this);
-                mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-                binding.recyclerRatelist.setLayoutManager(mLayoutManager);
-                binding.recyclerRatelist.setItemAnimator(new DefaultItemAnimator());
-                binding.recyclerRatelist.setAdapter(adapter);
+                if (rateData.getData() != null) {
+                    adapter = new RatingAdapter(RatingActivity.this, rateData.getData());
+                    LinearLayoutManager mLayoutManager = new LinearLayoutManager(RatingActivity.this);
+                    mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+                    binding.recyclerRatelist.setLayoutManager(mLayoutManager);
+                    binding.recyclerRatelist.setItemAnimator(new DefaultItemAnimator());
+                    binding.recyclerRatelist.setAdapter(adapter);
+                    binding.recyclerRatelist.setVisibility(View.VISIBLE);
+                    binding.emptyView.setVisibility(View.GONE);
+                } else {
+                    binding.emptyView.setVisibility(View.VISIBLE);
+                    binding.recyclerRatelist.setVisibility(View.GONE);
+                }
+
+
             }
 
             @Override

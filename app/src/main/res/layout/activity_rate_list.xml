@@ -10,6 +10,14 @@
             android:id="@+id/recycler_ratelist"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="@dimen/_5sdp" />
+            android:layout_margin="@dimen/_5sdp"
+            android:visibility="gone" />
+
+
+        <app.com.HungryEnglish.Views.EmptyView
+            android:id="@+id/empty_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center" />
     </LinearLayout>
 </layout>

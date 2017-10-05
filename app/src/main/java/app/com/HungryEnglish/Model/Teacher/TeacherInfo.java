@@ -33,6 +33,10 @@ public class TeacherInfo {
     @SerializedName("skills")
     @Expose
     private String skills;
+    @SerializedName("rating")
+    @Expose
+    private String rating;
+
 
     public String getUId() {
         return uId;
@@ -96,5 +100,21 @@ public class TeacherInfo {
 
     public void setSkills(String skills) {
         this.skills = skills;
+    }
+
+    public String getuId() {
+        return uId;
+    }
+
+    public void setuId(String uId) {
+        this.uId = uId;
+    }
+
+    public String getRating() {
+        return rating;
+    }
+
+    public void setRating(String rating) {
+        this.rating = rating;
     }
 }

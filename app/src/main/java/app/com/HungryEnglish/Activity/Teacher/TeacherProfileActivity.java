@@ -85,7 +85,6 @@ public class TeacherProfileActivity extends BaseActivity implements
         View.OnClickListener {
 
     private static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 0;
-    private static final int MY_PERMISSIONS_REQUEST_READ_CONTACTS = 100;
     private ImageView profileImage, idProofImage, ivCVFileStatus, ivAudioFileStatus, ivViewCv, ivViewAudio;
     final int SELECT_PHOTO = 100;
     final int SELECT_ID_PROOF = 200;
@@ -110,7 +109,6 @@ public class TeacherProfileActivity extends BaseActivity implements
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.ACCESS_COARSE_LOCATION,
             Manifest.permission.ACCESS_FINE_LOCATION};
-
     private ActivityTeacherProfileBinding binding;
 
     @Override
@@ -182,15 +180,13 @@ public class TeacherProfileActivity extends BaseActivity implements
         emailEdit = (EditText) findViewById(R.id.emailEdit);
         btnSubmiTeacherProfile = (Button) findViewById(R.id.btnSubmiTeacherProfile);
 
-        String role = Utils.ReadSharePrefrence(getApplicationContext(), Constant.SHARED_PREFS.KEY_USER_ROLE);
-        if (role.equalsIgnoreCase("admin")) {
+        String currentRole = read(Constant.SHARED_PREFS.KEY_USER_ROLE);
+        if (currentRole.equalsIgnoreCase("admin")) {
             ivViewCv.setVisibility(View.VISIBLE);
             ivViewAudio.setVisibility(View.VISIBLE);
         }
         if (CallFrom.equals("Student")) {
-
             btnSubmiTeacherProfile.setText(getApplicationContext().getString(R.string.requst_teacher));
-
             TextInputLayout wechatLayout = (TextInputLayout) findViewById(R.id.wechat_id_textinput);
             TextInputLayout cvLayout = (TextInputLayout) findViewById(R.id.text_input_layout_uploadCV);
             TextInputLayout idProof = (TextInputLayout) findViewById(R.id.text_input_layout_uploadIdProof);
@@ -412,12 +408,17 @@ public class TeacherProfileActivity extends BaseActivity implements
             return;
         }
         HashMap<String, String> map = new HashMap<>();
+        role = read(KEY_USER_ROLE);
         if (role.equalsIgnoreCase("teacher")) {
             map.put("uId", read(KEY_USER_ID));
-            map.put("role", read(KEY_USER_ROLE));
+            map.put("role", "teacher");
+        } else if (role.equalsIgnoreCase("admin")) {
+            map.put("uId", id);
+            map.put("role", "teacher");
         } else {
             map.put("uId", id);
-            map.put("role", role);
+            map.put("role", "teacher");
+            map.put("stu_id", read(KEY_USER_ID));
         }
         ApiHandler.getApiService().getTeacherProfile(map, new Callback<TeacherProfileMain>() {
             @Override
@@ -428,7 +429,6 @@ public class TeacherProfileActivity extends BaseActivity implements
                 etMobileOrWechatId.setText(String.valueOf(teacherProfileMain.getData().getMobNo()));
                 int rating = teacherProfileMain.getData().getRating().equalsIgnoreCase("") ? 0 : Integer.parseInt(teacherProfileMain.getData().getRating());
                 binding.ratingBar.setCount(rating);
-
                 if (teacherProfileMain.getInfo() != null) {
                     avaibilityDateTeacherEdit.setText(teacherProfileMain.getInfo().getAvailableTime());
                     currnetPlaceEdit.setText(teacherProfileMain.getInfo().getAddress());
@@ -437,25 +437,38 @@ public class TeacherProfileActivity extends BaseActivity implements
                     Picasso.with(getApplicationContext()).load(BASEURL + teacherProfileMain.getInfo().getIdImage()).placeholder(R.drawable.ic_user_default).error(R.drawable.ic_user_default).into(idProofImage);
                     resumePath = teacherProfileMain.getInfo().getResume();
                     String idProof = Constant.BASEURL + teacherProfileMain.getInfo().getIdImage();
-                    String[] cvFileArray = resumePath.split("/");
-                    if (cvFileArray.length > 1) {
-                        btnCvUpload.setText(cvFileArray[cvFileArray.length - 1]);
-                        Picasso.with(getApplicationContext()).load(R.drawable.ic_file).placeholder(R.drawable.ic_user_default).error(R.drawable.ic_user_default).into(ivCVFileStatus);
+                    String idImageUrl = teacherProfileMain.getInfo().getIdImage();
+                    if (resumePath != null) {
+                        String[] cvFileArray = resumePath.split("/");
+                        if (cvFileArray.length > 1) {
+                            btnCvUpload.setText(cvFileArray[cvFileArray.length - 1]);
+                            Picasso.with(getApplicationContext()).load(R.drawable.ic_file).placeholder(R.drawable.ic_user_default).error(R.drawable.ic_user_default).into(ivCVFileStatus);
+                        }
                     }
-                    String[] idFileArray = teacherProfileMain.getInfo().getIdImage().split("/");
-                    if (idFileArray.length > 1) {
-                        btn_id_proof.setText(idFileArray[idFileArray.length - 1]);
-                        Picasso.with(getApplicationContext()).load(idProof).placeholder(R.drawable.ic_user_default).error(R.drawable.ic_user_default).into(idProofImage);
-                    } else {
-                        Picasso.with(getApplicationContext()).load(R.drawable.ic_file).placeholder(R.drawable.ic_user_default).error(R.drawable.ic_user_default).into(idProofImage);
+                    if (idImageUrl != null) {
+                        String[] idFileArray = idImageUrl.split("/");
+                        if (idFileArray.length > 1) {
+                            btn_id_proof.setText(idFileArray[idFileArray.length - 1]);
+                            Picasso.with(getApplicationContext()).load(idProof).placeholder(R.drawable.ic_user_default).error(R.drawable.ic_user_default).into(idProofImage);
+                        } else {
+                            Picasso.with(getApplicationContext()).load(R.drawable.ic_file).placeholder(R.drawable.ic_user_default).error(R.drawable.ic_user_default).into(idProofImage);
+                        }
                     }
 
                     audioPath = teacherProfileMain.getInfo().getAudioFile();
-                    String[] audioFileArray = audioPath.split("/");
-                    if (audioFileArray.length > 1) {
-                        btnAudioFile.setText(audioFileArray[audioFileArray.length - 1]);
-                        Picasso.with(getApplicationContext()).load(R.drawable.ic_file).placeholder(R.drawable.ic_user_default).error(R.drawable.ic_user_default).into(ivAudioFileStatus);
+                    if (audioPath != null) {
+                        String[] audioFileArray = audioPath.split("/");
+                        if (audioFileArray.length > 1) {
+                            btnAudioFile.setText(audioFileArray[audioFileArray.length - 1]);
+                            Picasso.with(getApplicationContext()).load(R.drawable.ic_file).placeholder(R.drawable.ic_user_default).error(R.drawable.ic_user_default).into(ivAudioFileStatus);
+                        }
                     }
+
+                    if (teacherProfileMain.getData().getRating() != null && teacherProfileMain.getData().getRating() != "") {
+                        int rategivenbystudent = Integer.parseInt(teacherProfileMain.getData().getRating());
+                        binding.studentRate.setCount(rategivenbystudent);
+                    }
+
                 }
             }
 

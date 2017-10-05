@@ -98,37 +98,22 @@
 
                 <Button
                     android:id="@+id/activity_login_btn"
+                    style="@style/green_btn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_15sdp"
-                    android:background="@drawable/rounded_button"
                     android:onClick="onLogin"
-                    android:text="@string/login"
-                    android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_14sdp" />
-
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:gravity="center"
-                    android:text="@string/doyouhaveaccount"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="@dimen/_14sdp"
-                    android:visibility="gone" />
+                    android:text="@string/login" />
 
                 <Button
                     android:id="@+id/login_register"
+                    style="@style/gray_btn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_15sdp"
-                    android:background="@drawable/bg_btn_login"
                     android:onClick="onRegister"
                     android:text="@string/openaccount"
                     android:textAllCaps="false"
-                    android:textColor="@color/white"
                     android:textSize="@dimen/_12sdp" />
 
                 <TextView

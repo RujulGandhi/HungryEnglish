@@ -175,14 +175,13 @@
 
                     <Button
                         android:id="@+id/activity_register_btn"
+                        style="@style/green_btn"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_15sdp"
-                        android:background="@drawable/rounded_button"
                         android:onClick="onSignUp"
                         android:text="@string/signup"
                         android:textAllCaps="false"
-                        android:textColor="@color/white"
                         android:textSize="@dimen/_16sdp" />
 
 
