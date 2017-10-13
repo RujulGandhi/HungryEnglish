@@ -1,15 +1,16 @@
 package app.com.HungryEnglish.Activity.Teacher;
 
+import android.app.Dialog;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,52 +21,36 @@ import app.com.HungryEnglish.Activity.BaseActivity;
 import app.com.HungryEnglish.Activity.LoginActivity;
 import app.com.HungryEnglish.Activity.Student.StudentProfileActivity;
 import app.com.HungryEnglish.Adapter.TeacherListAdapter;
-import app.com.HungryEnglish.Interface.OnRemoveTeacherClickListener;
-import app.com.HungryEnglish.Model.Teacher.InfoResponse;
 import app.com.HungryEnglish.Model.Teacher.TeacherListMainResponse;
 import app.com.HungryEnglish.Model.Teacher.TeacherListResponse;
 import app.com.HungryEnglish.R;
 import app.com.HungryEnglish.Services.ApiHandler;
 import app.com.HungryEnglish.Util.Constant;
 import app.com.HungryEnglish.Util.Utils;
+import app.com.HungryEnglish.databinding.ActivityTeacherListBinding;
+import app.com.HungryEnglish.databinding.DialogFilterBinding;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
-import static app.com.HungryEnglish.R.id.image_teacher_list_header;
-
 /**
  * Created by Rujul on 7/1/2017.
- * TEACHER LIST
- * http://smartsquad.16mb.com/HungryEnglish/api/getuserbystatus.php?role=teacher&status=0
  */
 
 public class TeacherListActivity extends BaseActivity {
 
-    RecyclerView recyclerTearcherList;
     private TeacherListAdapter teacherListAdapter;
-    ImageView imgListHeader;
-    List<TeacherListResponse> teacherList;
-    InfoResponse infoList;
-    private int cnt = 0;
-    private LinearLayout llLinkList;
-    OnRemoveTeacherClickListener onRemoveTeacherClickListener;
-
+    private List<TeacherListResponse> teacherList, searchTeacherList;
+    private ActivityTeacherListBinding binding;
+    private DialogFilterBinding dialogBinding;
+    private Dialog dialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_teacher_list);
-        idMapping();
-        if (Utils.ReadSharePrefrence(getApplicationContext(), Constant.SHARED_PREFS.KEY_USER_ROLE).equalsIgnoreCase("student")) {
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_teacher_list);
+        if (read(Constant.SHARED_PREFS.KEY_USER_ROLE).equalsIgnoreCase("student")) {
             callTeacherListApi();
         }
-    }
-
-
-    private void idMapping() {
-        recyclerTearcherList = (RecyclerView) findViewById(R.id.recyclerTearcherList);
-        imgListHeader = (ImageView) findViewById(image_teacher_list_header);
-        llLinkList = (LinearLayout) findViewById(R.id.llLinkList);
     }
 
 
@@ -89,21 +74,12 @@ public class TeacherListActivity extends BaseActivity {
                         return;
                     }
                     if (teacherListMainResponse.getStatus().equals("false")) {
-                       toast(teacherListMainResponse.getMessage());
+                        toast(teacherListMainResponse.getMessage());
                         return;
                     }
                     if (teacherListMainResponse.getStatus().equals("true")) {
 
-                        teacherList = new ArrayList<TeacherListResponse>();
-                        teacherList = teacherListMainResponse.getData();
-
-                        teacherListAdapter = new TeacherListAdapter(getApplicationContext(), teacherList);
-                        LinearLayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
-                        mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-                        recyclerTearcherList.setLayoutManager(mLayoutManager);
-                        recyclerTearcherList.setItemAnimator(new DefaultItemAnimator());
-                        recyclerTearcherList.setAdapter(teacherListAdapter);
-
+                        setTeacherList(teacherListMainResponse.getData());
                     }
 
                 }
@@ -112,10 +88,31 @@ public class TeacherListActivity extends BaseActivity {
                 public void failure(RetrofitError error) {
                     error.printStackTrace();
                     error.getMessage();
-                   toast(getString(R.string.something_wrong));
+                    toast(getString(R.string.something_wrong));
+                    binding.emptyView.setVisibility(View.VISIBLE);
+                    binding.recyclerTearcherList.setVisibility(View.GONE);
                 }
             });
         }
+    }
+
+    private void setTeacherList(List<TeacherListResponse> teacherListMainResponse) {
+        teacherList = new ArrayList<TeacherListResponse>();
+        teacherList = teacherListMainResponse;
+
+        if (teacherList.size() > 0) {
+            binding.emptyView.setVisibility(View.GONE);
+            binding.recyclerTearcherList.setVisibility(View.VISIBLE);
+        } else {
+            binding.emptyView.setVisibility(View.VISIBLE);
+            binding.recyclerTearcherList.setVisibility(View.GONE);
+        }
+        teacherListAdapter = new TeacherListAdapter(getApplicationContext(), teacherList);
+        LinearLayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+        mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        binding.recyclerTearcherList.setLayoutManager(mLayoutManager);
+        binding.recyclerTearcherList.setItemAnimator(new DefaultItemAnimator());
+        binding.recyclerTearcherList.setAdapter(teacherListAdapter);
     }
 
     private Map<String, String> getTeacherDetail() {
@@ -160,5 +157,46 @@ public class TeacherListActivity extends BaseActivity {
                 break;
         }
         return true;
+    }
+
+    public void filterPopup(View view) {
+        dialog = new Dialog(this);
+        dialogBinding = DataBindingUtil.inflate(LayoutInflater.from(this), R.layout.dialog_filter, null, false);
+        dialog.setContentView(dialogBinding.getRoot());
+        dialog.setCancelable(true);
+        dialog.show();
+    }
+
+    public void onSubmitFilter(View view) {
+        if (dialogBinding != null) {
+            String filterString = dialogBinding.skillEdt.getText().toString();
+            searchTeacherList = new ArrayList<>();
+            for (TeacherListResponse details : teacherList) {
+                if (details.getTeacherInfo() != null && details.getTeacherInfo().getSkills().contains(filterString)) {
+                    searchTeacherList.add(details);
+                }
+            }
+
+            if (searchTeacherList.size() > 0) {
+                binding.emptyView.setVisibility(View.GONE);
+                binding.recyclerTearcherList.setVisibility(View.VISIBLE);
+            } else {
+                binding.emptyView.setVisibility(View.VISIBLE);
+                binding.recyclerTearcherList.setVisibility(View.GONE);
+            }
+            teacherListAdapter = new TeacherListAdapter(getApplicationContext(), searchTeacherList);
+            LinearLayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+            mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+            binding.recyclerTearcherList.setLayoutManager(mLayoutManager);
+            binding.recyclerTearcherList.setItemAnimator(new DefaultItemAnimator());
+            binding.recyclerTearcherList.setAdapter(teacherListAdapter);
+
+            dialog.dismiss();
+        }
+    }
+
+    public void onClearFilter(View view) {
+        setTeacherList(teacherList);
+        dialog.dismiss();
     }
 }

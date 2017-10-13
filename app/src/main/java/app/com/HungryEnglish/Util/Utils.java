@@ -552,4 +552,11 @@ public class Utils {
         button.setVisibility(View.GONE);
     }
 
+    public static String makePerfectURL(String url) {
+        if (!url.startsWith("http://") && !url.startsWith("https://")) {
+            url = "http://" + url;
+        }
+        return url;
+    }
+
 }

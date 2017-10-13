@@ -33,7 +33,7 @@ public class TeacherListAdapter extends RecyclerView.Adapter<TeacherListAdapter.
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView tvTeacherName, tvClosestStation, tvTeacherAvaibility, tvSpecialSkills, tvReportTeacher;
+        public TextView tvTeacherName, tvClosestStation, tvSpecialSkills, tvReportTeacher;
         public ImageView ivProfilePic;
 
         public MyViewHolder(View view) {
@@ -41,7 +41,7 @@ public class TeacherListAdapter extends RecyclerView.Adapter<TeacherListAdapter.
             tvTeacherName = (TextView) view.findViewById(R.id.tvTeacherName);
             tvClosestStation = (TextView) view.findViewById(R.id.tvClosestStation);
             tvSpecialSkills = (TextView) view.findViewById(R.id.tvSpecialSkills);
-            tvTeacherAvaibility = (TextView) view.findViewById(R.id.tvTeacherAvaibility);
+//            tvTeacherAvaibility = (TextView) view.findViewById(R.id.tvTeacherAvaibility);
             ivProfilePic = (ImageView) view.findViewById(R.id.ivTeacherProfilePic);
             if (Utils.ReadSharePrefrence(mContext, Constant.SHARED_PREFS.KEY_USER_ROLE).equals("student")) {
                 tvReportTeacher = (TextView) view.findViewById(R.id.tvReportTeacher);
@@ -78,7 +78,6 @@ public class TeacherListAdapter extends RecyclerView.Adapter<TeacherListAdapter.
         });
         if (teacherList.get(position).getTeacherInfo() != null) {
             holder.tvSpecialSkills.setText(mContext.getString(R.string.special_skils_label) + " " + teacherList.get(position).getTeacherInfo().getSkills());
-            holder.tvTeacherAvaibility.setText(mContext.getString(R.string.teacher_avaibility_label) + " " + teacherList.get(position).getTeacherInfo().getAvailableTime());
             holder.tvClosestStation.setText(teacherList.get(position).getTeacherInfo().getAddress());
             String profilePicUrl = Constant.BASEURL + teacherList.get(position).getTeacherInfo().getProfileImage();
             Picasso.with(mContext).load(profilePicUrl).error(R.drawable.ic_user_default).placeholder(R.drawable.ic_user_default).into(holder.ivProfilePic);

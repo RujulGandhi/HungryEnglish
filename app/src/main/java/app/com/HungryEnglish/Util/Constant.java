@@ -16,9 +16,15 @@ public class Constant {
     public static final String FILE_TYPE_IDPROOF = "IdProof";
     public static final String FILE_TYPE_REPORT = "Report";
 
+    public static final String SEX_MALE = "male";
+    public static final String SEX_FEMALE = "female";
+
+
     public static final String BASEURL = "http://smartsquad.16mb.com/HungryEnglish/api/";
 
-//    public static final String BASEURL = "http://mygadgetz.co.uk/HungryEnglish/api/";
+    public static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 0;
+
+    //    public static final String BASEURL = "http://mygadgetz.co.uk/HungryEnglish/api/";
     public class SHARED_PREFS {
         public static final String KEY_USER_ID = "user_id";
         public static final String KEY_USER_ROLE = "user_role";

@@ -22,6 +22,7 @@
     <string name="radio_male">Male/男</string>
     <string name="radio_female">Female/女</string>
     <string name="submit">Submit/提交</string>
+    <string name="submit_en">Submit</string>
     <string name="email_validation">Enter Valid Email/输入正确的邮箱地址</string>
     <string name="password_validation">Password Must be grater then 6 charcters</string>
     <string name="no_internet">Please check your Internet Connection/检查网络是否连接</string>
@@ -40,7 +41,7 @@
     <string name="upload_audio">Upload Audio</string>
     <string name="location">Address ( Location )/地址</string>
     <string name="sucess_external_storage_msg">Hungry English will use your storage.</string>
-    <string name="error_permission_msg">Hungry English may use extra utilities..</string>
+    <string name="error_permission_msg">Hungry English can misbehave.</string>
     <string name="logout">Logout</string>
     <string name="teacher_name">Name :</string>
     <string name="teacher_email">Email :</string>
@@ -61,6 +62,8 @@
     <string name="add_image_link"><![CDATA[Add Image / Links]]></string>
     <string name="edit">Edit</string>
     <string name="logout_note">Are you sure you want to logout from Hungry English?</string>
+
+    <string name="clear">Clear</string>
     <string name="cancel">Cancel</string>
     <string name="linksforref">Links for reference.</string>
     <string name="mobile_or_wechat">Mobile/Wechat ID</string>
@@ -95,6 +98,7 @@
     <string name="rating_title">You can rate teacher</string>
     <string name="student_rating_sucess_msg">Thank you for your valuable feedback!</string>
     <string name="rate">rate</string>
+    <string name="filter">Filter</string>
 </resources>
 
 

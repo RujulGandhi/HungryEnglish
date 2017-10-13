@@ -1,8 +1,14 @@
 package app.com.HungryEnglish.Activity.Student;
 
+import android.Manifest;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -15,22 +21,29 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import app.com.HungryEnglish.Activity.BaseActivity;
 import app.com.HungryEnglish.Activity.LoginActivity;
 import app.com.HungryEnglish.Activity.Teacher.TeacherListActivity;
+import app.com.HungryEnglish.Activity.TimePickerActivity;
 import app.com.HungryEnglish.Model.Profile.StudentGetProfileMainResponse;
 import app.com.HungryEnglish.Model.Profile.StudentProfileMainResponse;
 import app.com.HungryEnglish.R;
 import app.com.HungryEnglish.Services.ApiHandler;
 import app.com.HungryEnglish.Util.Constant;
 import app.com.HungryEnglish.Util.Utils;
+import app.com.HungryEnglish.databinding.ActivityStudentProfileBinding;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
+import static app.com.HungryEnglish.Util.Constant.MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE;
+import static app.com.HungryEnglish.Util.Constant.SEX_FEMALE;
+import static app.com.HungryEnglish.Util.Constant.SEX_MALE;
 import static app.com.HungryEnglish.Util.Constant.SHARED_PREFS.KEY_USER_ID;
 import static app.com.HungryEnglish.Util.Constant.SHARED_PREFS.KEY_USER_ROLE;
 
@@ -41,120 +54,101 @@ import static app.com.HungryEnglish.Util.Constant.SHARED_PREFS.KEY_USER_ROLE;
 
 public class StudentProfileActivity extends BaseActivity {
 
-    private EditText fullNameStudentEdit, ageEdit, nearRailwayStationEdit, avaibilityStudentEdit, wechatEdt, userNameEdt, skillEdt, emailEdt;
+    private EditText fullNameStudentEdit, ageEdit, nearRailwayStationEdit, wechatEdt, userNameEdt, skillEdt, emailEdt;
     private RadioGroup radioSex;
     private RadioButton radioMale, radioFemale;
     private RadioButton radioButton;
     private Button login_register;
     private String sex = "";
     private String id = "", role = "";
+    private ActivityStudentProfileBinding binding;
+    String[] permissions = new String[]{
+            Manifest.permission.ACCESS_COARSE_LOCATION,
+            Manifest.permission.ACCESS_FINE_LOCATION};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_student_profile);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_student_profile);
         idMapping();
         getDataFromIntent();
-        setOnClick();
         getProfile();
     }
 
     private void getDataFromIntent() {
         Bundle extras = getIntent().getExtras();
+        // When role is admin.
         if (extras != null) {
             id = extras.getString("id");
             role = extras.getString("role");
+        } else {
+            checkPermissions();
         }
     }
 
 
-    private void idMapping() {
-
-        fullNameStudentEdit = (EditText) findViewById(R.id.fullNameStudentEdit);
-
-        wechatEdt = (EditText) findViewById(R.id.wechatEdit);
-
-        ageEdit = (EditText) findViewById(R.id.ageEdit);
-
-        nearRailwayStationEdit = (EditText) findViewById(R.id.nearRailwayStationEdit);
-
-        avaibilityStudentEdit = (EditText) findViewById(R.id.avaibilityStudentEdit);
-
-        login_register = (Button) findViewById(R.id.login_register);
-
-        radioSex = (RadioGroup) findViewById(R.id.radioSex);
-
-        radioMale = (RadioButton) findViewById(R.id.radioMale);
-
-        radioFemale = (RadioButton) findViewById(R.id.radioFemale);
-
-        userNameEdt = (EditText) findViewById(R.id.usernameStudentEdit);
-
-        skillEdt = (EditText) findViewById(R.id.skillStudentEdit);
-
-        emailEdt = (EditText) findViewById(R.id.emailEdit);
+    private boolean checkPermissions() {
+        int result;
+        List<String> listPermissionsNeeded = new ArrayList<>();
+        for (String p : permissions) {
+            result = ContextCompat.checkSelfPermission(this, p);
+            if (result != PackageManager.PERMISSION_GRANTED) {
+                listPermissionsNeeded.add(p);
+            }
+        }
+        if (!listPermissionsNeeded.isEmpty()) {
+            ActivityCompat.requestPermissions(this, listPermissionsNeeded.toArray(new String[listPermissionsNeeded.size()]), 0);
+            return false;
+        }
+        return true;
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
-    private void setOnClick() {
+                    toast(R.string.sucess_external_storage_msg);
 
-        login_register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                } else {
 
-                if (fullNameStudentEdit.getText().toString().equalsIgnoreCase("")) {
-                    fullNameStudentEdit.setError("Enter Full Name");
-                    fullNameStudentEdit.requestFocus();
-                    return;
+                    toast(R.string.error_permission_msg);
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
                 }
-
-                if (ageEdit.getText().toString().equalsIgnoreCase("")) {
-                    ageEdit.setError("Enter Age");
-                    ageEdit.requestFocus();
-                    return;
-                }
-
-                if (nearRailwayStationEdit.getText().toString().equalsIgnoreCase("")) {
-                    nearRailwayStationEdit.setError("Enter Nearest Railway Station");
-                    nearRailwayStationEdit.requestFocus();
-                    return;
-                }
-
-                if (avaibilityStudentEdit.getText().toString().equalsIgnoreCase("")) {
-                    avaibilityStudentEdit.setError("Enter Avaibility");
-                    avaibilityStudentEdit.requestFocus();
-                    return;
-                }
-
-
-                // get selected radio button from radioGroup
-                int selectedId = radioSex.getCheckedRadioButtonId();
-
-                // find the radiobutton by returned id
-                radioButton = (RadioButton) findViewById(selectedId);
-
-                sex = radioButton.getText().toString();
-
-                callParentProfileApi();
-
+                return;
             }
-        });
+        }
 
+    }
+
+    private void idMapping() {
+        fullNameStudentEdit = (EditText) findViewById(R.id.fullNameStudentEdit);
+        wechatEdt = (EditText) findViewById(R.id.wechatEdit);
+        ageEdit = (EditText) findViewById(R.id.ageEdit);
+        nearRailwayStationEdit = (EditText) findViewById(R.id.nearRailwayStationEdit);
+        login_register = (Button) findViewById(R.id.login_register);
+        radioSex = (RadioGroup) findViewById(R.id.radioSex);
+        radioMale = (RadioButton) findViewById(R.id.radioMale);
+        radioFemale = (RadioButton) findViewById(R.id.radioFemale);
+        userNameEdt = (EditText) findViewById(R.id.usernameStudentEdit);
+        skillEdt = (EditText) findViewById(R.id.skillStudentEdit);
+        emailEdt = (EditText) findViewById(R.id.emailEdit);
     }
 
     private void callParentProfileApi() {
         if (!Utils.checkNetwork(StudentProfileActivity.this)) {
-
             Utils.showCustomDialog("Internet Connection !", getResources().getString(R.string.internet_connection_error), StudentProfileActivity.this);
-
             return;
         }
 
         //  SHOW PROGRESS DIALOG
         Utils.showDialog(StudentProfileActivity.this);
-
         ApiHandler.getApiService().getParentProfile(getParentProfileDetail(), new retrofit.Callback<StudentProfileMainResponse>() {
-
             @Override
             public void success(StudentProfileMainResponse parentProfileMainResponse, Response response) {
                 Utils.dismissDialog();
@@ -172,20 +166,13 @@ public class StudentProfileActivity extends BaseActivity {
                     return;
                 }
                 if (parentProfileMainResponse.getStatus().equals("true")) {
-
-                    Toast.makeText(getApplicationContext(), "User Profile Get successfully", Toast.LENGTH_SHORT).show();
-
                     Utils.WriteSharePrefrence(StudentProfileActivity.this, Constant.SHARED_PREFS.KEY_IS_ACTIVE, "1");
                     if (!role.equals("")) {
                         finish();
-
                     } else {
                         startActivity(new Intent(StudentProfileActivity.this, TeacherListActivity.class));
                     }
-
-
                 }
-
             }
 
             @Override
@@ -208,7 +195,7 @@ public class StudentProfileActivity extends BaseActivity {
         }
 
         map.put("fullname", String.valueOf(fullNameStudentEdit.getText()));
-        map.put("available_time", String.valueOf(avaibilityStudentEdit.getText()));
+        map.put("available_time", String.valueOf(binding.avaibilityStudentEdit.getText()));
         map.put("age", String.valueOf(ageEdit.getText()));
         map.put("mobile", String.valueOf(wechatEdt.getText()));
         map.put("sex", String.valueOf(sex));
@@ -284,10 +271,10 @@ public class StudentProfileActivity extends BaseActivity {
                 emailEdt.setText(studentGetProfileMainResponse.getData().getEmail());
                 if (studentGetProfileMainResponse.getInfo() != null) {
 
-                    avaibilityStudentEdit.setText(studentGetProfileMainResponse.getInfo().getAvailableTime());
+                    binding.avaibilityStudentEdit.setText(studentGetProfileMainResponse.getInfo().getAvailableTime());
                     ageEdit.setText(studentGetProfileMainResponse.getInfo().getAge());
 
-                    if (studentGetProfileMainResponse.getInfo().getSex().equalsIgnoreCase("male")) {
+                    if (studentGetProfileMainResponse.getInfo().getSex().equalsIgnoreCase(SEX_MALE)) {
                         radioMale.setChecked(true);
                     } else {
                         radioFemale.setChecked(true);
@@ -304,4 +291,55 @@ public class StudentProfileActivity extends BaseActivity {
         });
     }
 
+    public void onAvailablity(View view) {
+        Intent in = new Intent(this, TimePickerActivity.class);
+        startActivityForResult(in, 400);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case 400:
+                binding.avaibilityStudentEdit.setText(data.getExtras().getString("availabletime"));
+                break;
+        }
+    }
+
+    public void onUpdateProfile(View view) {
+
+        if (fullNameStudentEdit.getText().toString().equalsIgnoreCase("")) {
+            fullNameStudentEdit.setError("Enter Full Name");
+            fullNameStudentEdit.requestFocus();
+            return;
+        }
+
+        if (ageEdit.getText().toString().equalsIgnoreCase("")) {
+            ageEdit.setError("Enter Age");
+            ageEdit.requestFocus();
+            return;
+        }
+
+        if (nearRailwayStationEdit.getText().toString().equalsIgnoreCase("")) {
+            nearRailwayStationEdit.setError("Enter Nearest Railway Station");
+            nearRailwayStationEdit.requestFocus();
+            return;
+        }
+
+        if (binding.avaibilityStudentEdit.getText().toString().equalsIgnoreCase("")) {
+            binding.avaibilityStudentEdit.setError("Enter Avaibility");
+            binding.avaibilityStudentEdit.requestFocus();
+            return;
+        }
+
+        // get selected radio button from radioGroup
+        int selectedId = radioSex.getCheckedRadioButtonId();
+        if (selectedId == R.id.radioMale) {
+            sex = SEX_MALE;
+        } else {
+            sex = SEX_FEMALE;
+        }
+        callParentProfileApi();
+
+    }
 }

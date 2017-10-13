@@ -8,46 +8,120 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
     <option name="TOOL_WINDOW_REGEXP_FILTER" value="false" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="755e98d2-ca9e-4770-9c21-ed1a0ea8b71c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/ic_no_data-web.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/ic_test-web.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_no_data.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_no_data.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_no_data.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_no_data.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_no_data.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Views/EmptyView.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/gray_corner.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/green_corner.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/selector_gray.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/selector_green.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/empty_view.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/rounded_button.xml" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/TimePickerActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Adapter/CustomPagerAdapter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Adapter/ImageAdapter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Fragment/ImageAdpaterFragment.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/circle_view.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/green_text_selector.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/selector_week.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/tab.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/tab_selected.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/tab_unseleted.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_time_picker.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/adapter_image.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialog_filter.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-02-01-21-00-018.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-02-01-39-09-174.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-02-01-40-40-961.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-02-01-55-00-002.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-02-01-56-53-979.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-02-01-57-53-788.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-02-02-28-08-454.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-02-02-28-45-887.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-02-02-28-49-748.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-02-02-31-10-513.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-02-02-32-26-839.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-02-02-32-48-308.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-02-02-39-53-189.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-02-02-40-41-934.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-02-02-41-19-410.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-02-22-09-21-870.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-02-22-09-42-363.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-02-22-17-17-205.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-02-22-17-23-961.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-02-22-18-42-086.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-02-23-00-12-771.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-02-23-00-35-791.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-02-23-06-42-770.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-02-23-07-34-787.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-02-23-07-37-334.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-02-23-07-55-785.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-02-23-08-12-462.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-02-23-43-19-608.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-02-23-44-23-333.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-02-23-53-16-536.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-02-23-53-48-609.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-02-23-54-23-224.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-02-23-55-44-269.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-02-23-56-24-629.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-02-23-57-11-734.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-02-23-57-59-267.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-03-20-17-50-093.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-03-20-17-58-283.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-03-20-20-57-194.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-03-23-37-46-723.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-03-23-51-57-537.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-03-23-55-28-983.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-04-00-02-35-943.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-04-00-09-50-343.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-04-00-10-53-452.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-04-20-33-25-540.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-04-20-33-43-816.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-04-20-42-44-597.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-04-21-14-52-176.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-04-21-22-55-528.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-04-21-38-45-226.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-04-22-02-37-780.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-04-22-04-47-812.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-04-22-51-25-471.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-04-22-56-23-683.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-04-23-10-34-688.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-04-23-28-31-637.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-04-23-29-17-245.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-04-23-32-09-204.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-04-23-36-08-839.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-04-23-38-10-511.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-04-23-39-18-580.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-04-23-40-38-440.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-05-19-59-27-242.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-05-19-59-39-192.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-05-20-42-20-054.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-10-05-21-25-25-633.rawproto" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileSnapshots.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Admin/RatingActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Admin/RatingActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Student/StudentListActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Student/StudentListActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Student/StudentProfileActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Student/StudentProfileActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Teacher/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Teacher/MainActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Teacher/TeacherListActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Teacher/TeacherListActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Teacher/TeacherProfileActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Teacher/TeacherProfileActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Model/Teacher/TeacherInfo.java" afterPath="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Model/Teacher/TeacherInfo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_add_image_or_link.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_add_image_or_link.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_forgot_password.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_forgot_password.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_rate_list.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_rate_list.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_register.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_register.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Adapter/StudentListAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Adapter/StudentListAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Adapter/TeacherListAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Adapter/TeacherListAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Main2Activity.java" afterPath="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Main2Activity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Util/Constant.java" afterPath="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Util/Constant.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Util/Utils.java" afterPath="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Util/Utils.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/list_item_button_bg.xml" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/list_item_button_bg.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main2.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main2.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_student_profile.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_student_profile.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_teacher_list.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_teacher_list.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_teacher_profile.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_teacher_profile.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/address_confirm.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/address_confirm.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/popup_logout.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/popup_logout.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/row_teacher_list.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/row_teacher_list.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/row_teacher_pending_list.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/row_teacher_pending_list.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
     </list>
     <ignored path="HungryEnglish.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -90,151 +164,67 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Teacher/MainActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="342">
+              <caret line="72" column="61" selection-start-line="72" selection-start-column="61" selection-end-line="72" selection-end-column="61" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Constant.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Util/Constant.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="TeacherProfileActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Teacher/TeacherProfileActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-90">
-              <caret line="101" column="35" selection-start-line="101" selection-start-column="35" selection-end-line="101" selection-end-column="35" />
+            <state relative-caret-position="283">
+              <caret line="321" column="73" selection-start-line="321" selection-start-column="73" selection-end-line="321" selection-end-column="73" />
               <folding>
-                <element signature="e#7674#7732#0" expanded="true" />
-                <element signature="e#9423#9473#0" expanded="true" />
-                <element signature="e#10006#10056#0" expanded="true" />
-                <element signature="e#13909#13945#0" expanded="true" />
-                <element signature="e#14001#14030#0" expanded="true" />
-                <element signature="e#17544#17578#0" expanded="true" />
-                <element signature="e#17580#17640#0" expanded="true" />
-                <element signature="e#22342#22376#0" expanded="true" />
-                <element signature="e#22378#22438#0" expanded="true" />
-                <element signature="e#22645#22664#0" expanded="true" />
-                <element signature="e#23184#23219#0" expanded="true" />
-                <element signature="e#23380#23415#0" expanded="true" />
-                <element signature="e#24211#24246#0" expanded="true" />
-                <element signature="e#25480#25515#0" expanded="true" />
-                <element signature="e#25676#25711#0" expanded="true" />
-                <element signature="e#26395#26430#0" expanded="true" />
-                <element signature="e#26912#26947#0" expanded="true" />
-                <element signature="e#27092#27127#0" expanded="true" />
-                <element signature="e#27280#27325#0" expanded="true" />
-                <element signature="e#27727#27762#0" expanded="true" />
-                <element signature="e#29515#30074#0" expanded="true" />
-                <element signature="e#30073#30074#0" expanded="true" />
-                <element signature="e#30114#30264#0" expanded="true" />
-                <element signature="e#30263#30264#0" expanded="true" />
-                <element signature="e#31400#31429#0" expanded="true" />
-                <element signature="e#32890#33197#0" expanded="true" />
-                <element signature="e#33196#33197#0" expanded="true" />
-                <element signature="e#33760#33789#0" expanded="true" />
+                <element signature="e#14068#14097#0" expanded="true" />
                 <element signature="class#SendEmailAsyncTask#0;class#TeacherProfileActivity#0" expanded="false" />
-                <element signature="e#38503#38538#0" expanded="true" />
-                <element signature="e#39394#39422#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="activity_teacher_profile.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_teacher_profile.xml">
+      <file leaf-file-name="strings.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6984">
-              <caret line="388" column="53" selection-start-line="388" selection-start-column="41" selection-end-line="388" selection-end-column="53" />
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TeacherProfileMain.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Model/Teacher/TeacherProfileMain.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#503#504#0" expanded="false" />
-                <element signature="e#532#533#0" expanded="false" />
-                <element signature="e#576#577#0" expanded="false" />
-                <element signature="e#612#613#0" expanded="false" />
-                <element signature="e#642#643#0" expanded="false" />
-                <element signature="e#668#669#0" expanded="false" />
-                <element signature="e#706#707#0" expanded="false" />
-                <element signature="e#736#737#0" expanded="false" />
-                <element signature="e#777#778#0" expanded="false" />
-                <element signature="e#816#817#0" expanded="false" />
-                <element signature="e#866#867#0" expanded="false" />
-                <element signature="e#910#911#0" expanded="false" />
-                <element signature="e#946#947#0" expanded="false" />
-                <element signature="e#980#981#0" expanded="false" />
-                <element signature="e#1025#1026#0" expanded="false" />
-                <element signature="e#1064#1065#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TeacherInfo.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Model/Teacher/TeacherInfo.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1278">
-              <caret line="104" column="28" selection-start-line="104" selection-start-column="28" selection-end-line="104" selection-end-column="28" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#892#893#0" expanded="false" />
-                <element signature="e#918#919#0" expanded="false" />
-                <element signature="e#956#957#0" expanded="false" />
-                <element signature="e#986#987#0" expanded="false" />
-                <element signature="e#1025#1026#0" expanded="false" />
-                <element signature="e#1060#1061#0" expanded="false" />
-                <element signature="e#1116#1117#0" expanded="false" />
-                <element signature="e#1164#1165#0" expanded="false" />
-                <element signature="e#1198#1199#0" expanded="false" />
-                <element signature="e#1228#1229#0" expanded="false" />
-                <element signature="e#1274#1275#0" expanded="false" />
-                <element signature="e#1312#1313#0" expanded="false" />
-                <element signature="e#1345#1346#0" expanded="false" />
-                <element signature="e#1374#1375#0" expanded="false" />
-                <element signature="e#1418#1419#0" expanded="false" />
-                <element signature="e#1454#1455#0" expanded="false" />
-                <element signature="e#1490#1491#0" expanded="false" />
-                <element signature="e#1522#1523#0" expanded="false" />
-                <element signature="e#1572#1573#0" expanded="false" />
-                <element signature="e#1614#1615#0" expanded="false" />
-                <element signature="e#1648#1649#0" expanded="false" />
-                <element signature="e#1678#1679#0" expanded="false" />
-                <element signature="e#1724#1725#0" expanded="false" />
-                <element signature="e#1762#1763#0" expanded="false" />
-                <element signature="e#1802#1803#0" expanded="false" />
-                <element signature="e#1838#1839#0" expanded="false" />
-                <element signature="e#1896#1897#0" expanded="false" />
-                <element signature="e#1946#1947#0" expanded="false" />
-                <element signature="e#1979#1980#0" expanded="false" />
-                <element signature="e#2008#2009#0" expanded="false" />
-                <element signature="e#2052#2053#0" expanded="false" />
-                <element signature="e#2088#2089#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RatingAdapter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Adapter/RatingAdapter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1062">
-              <caret line="74" column="0" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+            <state relative-caret-position="230">
+              <caret line="43" column="69" selection-start-line="43" selection-start-column="69" selection-end-line="43" selection-end-column="69" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WebServices.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Services/WebServices.java">
+      <file leaf-file-name="AdminDashboardActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Admin/AdminDashboardActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1494">
-              <caret line="110" column="0" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
+            <state relative-caret-position="387">
+              <caret line="111" column="37" selection-start-line="111" selection-start-column="37" selection-end-line="111" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TeacherListActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Teacher/TeacherListActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="339">
+              <caret line="128" column="52" selection-start-line="128" selection-start-column="52" selection-end-line="128" selection-end-column="52" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -244,9 +234,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="resourceFile" />
-        <option value="Class" />
         <option value="layoutResourceFile_vertical" />
+        <option value="Class" />
+        <option value="resourceFile" />
       </list>
     </option>
   </component>
@@ -2472,57 +2462,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Util/ApiLoader.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Model/Address.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Teacher/MainActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/drawable/bg_edt.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/LoginActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/content_register.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/RegisterActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/ForgotPassword.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Admin/AddImageOrLinkActivity.java" />
-        <option value="$PROJECT_DIR$/Changes.txt" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/popup_logout.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/address_confirm.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Student/StudentListActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Model/Teacher/TeacherBasicInfo.java" />
-        <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/app/build/intermediates/data-binding-layout-out/debug/layout/activity_teacher_profile.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Model/RemoveTeacher/BasicResponse.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Teacher/TeacherListActivity.java" />
-        <option value="$PROJECT_DIR$/app/build/intermediates/data-binding-layout-out/debug/values/values.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/add_rating_view.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Adapter/TeacherListAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Model/Rate/BasicResponse.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Model/Report/Datum.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Model/Report/ReportInfo.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Model/Rate/RateBasicResponse.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Model/Rate/RateInfo.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/adapter_admin_rate.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/admin_dashboard_activity.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/menu/menu_admin.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/app/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Connection/ApiLoader.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Connection/CallBack.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Services/WebServices.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Admin/AdminDashboardActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/rounded_button.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/text_selector.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/selector_gray.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/gray_corner.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_register.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_teacher_profile.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Adapter/RatingAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Views/EmptyView.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_rate_list.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/empty_view.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Admin/RatingActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Model/Teacher/TeacherInfo.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/list_item_button_bg.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/DetailsActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_time_picker.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/drawable/circle_view.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Main2Activity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main2.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/drawable/green_text_selector.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/drawable/selector_green.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/drawable/selector_week.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_teacher_profile.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Teacher/TeacherProfileActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/TimePickerActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/row_teacher_list.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Adapter/TeacherListAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/adpater_image.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_teacher_list.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/dialog_filter.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Teacher/TeacherListActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Fragment/ImageFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Adapter/CustomPagerAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Adapter/ImageAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Util/Utils.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Fragment/ImageAdpaterFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/adapter_image.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/drawable/tab.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Teacher/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/drawable/tab_selected.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/drawable/tab_unseleted.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Student/StudentListActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Adapter/StudentListAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_student_profile.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Util/Constant.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Student/StudentProfileActivity.java" />
       </list>
     </option>
   </component>
@@ -2531,6 +2521,28 @@
     <option name="y" value="-8" />
     <option name="width" value="1456" />
     <option name="height" value="876" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>Android</id>
+          </State>
+          <State>
+            <id>Android &gt; Lint &gt; Correctness</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>AndroidLintValidFragment</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -2557,6 +2569,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="AndroidView">
         <subPane />
       </pane>
@@ -2656,62 +2669,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HungryEnglish" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HungryEnglish" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mipmap-xxxhdpi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HungryEnglish" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HungryEnglish" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -2750,23 +2707,22 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Views" />
+              <option name="myItemId" value="Util" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="instant.run" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="device.picker.selection" value="192.168.13.101:5555" />
-    <property name="SearchEverywhereHistoryKey" value="register&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/res/layout/activity_register.xml&#10;login&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/res/layout/activity_login.xml&#10;admin das&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/Admin/AdminDashboardActivity.java&#10;LoginA&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/LoginActivity.java&#10;ApiLo&#9;PSI&#9;JAVA://app.com.HungryEnglish.Connection.ApiLoader&#10;ActivityRate&#9;PSI&#9;JAVA://app.com.HungryEnglish.databinding.ActivityRateListBinding&#10;Rate&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/res/layout/activity_rate_list.xml&#10;Repo&#9;PSI&#9;JAVA://app.com.HungryEnglish.Activity.Admin.ReportActivity&#10;ReportLis&#9;FILE&#9;file://E:/Client/Andre/report_list.png&#10;androi&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/AndroidManifest.xml&#10;AdminDas&#9;PSI&#9;JAVA://app.com.HungryEnglish.Activity.Admin.AdminDashboardActivity&#10;admin da&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/res/layout/admin_dashboard_activity.xml&#10;AdminMain&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/res/layout/activity_admin_main.xml&#10;Teacher&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/Teacher/TeacherProfileActivity.java&#10;TeacherProfile&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/Teacher/TeacherProfileActivity.java&#10;StudentProf&#9;PSI&#9;JAVA://app.com.HungryEnglish.Activity.Student.StudentProfileActivity&#10;Student&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/Student/StudentListActivity.java&#10;admin_da&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/res/layout/admin_dashboard_activity.xml&#10;string&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/res/values/strings.xml&#10;TeacherList&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/Teacher/TeacherListActivity.java&#10;activity_teac&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/res/layout/activity_teacher_profile.xml&#10;add&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/res/layout/add_rating_view.xml&#10;TeacherProf&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/Teacher/TeacherProfileActivity.java&#10;TeacherLIst&#9;PSI&#9;JAVA://app.com.HungryEnglish.Activity.Teacher.TeacherListActivity&#10;TeacherLis&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Adapter/TeacherListAdapter.java&#10;AddIMa&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/Admin/AddImageOrLinkActivity.java&#10;color&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/res/values/colors.xml&#10;ac&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/res/layout/activity_teacher_profile.xml&#10;Admin&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/Admin/AdminDashboardActivity.java&#10;Register&#9;PSI&#9;JAVA://app.com.HungryEnglish.Activity.RegisterActivity&#10;TeacherPr&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/Teacher/TeacherProfileActivity.java&#10;StudentLis&#9;PSI&#9;JAVA://app.com.HungryEnglish.Activity.Student.StudentListActivity&#10;androidmani&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/AndroidManifest.xml&#10;Utils&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Util/Utils.java&#10;admin&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/Admin/AdminDashboardActivity.java&#10;Splash&#9;PSI&#9;JAVA://app.com.HungryEnglish.Activity.SplashActivity&#10;Colo&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/res/values/colors.xml&#10;Cons&#9;PSI&#9;JAVA://app.com.HungryEnglish.Util.Constant" />
+    <property name="SearchEverywhereHistoryKey" value="TeacherListAc&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/Teacher/TeacherListActivity.java&#10;StudentProfil&#9;PSI&#9;JAVA://app.com.HungryEnglish.Activity.Student.StudentProfileActivity&#10;AdminDa&#9;PSI&#9;JAVA://app.com.HungryEnglish.Activity.Admin.AdminDashboardActivity&#10;sele&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/res/drawable/tab_unseleted.xml&#10;Main&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/Teacher/MainActivity.java&#10;MainA&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/Teacher/MainActivity.java&#10;CustomPa&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Adapter/CustomPagerAdapter.java&#10;IMage&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/res/layout/adapter_image.xml&#10;Logout&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/res/layout/popup_logout.xml&#10;TeacherLIst&#9;PSI&#9;JAVA://app.com.HungryEnglish.Activity.Teacher.TeacherListActivity&#10;mai&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/Teacher/MainActivity.java&#10;TeacherAda&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Adapter/TeacherListAdapter.java&#10;TIme&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/TimePickerActivity.java&#10;Teache&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Model/Teacher/TeacherProfileMain.java&#10;Time&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/TimePickerActivity.java&#10;Teac&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/Teacher/TeacherProfileActivity.java&#10;Teacher&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Model/Teacher/TeacherProfileMain.java&#10;teacher_&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/res/layout/row_teacher_list.xml&#10;androidmani&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/AndroidManifest.xml&#10;Teach&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Model/Teacher/TeacherProfileMain.java&#10;TimeP&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/TimePickerActivity.java&#10;man&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/AndroidManifest.xml&#10;teacherAda&#9;PSI&#9;JAVA://app.com.HungryEnglish.Adapter.TeacherListAdapter&#10;register&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/res/layout/activity_register.xml&#10;login&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/res/layout/activity_login.xml&#10;admin das&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/Admin/AdminDashboardActivity.java&#10;LoginA&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/LoginActivity.java&#10;ApiLo&#9;PSI&#9;JAVA://app.com.HungryEnglish.Connection.ApiLoader&#10;ActivityRate&#9;PSI&#9;JAVA://app.com.HungryEnglish.databinding.ActivityRateListBinding&#10;Rate&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/res/layout/activity_rate_list.xml&#10;Repo&#9;PSI&#9;JAVA://app.com.HungryEnglish.Activity.Admin.ReportActivity&#10;ReportLis&#9;FILE&#9;file://E:/Client/Andre/report_list.png&#10;androi&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/AndroidManifest.xml&#10;AdminDas&#9;PSI&#9;JAVA://app.com.HungryEnglish.Activity.Admin.AdminDashboardActivity&#10;admin da&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/res/layout/admin_dashboard_activity.xml&#10;AdminMain&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/res/layout/activity_admin_main.xml&#10;TeacherProfile&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/Teacher/TeacherProfileActivity.java&#10;StudentProf&#9;PSI&#9;JAVA://app.com.HungryEnglish.Activity.Student.StudentProfileActivity&#10;Student&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/Student/StudentListActivity.java&#10;admin_da&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/res/layout/admin_dashboard_activity.xml&#10;string&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/res/values/strings.xml&#10;TeacherList&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/Teacher/TeacherListActivity.java&#10;activity_teac&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/res/layout/activity_teacher_profile.xml&#10;add&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/res/layout/add_rating_view.xml&#10;TeacherProf&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/Teacher/TeacherProfileActivity.java&#10;TeacherLis&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Adapter/TeacherListAdapter.java&#10;AddIMa&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/Admin/AddImageOrLinkActivity.java&#10;color&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/res/values/colors.xml&#10;ac&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/res/layout/activity_teacher_profile.xml&#10;Admin&#9;FILE&#9;file://E:/AndroidProjectsBackup/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/Admin/AdminDashboardActivity.java" />
     <property name="last_opened_file_path" value="E:/Client/Andre" />
     <property name="ScreenshotViewer.SavePath" value="E:/Client/Andre" />
-    <property name="android.project.structure.last.selected" value="SDK Location" />
+    <property name="android.project.structure.last.selected" value="app" />
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="DEBUGGABLE_DEVICE" value="genymotion-google_nexus_5x___6_0_0___api_23___1080x1920-192.168.13.101:5555" />
@@ -3109,19 +3065,20 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1456" height="876" extended-state="7" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962447" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962447" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962447" sideWeight="0.5028653" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33518776" sideWeight="0.49713466" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32808024" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962447" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32962447" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962447" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -3140,35 +3097,35 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32808024" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962447" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962447" sideWeight="0.5028653" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962447" sideWeight="0.49713466" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3991655" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3977747" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962447" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32808024" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32808024" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962447" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962447" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18696275" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962447" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Fabric" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295129" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
     </layout-to-restore>
@@ -3192,143 +3149,133 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Teacher/TeacherProfileActivity.java</url>
-          <line>581</line>
+          <line>587</line>
           <properties method="success" />
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Teacher/TeacherProfileActivity.java</url>
-          <line>404</line>
+          <line>410</line>
           <properties class="app.com.HungryEnglish.Activity.Teacher.TeacherProfileActivity" method="getProfile" />
           <option name="timeStamp" value="7" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Teacher/TeacherProfileActivity.java</url>
+          <line>715</line>
+          <properties method="success" />
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Student/StudentProfileActivity.java</url>
+          <line>187</line>
+          <properties class="app.com.HungryEnglish.Activity.Student.StudentProfileActivity" method="getParentProfileDetail" />
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Student/StudentProfileActivity.java</url>
+          <line>266</line>
+          <properties method="success" />
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Teacher/TeacherProfileActivity.java</url>
-          <line>422</line>
+          <line>784</line>
           <properties />
-          <option name="timeStamp" value="6" />
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Teacher/TeacherProfileActivity.java</url>
+          <line>401</line>
+          <properties />
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Teacher/TeacherProfileActivity.java</url>
+          <line>353</line>
+          <properties />
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Teacher/TeacherProfileActivity.java</url>
+          <line>351</line>
+          <properties />
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Teacher/TeacherProfileActivity.java</url>
+          <line>713</line>
+          <properties />
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Adapter/CustomPagerAdapter.java</url>
+          <line>34</line>
+          <properties />
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Student/StudentProfileActivity.java</url>
+          <line>150</line>
+          <properties />
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Student/StudentProfileActivity.java</url>
+          <line>153</line>
+          <properties />
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Student/StudentProfileActivity.java</url>
+          <line>74</line>
+          <properties />
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Student/StudentProfileActivity.java</url>
+          <line>264</line>
+          <properties />
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Student/StudentProfileActivity.java</url>
+          <line>267</line>
+          <properties />
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Student/StudentProfileActivity.java</url>
+          <line>256</line>
+          <properties />
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Student/StudentProfileActivity.java</url>
+          <line>276</line>
+          <properties />
+          <option name="timeStamp" value="30" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="8" />
+      <option name="time" value="31" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Teacher/TeacherListActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_time_picker.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="128" column="13" selection-start-line="128" selection-start-column="13" selection-end-line="128" selection-end-column="13" />
+        <state relative-caret-position="342">
+          <caret line="25" column="31" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://E:/Client/Andre/student_profile_adminside_2.png">
-      <provider selected="true" editor-type-id="images">
+      <provider editor-type-id="android-designer2">
         <state />
       </provider>
     </entry>
-    <entry file="file://E:/Client/Andre/student_profile_adminside_1.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_student_profile.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Student/StudentProfileActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="65" column="44" selection-start-line="65" selection-start-column="44" selection-end-line="65" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Model/Report/ReportInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Model/Rate/RateBasicResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="30" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Model/Rate/RateInfo.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main2.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
-          <caret line="40" column="36" selection-start-line="40" selection-start-column="36" selection-end-line="40" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Student/StudentListActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="93" column="75" selection-start-line="88" selection-start-column="23" selection-end-line="93" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Adapter/StudentListAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="25" column="31" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_admin_main.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="369">
-          <caret line="24" column="34" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="34" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/dashboard_shape.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_image_link.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/admin_dashboard_activity.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="26" column="52" selection-start-line="26" selection-start-column="52" selection-end-line="26" selection-end-column="52" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_logout.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="7" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_admin.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="12" column="7" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
@@ -3336,44 +3283,48 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="666">
-          <caret line="37" column="76" selection-start-line="37" selection-start-column="76" selection-end-line="37" selection-end-column="76" />
-          <folding />
-        </state>
-      </provider>
       <provider editor-type-id="android-manifest">
         <state />
       </provider>
-    </entry>
-    <entry file="file://E:/Client/Andre/rate_list_admin_Side.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://E:/Client/Andre/report_list.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Admin/ReportActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="191" column="31" selection-start-line="191" selection-start-column="31" selection-end-line="191" selection-end-column="31" />
+        <state relative-caret-position="321">
+          <caret line="24" column="68" selection-start-line="24" selection-start-column="68" selection-end-line="24" selection-end-column="68" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Adapter/ReportAdapter.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/selector_gray.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="16" column="3" selection-start-line="16" selection-start-column="3" selection-end-line="16" selection-end-column="3" />
+        <state relative-caret-position="108">
+          <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/adapter_admin_rate.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/green_text_selector.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="12" column="47" selection-start-line="12" selection-start-column="47" selection-end-line="12" selection-end-column="47" />
+        <state relative-caret-position="234">
+          <caret line="13" column="11" selection-start-line="0" selection-start-column="0" selection-end-line="13" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/selector_green.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="6" column="11" selection-start-line="0" selection-start-column="0" selection-end-line="6" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/selector_week.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="37" selection-start-line="4" selection-start-column="37" selection-end-line="4" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_teacher_profile.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="163" column="60" selection-start-line="163" selection-start-column="37" selection-end-line="163" selection-end-column="60" />
           <folding />
         </state>
       </provider>
@@ -3381,133 +3332,208 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/build/generated/source/apt/debug/app/com/HungryEnglish/databinding/ActivityRateListBinding.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Main2Activity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="4" column="36" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Connection/CallBack.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Services/ApiHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="27" column="43" selection-start-line="27" selection-start-column="30" selection-end-line="27" selection-end-column="43" />
+        <state relative-caret-position="479">
+          <caret line="37" column="88" selection-start-line="37" selection-start-column="12" selection-end-line="37" selection-end-column="88" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Admin/AddImageOrLinkActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Model/Teacher/TeacherProfileMain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="79">
-          <caret line="186" column="21" selection-start-line="186" selection-start-column="12" selection-end-line="186" selection-end-column="21" />
+        <state relative-caret-position="72">
+          <caret line="5" column="31" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="31" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Connection/ApiLoader.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/TimePickerActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="46" column="7" selection-start-line="8" selection-start-column="3" selection-end-line="46" selection-end-column="7" />
+        <state relative-caret-position="538">
+          <caret line="78" column="0" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/LoginActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Adapter/TeacherListAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1890">
-          <caret line="127" column="0" selection-start-line="45" selection-start-column="2" selection-end-line="127" selection-end-column="0" />
+        <state relative-caret-position="432">
+          <caret line="42" column="81" selection-start-line="42" selection-start-column="81" selection-end-line="42" selection-end-column="81" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Admin/AdminDashboardActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/row_teacher_list.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="776">
-          <caret line="117" column="54" selection-start-line="117" selection-start-column="54" selection-end-line="117" selection-end-column="54" />
+        <state relative-caret-position="499">
+          <caret line="54" column="21" selection-start-line="54" selection-start-column="21" selection-end-line="54" selection-end-column="21" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://E:/Client/Andre/device-2017-10-07-001624.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/BaseActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="61" column="26" selection-start-line="61" selection-start-column="26" selection-end-line="61" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Model/RemoveTeacher/BasicResponse.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/SplashActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        <state relative-caret-position="151">
+          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="810">
+          <caret line="45" column="17" selection-start-line="45" selection-start-column="17" selection-end-line="45" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/popup_logout.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_teacher_list.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="455">
+          <caret line="33" column="39" selection-start-line="33" selection-start-column="39" selection-end-line="33" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/dialog_filter.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="49" column="46" selection-start-line="49" selection-start-column="46" selection-end-line="49" selection-end-column="46" />
+          <folding>
+            <element signature="e#1977#1992#0" expanded="true" />
+            <element signature="e#2529#2544#0" expanded="true" />
+            <element signature="e#2574#2593#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Model/Teacher/TeacherListMainResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="39" column="36" selection-start-line="39" selection-start-column="11" selection-end-line="39" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Fragment/ImageFragment.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Fragment/TeacherApprovedListFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.android/build-cache/3f0cb6b9898d0d85e6ba20c0f9f41ac371339b67/output/jars/classes.jar!/android/support/v4/app/FragmentActivity.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="540" column="27" selection-start-line="540" selection-start-column="27" selection-end-line="540" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Adapter/CustomPagerAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="37" column="5" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="false" />
-            <element signature="e#385#386#0" expanded="false" />
-            <element signature="e#414#415#0" expanded="false" />
-            <element signature="e#458#459#0" expanded="false" />
-            <element signature="e#494#495#0" expanded="false" />
-            <element signature="e#524#525#0" expanded="false" />
-            <element signature="e#550#551#0" expanded="false" />
-            <element signature="e#588#589#0" expanded="false" />
-            <element signature="e#618#619#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Util/Utils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="358" column="83" selection-start-line="358" selection-start-column="75" selection-end-line="358" selection-end-column="83" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#5066#5067#0" expanded="false" />
-            <element signature="e#5136#5137#0" expanded="false" />
-            <element signature="e#5234#5235#0" expanded="false" />
-            <element signature="e#5275#5276#0" expanded="false" />
-            <element signature="e#13459#13460#0" expanded="false" />
-            <element signature="e#13512#13513#0" expanded="false" />
-            <element signature="e#19604#19605#0" expanded="false" />
-            <element signature="e#19654#19655#0" expanded="false" />
-            <element signature="e#19711#19712#0" expanded="false" />
-            <element signature="e#19758#19759#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="8946">
+          <caret line="554" column="17" selection-start-line="554" selection-start-column="17" selection-end-line="554" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/selector_green.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/adapter_image.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="5" column="37" selection-start-line="5" selection-start-column="37" selection-end-line="5" selection-end-column="37" />
+        <state relative-caret-position="144">
+          <caret line="8" column="9" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/selector_gray.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Fragment/ImageAdpaterFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="5" column="37" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="37" />
+        <state relative-caret-position="286">
+          <caret line="38" column="56" selection-start-line="38" selection-start-column="56" selection-end-line="38" selection-end-column="56" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/gray_corner.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Adapter/ImageAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/tab_unseleted.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
-          <caret line="11" column="52" selection-start-line="11" selection-start-column="52" selection-end-line="11" selection-end-column="52" />
+          <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/green_corner.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="15" column="11" selection-start-line="0" selection-start-column="0" selection-end-line="15" selection-end-column="11" />
+        <state relative-caret-position="234">
+          <caret line="13" column="0" selection-start-line="4" selection-start-column="17" selection-end-line="13" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/tab_selected.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1170">
-          <caret line="65" column="25" selection-start-line="65" selection-start-column="17" selection-end-line="65" selection-end-column="25" />
+        <state relative-caret-position="144">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/tab.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2052">
-          <caret line="114" column="54" selection-start-line="114" selection-start-column="54" selection-end-line="114" selection-end-column="54" />
+        <state relative-caret-position="72">
+          <caret line="4" column="43" selection-start-line="4" selection-start-column="43" selection-end-line="4" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="25" column="43" selection-start-line="25" selection-start-column="43" selection-end-line="25" selection-end-column="43" />
           <folding />
         </state>
       </provider>
@@ -3515,200 +3541,150 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_register.xml">
+    <entry file="file://$PROJECT_DIR$/app/build/generated/source/apt/debug/app/com/HungryEnglish/databinding/ActivityStudentProfileBinding.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="170" column="47" selection-start-line="170" selection-start-column="47" selection-end-line="170" selection-end-column="47" />
+        <state relative-caret-position="36">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://E:/Client/Andre/student_main_screen.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://E:/Client/Andre/student_side_filter_popup.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://E:/Client/Andre/student_side_teacher_profile.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_student_list.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Student/StudentListActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="42" column="50" selection-start-line="42" selection-start-column="50" selection-end-line="42" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Admin/AdminDashboardActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="387">
+          <caret line="111" column="37" selection-start-line="111" selection-start-column="37" selection-end-line="111" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="43" column="69" selection-start-line="43" selection-start-column="69" selection-end-line="43" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_student_profile.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1679">
+          <caret line="219" column="12" selection-start-line="219" selection-start-column="12" selection-end-line="219" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://E:/BAckup/AndroidSdk/sources/android-25/android/app/Activity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="6238" column="0" selection-start-line="6238" selection-start-column="0" selection-end-line="6238" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Util/Constant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Student/StudentProfileActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="278" column="28" selection-start-line="278" selection-start-column="28" selection-end-line="278" selection-end-column="28" />
           <folding>
-            <element signature="e#9644#9659#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#4249#4285#0" expanded="true" />
+            <element signature="e#4341#4370#0" expanded="true" />
+            <element signature="e#5529#5589#0" expanded="true" />
+            <element signature="e#9325#9682#0" expanded="true" />
+            <element signature="e#9681#9682#0" expanded="true" />
+            <element signature="e#9730#9920#0" expanded="true" />
+            <element signature="e#9919#9920#0" expanded="true" />
+            <element signature="e#10172#10232#0" expanded="true" />
           </folding>
         </state>
       </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Adapter/StudentListAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="47" column="34" selection-start-line="47" selection-start-column="34" selection-end-line="47" selection-end-column="34" />
+        <state relative-caret-position="18">
+          <caret line="46" column="5" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_no_data.png" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_test.png" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Views/EmptyView.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Teacher/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="455">
-          <caret line="30" column="68" selection-start-line="30" selection-start-column="68" selection-end-line="30" selection-end-column="68" />
+        <state relative-caret-position="342">
+          <caret line="72" column="61" selection-start-line="72" selection-start-column="61" selection-end-line="72" selection-end-column="61" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_rate_list.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="16" column="40" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Admin/RatingActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/empty_view.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="45" selection-start-line="7" selection-start-column="45" selection-end-line="7" selection-end-column="45" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Services/WebServices.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1494">
-          <caret line="110" column="0" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Adapter/RatingAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1062">
-          <caret line="74" column="0" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+        <state relative-caret-position="902">
+          <caret line="116" column="0" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Model/Teacher/TeacherInfo.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Teacher/TeacherListActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1278">
-          <caret line="104" column="28" selection-start-line="104" selection-start-column="28" selection-end-line="104" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#892#893#0" expanded="false" />
-            <element signature="e#918#919#0" expanded="false" />
-            <element signature="e#956#957#0" expanded="false" />
-            <element signature="e#986#987#0" expanded="false" />
-            <element signature="e#1025#1026#0" expanded="false" />
-            <element signature="e#1060#1061#0" expanded="false" />
-            <element signature="e#1116#1117#0" expanded="false" />
-            <element signature="e#1164#1165#0" expanded="false" />
-            <element signature="e#1198#1199#0" expanded="false" />
-            <element signature="e#1228#1229#0" expanded="false" />
-            <element signature="e#1274#1275#0" expanded="false" />
-            <element signature="e#1312#1313#0" expanded="false" />
-            <element signature="e#1345#1346#0" expanded="false" />
-            <element signature="e#1374#1375#0" expanded="false" />
-            <element signature="e#1418#1419#0" expanded="false" />
-            <element signature="e#1454#1455#0" expanded="false" />
-            <element signature="e#1490#1491#0" expanded="false" />
-            <element signature="e#1522#1523#0" expanded="false" />
-            <element signature="e#1572#1573#0" expanded="false" />
-            <element signature="e#1614#1615#0" expanded="false" />
-            <element signature="e#1648#1649#0" expanded="false" />
-            <element signature="e#1678#1679#0" expanded="false" />
-            <element signature="e#1724#1725#0" expanded="false" />
-            <element signature="e#1762#1763#0" expanded="false" />
-            <element signature="e#1802#1803#0" expanded="false" />
-            <element signature="e#1838#1839#0" expanded="false" />
-            <element signature="e#1896#1897#0" expanded="false" />
-            <element signature="e#1946#1947#0" expanded="false" />
-            <element signature="e#1979#1980#0" expanded="false" />
-            <element signature="e#2008#2009#0" expanded="false" />
-            <element signature="e#2052#2053#0" expanded="false" />
-            <element signature="e#2088#2089#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Model/Teacher/TeacherProfileMain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#503#504#0" expanded="false" />
-            <element signature="e#532#533#0" expanded="false" />
-            <element signature="e#576#577#0" expanded="false" />
-            <element signature="e#612#613#0" expanded="false" />
-            <element signature="e#642#643#0" expanded="false" />
-            <element signature="e#668#669#0" expanded="false" />
-            <element signature="e#706#707#0" expanded="false" />
-            <element signature="e#736#737#0" expanded="false" />
-            <element signature="e#777#778#0" expanded="false" />
-            <element signature="e#816#817#0" expanded="false" />
-            <element signature="e#866#867#0" expanded="false" />
-            <element signature="e#910#911#0" expanded="false" />
-            <element signature="e#946#947#0" expanded="false" />
-            <element signature="e#980#981#0" expanded="false" />
-            <element signature="e#1025#1026#0" expanded="false" />
-            <element signature="e#1064#1065#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_teacher_profile.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6984">
-          <caret line="388" column="53" selection-start-line="388" selection-start-column="41" selection-end-line="388" selection-end-column="53" />
+        <state relative-caret-position="339">
+          <caret line="128" column="52" selection-start-line="128" selection-start-column="52" selection-end-line="128" selection-end-column="52" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Teacher/TeacherProfileActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-90">
-          <caret line="101" column="35" selection-start-line="101" selection-start-column="35" selection-end-line="101" selection-end-column="35" />
+        <state relative-caret-position="283">
+          <caret line="321" column="73" selection-start-line="321" selection-start-column="73" selection-end-line="321" selection-end-column="73" />
           <folding>
-            <element signature="e#7674#7732#0" expanded="true" />
-            <element signature="e#9423#9473#0" expanded="true" />
-            <element signature="e#10006#10056#0" expanded="true" />
-            <element signature="e#13909#13945#0" expanded="true" />
-            <element signature="e#14001#14030#0" expanded="true" />
-            <element signature="e#17544#17578#0" expanded="true" />
-            <element signature="e#17580#17640#0" expanded="true" />
-            <element signature="e#22342#22376#0" expanded="true" />
-            <element signature="e#22378#22438#0" expanded="true" />
-            <element signature="e#22645#22664#0" expanded="true" />
-            <element signature="e#23184#23219#0" expanded="true" />
-            <element signature="e#23380#23415#0" expanded="true" />
-            <element signature="e#24211#24246#0" expanded="true" />
-            <element signature="e#25480#25515#0" expanded="true" />
-            <element signature="e#25676#25711#0" expanded="true" />
-            <element signature="e#26395#26430#0" expanded="true" />
-            <element signature="e#26912#26947#0" expanded="true" />
-            <element signature="e#27092#27127#0" expanded="true" />
-            <element signature="e#27280#27325#0" expanded="true" />
-            <element signature="e#27727#27762#0" expanded="true" />
-            <element signature="e#29515#30074#0" expanded="true" />
-            <element signature="e#30073#30074#0" expanded="true" />
-            <element signature="e#30114#30264#0" expanded="true" />
-            <element signature="e#30263#30264#0" expanded="true" />
-            <element signature="e#31400#31429#0" expanded="true" />
-            <element signature="e#32890#33197#0" expanded="true" />
-            <element signature="e#33196#33197#0" expanded="true" />
-            <element signature="e#33760#33789#0" expanded="true" />
+            <element signature="e#14068#14097#0" expanded="true" />
             <element signature="class#SendEmailAsyncTask#0;class#TeacherProfileActivity#0" expanded="false" />
-            <element signature="e#38503#38538#0" expanded="true" />
-            <element signature="e#39394#39422#0" expanded="true" />
           </folding>
         </state>
       </provider>

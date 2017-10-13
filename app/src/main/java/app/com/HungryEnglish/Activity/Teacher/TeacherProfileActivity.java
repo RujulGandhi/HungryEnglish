@@ -50,6 +50,7 @@ import javax.mail.MessagingException;
 import app.com.HungryEnglish.Activity.BaseActivity;
 import app.com.HungryEnglish.Activity.ForgotPassword;
 import app.com.HungryEnglish.Activity.LoginActivity;
+import app.com.HungryEnglish.Activity.TimePickerActivity;
 import app.com.HungryEnglish.Model.Address;
 import app.com.HungryEnglish.Model.ForgotPassord.ForgotPasswordModel;
 import app.com.HungryEnglish.Model.Profile.TeacherProfileMainResponse;
@@ -90,9 +91,10 @@ public class TeacherProfileActivity extends BaseActivity implements
     final int SELECT_ID_PROOF = 200;
     final int SELECT_FILE = 300;
     final int SELECT_AUDIO = 400;
+    public final int TIMEPICKER_REQUEST_CODE = 401;
     private ProgressDialog pDialog;
     public static final int progress_bar_type = 0;
-    private EditText btnCvUpload, btnAudioFile, userNameEdit, emailEdit, currnetPlaceEdit, fullNameTeacherEdit, avaibilityDateTeacherEdit, specialSkillTeacherEdit, etMobileOrWechatId;
+    private EditText btnCvUpload, btnAudioFile, userNameEdit, emailEdit, currnetPlaceEdit, fullNameTeacherEdit, specialSkillTeacherEdit, etMobileOrWechatId;
     // GPSTracker class
     GPSTracker gps;
     private String pathProfilePic = null, pathCvDoc = null, pathIdProofPic = null, pathAudioFile = null;
@@ -105,6 +107,7 @@ public class TeacherProfileActivity extends BaseActivity implements
     LinearLayout layoutIdProof;
     LinearLayout layoutCV;
     EditText btn_id_proof;
+    TextView avaibilityTimeTv;
     String[] permissions = new String[]{
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.ACCESS_COARSE_LOCATION,
@@ -168,7 +171,7 @@ public class TeacherProfileActivity extends BaseActivity implements
         etMobileOrWechatId = (EditText) findViewById(R.id.etMobileOrWechatId);
         currnetPlaceEdit = (EditText) findViewById(R.id.currnetPlaceEdit);
         fullNameTeacherEdit = (EditText) findViewById(R.id.fullNameTeacherEdit);
-        avaibilityDateTeacherEdit = (EditText) findViewById(R.id.avaibilityDateTeacherEdit);
+        avaibilityTimeTv = (TextView) findViewById(R.id.avaibilityDateTeacherTv);
         specialSkillTeacherEdit = (EditText) findViewById(R.id.specialSkillTeacherEdit);
         btnAudioFile = (EditText) findViewById(R.id.btn_audio_file);
         btnCvUpload = (EditText) findViewById(R.id.btn_cv_file);
@@ -206,7 +209,7 @@ public class TeacherProfileActivity extends BaseActivity implements
             emailEdit.setKeyListener(null);
             currnetPlaceEdit.setKeyListener(null);
             fullNameTeacherEdit.setKeyListener(null);
-            avaibilityDateTeacherEdit.setKeyListener(null);
+            avaibilityTimeTv.setKeyListener(null);
             specialSkillTeacherEdit.setKeyListener(null);
             etMobileOrWechatId.setKeyListener(null);
             wechatLayout.setVisibility(View.GONE);
@@ -279,9 +282,9 @@ public class TeacherProfileActivity extends BaseActivity implements
                         fullNameTeacherEdit.requestFocus();
                         return;
                     }
-                    if (avaibilityDateTeacherEdit.getText().toString().equals("")) {
-                        avaibilityDateTeacherEdit.setError("Enter Avaibility");
-                        avaibilityDateTeacherEdit.requestFocus();
+                    if (avaibilityTimeTv.getText().toString().equals("")) {
+                        avaibilityTimeTv.setError("Enter Avaibility");
+                        avaibilityTimeTv.requestFocus();
                         return;
                     }
                     if (specialSkillTeacherEdit.getText().toString().equals("")) {
@@ -396,6 +399,9 @@ public class TeacherProfileActivity extends BaseActivity implements
                         Picasso.with(getApplicationContext()).load(R.drawable.ic_file).placeholder(R.drawable.ic_user_default).error(R.drawable.ic_user_default).into(ivAudioFileStatus);
                     }
                     break;
+                case TIMEPICKER_REQUEST_CODE:
+                    binding.avaibilityDateTeacherTv.setText(data.getExtras().getString("availabletime"));
+                    break;
             }
         } else {
             toast("You cancel current task.");
@@ -430,7 +436,7 @@ public class TeacherProfileActivity extends BaseActivity implements
                 int rating = teacherProfileMain.getData().getRating().equalsIgnoreCase("") ? 0 : Integer.parseInt(teacherProfileMain.getData().getRating());
                 binding.ratingBar.setCount(rating);
                 if (teacherProfileMain.getInfo() != null) {
-                    avaibilityDateTeacherEdit.setText(teacherProfileMain.getInfo().getAvailableTime());
+                    avaibilityTimeTv.setText(teacherProfileMain.getInfo().getAvailableTime());
                     currnetPlaceEdit.setText(teacherProfileMain.getInfo().getAddress());
                     specialSkillTeacherEdit.setText(teacherProfileMain.getInfo().getSkills());
                     Picasso.with(getApplicationContext()).load(BASEURL + teacherProfileMain.getInfo().getProfileImage()).placeholder(R.drawable.ic_user_default).error(R.drawable.ic_user_default).into(profileImage);
@@ -616,7 +622,7 @@ public class TeacherProfileActivity extends BaseActivity implements
             map.put("uId", id);
         }
         map.put("fullname", String.valueOf(fullNameTeacherEdit.getText()));
-        map.put("available_time", String.valueOf(avaibilityDateTeacherEdit.getText()));
+        map.put("available_time", String.valueOf(avaibilityTimeTv.getText()));
         map.put("address", String.valueOf(currnetPlaceEdit.getText()));
         map.put("skill", String.valueOf(specialSkillTeacherEdit.getText()));
         map.put("mob_no", String.valueOf(etMobileOrWechatId.getText()));
@@ -773,6 +779,12 @@ public class TeacherProfileActivity extends BaseActivity implements
 
         updateRating();
 
+    }
+
+    public void onOpenTimePickerActivity(View view) {
+        Log.d("Role", role);
+        Intent in = new Intent(this, TimePickerActivity.class);
+        startActivityForResult(in, TIMEPICKER_REQUEST_CODE);
     }
 
 

@@ -112,6 +112,7 @@ public class StudentListActivity extends BaseActivity {
         Map<String, String> map = new HashMap<>();
         map.put("role", "student");
         map.put("status", "1");
+        map.put("optional_status", "0");
         return map;
     }
 
