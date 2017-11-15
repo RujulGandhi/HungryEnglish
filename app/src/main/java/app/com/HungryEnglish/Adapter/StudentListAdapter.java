@@ -16,6 +16,7 @@ import java.util.List;
 import app.com.HungryEnglish.Activity.Student.StudentProfileActivity;
 import app.com.HungryEnglish.Model.StudentList.StudentData;
 import app.com.HungryEnglish.R;
+import app.com.HungryEnglish.Util.Utils;
 
 import static app.com.HungryEnglish.Activity.Student.StudentListActivity.callRemoveStudentFromListApi;
 
@@ -69,7 +70,7 @@ public class StudentListAdapter extends RecyclerView.Adapter<StudentListAdapter.
         holder.tvEmail.setText("Email : " + studentList.get(position).getEmail());
         holder.tvMobileNo.setText("Mobile No : " + studentList.get(position).getMobNo());
         if (studentList.get(position).getStudentInfo() != null && studentList.get(position).getStudentInfo().getAvailableTime() != null)
-            holder.tvTeacherAvaibility.setText("Avaibility : " + String.valueOf(studentList.get(position).getStudentInfo().getAvailableTime()));
+            holder.tvTeacherAvaibility.setText("Avaibility : " + Utils.getDisplayString(String.valueOf(studentList.get(position).getStudentInfo().getAvailableTime())));
         holder.ivEdit.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {

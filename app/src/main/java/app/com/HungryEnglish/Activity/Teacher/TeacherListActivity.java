@@ -18,9 +18,9 @@ import java.util.List;
 import java.util.Map;
 
 import app.com.HungryEnglish.Activity.BaseActivity;
-import app.com.HungryEnglish.Activity.LoginActivity;
 import app.com.HungryEnglish.Activity.Student.StudentProfileActivity;
 import app.com.HungryEnglish.Adapter.TeacherListAdapter;
+import app.com.HungryEnglish.Interface.OnDialogEvent;
 import app.com.HungryEnglish.Model.Teacher.TeacherListMainResponse;
 import app.com.HungryEnglish.Model.Teacher.TeacherListResponse;
 import app.com.HungryEnglish.R;
@@ -37,12 +37,13 @@ import retrofit.client.Response;
  */
 
 public class TeacherListActivity extends BaseActivity {
-
+    private String filterString;
     private TeacherListAdapter teacherListAdapter;
     private List<TeacherListResponse> teacherList, searchTeacherList;
     private ActivityTeacherListBinding binding;
     private DialogFilterBinding dialogBinding;
     private Dialog dialog;
+    private ArrayList<String> daysFilter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -51,6 +52,7 @@ public class TeacherListActivity extends BaseActivity {
         if (read(Constant.SHARED_PREFS.KEY_USER_ROLE).equalsIgnoreCase("student")) {
             callTeacherListApi();
         }
+        daysFilter = new ArrayList<>();
     }
 
 
@@ -78,10 +80,8 @@ public class TeacherListActivity extends BaseActivity {
                         return;
                     }
                     if (teacherListMainResponse.getStatus().equals("true")) {
-
                         setTeacherList(teacherListMainResponse.getData());
                     }
-
                 }
 
                 @Override
@@ -107,8 +107,8 @@ public class TeacherListActivity extends BaseActivity {
             binding.emptyView.setVisibility(View.VISIBLE);
             binding.recyclerTearcherList.setVisibility(View.GONE);
         }
-        teacherListAdapter = new TeacherListAdapter(getApplicationContext(), teacherList);
-        LinearLayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+        teacherListAdapter = new TeacherListAdapter(TeacherListActivity.this, teacherList);
+        LinearLayoutManager mLayoutManager = new LinearLayoutManager(TeacherListActivity.this);
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         binding.recyclerTearcherList.setLayoutManager(mLayoutManager);
         binding.recyclerTearcherList.setItemAnimator(new DefaultItemAnimator());
@@ -118,8 +118,7 @@ public class TeacherListActivity extends BaseActivity {
     private Map<String, String> getTeacherDetail() {
         Map<String, String> map = new HashMap<>();
         map.put("role", "teacher");
-        map.put("status", "1");
-        map.put("optional_status", "2");
+        map.put("status", "2");
         return map;
     }
 
@@ -138,9 +137,19 @@ public class TeacherListActivity extends BaseActivity {
         String role = Utils.ReadSharePrefrence(getApplicationContext(), Constant.SHARED_PREFS.KEY_USER_ROLE);
         switch (item.getItemId()) {
             case R.id.logout:
-                Utils.ClearSharePrefrence(getApplicationContext());
-                startActivity(LoginActivity.class, true);
-                finish();
+                Utils.alert(this, getString(R.string.logout), getString(R.string.logout_note), getString(R.string.logout), getString(R.string.cancel), new OnDialogEvent() {
+                    @Override
+                    public void onPositivePressed() {
+                        clear();
+                        Utils.logout(getApplicationContext());
+                        finish();
+                    }
+
+                    @Override
+                    public void onNegativePressed() {
+
+                    }
+                });
                 break;
             case R.id.profile:
                 switch (role) {
@@ -165,16 +174,45 @@ public class TeacherListActivity extends BaseActivity {
         dialog.setContentView(dialogBinding.getRoot());
         dialog.setCancelable(true);
         dialog.show();
+
+        dialogBinding.skillEdt.setText(filterString);
+        if (daysFilter.contains("Mon")) {
+            dialogBinding.dayMon.setSelected(true);
+        }
+        if (daysFilter.contains("Tue")) {
+            dialogBinding.dayTue.setSelected(true);
+        }
+        if (daysFilter.contains("Wed")) {
+            dialogBinding.dayWen.setSelected(true);
+        }
+        if (daysFilter.contains("Thu")) {
+            dialogBinding.dayThu.setSelected(true);
+        }
+        if (daysFilter.contains("Fri")) {
+            dialogBinding.dayFri.setSelected(true);
+        }
+        if (daysFilter.contains("Sat")) {
+            dialogBinding.daySat.setSelected(true);
+        }
+        if (daysFilter.contains("Sun")) {
+            dialogBinding.daySun.setSelected(true);
+        }
+
     }
 
     public void onSubmitFilter(View view) {
         if (dialogBinding != null) {
-            String filterString = dialogBinding.skillEdt.getText().toString();
+            filterString = dialogBinding.skillEdt.getText().toString();
             searchTeacherList = new ArrayList<>();
-            for (TeacherListResponse details : teacherList) {
-                if (details.getTeacherInfo() != null && details.getTeacherInfo().getSkills().contains(filterString)) {
-                    searchTeacherList.add(details);
-                }
+            if (filterString.length() > 0) {
+                searchTeacherList = getSearchBySkill(teacherList, filterString);
+                if (daysFilter.size() > 0)
+                    searchTeacherList = getSearchByDays(searchTeacherList, daysFilter);
+            } else {
+                if (daysFilter.size() > 0)
+                    searchTeacherList = getSearchByDays(teacherList, daysFilter);
+                else
+                    searchTeacherList = teacherList;
             }
 
             if (searchTeacherList.size() > 0) {
@@ -184,7 +222,8 @@ public class TeacherListActivity extends BaseActivity {
                 binding.emptyView.setVisibility(View.VISIBLE);
                 binding.recyclerTearcherList.setVisibility(View.GONE);
             }
-            teacherListAdapter = new TeacherListAdapter(getApplicationContext(), searchTeacherList);
+
+            teacherListAdapter = new TeacherListAdapter(TeacherListActivity.this, searchTeacherList);
             LinearLayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
             mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
             binding.recyclerTearcherList.setLayoutManager(mLayoutManager);
@@ -196,7 +235,51 @@ public class TeacherListActivity extends BaseActivity {
     }
 
     public void onClearFilter(View view) {
+        daysFilter.clear();
+        filterString = "";
         setTeacherList(teacherList);
         dialog.dismiss();
+    }
+
+    public void onSelect(View view) {
+        if (view.isSelected()) {
+            view.setSelected(false);
+            int index = daysFilter.indexOf(view.getTag().toString());
+            daysFilter.remove(index);
+        } else {
+            view.setSelected(true);
+            if (!daysFilter.contains(view.getTag().toString()))
+                daysFilter.add(view.getTag().toString());
+        }
+    }
+
+
+    public ArrayList<TeacherListResponse> getSearchBySkill(List<TeacherListResponse> array, String skill) {
+        ArrayList<TeacherListResponse> searchArray = new ArrayList<>();
+        for (TeacherListResponse details : array) {
+            if (details.getTeacherInfo() != null &&
+                    details.getTeacherInfo().getSkills() != null &&
+                    details.getTeacherInfo().getSkills().toLowerCase().contains(filterString.toLowerCase())) {
+                searchArray.add(details);
+            }
+        }
+        return searchArray;
+    }
+
+
+    public ArrayList<TeacherListResponse> getSearchByDays(List<TeacherListResponse> array, ArrayList<String> daysFilter) {
+        ArrayList<TeacherListResponse> searchArray = new ArrayList<>();
+        for (TeacherListResponse details : array) {
+            if (this.daysFilter.size() != 0) {
+                for (String days : this.daysFilter) {
+                    if (details.getTeacherInfo().getAvailableTime().contains(days)) {
+                        searchArray.add(details);
+                    }
+                }
+            } else {
+                searchArray.add(details);
+            }
+        }
+        return searchArray;
     }
 }

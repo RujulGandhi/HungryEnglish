@@ -63,8 +63,8 @@
     <string name="edit">Edit</string>
     <string name="logout_note">Are you sure you want to logout from Hungry English?</string>
 
-    <string name="clear">Clear</string>
-    <string name="cancel">Cancel</string>
+    <string name="clear">Clear/明确</string>
+    <string name="cancel">Cancel/取消</string>
     <string name="linksforref">Links for reference.</string>
     <string name="mobile_or_wechat">Mobile/Wechat ID</string>
     <string name="report_teacher">View Teacher/查看老师档案 </string>
@@ -76,7 +76,7 @@
     <string name="re_enter_password">Re Enter Password</string>
     <string name="resend_otp">Resend OTP ! Click here</string>
     <string name="msg_otp">Enter Received OTP</string>
-    <string name="requst_teacher">Request Teacher</string>
+    <string name="requst_teacher">Request a Teacher / 请求一位老师</string>
     <string name="url">URL</string>
     <string name="report">Report</string>
     <string name="generate_report">Generate Reports</string>
@@ -86,7 +86,7 @@
     <string name="null_value" />
     <string name="try_again">Please Try Again</string>
     <string name="something_wrong">Something Wrong</string>
-    <string name="admin_approve_request">\"Admin will approve your request.\"</string>
+    <string name="admin_approve_request">Admin will approve your request.</string>
     <string name="sign_in">Sign In</string>
     <string name="enter_mobile_or_wechat">Enter Mobile Number</string>
     <string name="mobile_no_validation">Mobile number must be 9 digit</string>
@@ -95,10 +95,16 @@
     <string name="home_location">Home Location</string>
     <string name="no">No</string>
     <string name="yes">Yes</string>
-    <string name="rating_title">You can rate teacher</string>
+    <string name="rating_title">Rate and support your teacher</string>
     <string name="student_rating_sucess_msg">Thank you for your valuable feedback!</string>
-    <string name="rate">rate</string>
+    <string name="rate">Rate</string>
     <string name="filter">Filter</string>
+    <string name="start_time">Select start time</string>
+    <string name="end_time">Select end time</string>
+    <string name="instruction_days_selection">Please select start time and end time of days</string>
+    <string name="err_date_selected">Start time must be before end time</string>
+    <string name="hourly_rate">Minimum Hourly Rate</string>
+    <string name="map">Map</string>
 </resources>
 
 

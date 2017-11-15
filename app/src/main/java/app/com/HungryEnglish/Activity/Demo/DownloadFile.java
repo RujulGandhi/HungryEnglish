@@ -47,10 +47,6 @@ public class DownloadFile extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_dummy);
-
-
-
-
         downloadAudioPath = Environment.getExternalStorageDirectory().getAbsolutePath()+"Hungry";
         File audioVoice = new File("file:///storage/emulated/0/hungry/AUD-20170713-WA0003.mp4");
 

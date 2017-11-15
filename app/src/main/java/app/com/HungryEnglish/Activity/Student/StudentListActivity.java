@@ -38,11 +38,10 @@ public class StudentListActivity extends BaseActivity {
     public static Context mContext;
 
     @Override
-        protected void onCreate(@Nullable Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_student_list);
-            mContext = StudentListActivity.this;
-
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_student_list);
+        mContext = StudentListActivity.this;
         idMapping();
         callStudentListApi();
     }
@@ -56,7 +55,6 @@ public class StudentListActivity extends BaseActivity {
         super.onBackPressed();
         startActivity(AdminDashboardActivity.class);
         finish();
-
     }
 
     // CALL TEACHER LIST API HERE
@@ -79,7 +77,7 @@ public class StudentListActivity extends BaseActivity {
                         return;
                     }
                     if (studentListMainResponse.getStatus().equals("false")) {
-                        Toast.makeText(StudentListActivity.this, "" + studentListMainResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(StudentListActivity.this, studentListMainResponse.getMessage(), Toast.LENGTH_SHORT).show();
                         return;
                     }
                     if (studentListMainResponse.getStatus().equals("true")) {

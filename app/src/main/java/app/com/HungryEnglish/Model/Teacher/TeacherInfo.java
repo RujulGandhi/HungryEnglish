@@ -37,6 +37,29 @@ public class TeacherInfo {
     @Expose
     private String rating;
 
+    @SerializedName("hourly_rate")
+    @Expose
+    private String hourly_rate;
+
+    @SerializedName("nearest_station")
+    @Expose
+    private String nearest_station;
+
+    public String getHourly_rate() {
+        return hourly_rate;
+    }
+
+    public void setHourly_rate(String hourly_rate) {
+        this.hourly_rate = hourly_rate;
+    }
+
+    public String getNearest_station() {
+        return nearest_station;
+    }
+
+    public void setNearest_station(String nearest_station) {
+        this.nearest_station = nearest_station;
+    }
 
     public String getUId() {
         return uId;

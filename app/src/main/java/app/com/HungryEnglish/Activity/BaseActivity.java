@@ -1,6 +1,7 @@
 package app.com.HungryEnglish.Activity;
 
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
@@ -28,6 +29,7 @@ import app.com.HungryEnglish.Util.Constant;
 import app.com.HungryEnglish.Util.SetDatePicker;
 import app.com.HungryEnglish.Util.Utils;
 
+import static app.com.HungryEnglish.Util.Constant.REQUEST_CHECK_LOCATION_SETTINGS;
 
 
 /**
@@ -35,11 +37,6 @@ import app.com.HungryEnglish.Util.Utils;
  */
 
 public class BaseActivity extends AppCompatActivity {
-
-    @Override
-    public void setContentView(int layoutResId) {
-        super.setContentView(layoutResId);
-    }
 
     protected void toast(CharSequence text) {
         Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
@@ -171,7 +168,23 @@ public class BaseActivity extends AppCompatActivity {
                 return;
             }
         }
-
     }
 
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case REQUEST_CHECK_LOCATION_SETTINGS:
+                switch (resultCode) {
+                    case Activity.RESULT_OK:
+                        toast("Location start");
+                        break;
+                    case Activity.RESULT_CANCELED:
+                        toast("Location Cancel");
+                        break;
+                }
+                break;
+        }
+    }
 }

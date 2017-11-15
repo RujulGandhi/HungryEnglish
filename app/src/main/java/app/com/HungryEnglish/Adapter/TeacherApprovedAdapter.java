@@ -18,6 +18,7 @@ import java.util.List;
 import app.com.HungryEnglish.Activity.Teacher.TeacherProfileActivity;
 import app.com.HungryEnglish.Model.Teacher.TeacherListResponse;
 import app.com.HungryEnglish.R;
+import app.com.HungryEnglish.Util.Utils;
 
 import static app.com.HungryEnglish.Fragment.TeacherApprovedListFragment.callRemoveTeacherFromListApi;
 
@@ -78,16 +79,14 @@ public class TeacherApprovedAdapter extends RecyclerView.Adapter<TeacherApproved
         holder.tvTeacherName.setText(teacherList.get(pos).getUsername());
 
         holder.tvEmail.setText("Email : " + teacherList.get(pos).getEmail());
-        if (teacherList.get(pos).getTeacherInfo() != null) {
-            holder.tvTeacherAvaibility.setText("Avaibility : " + teacherList.get(pos).getTeacherInfo().getAvailableTime());
+        if (teacherList.get(pos).getTeacherInfo() != null && teacherList.get(pos).getTeacherInfo().getAvailableTime() != null) {
+            holder.tvTeacherAvaibility.setText("Avaibility : " + Utils.getDisplayString(teacherList.get(pos).getTeacherInfo().getAvailableTime()));
         }
         holder.tvMobileNo.setText("Mobile No : " + teacherList.get(pos).getMobNo());
         holder.ivRemove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 callRemoveTeacherFromListApi(pos, teacherList.get(pos).getId(), teacherList.get(pos).getRole());
-
             }
         });
 

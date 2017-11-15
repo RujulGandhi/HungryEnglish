@@ -1,5 +1,6 @@
 package app.com.HungryEnglish.Fragment;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -20,7 +21,7 @@ import app.com.HungryEnglish.databinding.AdapterImageBinding;
 /**
  * Created by good on 10/8/2017.
  */
-
+@SuppressLint("ValidFragment")
 public class ImageAdpaterFragment extends Fragment {
     private AdapterImageBinding binding;
     ArrayList<String> imageslink, link;

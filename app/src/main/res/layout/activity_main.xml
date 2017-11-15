@@ -27,12 +27,17 @@
             app:tabGravity="center"
             app:tabIndicatorHeight="0dp" />
 
-        <LinearLayout
-            android:id="@+id/llLinkList"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
+            android:layout_height="match_parent"
+            android:fillViewport="true">
 
+            <LinearLayout
+                android:id="@+id/llLinkList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
 
+        </ScrollView>
     </LinearLayout>
 </layout>

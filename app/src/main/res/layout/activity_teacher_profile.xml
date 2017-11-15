@@ -70,6 +70,7 @@
 
                     <EditText
                         android:id="@+id/fullNameTeacherEdit"
+                        style="@style/StyledTilEditTextTheme"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_35sdp"
                         android:layout_marginEnd="@dimen/_5sdp"
@@ -94,6 +95,7 @@
 
                     <EditText
                         android:id="@+id/usernameStudentEdit"
+                        style="@style/StyledTilEditTextTheme"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_35sdp"
                         android:layout_marginEnd="@dimen/_5sdp"
@@ -117,6 +119,7 @@
 
                     <EditText
                         android:id="@+id/emailEdit"
+                        style="@style/StyledTilEditTextTheme"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_35sdp"
                         android:layout_marginEnd="@dimen/_5sdp"
@@ -133,32 +136,52 @@
                 </android.support.design.widget.TextInputLayout>
 
 
-                <android.support.design.widget.TextInputLayout
+                <!--<android.support.design.widget.TextInputLayout-->
+                <!--android:id="@+id/address_inputlayout"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="@dimen/_5sdp">-->
+
+                <!--<EditText-->
+                <!--android:id="@+id/currnetPlaceEdit"-->
+                <!--style="@style/StyledTilEditTextTheme"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="@dimen/_35sdp"-->
+                <!--android:layout_marginEnd="@dimen/_5sdp"-->
+                <!--android:layout_marginLeft="@dimen/_5sdp"-->
+                <!--android:layout_marginRight="@dimen/_5sdp"-->
+                <!--android:layout_marginStart="@dimen/_5sdp"-->
+                <!--android:layout_marginTop="@dimen/_5sdp"-->
+                <!--android:background="@drawable/bg_edt"-->
+                <!--android:gravity="center_vertical"-->
+                <!--android:hint="@string/address"-->
+                <!--android:inputType="text"-->
+                <!--android:lines="5"-->
+                <!--android:maxLines="8"-->
+                <!--android:minLines="5"-->
+                <!--android:onClick="pickAddress"-->
+                <!--android:padding="@dimen/_5sdp"-->
+                <!--android:textColor="@android:color/black"-->
+                <!--android:textSize="@dimen/_12sdp" />-->
+
+                <!--</android.support.design.widget.TextInputLayout>-->
+
+                <TextView
+                    android:id="@+id/currnetPlaceTv"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp">
-
-                    <EditText
-                        android:id="@+id/currnetPlaceEdit"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_35sdp"
-                        android:layout_marginEnd="@dimen/_5sdp"
-                        android:layout_marginLeft="@dimen/_5sdp"
-                        android:layout_marginRight="@dimen/_5sdp"
-                        android:layout_marginStart="@dimen/_5sdp"
-                        android:layout_marginTop="@dimen/_5sdp"
-                        android:background="@drawable/bg_edt"
-                        android:gravity="center_vertical"
-                        android:hint="@string/nearest_railway_station"
-                        android:inputType="text"
-                        android:lines="5"
-                        android:maxLines="8"
-                        android:minLines="5"
-                        android:padding="@dimen/_5sdp"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/_12sdp" />
-
-                </android.support.design.widget.TextInputLayout>
+                    android:layout_height="@dimen/_35sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:background="@drawable/bg_edt"
+                    android:gravity="center_vertical|left"
+                    android:hint="@string/address"
+                    android:onClick="pickAddress"
+                    android:padding="@dimen/_5sdp"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/_12sdp" />
 
                 <TextView
                     android:id="@+id/avaibilityDateTeacherTv"
@@ -171,9 +194,9 @@
                     android:layout_marginTop="@dimen/_5sdp"
                     android:background="@drawable/bg_edt"
                     android:gravity="center_vertical|left"
-                    android:onClick="onOpenTimePickerActivity"
                     android:hint="@string/avaibility"
                     android:inputType="text"
+                    android:onClick="onOpenTimePickerActivity"
                     android:padding="@dimen/_5sdp"
                     android:textColor="@android:color/black"
                     android:textSize="@dimen/_12sdp" />
@@ -186,6 +209,7 @@
 
                     <EditText
                         android:id="@+id/specialSkillTeacherEdit"
+                        style="@style/StyledTilEditTextTheme"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_35sdp"
                         android:layout_marginEnd="@dimen/_5sdp"
@@ -210,6 +234,7 @@
 
                     <EditText
                         android:id="@+id/etMobileOrWechatId"
+                        style="@style/StyledTilEditTextTheme"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_35sdp"
                         android:layout_marginEnd="@dimen/_5sdp"
@@ -226,6 +251,57 @@
 
                 </android.support.design.widget.TextInputLayout>
 
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/hourly_rate_textinput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp">
+
+                    <EditText
+                        android:id="@+id/ethourly_rate"
+                        style="@style/StyledTilEditTextTheme"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_35sdp"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:layout_marginRight="@dimen/_5sdp"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:background="@drawable/bg_edt"
+                        android:hint="@string/hourly_rate"
+                        android:inputType="number|numberDecimal"
+                        android:padding="@dimen/_5sdp"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/_12sdp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/nearest_station_textinput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp">
+
+                    <EditText
+                        android:id="@+id/etNearest_station"
+                        style="@style/StyledTilEditTextTheme"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_35sdp"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:layout_marginRight="@dimen/_5sdp"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:background="@drawable/bg_edt"
+                        android:hint="@string/nearest_railway_station"
+                        android:inputType="text"
+                        android:padding="@dimen/_5sdp"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/_12sdp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+
                 <LinearLayout
                     android:id="@+id/layout_idproof"
                     android:layout_width="match_parent"
@@ -241,6 +317,7 @@
 
                         <EditText
                             android:id="@+id/btn_id_proof"
+                            style="@style/StyledTilEditTextTheme"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_35sdp"
                             android:layout_marginLeft="@dimen/_5sdp"
@@ -282,6 +359,7 @@
 
                         <EditText
                             android:id="@+id/btn_cv_file"
+                            style="@style/StyledTilEditTextTheme"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_35sdp"
                             android:layout_marginLeft="@dimen/_5sdp"
@@ -331,6 +409,7 @@
 
                         <EditText
                             android:id="@+id/btn_audio_file"
+                            style="@style/StyledTilEditTextTheme"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_35sdp"
                             android:layout_marginLeft="@dimen/_5sdp"
@@ -377,6 +456,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:gravity="center"
                         android:text="@string/rating_title" />
 
                     <com.whinc.widget.ratingbar.RatingBar
@@ -397,15 +477,13 @@
 
                 <Button
                     android:id="@+id/btnSubmiTeacherProfile"
+                    style="@style/green_btn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/_10sdp"
                     android:layout_marginTop="@dimen/_25sdp"
-                    android:background="@drawable/green_corner"
                     android:text="@string/submit"
-                    android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_16sdp" />
+                    android:textAllCaps="false" />
 
             </LinearLayout>
         </RelativeLayout>

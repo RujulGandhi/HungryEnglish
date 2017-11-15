@@ -21,20 +21,27 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import app.com.HungryEnglish.Activity.BaseActivity;
-import app.com.HungryEnglish.Activity.LoginActivity;
 import app.com.HungryEnglish.Activity.Teacher.TeacherListActivity;
 import app.com.HungryEnglish.Activity.TimePickerActivity;
+import app.com.HungryEnglish.Interface.OnDialogEvent;
+import app.com.HungryEnglish.Model.Address;
 import app.com.HungryEnglish.Model.Profile.StudentGetProfileMainResponse;
 import app.com.HungryEnglish.Model.Profile.StudentProfileMainResponse;
 import app.com.HungryEnglish.R;
 import app.com.HungryEnglish.Services.ApiHandler;
 import app.com.HungryEnglish.Util.Constant;
+import app.com.HungryEnglish.Util.GPSTracker;
 import app.com.HungryEnglish.Util.Utils;
 import app.com.HungryEnglish.databinding.ActivityStudentProfileBinding;
 import retrofit.Callback;
@@ -42,10 +49,13 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 
 import static app.com.HungryEnglish.Util.Constant.MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE;
+import static app.com.HungryEnglish.Util.Constant.ROLE_STUDENT;
 import static app.com.HungryEnglish.Util.Constant.SEX_FEMALE;
 import static app.com.HungryEnglish.Util.Constant.SEX_MALE;
+import static app.com.HungryEnglish.Util.Constant.SHARED_PREFS.KEY_IS_ACTIVE;
 import static app.com.HungryEnglish.Util.Constant.SHARED_PREFS.KEY_USER_ID;
 import static app.com.HungryEnglish.Util.Constant.SHARED_PREFS.KEY_USER_ROLE;
+import static app.com.HungryEnglish.Util.Constant.TIMEPICKER_REQUEST_CODE;
 
 
 /**
@@ -65,17 +75,36 @@ public class StudentProfileActivity extends BaseActivity {
     String[] permissions = new String[]{
             Manifest.permission.ACCESS_COARSE_LOCATION,
             Manifest.permission.ACCESS_FINE_LOCATION};
+    private GPSTracker gps;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_student_profile);
         idMapping();
-        getDataFromIntent();
-        getProfile();
+        getIntentData();
+        if (read(KEY_USER_ROLE) == ROLE_STUDENT && read(KEY_IS_ACTIVE).equalsIgnoreCase("0")) {
+            setHomeLocation();
+        } else {
+            getProfile();
+        }
+
     }
 
-    private void getDataFromIntent() {
+    private void setHomeLocation() {
+        synchronized (this) {
+            getProfile();
+            gps = new GPSTracker(this);
+            if (gps.canGetLocation()) {
+                double latitude = gps.getLatitude();
+                double longitude = gps.getLongitude();
+                getAddress(latitude, longitude);
+            }
+        }
+    }
+
+
+    private void getIntentData() {
         Bundle extras = getIntent().getExtras();
         // When role is admin.
         if (extras != null) {
@@ -111,11 +140,8 @@ public class StudentProfileActivity extends BaseActivity {
                 // If request is cancelled, the result arrays are empty.
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
                     toast(R.string.sucess_external_storage_msg);
-
                 } else {
-
                     toast(R.string.error_permission_msg);
                     // permission denied, boo! Disable the
                     // functionality that depends on this permission.
@@ -162,11 +188,10 @@ public class StudentProfileActivity extends BaseActivity {
                 }
                 if (parentProfileMainResponse.getStatus().equals("false")) {
                     Toast.makeText(getApplicationContext(), "" + parentProfileMainResponse.getMsg(), Toast.LENGTH_SHORT).show();
-
                     return;
                 }
                 if (parentProfileMainResponse.getStatus().equals("true")) {
-                    Utils.WriteSharePrefrence(StudentProfileActivity.this, Constant.SHARED_PREFS.KEY_IS_ACTIVE, "1");
+                    Utils.WriteSharePrefrence(StudentProfileActivity.this, KEY_IS_ACTIVE, "1");
                     if (!role.equals("")) {
                         finish();
                     } else {
@@ -195,7 +220,7 @@ public class StudentProfileActivity extends BaseActivity {
         }
 
         map.put("fullname", String.valueOf(fullNameStudentEdit.getText()));
-        map.put("available_time", String.valueOf(binding.avaibilityStudentEdit.getText()));
+        map.put("available_time", String.valueOf(binding.avaibilityStudentEdit.getTag()));
         map.put("age", String.valueOf(ageEdit.getText()));
         map.put("mobile", String.valueOf(wechatEdt.getText()));
         map.put("sex", String.valueOf(sex));
@@ -219,32 +244,20 @@ public class StudentProfileActivity extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.logout:
-
-                final Dialog dialog = new Dialog(StudentProfileActivity.this);
-                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                dialog.setContentView(R.layout.popup_logout);
-                dialog.setCancelable(false);
-                TextView tvLogout = (TextView) dialog.findViewById(R.id.btLogoutPopupLogout);
-                TextView tvCancel = (TextView) dialog.findViewById(R.id.btCancelPopupLogout);
-                tvLogout.setOnClickListener(new View.OnClickListener() {
+                Utils.alert(this, getString(R.string.logout), getString(R.string.logout_note), getString(R.string.logout), getString(R.string.cancel), new OnDialogEvent() {
                     @Override
-                    public void onClick(View v) {
+                    public void onPositivePressed() {
                         clear();
-                        write(Constant.SHARED_PREFS.KEY_IS_LOGGED_IN, "0");
-                        startActivity(LoginActivity.class, true);
+                        Utils.logout(getApplicationContext());
                         finish();
                     }
-                });
 
-                tvCancel.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
+                    public void onNegativePressed() {
+
                     }
                 });
-                dialog.show();
                 break;
-
         }
         return true;
     }
@@ -270,8 +283,9 @@ public class StudentProfileActivity extends BaseActivity {
                 userNameEdt.setText(studentGetProfileMainResponse.getData().getUsername());
                 emailEdt.setText(studentGetProfileMainResponse.getData().getEmail());
                 if (studentGetProfileMainResponse.getInfo() != null) {
-
-                    binding.avaibilityStudentEdit.setText(studentGetProfileMainResponse.getInfo().getAvailableTime());
+                    String availableTimeString = studentGetProfileMainResponse.getInfo().getAvailableTime();
+                    binding.avaibilityStudentEdit.setTag(availableTimeString);
+                    binding.avaibilityStudentEdit.setText(Utils.getDisplayString(availableTimeString));
                     ageEdit.setText(studentGetProfileMainResponse.getInfo().getAge());
 
                     if (studentGetProfileMainResponse.getInfo().getSex().equalsIgnoreCase(SEX_MALE)) {
@@ -293,21 +307,31 @@ public class StudentProfileActivity extends BaseActivity {
 
     public void onAvailablity(View view) {
         Intent in = new Intent(this, TimePickerActivity.class);
-        startActivityForResult(in, 400);
+        String availableTimeString = ((TextView) view).getTag().toString();
+        try {
+            Type listType = new TypeToken<ArrayList<TimePickerActivity.TimerModel>>() {
+            }.getType();
+            ArrayList<TimePickerActivity.TimerModel> arrayTimer = new Gson().fromJson(availableTimeString, listType);
+        } catch (JsonSyntaxException e) {
+            availableTimeString = "";
+        }
+        in.putExtra("availableTimeString", availableTimeString);
+        startActivityForResult(in, TIMEPICKER_REQUEST_CODE);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
-            case 400:
-                binding.avaibilityStudentEdit.setText(data.getExtras().getString("availabletime"));
+            case TIMEPICKER_REQUEST_CODE:
+                String displayString = data.getExtras().getString("availabletime");
+                binding.avaibilityStudentEdit.setText(Utils.getDisplayString(displayString));
+                binding.avaibilityStudentEdit.setTag(displayString);
                 break;
         }
     }
 
     public void onUpdateProfile(View view) {
-
         if (fullNameStudentEdit.getText().toString().equalsIgnoreCase("")) {
             fullNameStudentEdit.setError("Enter Full Name");
             fullNameStudentEdit.requestFocus();
@@ -340,6 +364,60 @@ public class StudentProfileActivity extends BaseActivity {
             sex = SEX_FEMALE;
         }
         callParentProfileApi();
+
+    }
+
+
+    private void getAddress(Double lat, Double lng) {
+        Utils.showDialog(StudentProfileActivity.this);
+        HashMap<String, String> map = new HashMap<>();
+        map.put("action", "get_address");
+        map.put("lat", String.valueOf(lat));
+        map.put("lng", String.valueOf(lng));
+
+//        http://smartsquad.16mb.com/HungryEnglish/api/add_request.php?teacherId=1&studentId=2
+        ApiHandler.getApiService().getAddress(map, new retrofit.Callback<Address>() {
+            @Override
+            public void success(final Address address, Response response) {
+                if (address != null) {
+                    if (!address.getData().equalsIgnoreCase("false")) {
+                        final Dialog dialog = new Dialog(StudentProfileActivity.this);
+                        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                        dialog.setContentView(R.layout.address_confirm);
+                        dialog.setCancelable(false);
+                        TextView tvLogout = (TextView) dialog.findViewById(R.id.address_confirm_msg);
+                        tvLogout.setText("Do you want to set " + address.getData() + " address as Home location ?");
+                        TextView tvOkay = (TextView) dialog.findViewById(R.id.address_positive);
+                        TextView tvCancel = (TextView) dialog.findViewById(R.id.address_negative);
+                        tvOkay.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                binding.nearRailwayStationEdit.setText(address.getData());
+                                dialog.dismiss();
+                            }
+                        });
+                        tvCancel.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                dialog.dismiss();
+                            }
+                        });
+                        dialog.show();
+                    }
+
+                }
+
+                Utils.dismissDialog();
+
+
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                Utils.dismissDialog();
+                toast(getString(R.string.try_again));
+            }
+        });
 
     }
 }

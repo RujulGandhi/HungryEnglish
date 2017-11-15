@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -29,6 +30,10 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
+import com.google.gson.reflect.TypeToken;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.ByteArrayOutputStream;
@@ -36,10 +41,13 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -48,6 +56,9 @@ import java.util.regex.Pattern;
 
 import javax.net.ssl.HttpsURLConnection;
 
+import app.com.HungryEnglish.Activity.LoginActivity;
+import app.com.HungryEnglish.Activity.TimePickerActivity;
+import app.com.HungryEnglish.Interface.OnDialogEvent;
 import app.com.HungryEnglish.R;
 
 /**
@@ -118,6 +129,53 @@ public class Utils {
         }
     }
 
+    public static void logout(Context context) {
+        Intent intent = new Intent(context, LoginActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
+    }
+
+
+    public static void alert(Context context, String titleHeaerMsg, String titleMsg, String positveBtn, String negativeBtn, final OnDialogEvent listner) {
+        final Dialog dialog = new Dialog(context);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.custom_alert_dialog);
+        dialog.setCancelable(false);
+
+
+        TextView tvHeader = (TextView) dialog.findViewById(R.id.title_header_tv);
+        TextView tvTitle = (TextView) dialog.findViewById(R.id.title_tv);
+        TextView tvPos = (TextView) dialog.findViewById(R.id.btnPositive);
+        TextView tvNeg = (TextView) dialog.findViewById(R.id.btnNegative);
+
+
+        tvHeader.setText(titleHeaerMsg);
+        tvTitle.setText(titleMsg);
+        tvPos.setText(positveBtn);
+        tvNeg.setText(negativeBtn);
+
+
+        tvPos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listner.onPositivePressed();
+                dialog.dismiss();
+            }
+        });
+
+        tvNeg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listner.onNegativePressed();
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
+    }
+
+
     public static String encodeToBase64(Bitmap image, Bitmap.CompressFormat compressFormat, int quality) {
         ByteArrayOutputStream byteArrayOS = new ByteArrayOutputStream();
         image.compress(compressFormat, quality, byteArrayOS);
@@ -125,13 +183,9 @@ public class Utils {
     }
 
     public static long getDifferent(Date startDate, Date endDate) {
-
-
         //milliseconds
         long different = endDate.getTime() - startDate.getTime();
-
         return different / 1000;
-
     }
 
     public static void animateViewVisibility(final View view, final int visibility) {
@@ -559,4 +613,49 @@ public class Utils {
         return url;
     }
 
+    public static String toString(ArrayList<TimePickerActivity.TimerModel> arrayList) {
+        String finalString = "";
+        for (int i = 0; i < arrayList.size(); i++) {
+            TimePickerActivity.TimerModel model = arrayList.get(i);
+            if (i == 0) {
+                finalString = model.getDayString() + ":" + model.getStartTime() + "-" + model.getEndTime();
+            } else {
+                finalString = finalString + "," + model.getDayString() + ":" + model.getStartTime() + "-" + model.getEndTime();
+            }
+        }
+        return finalString;
+    }
+
+
+    public static String getDisplayString(ArrayList<TimePickerActivity.TimerModel> arrayTimer) {
+        Collections.sort(arrayTimer, new Comparator<TimePickerActivity.TimerModel>() {
+            @Override
+            public int compare(TimePickerActivity.TimerModel o1, TimePickerActivity.TimerModel o2) {
+                return ((Integer) o1.getPriority()).compareTo((Integer) o2.getPriority());
+            }
+        });
+        return Utils.toString(arrayTimer);
+    }
+
+    public static String getDisplayString(String mainString) {
+        String displayString = "";
+        try {
+            Gson gson = new Gson();
+            Type listType = new TypeToken<ArrayList<TimePickerActivity.TimerModel>>() {
+            }.getType();
+            ArrayList<TimePickerActivity.TimerModel> arrayTimer = gson.fromJson(mainString, listType);
+            Collections.sort(arrayTimer, new Comparator<TimePickerActivity.TimerModel>() {
+                @Override
+                public int compare(TimePickerActivity.TimerModel o1, TimePickerActivity.TimerModel o2) {
+                    return ((Integer) o1.getPriority()).compareTo((Integer) o2.getPriority());
+                }
+            });
+            displayString = Utils.toString(arrayTimer);
+        } catch (JsonSyntaxException e) {
+            displayString = mainString;
+        } catch (Exception e) {
+            displayString = mainString;
+        }
+        return displayString;
+    }
 }

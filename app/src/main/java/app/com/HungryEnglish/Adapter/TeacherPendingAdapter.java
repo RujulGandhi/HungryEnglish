@@ -73,20 +73,15 @@ public class TeacherPendingAdapter extends RecyclerView.Adapter<TeacherPendingAd
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         final int pos = position;
-        //        Movie movie = teacherList.get(position);
         holder.tvTeacherName.setText(teacherList.get(pos).getUsername());
-
         holder.tvEmail.setText("Email : " + teacherList.get(pos).getEmail());
-
         holder.tvMobileNo.setText("Mobile No : " + teacherList.get(pos).getMobNo());
-
         holder.tvAcceptInvitation.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 TeacherPendingListFragment.callTeacherAcceptInvitationApi(pos, teacherList.get(pos).getId(), teacherList.get(pos).getIsActive());
             }
         });
-
 
         holder.ivEdit.setOnClickListener(new OnClickListener() {
             @Override
@@ -102,15 +97,9 @@ public class TeacherPendingAdapter extends RecyclerView.Adapter<TeacherPendingAd
         holder.ivRemove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 callRemoveTeacherFromListApi(pos, teacherList.get(pos).getId(), teacherList.get(pos).getRole());
-
             }
         });
-//        Picasso.with(mContext).load(R.drawable.ic_user_default).into(holder.ivProfilePic);
-//        holder.tvGender.setText("Gender : " + teacherList.get(position).get("gender"));
-//        holder.tvExperience.setText("Experience : " + teacherList.get(position).get("experience"));
-//        holder.tvTeacherAvaibility.setText("Avaibility : " + teacherList.get(position).get("avaibility"));
     }
 
 

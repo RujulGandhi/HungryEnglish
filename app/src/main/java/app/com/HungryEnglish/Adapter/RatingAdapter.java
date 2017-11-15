@@ -45,9 +45,10 @@ public class RatingAdapter extends RecyclerView.Adapter<RatingAdapter.MyViewHold
         final RateInfo info = rateInfo.get(i);
         String msg = info.getStuUsername() + " gave rate to " + info.getTeaUsername();
         myViewHolder.binding.msgTv.setText(msg);
-        if (info.getRate() != "")
-            myViewHolder.binding.rateBar.setCount(Integer.parseInt(info.getRate()));
-        else
+        if (info.getRate() != "") {
+            int count = (int) Float.parseFloat(info.getRate());
+            myViewHolder.binding.rateBar.setCount(count);
+        } else
             myViewHolder.binding.rateBar.setCount(0);
         myViewHolder.binding.switchButton.setChecked(info.getIs_approved().equals("1"));
 
@@ -93,11 +94,9 @@ public class RatingAdapter extends RecyclerView.Adapter<RatingAdapter.MyViewHold
                     RateInfo info = rateInfo.get(i);
                     info.setIs_approved(rateStatus);
                     rateInfo.set(i, info);
-                    notifyDataSetChanged();
                 } else {
                     RateInfo info = rateInfo.get(i);
                     rateInfo.set(i, info);
-                    notifyDataSetChanged();
                 }
             }
 

@@ -30,6 +30,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
+import com.google.gson.reflect.TypeToken;
 import com.squareup.picasso.Picasso;
 
 import java.io.BufferedInputStream;
@@ -37,6 +40,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.lang.reflect.Type;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
@@ -48,9 +52,9 @@ import javax.mail.AuthenticationFailedException;
 import javax.mail.MessagingException;
 
 import app.com.HungryEnglish.Activity.BaseActivity;
-import app.com.HungryEnglish.Activity.ForgotPassword;
-import app.com.HungryEnglish.Activity.LoginActivity;
 import app.com.HungryEnglish.Activity.TimePickerActivity;
+import app.com.HungryEnglish.Interface.OnDialogEvent;
+import app.com.HungryEnglish.MapActivity;
 import app.com.HungryEnglish.Model.Address;
 import app.com.HungryEnglish.Model.ForgotPassord.ForgotPasswordModel;
 import app.com.HungryEnglish.Model.Profile.TeacherProfileMainResponse;
@@ -74,6 +78,7 @@ import static app.com.HungryEnglish.Util.Constant.ROLE_TEACHER;
 import static app.com.HungryEnglish.Util.Constant.SHARED_PREFS.KEY_IS_ACTIVE;
 import static app.com.HungryEnglish.Util.Constant.SHARED_PREFS.KEY_USER_ID;
 import static app.com.HungryEnglish.Util.Constant.SHARED_PREFS.KEY_USER_ROLE;
+import static app.com.HungryEnglish.Util.Constant.TIMEPICKER_REQUEST_CODE;
 import static app.com.HungryEnglish.Util.Utils.getPath;
 import static app.com.HungryEnglish.Util.Utils.getRealPathFromURI;
 
@@ -86,15 +91,16 @@ public class TeacherProfileActivity extends BaseActivity implements
         View.OnClickListener {
 
     private static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 0;
-    private ImageView profileImage, idProofImage, ivCVFileStatus, ivAudioFileStatus, ivViewCv, ivViewAudio;
+    private ImageView idProofImage, ivCVFileStatus, ivAudioFileStatus, ivViewCv, ivViewAudio;
     final int SELECT_PHOTO = 100;
     final int SELECT_ID_PROOF = 200;
     final int SELECT_FILE = 300;
     final int SELECT_AUDIO = 400;
-    public final int TIMEPICKER_REQUEST_CODE = 401;
+    final int SELECT_ADDRESS = 500;
+
     private ProgressDialog pDialog;
     public static final int progress_bar_type = 0;
-    private EditText btnCvUpload, btnAudioFile, userNameEdit, emailEdit, currnetPlaceEdit, fullNameTeacherEdit, specialSkillTeacherEdit, etMobileOrWechatId;
+    private EditText btnCvUpload, btnAudioFile, userNameEdit, emailEdit, fullNameTeacherEdit, specialSkillTeacherEdit, etMobileOrWechatId;
     // GPSTracker class
     GPSTracker gps;
     private String pathProfilePic = null, pathCvDoc = null, pathIdProofPic = null, pathAudioFile = null;
@@ -119,10 +125,15 @@ public class TeacherProfileActivity extends BaseActivity implements
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_teacher_profile);
         mContext = TeacherProfileActivity.this;
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            id = extras.getString("id");
+            role = extras.getString("role");
+            CallFrom = extras.getString("callFrom");
+        }
         checkPermissions();
-        getDataFromIntent();
         idMapping();
-        getProfile();
+        getDataFromIntent();
     }
 
     private boolean checkPermissions() {
@@ -143,33 +154,29 @@ public class TeacherProfileActivity extends BaseActivity implements
 
 
     private void getDataFromIntent() {
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            id = extras.getString("id");
-            role = extras.getString("role");
-            CallFrom = extras.getString("callFrom");
-        }
         if (read(KEY_USER_ROLE).equalsIgnoreCase(ROLE_TEACHER) && read(KEY_IS_ACTIVE).equalsIgnoreCase("1")) {
-            gps = new GPSTracker(this);
-            if (gps.canGetLocation()) {
-                double latitude = gps.getLatitude();
-                double longitude = gps.getLongitude();
-                getAddress(latitude, longitude);
+            synchronized (this) {
+                getProfile();
+                gps = new GPSTracker(this);
+                if (gps.canGetLocation()) {
+                    double latitude = gps.getLatitude();
+                    double longitude = gps.getLongitude();
+                    getAddress(latitude, longitude);
+                }
             }
+        } else {
+            getProfile();
         }
     }
 
     private void idMapping() {
-
-        profileImage = (ImageView) findViewById(R.id.profile_image);
         idProofImage = (ImageView) findViewById(R.id.idProofImage);
         ivCVFileStatus = (ImageView) findViewById(R.id.ivCVFileStatus);
         ivAudioFileStatus = (ImageView) findViewById(R.id.ivAudioFileStatus);
         ivViewCv = (ImageView) findViewById(R.id.ivViewCv);
         ivViewAudio = (ImageView) findViewById(R.id.ivViewAudio);
-
         etMobileOrWechatId = (EditText) findViewById(R.id.etMobileOrWechatId);
-        currnetPlaceEdit = (EditText) findViewById(R.id.currnetPlaceEdit);
+//        currnetPlaceEdit = (EditText) findViewById(R.id.currnetPlaceEdit);
         fullNameTeacherEdit = (EditText) findViewById(R.id.fullNameTeacherEdit);
         avaibilityTimeTv = (TextView) findViewById(R.id.avaibilityDateTeacherTv);
         specialSkillTeacherEdit = (EditText) findViewById(R.id.specialSkillTeacherEdit);
@@ -179,35 +186,36 @@ public class TeacherProfileActivity extends BaseActivity implements
         layoutCV = (LinearLayout) findViewById(R.id.layout_cv);
         layoutIdProof = (LinearLayout) findViewById(R.id.layout_idproof);
         btn_id_proof = (EditText) findViewById(R.id.btn_id_proof);
-
         emailEdit = (EditText) findViewById(R.id.emailEdit);
         btnSubmiTeacherProfile = (Button) findViewById(R.id.btnSubmiTeacherProfile);
-
         String currentRole = read(Constant.SHARED_PREFS.KEY_USER_ROLE);
         if (currentRole.equalsIgnoreCase("admin")) {
             ivViewCv.setVisibility(View.VISIBLE);
             ivViewAudio.setVisibility(View.VISIBLE);
         }
-        if (CallFrom.equals("Student")) {
+        if (CallFrom.equalsIgnoreCase("student")) {
             btnSubmiTeacherProfile.setText(getApplicationContext().getString(R.string.requst_teacher));
             TextInputLayout wechatLayout = (TextInputLayout) findViewById(R.id.wechat_id_textinput);
             TextInputLayout cvLayout = (TextInputLayout) findViewById(R.id.text_input_layout_uploadCV);
             TextInputLayout idProof = (TextInputLayout) findViewById(R.id.text_input_layout_uploadIdProof);
             TextInputLayout emailLayout = (TextInputLayout) findViewById(R.id.layout_email);
 
+            binding.hourlyRateTextinput.setVisibility(View.GONE);
+            binding.currnetPlaceTv.setVisibility(View.GONE);
+
             btnSubmiTeacherProfile.setOnClickListener(this);
             ivViewCv.setOnClickListener(this);
             ivViewAudio.setVisibility(View.VISIBLE);
             ivViewAudio.setOnClickListener(this);
-
             btnAudioFile.setVisibility(View.VISIBLE);
 
+            binding.etNearestStation.setKeyListener(null);
             btnCvUpload.setKeyListener(null);
             btn_id_proof.setKeyListener(null);
             btnAudioFile.setKeyListener(null);
             userNameEdit.setKeyListener(null);
             emailEdit.setKeyListener(null);
-            currnetPlaceEdit.setKeyListener(null);
+            binding.currnetPlaceTv.setKeyListener(null);
             fullNameTeacherEdit.setKeyListener(null);
             avaibilityTimeTv.setKeyListener(null);
             specialSkillTeacherEdit.setKeyListener(null);
@@ -221,25 +229,26 @@ public class TeacherProfileActivity extends BaseActivity implements
             emailLayout.setVisibility(View.GONE);
             binding.studentRatingLinear.setVisibility(View.VISIBLE);
 
-        } else if (CallFrom.equals("Admin")) {
+        } else if (CallFrom.equalsIgnoreCase("Admin")) {
             btnSubmiTeacherProfile.setText(getApplicationContext().getString(R.string.submit));
-
-            profileImage.setOnClickListener(this);
+            binding.profileImage.setOnClickListener(this);
 //            idProofImage.setOnClickListener(this);
             btnCvUpload.setOnClickListener(this);
-            currnetPlaceEdit.setOnClickListener(this);
+            binding.currnetPlaceTv.setOnClickListener(this);
             btnSubmiTeacherProfile.setOnClickListener(this);
             btnAudioFile.setOnClickListener(this);
             ivViewCv.setOnClickListener(this);
             ivViewAudio.setOnClickListener(this);
             btn_id_proof.setOnClickListener(this);
+            binding.studentRatingLinear.setVisibility(View.GONE);
         } else {
             btnSubmiTeacherProfile.setText(getApplicationContext().getString(R.string.submit));
 
-            profileImage.setOnClickListener(this);
+            binding.profileImage.setOnClickListener(this);
+
 //            idProofImage.setOnClickListener(this);
             btnCvUpload.setOnClickListener(this);
-            currnetPlaceEdit.setOnClickListener(this);
+//            binding.currnetPlaceTv.setOnClickListener(this);
             btnSubmiTeacherProfile.setOnClickListener(this);
             btnAudioFile.setOnClickListener(this);
             ivViewCv.setOnClickListener(this);
@@ -247,6 +256,7 @@ public class TeacherProfileActivity extends BaseActivity implements
             btn_id_proof.setOnClickListener(this);
             binding.ratingBar.setClickable(false);
             binding.ratingBar.setTouchRating(false);
+            binding.studentRatingLinear.setVisibility(View.GONE);
         }
 
 
@@ -256,10 +266,16 @@ public class TeacherProfileActivity extends BaseActivity implements
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.ivViewCv:
-                createDirectory(resumePath, Constant.FILE_TYPE_RESUME);
+                if (resumePath != "")
+                    createDirectory(resumePath, Constant.FILE_TYPE_RESUME);
+                else
+                    toast(R.string.something_wrong);
                 break;
             case R.id.ivViewAudio:
-                createDirectory(audioPath, Constant.FILE_TYPE_AUDIO);
+                if (resumePath != "")
+                    createDirectory(audioPath, Constant.FILE_TYPE_AUDIO);
+                else
+                    toast(R.string.something_wrong);
                 break;
             case R.id.profile_image:
                 uploadImage(SELECT_PHOTO);
@@ -296,9 +312,10 @@ public class TeacherProfileActivity extends BaseActivity implements
                     if (etMobileOrWechatId.getText().toString().equals("")) {
                         etMobileOrWechatId.setError("Enter Mobile No. or Wechat Id");
                         etMobileOrWechatId.requestFocus();
+                        return;
                     }
 
-                    callTeacherProfileApi();
+                    updateTeacherProfile();
                     break;
                 }
         }
@@ -359,7 +376,7 @@ public class TeacherProfileActivity extends BaseActivity implements
                     } else {
                         pathProfilePic = getPath(this, data.getData());
                     }
-                    Picasso.with(getApplicationContext()).load(Uri.fromFile(new File(pathProfilePic))).placeholder(R.drawable.ic_user_default).error(R.drawable.ic_user_default).into(profileImage);
+                    Picasso.with(getApplicationContext()).load(Uri.fromFile(new File(pathProfilePic))).placeholder(R.drawable.ic_user_default).error(R.drawable.ic_user_default).into(binding.profileImage);
                     break;
                 case SELECT_ID_PROOF:
                     if (Build.VERSION.SDK_INT <= 21) {
@@ -400,7 +417,16 @@ public class TeacherProfileActivity extends BaseActivity implements
                     }
                     break;
                 case TIMEPICKER_REQUEST_CODE:
-                    binding.avaibilityDateTeacherTv.setText(data.getExtras().getString("availabletime"));
+                    String displayString = data.getExtras().getString("availabletime");
+                    binding.avaibilityDateTeacherTv.setText(Utils.getDisplayString(displayString));
+                    binding.avaibilityDateTeacherTv.setTag(displayString);
+                    break;
+                case SELECT_ADDRESS:
+                    String address = data.getExtras().getString("address");
+                    String lat = data.getExtras().getString("lat");
+                    String lng = data.getExtras().getString("lng");
+                    binding.currnetPlaceTv.setText(address);
+                    binding.currnetPlaceTv.setTag(lat + "," + lng);
                     break;
             }
         } else {
@@ -431,15 +457,24 @@ public class TeacherProfileActivity extends BaseActivity implements
             public void success(TeacherProfileMain teacherProfileMain, Response response) {
                 fullNameTeacherEdit.setText(teacherProfileMain.getData().getFullName());
                 emailEdit.setText(teacherProfileMain.getData().getEmail());
+                // need set tag of current tv fields.
+                Log.d("Lat Lng", teacherProfileMain.getData().getLat() + " , " + teacherProfileMain.getData().getLng());
+
                 userNameEdit.setText(teacherProfileMain.getData().getUsername());
                 etMobileOrWechatId.setText(String.valueOf(teacherProfileMain.getData().getMobNo()));
                 int rating = teacherProfileMain.getData().getRating().equalsIgnoreCase("") ? 0 : Integer.parseInt(teacherProfileMain.getData().getRating());
                 binding.ratingBar.setCount(rating);
                 if (teacherProfileMain.getInfo() != null) {
-                    avaibilityTimeTv.setText(teacherProfileMain.getInfo().getAvailableTime());
-                    currnetPlaceEdit.setText(teacherProfileMain.getInfo().getAddress());
+                    String responseString = teacherProfileMain.getInfo().getAvailableTime();
+                    binding.avaibilityDateTeacherTv.setTag(responseString);
+                    binding.avaibilityDateTeacherTv.setText(Utils.getDisplayString(responseString));
+                    binding.currnetPlaceTv.setText(teacherProfileMain.getInfo().getAddress());
                     specialSkillTeacherEdit.setText(teacherProfileMain.getInfo().getSkills());
-                    Picasso.with(getApplicationContext()).load(BASEURL + teacherProfileMain.getInfo().getProfileImage()).placeholder(R.drawable.ic_user_default).error(R.drawable.ic_user_default).into(profileImage);
+                    binding.ethourlyRate.setText(teacherProfileMain.getInfo().getHourly_rate());
+                    binding.etNearestStation.setText(teacherProfileMain.getInfo().getNearest_station());
+                    specialSkillTeacherEdit.setText(teacherProfileMain.getInfo().getSkills());
+
+                    Picasso.with(getApplicationContext()).load(BASEURL + teacherProfileMain.getInfo().getProfileImage()).placeholder(R.drawable.ic_user_default).error(R.drawable.ic_user_default).into(binding.profileImage);
                     Picasso.with(getApplicationContext()).load(BASEURL + teacherProfileMain.getInfo().getIdImage()).placeholder(R.drawable.ic_user_default).error(R.drawable.ic_user_default).into(idProofImage);
                     resumePath = teacherProfileMain.getInfo().getResume();
                     String idProof = Constant.BASEURL + teacherProfileMain.getInfo().getIdImage();
@@ -485,7 +520,7 @@ public class TeacherProfileActivity extends BaseActivity implements
         });
     }
 
-    private void callTeacherProfileApi() {
+    private void updateTeacherProfile() {
         if (!Utils.checkNetwork(this)) {
             Utils.showCustomDialog(getString(R.string.internet_error), getResources().getString(R.string.internet_connection_error), this);
             return;
@@ -615,17 +650,25 @@ public class TeacherProfileActivity extends BaseActivity implements
 
     private Map<String, String> getTeacherProfileDetail() {
         Map<String, String> map = new HashMap<>();
-        if (role.equalsIgnoreCase("")) {
-            String userId = Utils.ReadSharePrefrence(getApplicationContext(), KEY_USER_ID);
+        if (role.equalsIgnoreCase(ROLE_TEACHER)) {
+            String userId = read(KEY_USER_ID);
             map.put("uId", userId);
         } else {
             map.put("uId", id);
         }
         map.put("fullname", String.valueOf(fullNameTeacherEdit.getText()));
-        map.put("available_time", String.valueOf(avaibilityTimeTv.getText()));
-        map.put("address", String.valueOf(currnetPlaceEdit.getText()));
+        map.put("available_time", String.valueOf(avaibilityTimeTv.getTag()));
+        map.put("address", String.valueOf(binding.currnetPlaceTv.getText()));
         map.put("skill", String.valueOf(specialSkillTeacherEdit.getText()));
         map.put("mob_no", String.valueOf(etMobileOrWechatId.getText()));
+        map.put("nearest_railway", String.valueOf(binding.etNearestStation.getText()));
+        map.put("hourly_rate", String.valueOf(binding.ethourlyRate.getText()));
+        String latLngStr = String.valueOf(binding.currnetPlaceTv.getTag());
+        String[] latLngArray = latLngStr.split(",");
+        if (latLngArray.length > 1) {
+            map.put("lat", String.valueOf(latLngArray[0]));
+            map.put("lng", String.valueOf(latLngArray[1]));
+        }
         return map;
     }
 
@@ -646,33 +689,19 @@ public class TeacherProfileActivity extends BaseActivity implements
     }
 
     public void logout(View view) {
-        final Dialog dialog = new Dialog(this);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.popup_logout);
-        dialog.setCancelable(false);
-        TextView tvLogout = (TextView) dialog.findViewById(R.id.btLogoutPopupLogout);
-        TextView tvCancel = (TextView) dialog.findViewById(R.id.btCancelPopupLogout);
-        tvLogout.setOnClickListener(new View.OnClickListener() {
+        Utils.alert(this, getString(R.string.logout), getString(R.string.logout_note), getString(R.string.logout), getString(R.string.cancel), new OnDialogEvent() {
             @Override
-            public void onClick(View v) {
+            public void onPositivePressed() {
                 clear();
-                write(Constant.SHARED_PREFS.KEY_IS_LOGGED_IN, "0");
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
+                Utils.logout(getApplicationContext());
                 finish();
             }
-        });
 
-        tvCancel.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                dialog.dismiss();
+            public void onNegativePressed() {
+
             }
         });
-        dialog.show();
     }
 
 
@@ -681,7 +710,6 @@ public class TeacherProfileActivity extends BaseActivity implements
         HashMap<String, String> map = new HashMap<>();
         map.put("teacherId", id);
         map.put("studentId", Utils.ReadSharePrefrence(mContext, Constant.SHARED_PREFS.KEY_USER_ID));
-//        http://smartsquad.16mb.com/HungryEnglish/api/add_request.php?teacherId=1&studentId=2
         ApiHandler.getApiService().addRequest(map, new retrofit.Callback<ForgotPasswordModel>() {
             @Override
             public void success(ForgotPasswordModel forgotPasswordModel, Response response) {
@@ -699,7 +727,6 @@ public class TeacherProfileActivity extends BaseActivity implements
                 toast(getString(R.string.try_again));
             }
         });
-
     }
 
 
@@ -715,7 +742,7 @@ public class TeacherProfileActivity extends BaseActivity implements
             @Override
             public void success(final Address address, Response response) {
                 if (address != null) {
-                    if (address.getData().equalsIgnoreCase("false")) {
+                    if (!address.getData().equalsIgnoreCase("false")) {
                         final Dialog dialog = new Dialog(TeacherProfileActivity.this);
                         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                         dialog.setContentView(R.layout.address_confirm);
@@ -727,7 +754,7 @@ public class TeacherProfileActivity extends BaseActivity implements
                         tvOkay.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                currnetPlaceEdit.setText(address.getData());
+                                binding.currnetPlaceTv.setText(address.getData());
                                 dialog.dismiss();
                             }
                         });
@@ -739,9 +766,7 @@ public class TeacherProfileActivity extends BaseActivity implements
                         });
                         dialog.show();
                     }
-
                 }
-
                 Utils.dismissDialog();
 
 
@@ -776,21 +801,31 @@ public class TeacherProfileActivity extends BaseActivity implements
 
     public void rateTeacher(View view) {
         binding.studentRate.getCount();
-
         updateRating();
-
     }
 
     public void onOpenTimePickerActivity(View view) {
-        Log.d("Role", role);
         Intent in = new Intent(this, TimePickerActivity.class);
+        String availableTimeString = ((TextView) view).getTag().toString();
+        try {
+            Type listType = new TypeToken<ArrayList<TimePickerActivity.TimerModel>>() {
+            }.getType();
+            ArrayList<TimePickerActivity.TimerModel> arrayTimer = new Gson().fromJson(availableTimeString, listType);
+        } catch (JsonSyntaxException e) {
+            availableTimeString = "";
+        }
+        in.putExtra("availableTimeString", availableTimeString);
         startActivityForResult(in, TIMEPICKER_REQUEST_CODE);
+    }
+
+    public void pickAddress(View view) {
+        Intent in = new Intent(this, MapActivity.class);
+        startActivityForResult(in, SELECT_ADDRESS);
     }
 
 
     class SendEmailAsyncTask extends AsyncTask<Void, Void, Boolean> {
         Mail m;
-        ForgotPassword activity;
 
         public SendEmailAsyncTask() {
         }
@@ -799,8 +834,6 @@ public class TeacherProfileActivity extends BaseActivity implements
         protected Boolean doInBackground(Void... params) {
             try {
                 if (m.send()) {
-
-
                 } else {
                 }
 
@@ -856,7 +889,6 @@ public class TeacherProfileActivity extends BaseActivity implements
             int count;
             try {
                 String fullUrl = BASEURL + f_url[0];
-                Log.d("FullURL", fullUrl);
                 URL url = new URL(fullUrl);
                 URLConnection conection = url.openConnection();
                 conection.connect();
@@ -934,7 +966,6 @@ public class TeacherProfileActivity extends BaseActivity implements
     }
 
     private void createDirectory(String file_name, String type) {
-        Log.d("FilePath", file_name.split("/")[1]);
         try {
             File folder = new File(Environment.getExternalStorageDirectory().toString() + "/" + getString(R.string.app_name) + "/" + type + "/");
             if (!folder.exists()) {
@@ -947,6 +978,5 @@ public class TeacherProfileActivity extends BaseActivity implements
             Log.d("Exception", e.toString());
         }
     }
-
 
 }

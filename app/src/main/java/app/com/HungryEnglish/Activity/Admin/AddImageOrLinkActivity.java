@@ -12,7 +12,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.text.InputType;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
@@ -70,7 +69,7 @@ public class AddImageOrLinkActivity extends BaseActivity {
     public ArrayList<String> links;
     private InfoResponse infoList;
     private LinearLayout llLinkList;
-
+    private String image1URL, image2URL, image3URL;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -140,17 +139,17 @@ public class AddImageOrLinkActivity extends BaseActivity {
         tvSubmitLink.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (pathPic.equalsIgnoreCase("")) {
+                if (image1URL.equalsIgnoreCase("")) {
                     Toast.makeText(AddImageOrLinkActivity.this, "Please Select Image", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                if (pathPic2.equalsIgnoreCase("")) {
+                if (image2URL.equalsIgnoreCase("")) {
                     Toast.makeText(AddImageOrLinkActivity.this, "Please Select Image 2", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                if (pathPic3.equalsIgnoreCase("")) {
+                if (image3URL.equalsIgnoreCase("")) {
                     Toast.makeText(AddImageOrLinkActivity.this, "Please Select Image 3", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -184,40 +183,87 @@ public class AddImageOrLinkActivity extends BaseActivity {
             return;
         } else {
             Utils.showDialog(AddImageOrLinkActivity.this);
-            TypedFile imageTypeFile = new TypedFile("multipart/form-data", new File(pathPic));
-            TypedFile imageTypeFile2 = new TypedFile("multipart/form-data", new File(pathPic2));
-            TypedFile imageTypeFile3 = new TypedFile("multipart/form-data", new File(pathPic3));
-            ApiHandler.getApiService().addInfo(addInfoDetail(), imageTypeFile, imageTypeFile2, imageTypeFile3, new retrofit.Callback<AddInfoResponse>() {
-                @Override
-                public void success(AddInfoResponse addInfoResponse, Response response) {
-                    Utils.dismissDialog();
-                    if (addInfoResponse == null) {
-                        Toast.makeText(getApplicationContext(), "Something Wrong", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-                    if (addInfoResponse.getStatus() == null) {
-                        Toast.makeText(getApplicationContext(), "Something Wrong", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-                    if (addInfoResponse.getStatus().equals("false")) {
-                        Toast.makeText(getApplicationContext(), "" + addInfoResponse.getMsg(), Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-                    if (addInfoResponse.getStatus().equals("true")) {
-                        Toast.makeText(getApplicationContext(), "" + addInfoResponse.getMsg(), Toast.LENGTH_SHORT).show();
-                        startActivity(AdminDashboardActivity.class);
-                        finish();
-                    }
-                }
+            Map<String, TypedFile> files = new HashMap<String, TypedFile>();
+            if (pathPic != null && pathPic.length() > 0) {
+                TypedFile imageTypeFile = new TypedFile("multipart/form-data", new File(pathPic));
+                files.put("image1", imageTypeFile);
+            }
+            if (pathPic2 != null && pathPic2.length() > 0) {
+                TypedFile imageTypeFile2 = new TypedFile("multipart/form-data", new File(pathPic2));
+                files.put("image2", imageTypeFile2);
+            }
+            if (pathPic3 != null && pathPic3.length() > 0) {
+                TypedFile imageTypeFile3 = new TypedFile("multipart/form-data", new File(pathPic3));
+                files.put("image3", imageTypeFile3);
+            }
 
-                @Override
-                public void failure(RetrofitError error) {
-                    Utils.dismissDialog();
-                    error.printStackTrace();
-                    error.getMessage();
-                    Toast.makeText(getApplicationContext(), "Something Wrong", Toast.LENGTH_SHORT).show();
-                }
-            });
+            if (files != null && files.size() > 0) {
+                ApiHandler.getApiService().addInfo(addInfoDetail(), files, new retrofit.Callback<AddInfoResponse>() {
+                    @Override
+                    public void success(AddInfoResponse addInfoResponse, Response response) {
+                        Utils.dismissDialog();
+                        if (addInfoResponse == null) {
+                            Toast.makeText(getApplicationContext(), "Something Wrong", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        if (addInfoResponse.getStatus() == null) {
+                            Toast.makeText(getApplicationContext(), "Something Wrong", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        if (addInfoResponse.getStatus().equals("false")) {
+                            Toast.makeText(getApplicationContext(), "" + addInfoResponse.getMsg(), Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        if (addInfoResponse.getStatus().equals("true")) {
+                            Toast.makeText(getApplicationContext(), "" + addInfoResponse.getMsg(), Toast.LENGTH_SHORT).show();
+                            startActivity(AdminDashboardActivity.class);
+                            finish();
+                        }
+                    }
+
+                    @Override
+                    public void failure(RetrofitError error) {
+                        Utils.dismissDialog();
+                        error.printStackTrace();
+                        error.getMessage();
+                        toast("Something Wrong");
+                    }
+                });
+
+            } else {
+                ApiHandler.getApiService().addInfo(addInfoDetail(), new retrofit.Callback<AddInfoResponse>() {
+                    @Override
+                    public void success(AddInfoResponse addInfoResponse, Response response) {
+                        Utils.dismissDialog();
+                        if (addInfoResponse == null) {
+                            toast("Something Wrong");
+                            return;
+                        }
+                        if (addInfoResponse.getStatus() == null) {
+                            toast("Something Wrong");
+                            return;
+                        }
+                        if (addInfoResponse.getStatus().equals("false")) {
+                            toast(addInfoResponse.getMsg());
+                            return;
+                        }
+                        if (addInfoResponse.getStatus().equals("true")) {
+                            toast(addInfoResponse.getMsg());
+                            startActivity(AdminDashboardActivity.class);
+                            finish();
+                        }
+                    }
+
+                    @Override
+                    public void failure(RetrofitError error) {
+                        Utils.dismissDialog();
+                        error.printStackTrace();
+                        error.getMessage();
+                        toast("Something Wrong");
+                    }
+                });
+
+            }
 
         }
 
@@ -228,11 +274,6 @@ public class AddImageOrLinkActivity extends BaseActivity {
         for (int i = 0; i < links.size(); i++) {
             map.put("link" + (i + 1), links.get(i));
         }
-//        map.put("link1", imageLink1.getText().toString());
-//        map.put("link2", imageLink2.getText().toString());
-//        map.put("link3", imageLink3.getText().toString());
-
-
         return map;
     }
 
@@ -247,7 +288,8 @@ public class AddImageOrLinkActivity extends BaseActivity {
     private void addDynamicContactText(String link1, String linkTitle) {
         cnt = cnt + 1;
         EditText tvLabel = new EditText(AddImageOrLinkActivity.this);
-        LinearLayout.LayoutParams llp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        LinearLayout.LayoutParams llp = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT
+                , LinearLayout.LayoutParams.WRAP_CONTENT);
         llp.setMargins(Math.round(getResources().getDimension(R.dimen._5sdp)), 0, 0, 0); // llp.setMargins(left, top, right, bottom);
         tvLabel.setLayoutParams(llp);
         tvLabel.setPadding(Math.round(getResources().getDimension(R.dimen._5sdp)), Math.round(getResources().getDimension(R.dimen._5sdp)), Math.round(getResources().getDimension(R.dimen._5sdp)), Math.round(getResources().getDimension(R.dimen._5sdp)));
@@ -265,7 +307,7 @@ public class AddImageOrLinkActivity extends BaseActivity {
         etAddMoreLink = new EditText(AddImageOrLinkActivity.this);
         allEds.add(etAddMoreLink);
 //            etAddMoreLink.setId(id);
-        LinearLayout.LayoutParams llpET = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        LinearLayout.LayoutParams llpET = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         llpET.setMargins(Math.round(getResources().getDimension(R.dimen._5sdp)), 0, 0, 0); // llp.setMargins(left, top, right, bottom);
         etAddMoreLink.setLayoutParams(llpET);
         etAddMoreLink.setPadding(Math.round(getResources().getDimension(R.dimen._5sdp)), Math.round(getResources().getDimension(R.dimen._5sdp)), Math.round(getResources().getDimension(R.dimen._5sdp)), Math.round(getResources().getDimension(R.dimen._5sdp)));
@@ -302,12 +344,9 @@ public class AddImageOrLinkActivity extends BaseActivity {
                 // If request is cancelled, the result arrays are empty.
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
                     toast(R.string.sucess_external_storage_msg);
                 } else {
                     toast(R.string.error_permission_msg);
-                    // permission denied, boo! Disable the
-                    // functionality that depends on this permission.
                 }
                 return;
             }
@@ -319,7 +358,6 @@ public class AddImageOrLinkActivity extends BaseActivity {
     @Override
     protected void onActivityResult(int reqCode, int resultCode, Intent data) {
         super.onActivityResult(reqCode, resultCode, data);
-        Log.d("reqCode", String.valueOf(reqCode));
         if (resultCode == Activity.RESULT_OK) {
             switch (reqCode) {
                 case SELECT_PHOTO:
@@ -359,17 +397,12 @@ public class AddImageOrLinkActivity extends BaseActivity {
 
     private void callGetInfoApi() {
         if (!Utils.checkNetwork(AddImageOrLinkActivity.this)) {
-
             Utils.showCustomDialog("Internet Connection !", getResources().getString(R.string.internet_connection_error), AddImageOrLinkActivity.this);
-
             return;
         } else {
-
             ApiHandler.getApiService().getInfo(getInfo(), new retrofit.Callback<InfoMainResponse>() {
-
                 @Override
                 public void success(InfoMainResponse infoMainResponse, Response response) {
-
                     if (infoMainResponse == null) {
                         toast("Something Wrong");
                         return;
@@ -389,61 +422,66 @@ public class AddImageOrLinkActivity extends BaseActivity {
 
                         infoList = new InfoResponse();
                         infoList = infoMainResponse.getInfo();
-                        String imgUrl = Constant.BASEURL + infoList.getImage1();
+                        image1URL = Constant.BASEURL + infoList.getImage1();
                         ivSelectImage.setScaleType(ScaleType.CENTER_CROP);
-                        Picasso.with(AddImageOrLinkActivity.this).load(imgUrl).placeholder(R.drawable.ic_add_img).error(R.drawable.ic_add_img).into(ivSelectImage);
+                        Picasso.with(AddImageOrLinkActivity.this).load(image1URL).placeholder(R.drawable.ic_add_img).error(R.drawable.ic_add_img).into(ivSelectImage);
 
-                        String imgUrl2 = Constant.BASEURL + infoList.getImage2();
+                        image2URL = Constant.BASEURL + infoList.getImage2();
                         ivSelectImage.setScaleType(ScaleType.CENTER_CROP);
-                        Picasso.with(AddImageOrLinkActivity.this).load(imgUrl2).placeholder(R.drawable.ic_add_img).error(R.drawable.ic_add_img).into(ivSelectImage2);
+                        Picasso.with(AddImageOrLinkActivity.this).load(image2URL).placeholder(R.drawable.ic_add_img).error(R.drawable.ic_add_img).into(ivSelectImage2);
 
 
-                        String imgUrl3 = Constant.BASEURL + infoList.getImage3();
+                        image3URL = Constant.BASEURL + infoList.getImage3();
                         ivSelectImage.setScaleType(ScaleType.CENTER_CROP);
-                        Picasso.with(AddImageOrLinkActivity.this).load(imgUrl3).placeholder(R.drawable.ic_add_img).error(R.drawable.ic_add_img).into(ivSelectImage3);
+                        Picasso.with(AddImageOrLinkActivity.this).load(image3URL).placeholder(R.drawable.ic_add_img).error(R.drawable.ic_add_img).into(ivSelectImage3);
 
 
                         if (!infoList.getLink1().equalsIgnoreCase("")) {
                             if (infoList.getLink1().contains("--")) {
                                 String[] link1 = infoList.getLink1().split("--");
-//                            addDynamicContactText(link1[0]);
-//                            addDynamicContactText(link1[1]);
-                                addDynamicContactText(link1[1], link1[0]);
-                                imageLink1.setText(link1[2]);
+                                if (link1.length > 1) {
+                                    addDynamicContactText(link1[1], link1[0]);
+                                    imageLink1.setText(link1[2]);
+                                }
                             }
                         }
                         if (!infoList.getLink2().equalsIgnoreCase("")) {
                             if (infoList.getLink2().contains("--")) {
                                 String[] link1 = infoList.getLink2().split("--");
-//                            addDynamicContactText(link1[0]);
-//                            addDynamicContactText(link1[1]);
-                                addDynamicContactText(link1[1], link1[0]);
-                                imageLink2.setText(link1[2]);
+                                if (link1.length > 1) {
+                                    addDynamicContactText(link1[1], link1[0]);
+                                    imageLink2.setText(link1[2]);
+                                }
                             }
                         }
 
                         if (!infoList.getLink3().equalsIgnoreCase("")) {
                             if (infoList.getLink3().contains("--")) {
                                 String[] link1 = infoList.getLink3().split("--");
-//                            addDynamicContactText(link1[0]);
-//                            addDynamicContactText(link1[1]);
-                                addDynamicContactText(link1[1], link1[0]);
-                                imageLink3.setText(link1[2]);
+                                if (link1.length > 1) {
+                                    addDynamicContactText(link1[1], link1[0]);
+                                    imageLink3.setText(link1[2]);
+                                }
                             }
                         }
                         if (!infoList.getLink4().equalsIgnoreCase("")) {
                             String[] link1 = infoList.getLink4().split("--");
-                            addDynamicContactText(link1[1], link1[0]);
+                            if (link1.length > 1) {
+                                addDynamicContactText(link1[1], link1[0]);
+                            }
+
                         }
 
                         if (!infoList.getLink5().equalsIgnoreCase("")) {
                             String[] link1 = infoList.getLink5().split("--");
-                            addDynamicContactText(link1[1], link1[0]);
+                            if (link1.length > 1)
+                                addDynamicContactText(link1[1], link1[0]);
                         }
 
                         if (!infoList.getLink6().equalsIgnoreCase("")) {
                             String[] link1 = infoList.getLink6().split("--");
-                            addDynamicContactText(link1[1], link1[0]);
+                            if (link1.length > 1)
+                                addDynamicContactText(link1[1], link1[0]);
                         }
                         hideAddMoreButton();
                     }

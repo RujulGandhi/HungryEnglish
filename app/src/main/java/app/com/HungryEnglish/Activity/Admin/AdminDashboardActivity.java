@@ -1,6 +1,5 @@
 package app.com.HungryEnglish.Activity.Admin;
 
-import android.app.Dialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.Menu;
@@ -8,7 +7,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.Window;
 import android.view.animation.AlphaAnimation;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -18,8 +16,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import app.com.HungryEnglish.Activity.BaseActivity;
-import app.com.HungryEnglish.Activity.LoginActivity;
 import app.com.HungryEnglish.Activity.Student.StudentListActivity;
+import app.com.HungryEnglish.Interface.OnDialogEvent;
 import app.com.HungryEnglish.Model.admin.CountListMainResponse;
 import app.com.HungryEnglish.R;
 import app.com.HungryEnglish.Services.ApiHandler;
@@ -66,28 +64,19 @@ public class AdminDashboardActivity extends BaseActivity {
         String role = Utils.ReadSharePrefrence(AdminDashboardActivity.this, Constant.SHARED_PREFS.KEY_USER_ROLE);
         switch (item.getItemId()) {
             case R.id.logout:
-                final Dialog dialog = new Dialog(AdminDashboardActivity.this);
-                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                dialog.setContentView(R.layout.popup_logout);
-                dialog.setCancelable(false);
-                TextView tvLogout = (TextView) dialog.findViewById(R.id.btLogoutPopupLogout);
-                TextView tvCancel = (TextView) dialog.findViewById(R.id.btCancelPopupLogout);
-                tvLogout.setOnClickListener(new View.OnClickListener() {
+                Utils.alert(this, getString(R.string.logout), getString(R.string.logout_note), getString(R.string.logout), getString(R.string.cancel), new OnDialogEvent() {
                     @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
-                        write(Constant.SHARED_PREFS.KEY_IS_LOGGED_IN, "0");
-                        startActivity(LoginActivity.class, true);
+                    public void onPositivePressed() {
+                        clear();
+                        Utils.logout(getApplicationContext());
                         finish();
                     }
-                });
-                tvCancel.setOnClickListener(new View.OnClickListener() {
+
                     @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
+                    public void onNegativePressed() {
+
                     }
                 });
-                dialog.show();
                 break;
             case R.id.rate:
                 startActivity(RatingActivity.class);

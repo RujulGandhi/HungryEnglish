@@ -1,6 +1,5 @@
 package app.com.HungryEnglish.Activity.Teacher;
 
-import android.app.Dialog;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
@@ -8,12 +7,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.content.ContextCompat;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.Window;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -22,9 +21,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import app.com.HungryEnglish.Activity.BaseActivity;
-import app.com.HungryEnglish.Activity.LoginActivity;
 import app.com.HungryEnglish.Activity.Student.StudentProfileActivity;
 import app.com.HungryEnglish.Adapter.ImageAdapter;
+import app.com.HungryEnglish.Interface.OnDialogEvent;
 import app.com.HungryEnglish.Model.Teacher.InfoMainResponse;
 import app.com.HungryEnglish.Model.Teacher.InfoResponse;
 import app.com.HungryEnglish.R;
@@ -32,6 +31,7 @@ import app.com.HungryEnglish.Services.ApiHandler;
 import app.com.HungryEnglish.Util.Constant;
 import app.com.HungryEnglish.Util.Utils;
 import app.com.HungryEnglish.databinding.ActivityMainBinding;
+import app.com.HungryEnglish.databinding.LinkViewBinding;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
@@ -68,29 +68,20 @@ public class MainActivity extends BaseActivity {
         String role = Utils.ReadSharePrefrence(getApplicationContext(), Constant.SHARED_PREFS.KEY_USER_ROLE);
         switch (item.getItemId()) {
             case R.id.logout:
-                final Dialog dialog = new Dialog(this);
-                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                dialog.setContentView(R.layout.popup_logout);
-                dialog.setCancelable(false);
-                TextView tvLogout = (TextView) dialog.findViewById(R.id.btLogoutPopupLogout);
-                TextView tvCancel = (TextView) dialog.findViewById(R.id.btCancelPopupLogout);
-                tvLogout.setOnClickListener(new View.OnClickListener() {
+
+                Utils.alert(this, getString(R.string.logout), getString(R.string.logout_note), getString(R.string.logout), getString(R.string.cancel), new OnDialogEvent() {
                     @Override
-                    public void onClick(View v) {
+                    public void onPositivePressed() {
                         clear();
-                        write(Constant.SHARED_PREFS.KEY_IS_LOGGED_IN, "0");
-                        startActivity(LoginActivity.class, true);
+                        Utils.logout(getApplicationContext());
                         finish();
                     }
-                });
-                tvCancel.setOnClickListener(new View.OnClickListener() {
+
                     @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
+                    public void onNegativePressed() {
+
                     }
                 });
-                dialog.show();
-
                 break;
             case R.id.profile:
                 if (role.equalsIgnoreCase("student"))
@@ -145,44 +136,50 @@ public class MainActivity extends BaseActivity {
 //                        SetImage1();
                         if (!infoList.getLink1().equalsIgnoreCase("")) {
                             String[] link1 = infoList.getLink1().split("--");
-                            addDynamicContactText(link1[0]);
-                            addDynamicContactText(link1[1]);
+//                            addDynamicContactText(link1[0]);
+//                            addDynamicContactText(link1[1]);
+                            addView(link1[0], link1[1]);
                             imageClickURL1 = link1[2];
                             linkArray.add(imageClickURL1);
                         }
 
                         if (!infoList.getLink2().equalsIgnoreCase("")) {
                             String[] link1 = infoList.getLink2().split("--");
-                            addDynamicContactText(link1[0]);
-                            addDynamicContactText(link1[1]);
+//                            addDynamicContactText(link1[0]);
+//                            addDynamicContactText(link1[1]);
+                            addView(link1[0], link1[1]);
                             imageClickURL2 = link1[2];
                             linkArray.add(imageClickURL2);
                         }
 
                         if (!infoList.getLink3().equalsIgnoreCase("")) {
                             String[] link1 = infoList.getLink3().split("--");
-                            addDynamicContactText(link1[0]);
-                            addDynamicContactText(link1[1]);
+//                            addDynamicContactText(link1[0]);
+//                            addDynamicContactText(link1[1]);
+                            addView(link1[0], link1[1]);
                             imageClickURL3 = link1[2];
                             linkArray.add(imageClickURL3);
                         }
 
                         if (!infoList.getLink4().equalsIgnoreCase("")) {
                             String[] link1 = infoList.getLink4().split("--");
-                            addDynamicContactText(link1[0]);
-                            addDynamicContactText(link1[1]);
+//                            addDynamicContactText(link1[0]);
+//                            addDynamicContactText(link1[1]);
+                            addView(link1[0], link1[1]);
                         }
 
                         if (!infoList.getLink5().equalsIgnoreCase("")) {
                             String[] link1 = infoList.getLink5().split("--");
-                            addDynamicContactText(link1[0]);
-                            addDynamicContactText(link1[1]);
+//                            addDynamicContactText(link1[0]);
+//                            addDynamicContactText(link1[1]);
+                            addView(link1[0], link1[1]);
                         }
 
                         if (!infoList.getLink6().equalsIgnoreCase("")) {
                             String[] link1 = infoList.getLink6().split("--");
-                            addDynamicContactText(link1[0]);
-                            addDynamicContactText(link1[1]);
+//                            addDynamicContactText(link1[0]);
+//                            addDynamicContactText(link1[1]);
+                            addView(link1[0], link1[1]);
                         }
 
 
@@ -217,41 +214,6 @@ public class MainActivity extends BaseActivity {
         }, 3000);
     }
 
-//    private void SetImage1() {
-//        temp = 1;
-//        Picasso.with(getApplicationContext()).load(imageURL1).placeholder(R.drawable.ic_add_img).error(R.drawable.ic_add_img).into(image_teacher_list_header);
-//        handler.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                SetImage2();
-//            }
-//        }, 7000);
-//    }
-//
-//    private void SetImage2() {
-//        temp = 2;
-//        Picasso.with(getApplicationContext()).load(imageURL2).placeholder(R.drawable.ic_add_img).error(R.drawable.ic_add_img).into(image_teacher_list_header);
-//        handler.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                SetImage3();
-//            }
-//        }, 7000);
-//
-//    }
-//
-//    private void SetImage3() {
-//        temp = 3;
-//        Picasso.with(getApplicationContext()).load(imageURL3).placeholder(R.drawable.ic_add_img).error(R.drawable.ic_add_img).into(image_teacher_list_header);
-//        handler.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                SetImage1();
-//            }
-//        }, 7000);
-//    }
-
-
     private Map<String, String> getInfo() {
         Map<String, String> map = new HashMap<>();
         return map;
@@ -261,6 +223,7 @@ public class MainActivity extends BaseActivity {
     private void addDynamicContactText(final String link1) {
         cnt = cnt + 1;
         TextView tvLabel = new TextView(getApplicationContext());
+        tvLabel.setTextAppearance(getApplicationContext(), R.style.small_textview);
         LinearLayout.LayoutParams llp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         llp.setMargins(Math.round(getResources().getDimension(R.dimen._5sdp)), 0, 0, 0); // llp.setMargins(left, top, right, bottom);
         tvLabel.setLayoutParams(llp);
@@ -269,7 +232,7 @@ public class MainActivity extends BaseActivity {
         tvLabel.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimaryDark));
         tvLabel.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.black));
         tvLabel.setTextSize(12);
-        binding.llLinkList.addView(tvLabel);
+//        binding.llLinkList.addView(tvLabel);
         if (link1.startsWith("www.")) {
             tvLabel.setTextColor(Color.BLUE);
         }
@@ -292,4 +255,33 @@ public class MainActivity extends BaseActivity {
         });
     }
 
+    private void addView(String linkTitle, final String link) {
+        LinkViewBinding bindingLink = LinkViewBinding.inflate(LayoutInflater.from(getApplicationContext()));
+        bindingLink.linkTitle.setText(linkTitle);
+        bindingLink.link.setText(link);
+        bindingLink.link.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String url = "";
+                if (link.startsWith("www.")) {
+                    if (!link.startsWith("http://") && !link.startsWith("https://")) {
+                        url = "http://" + link;
+                    } else {
+                        url = link;
+                    }
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                    startActivity(browserIntent);
+                }
+
+            }
+
+        });
+        int padding = Math.round(getResources().getDimension(R.dimen._3sdp));
+        LinearLayout.LayoutParams llp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        llp.setMargins(padding, padding, padding, padding);
+        bindingLink.getRoot().setLayoutParams(llp);
+        binding.llLinkList.addView(bindingLink.getRoot());
+    }
+
 }
+

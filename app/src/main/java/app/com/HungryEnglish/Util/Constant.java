@@ -19,16 +19,19 @@ public class Constant {
     public static final String SEX_MALE = "male";
     public static final String SEX_FEMALE = "female";
 
-
-    public static final String BASEURL = "http://smartsquad.16mb.com/HungryEnglish/api/";
-
     public static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 0;
+    public static final int REQUEST_CHECK_LOCATION_SETTINGS = 104;
+    public static final int TIMEPICKER_REQUEST_CODE = 401;
+
+    public static final String MAP_BOX = "pk.eyJ1IjoiamFtZXMxMDEyOTMiLCJhIjoiY2o5bjRidWlvNTFwczJxczRjbmp2bmMzbiJ9.VuD1fkmjQtjk_lBP8haXoA";
+
+    public static final String BASEURL = "http://smartsquad.pe.hu/HungryEnglish/api/";
+//    public static final String BASEURL = "http://hungryenglish.net/HungryEnglish/api/";
 
     //    public static final String BASEURL = "http://mygadgetz.co.uk/HungryEnglish/api/";
     public class SHARED_PREFS {
         public static final String KEY_USER_ID = "user_id";
         public static final String KEY_USER_ROLE = "user_role";
-        public static final String KEY_IS_LOGGED_IN = "is_logged_in";
         public static final String KEY_USER_NAME = "user_name";
         public static final String KEY_IS_ACTIVE = "is_activity";
     }

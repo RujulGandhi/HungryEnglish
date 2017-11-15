@@ -25,7 +25,6 @@ import retrofit.Callback;
 import retrofit.http.GET;
 import retrofit.http.Multipart;
 import retrofit.http.POST;
-import retrofit.http.Part;
 import retrofit.http.PartMap;
 import retrofit.http.QueryMap;
 import retrofit.mime.TypedFile;
@@ -38,7 +37,6 @@ public interface WebServices {
 
     @POST("/register.php")
     public void getRegister(@QueryMap Map<String, String> map, Callback<RegisterMainResponse> callback);
-
 
     @POST("/change_password.php")
     public void resetPassword(@QueryMap Map<String, String> map, Callback<ForgotPasswordModel> callback);
@@ -69,14 +67,16 @@ public interface WebServices {
 
     @Multipart
     @POST("/add_info.php")
-    public void addInfo(@QueryMap Map<String, String> map, @Part("image1") TypedFile imageTypeFile, @Part("image2") TypedFile imageTypeFile2, @Part("image3") TypedFile image, Callback<AddInfoResponse> callback);
+    public void addInfo(@QueryMap Map<String, String> map, @PartMap Map<String, TypedFile> Files, Callback<AddInfoResponse> callback);
+
+    @POST("/add_info.php")
+    public void addInfo(@QueryMap Map<String, String> map, Callback<AddInfoResponse> callback);
 
     @POST("/profile.php")
     public void getTeacherProfile(@QueryMap Map<String, String> map, Callback<TeacherProfileMain> callback);
 
     @POST("/profile.php")
     public void getStudentProfile(@QueryMap Map<String, String> map, Callback<StudentGetProfileMainResponse> callback);
-
 
     @Multipart
     @POST("/teacher_profile.php")
@@ -106,6 +106,7 @@ public interface WebServices {
 
     @POST("/rate.php")
     void updateRate(@QueryMap HashMap<String, String> hashMap, Callback<BasicResponse> callback);
+
 }
 
 

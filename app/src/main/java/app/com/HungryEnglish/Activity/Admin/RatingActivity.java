@@ -64,8 +64,6 @@ public class RatingActivity extends BaseActivity {
                     binding.emptyView.setVisibility(View.VISIBLE);
                     binding.recyclerRatelist.setVisibility(View.GONE);
                 }
-
-
             }
 
             @Override

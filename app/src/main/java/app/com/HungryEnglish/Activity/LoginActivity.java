@@ -13,6 +13,7 @@ import app.com.HungryEnglish.Activity.Admin.AdminDashboardActivity;
 import app.com.HungryEnglish.Activity.Student.StudentProfileActivity;
 import app.com.HungryEnglish.Activity.Teacher.MainActivity;
 import app.com.HungryEnglish.Activity.Teacher.TeacherListActivity;
+import app.com.HungryEnglish.Activity.Teacher.TeacherProfileActivity;
 import app.com.HungryEnglish.Model.login.LoginMainResponse;
 import app.com.HungryEnglish.R;
 import app.com.HungryEnglish.Services.ApiHandler;
@@ -76,7 +77,6 @@ public class LoginActivity extends BaseActivity {
                     WriteSharePrefrence(context, Constant.SHARED_PREFS.KEY_USER_ID, loginUser.getData().getId());
                     WriteSharePrefrence(context, Constant.SHARED_PREFS.KEY_USER_ROLE, role);
                     WriteSharePrefrence(context, Constant.SHARED_PREFS.KEY_USER_NAME, loginUser.getData().getUsername());
-                    WriteSharePrefrence(context, Constant.SHARED_PREFS.KEY_IS_LOGGED_IN, "1");
                     WriteSharePrefrence(context, Constant.SHARED_PREFS.KEY_IS_ACTIVE, isActiveStatue);
 
                     if (role.equalsIgnoreCase("student") && isActiveStatue.equalsIgnoreCase("0")) {
@@ -92,7 +92,7 @@ public class LoginActivity extends BaseActivity {
                         toast(getString(R.string.admin_approve_request));
 
                     } else if (role.equalsIgnoreCase("teacher") && isActiveStatue.equalsIgnoreCase("1")) {
-                        startActivity(MainActivity.class);
+                        startActivity(TeacherProfileActivity.class);
                         toast(loginUser.getMsg());
                         finish();
                     } else if (role.equalsIgnoreCase("teacher") && isActiveStatue.equalsIgnoreCase("2")) {
@@ -127,7 +127,6 @@ public class LoginActivity extends BaseActivity {
     }
 
     public void onLogin(View view) {
-
         if (binding.edtUsername.getText().toString().equalsIgnoreCase(getString(R.string.null_value))) {
             binding.txtInputUsername.setErrorEnabled(true);
             binding.txtInputUsername.setError(getString(R.string.email_validation));
@@ -143,9 +142,6 @@ public class LoginActivity extends BaseActivity {
             binding.txtInputPasssword.setErrorEnabled(false);
         }
         callLoginApi();
-
-
-
     }
 
     public void onRegister(View view) {

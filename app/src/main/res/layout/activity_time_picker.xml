@@ -1,110 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+<layout>
 
-    <LinearLayout
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_margin="10dp"
-        android:gravity="center"
-        android:weightSum="7">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/day_mon"
-            style="@style/weekStyle"
-            android:layout_width="0dp"
+            style="@style/title_textview"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:gravity="center"
-            android:maxLength="1"
-            android:onClick="onSelect"
-            android:tag="Monday"
-            android:text="M" />
+            android:text="@string/instruction_days_selection" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:weightSum="7">
+
+            <TextView
+                android:id="@+id/day_mon"
+                style="@style/weekStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:maxLength="1"
+                android:onClick="onSelect"
+                android:tag="Mon"
+                android:text="M" />
+
+            <TextView
+                android:id="@+id/day_tue"
+                style="@style/weekStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:maxLength="1"
+                android:onClick="onSelect"
+                android:tag="Tue"
+                android:text="T" />
+
+            <TextView
+                android:id="@+id/day_wen"
+                style="@style/weekStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:maxLength="1"
+                android:onClick="onSelect"
+                android:tag="Wed"
+                android:text="W" />
+
+            <TextView
+                android:id="@+id/day_thu"
+                style="@style/weekStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:maxLength="1"
+                android:onClick="onSelect"
+                android:tag="Thu"
+                android:text="T" />
+
+            <TextView
+                android:id="@+id/day_fri"
+                style="@style/weekStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:maxLength="1"
+                android:onClick="onSelect"
+                android:tag="Fri"
+                android:text="F" />
+
+            <TextView
+                android:id="@+id/day_sat"
+                style="@style/weekStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:maxLength="1"
+                android:onClick="onSelect"
+                android:tag="Sat"
+                android:text="S" />
+
+            <TextView
+                android:id="@+id/day_sun"
+                style="@style/weekStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:maxLength="1"
+                android:onClick="onSelect"
+                android:tag="Sun"
+                android:text="S" />
+
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/day_tue"
-            style="@style/weekStyle"
-            android:layout_width="0dp"
+            android:id="@+id/response_string"
+            style="@style/small_textview"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
             android:gravity="center"
-            android:maxLength="1"
-            android:onClick="onSelect"
-            android:tag="Tuesday"
-            android:text="T" />
+            android:onClick="submit"
+            android:padding="@dimen/_5sdp" />
 
         <TextView
-            android:id="@+id/day_wen"
-            style="@style/weekStyle"
-            android:layout_width="0dp"
+            android:id="@+id/textview"
+            style="@style/green_btn"
+            android:layout_width="@dimen/_200sdp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_10sdp"
             android:gravity="center"
-            android:maxLength="1"
-            android:onClick="onSelect"
-            android:tag="Wensday"
-            android:text="W" />
-
-        <TextView
-            android:id="@+id/day_thu"
-            style="@style/weekStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:maxLength="1"
-            android:onClick="onSelect"
-            android:tag="Thursday"
-            android:text="T" />
-
-        <TextView
-            android:id="@+id/day_fri"
-            style="@style/weekStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:maxLength="1"
-            android:onClick="onSelect"
-            android:tag="Friday"
-            android:text="F" />
-
-        <TextView
-            android:id="@+id/day_sat"
-            style="@style/weekStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:maxLength="1"
-            android:onClick="onSelect"
-            android:tag="Saturday"
-            android:text="S" />
-
-        <TextView
-            android:id="@+id/day_sun"
-            style="@style/weekStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:maxLength="1"
-            android:onClick="onSelect"
-            android:tag="Sunday"
-            android:text="S" />
+            android:onClick="submit"
+            android:padding="@dimen/_5sdp"
+            android:text="Submit" />
 
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/textview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:onClick="submit"
-        android:text="Submit" />
-
-</LinearLayout>
+</layout>

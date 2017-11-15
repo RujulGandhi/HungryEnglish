@@ -55,16 +55,14 @@ public class ApiHandler {
     }
 
 
+    protected static OkHttpClient myOkHttpClient() {
 
-
-    protected static OkHttpClient myOkHttpClient(){
-
-        try{
+        try {
             OkHttpClient okHttpClient = new OkHttpClient();
             okHttpClient.setReadTimeout(70 * 1000, TimeUnit.MILLISECONDS);
             okHttpClient.setConnectTimeout(70 * 1000, TimeUnit.MILLISECONDS);
 
-            final TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() {
+            final TrustManager[] trustAllCerts = new TrustManager[]{new X509TrustManager() {
                 @Override
                 public void checkClientTrusted(
                         java.security.cert.X509Certificate[] chain,
@@ -81,7 +79,7 @@ public class ApiHandler {
                 public java.security.cert.X509Certificate[] getAcceptedIssuers() {
                     return null;
                 }
-            } };
+            }};
 
 
             final SSLContext sslContext = SSLContext.getInstance("SSL");
@@ -93,7 +91,7 @@ public class ApiHandler {
 
             return okHttpClient;
 
-        }catch (Exception e){
+        } catch (Exception e) {
             return null;
         }
     }
@@ -118,7 +116,5 @@ public class ApiHandler {
 //        return new OkClient(okHttpClient);
 //
 //    }
-
-
 
 }

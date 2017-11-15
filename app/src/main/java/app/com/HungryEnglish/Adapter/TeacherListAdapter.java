@@ -70,15 +70,13 @@ public class TeacherListAdapter extends RecyclerView.Adapter<TeacherListAdapter.
                 intent.putExtra("id", teacherList.get(position).getId());
                 intent.putExtra("role", teacherList.get(position).getRole());
                 intent.putExtra("callFrom", "Student");
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mContext.startActivity(intent);
 
             }
         });
         if (teacherList.get(position).getTeacherInfo() != null) {
             holder.tvSpecialSkills.setText(mContext.getString(R.string.special_skils_label) + " " + teacherList.get(position).getTeacherInfo().getSkills());
-            holder.tvClosestStation.setText(teacherList.get(position).getTeacherInfo().getAddress());
+            holder.tvClosestStation.setText(teacherList.get(position).getTeacherInfo().getNearest_station());
             String profilePicUrl = Constant.BASEURL + teacherList.get(position).getTeacherInfo().getProfileImage();
             Picasso.with(mContext).load(profilePicUrl).error(R.drawable.ic_user_default).placeholder(R.drawable.ic_user_default).into(holder.ivProfilePic);
 

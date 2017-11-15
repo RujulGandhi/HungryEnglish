@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="com.mapbox.mapboxsdk:mapbox-android-sdk-5.2.0-beta.3">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/mapbox-android-sdk-5.2.0-beta.3.aar/72336850c814d72bf2872221a3b99d5f/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/mapbox-android-sdk-5.2.0-beta.3.aar/72336850c814d72bf2872221a3b99d5f/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.mapbox.mapboxsdk/mapbox-android-sdk/5.2.0-beta.3/a2f47ca63d05d0cd7882839dc084398c5b2b593b/mapbox-android-sdk-5.2.0-beta.3-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

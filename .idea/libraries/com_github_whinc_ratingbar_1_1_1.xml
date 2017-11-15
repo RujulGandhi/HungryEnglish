@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="com.github.whinc:ratingbar-1.1.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/ratingbar-1.1.1.aar/100f0c356db2743862c1872787e2d322/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/ratingbar-1.1.1.aar/100f0c356db2743862c1872787e2d322/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
