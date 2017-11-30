@@ -106,6 +106,7 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/tmp" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/transforms" />
       <excludeFolder url="file://$MODULE_DIR$/build/outputs" />
+      <excludeFolder url="file://$MODULE_DIR$/build/reports" />
       <excludeFolder url="file://$MODULE_DIR$/build/tmp" />
     </content>
     <orderEntry type="jdk" jdkName="Android API 25 Platform" jdkType="Android SDK" />
@@ -114,16 +115,18 @@
     <orderEntry type="library" scope="TEST" name="com.android.support.test:exposed-instrumentation-api-publish-0.5" level="project" />
     <orderEntry type="library" name="com.crashlytics.sdk.android:answers-1.3.13" level="project" />
     <orderEntry type="library" name="com.google.code.gson:gson:2.8.0@jar" level="project" />
-    <orderEntry type="library" name="com.android.databinding:baseLibrary:3.0.0@jar" level="project" />
     <orderEntry type="library" name="com.google.android.gms:play-services-base-license-11.4.2" level="project" />
     <orderEntry type="library" name="com.android.support:cardview-v7-25.3.1" level="project" />
+    <orderEntry type="library" name="__local_aars__:E.\AndroidProjects\HungryEnglish\app\libs\mail.jar:unspecified@jar" level="project" />
     <orderEntry type="library" scope="TEST" name="com.squareup:javawriter:2.1.1@jar" level="project" />
     <orderEntry type="library" name="com.android.databinding:library-1.3.1" level="project" />
     <orderEntry type="library" name="com.intuit.sdp:sdp-android-1.0.4" level="project" />
-    <orderEntry type="library" name="__local_aars__:E.\AndroidProjectsBackup\HungryEnglish\app\libs\additionnal.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" name="__local_aars__:E.\AndroidProjects\HungryEnglish\app\libs\additionnal.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="io.fabric.sdk.android:fabric-1.3.17" level="project" />
     <orderEntry type="library" name="com.mapbox.mapboxsdk:mapbox-android-telemetry-2.2.3" level="project" />
+    <orderEntry type="library" name="__local_aars__:E.\AndroidProjects\HungryEnglish\app\libs\jxl.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="com.google.android.gms:play-services-basement-license-11.4.2" level="project" />
+    <orderEntry type="library" name="__local_aars__:E.\AndroidProjects\HungryEnglish\app\libs\activation.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="com.android.support.constraint:constraint-layout-solver:1.0.2@jar" level="project" />
     <orderEntry type="library" name="com.android.support.constraint:constraint-layout-1.0.2" level="project" />
     <orderEntry type="library" name="com.google.firebase:firebase-iid-11.4.2" level="project" />
@@ -154,10 +157,8 @@
     <orderEntry type="library" name="com.android.support:support-vector-drawable-25.3.1" level="project" />
     <orderEntry type="library" name="com.google.firebase:firebase-analytics-impl-11.4.2" level="project" />
     <orderEntry type="library" name="com.android.support:recyclerview-v7-25.3.1" level="project" />
-    <orderEntry type="library" name="__local_aars__:E.\AndroidProjectsBackup\HungryEnglish\app\libs\activation.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="com.google.android.gms:play-services-tasks-license-11.4.2" level="project" />
     <orderEntry type="library" name="com.google.firebase:firebase-iid-license-11.4.2" level="project" />
-    <orderEntry type="library" name="__local_aars__:E.\AndroidProjectsBackup\HungryEnglish\app\libs\jxl.jar:unspecified@jar" level="project" />
     <orderEntry type="library" scope="TEST" name="junit:junit:4.12@jar" level="project" />
     <orderEntry type="library" name="de.hdodenhof:circleimageview-2.1.0" level="project" />
     <orderEntry type="library" name="com.mapbox.mapboxsdk:mapbox-java-geojson:2.2.3@jar" level="project" />
@@ -183,11 +184,11 @@
     <orderEntry type="library" name="com.google.firebase:firebase-messaging-11.4.2" level="project" />
     <orderEntry type="library" name="com.crashlytics.sdk.android:crashlytics-2.6.8" level="project" />
     <orderEntry type="library" name="com.crashlytics.sdk.android:beta-1.2.5" level="project" />
+    <orderEntry type="library" name="com.android.databinding:baseLibrary:3.0.1@jar" level="project" />
     <orderEntry type="library" name="com.squareup.retrofit:retrofit:1.9.0@jar" level="project" />
     <orderEntry type="library" name="com.squareup.okhttp3:okhttp:3.9.0@jar" level="project" />
     <orderEntry type="library" name="com.crashlytics.sdk.android:crashlytics-core-2.3.17" level="project" />
     <orderEntry type="library" name="com.google.firebase:firebase-analytics-impl-license-11.4.2" level="project" />
-    <orderEntry type="library" name="__local_aars__:E.\AndroidProjectsBackup\HungryEnglish\app\libs\mail.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="com.mapbox.mapboxsdk:mapbox-android-sdk-5.2.0-beta.3" level="project" />
     <orderEntry type="library" name="com.google.firebase:firebase-analytics-license-11.4.2" level="project" />
   </component>

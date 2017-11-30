@@ -12,6 +12,7 @@ import app.com.HungryEnglish.Model.Profile.TeacherProfileMainResponse;
 import app.com.HungryEnglish.Model.Rate.RateBasicResponse;
 import app.com.HungryEnglish.Model.RemoveTeacher.BasicResponse;
 import app.com.HungryEnglish.Model.Report.ReportModel;
+import app.com.HungryEnglish.Model.StudentList.InfoWithTeacherList;
 import app.com.HungryEnglish.Model.StudentList.StudentListMainResponse;
 import app.com.HungryEnglish.Model.Teacher.InfoMainResponse;
 import app.com.HungryEnglish.Model.Teacher.TeacherListMainResponse;
@@ -19,6 +20,7 @@ import app.com.HungryEnglish.Model.Teacher.TeacherPendingRequestMainResponse;
 import app.com.HungryEnglish.Model.Teacher.TeacherProfileMain;
 import app.com.HungryEnglish.Model.admin.AddInfoResponse;
 import app.com.HungryEnglish.Model.admin.CountListMainResponse;
+import app.com.HungryEnglish.Model.admin.UserListResponse;
 import app.com.HungryEnglish.Model.login.LoginMainResponse;
 import app.com.HungryEnglish.Model.register.RegisterMainResponse;
 import retrofit.Callback;
@@ -86,13 +88,13 @@ public interface WebServices {
     public void createTeacherProfile(@QueryMap Map<String, String> map, Callback<TeacherProfileMainResponse> callback);
 
     @GET("/add_request.php")
-    void addRequest(@QueryMap Map<String, String> map, Callback<ForgotPasswordModel> callback);
+    public void addRequest(@QueryMap Map<String, String> map, Callback<ForgotPasswordModel> callback);
 
     @GET("/check_user.php")
-    void checkUser(@QueryMap Map<String, String> map, Callback<ForgotPasswordModel> callback);
+    public void checkUser(@QueryMap Map<String, String> map, Callback<ForgotPasswordModel> callback);
 
     @GET("/report_list.php")
-    void getReportList(Callback<ReportModel> callback);
+    public void getReportList(Callback<ReportModel> callback);
 
     @GET("/get_data.php")
     public void getAddress(@QueryMap Map<String, String> map, Callback<Address> callback);
@@ -105,8 +107,16 @@ public interface WebServices {
     public void getAllRating(@QueryMap Map<String, String> map, Callback<RateBasicResponse> callback);
 
     @POST("/rate.php")
-    void updateRate(@QueryMap HashMap<String, String> hashMap, Callback<BasicResponse> callback);
+    public void updateRate(@QueryMap HashMap<String, String> hashMap, Callback<BasicResponse> callback);
 
+    @POST("/get_users.php")
+    public void getUserList(Callback<UserListResponse> callback);
+
+    @POST("/get_info.php")
+    public void getInfoWithTeacherInfo(@QueryMap Map<String, String> map, Callback<InfoWithTeacherList> callback);
+
+    @POST("/user_isactive.php")
+    public void inactiveUser(@QueryMap HashMap<String, String> hashMap, Callback<BasicResponse> callback);
 }
 
 

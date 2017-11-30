@@ -61,7 +61,7 @@
             android:layout_margin="@dimen/_5sdp"
             android:layout_weight="1"
             android:gravity="center"
-            tools:text="@string/submit_en"
+            tools:text="@string/submit"
             android:padding="@dimen/_10sdp" />
 
     </LinearLayout>

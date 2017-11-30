@@ -151,25 +151,24 @@
             </android.support.design.widget.TextInputLayout>
 
 
-            <android.support.design.widget.TextInputLayout
+            <TextView
+                android:id="@+id/nearRailwayStationEdit"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_5sdp">
-
-                <EditText
-                    android:id="@+id/nearRailwayStationEdit"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_35sdp"
-                    android:layout_marginLeft="@dimen/_5sdp"
-                    android:layout_marginStart="@dimen/_5sdp"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:background="@drawable/bg_edt"
-                    android:hint="@string/location"
-                    android:inputType="text"
-                    android:padding="@dimen/_5sdp"
-                    android:textColor="@android:color/black"
-                    android:textSize="@dimen/_12sdp" />
-            </android.support.design.widget.TextInputLayout>
+                android:layout_height="@dimen/_35sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_marginRight="@dimen/_5sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@drawable/bg_edt"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:gravity="center_vertical|left"
+                android:hint="@string/address"
+                android:onClick="pickAddress"
+                android:padding="@dimen/_5sdp"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_12sdp" />
 
             <!--<TextView-->
             <!--android:id="@+id/nearRailwayStationTv"-->

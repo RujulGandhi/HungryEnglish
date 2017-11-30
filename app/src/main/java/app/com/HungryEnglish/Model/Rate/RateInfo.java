@@ -4,7 +4,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by good on 10/2/2017.
+ * Created by Rujul on 10/2/2017.
  */
 
 public class RateInfo {

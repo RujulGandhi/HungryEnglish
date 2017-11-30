@@ -154,7 +154,6 @@ public class AddImageOrLinkActivity extends BaseActivity {
                     return;
                 }
 
-
                 for (int i = 0; i < allEds.size(); i++) {
                     String edtText = getText(allEds.get(i));
                     String lintTitle = getText(lintTitleArray.get(i));
@@ -211,11 +210,11 @@ public class AddImageOrLinkActivity extends BaseActivity {
                             return;
                         }
                         if (addInfoResponse.getStatus().equals("false")) {
-                            Toast.makeText(getApplicationContext(), "" + addInfoResponse.getMsg(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), addInfoResponse.getMsg(), Toast.LENGTH_SHORT).show();
                             return;
                         }
                         if (addInfoResponse.getStatus().equals("true")) {
-                            Toast.makeText(getApplicationContext(), "" + addInfoResponse.getMsg(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(),  addInfoResponse.getMsg(), Toast.LENGTH_SHORT).show();
                             startActivity(AdminDashboardActivity.class);
                             finish();
                         }

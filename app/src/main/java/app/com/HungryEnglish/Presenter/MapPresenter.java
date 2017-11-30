@@ -16,7 +16,7 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 
 /**
- * Created by good on 11/14/2017.
+ * Created by Rujul on 11/14/2017.
  */
 
 public class MapPresenter extends BasePresenter<MapView> implements OnMapReadyCallback {

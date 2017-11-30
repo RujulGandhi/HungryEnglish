@@ -41,7 +41,7 @@
                 android:orientation="vertical">
 
 
-                <de.hdodenhof.circleimageview.CircleImageView
+                <app.com.HungryEnglish.Views.CircleImageView
                     android:id="@+id/profile_image"
                     android:layout_width="120dp"
                     android:layout_height="120dp"
@@ -176,8 +176,10 @@
                     android:layout_marginStart="@dimen/_5sdp"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:background="@drawable/bg_edt"
+                    android:ellipsize="end"
                     android:gravity="center_vertical|left"
                     android:hint="@string/address"
+                    android:maxLines="1"
                     android:onClick="pickAddress"
                     android:padding="@dimen/_5sdp"
                     android:textColor="@android:color/black"
@@ -425,6 +427,7 @@
 
                     </android.support.design.widget.TextInputLayout>
 
+
                     <ImageView
                         android:id="@+id/ivAudioFileStatus"
                         android:layout_width="@dimen/_25sdp"
@@ -443,6 +446,32 @@
                         android:visibility="gone" />
 
                 </LinearLayout>
+
+                <TextView
+                    style="@style/small_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/online_class" />
+
+                <RadioGroup
+                    android:id="@+id/radioGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/radio_true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/yes" />
+
+                    <RadioButton
+                        android:id="@+id/radio_false"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="@string/no" />
+                </RadioGroup>
 
                 <LinearLayout
                     android:id="@+id/student_rating_linear"
@@ -473,7 +502,9 @@
                         android:layout_gravity="center"
                         android:onClick="rateTeacher"
                         android:text="@string/submit" />
+
                 </LinearLayout>
+
 
                 <Button
                     android:id="@+id/btnSubmiTeacherProfile"

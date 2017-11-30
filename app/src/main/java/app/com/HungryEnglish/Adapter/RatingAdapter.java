@@ -18,7 +18,7 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 
 /**
- * Created by good on 10/2/2017.
+ * Created by Rujul on 10/2/2017.
  */
 
 public class RatingAdapter extends RecyclerView.Adapter<RatingAdapter.MyViewHolder> {

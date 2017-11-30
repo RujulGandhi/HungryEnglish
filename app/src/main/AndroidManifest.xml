@@ -35,6 +35,9 @@
             android:name=".Activity.Admin.AdminTeacherList"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".Activity.ImageActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".Activity.RegisterActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -81,6 +84,14 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".Activity.Admin.ReportDetails"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".Activity.Admin.AdminMapActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".Activity.Student.StudentDashboardActivity"
             android:screenOrientation="portrait" />
 
         <!--

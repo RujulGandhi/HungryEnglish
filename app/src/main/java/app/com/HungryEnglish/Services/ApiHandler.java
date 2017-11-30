@@ -33,14 +33,12 @@ public class ApiHandler {
             okHttpClient.setReadTimeout(70 * 1000, TimeUnit.MILLISECONDS);
 
 //            okHttpClient.setSslSocketFactory(new NoSSLv3Factory());
-
             RestAdapter restAdapter = new RestAdapter.Builder()
                     .setLogLevel(RestAdapter.LogLevel.FULL)
                     .setEndpoint(BASE_URL)
                     .setClient(new OkClient(myOkHttpClient()))
                     .setConverter(new GsonConverter(new Gson()))
                     .build();
-
 
 //            ConnectionSpec.Builder obsoleteSpecBuilder = new ConnectionSpec.Builder(ConnectionSpec.COMPATIBLE_TLS);
 //            obsoleteSpecBuilder = obsoleteSpecBuilder.cipherSuites("TLS_DHE_DSS_WITH_AES_128_CBC_SHA");

@@ -32,7 +32,7 @@ import app.com.HungryEnglish.databinding.ActivityMapBinding;
 import static app.com.HungryEnglish.Util.Constant.MAP_BOX;
 
 /**
- * Created by good on 11/9/2017.
+ * Created by Rujul on 11/9/2017.
  */
 
 public class MapActivity extends BaseActivity implements MapView {
@@ -170,7 +170,7 @@ public class MapActivity extends BaseActivity implements MapView {
                 Intent resultIntent = new Intent();
                 resultIntent.putExtra("address", address.getData());
                 resultIntent.putExtra(RequestParams.Lat.getValue(), String.valueOf(lat));
-                resultIntent.putExtra(RequestParams.Lat.getValue(), String.valueOf(lng));
+                resultIntent.putExtra(RequestParams.Lng.getValue(), String.valueOf(lng));
                 setResult(RESULT_OK, resultIntent);
                 finish();
             }
@@ -197,5 +197,10 @@ public class MapActivity extends BaseActivity implements MapView {
     @Override
     public void showErrorMsg(String msg) {
         toast(msg);
+    }
+
+    @Override
+    public void onBackPressed() {
+
     }
 }

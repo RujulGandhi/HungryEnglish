@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/_9sdp"
     android:layout_marginBottom="@dimen/_9sdp"
-    android:layout_marginRight="@dimen/_15sdp"
     android:layout_marginLeft="@dimen/_15sdp"
+    android:layout_marginRight="@dimen/_15sdp"
+    android:layout_marginTop="@dimen/_9sdp"
     android:background="@drawable/list_item_bg"
     android:clickable="true"
     android:focusable="true"
@@ -20,14 +19,14 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+        <app.com.HungryEnglish.Views.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/ivTeacherProfilePic"
             android:layout_width="@dimen/_100sdp"
             android:layout_height="@dimen/_100sdp"
-            android:scaleType="centerCrop"
             android:paddingBottom="@dimen/_10sdp"
             android:paddingLeft="@dimen/_10sdp"
             android:paddingRight="@dimen/_10sdp"
+            android:scaleType="centerCrop"
             android:src="@drawable/ic_user_default"
             app:civ_border_color="@color/colorAccent"
             app:civ_border_width="2dp" />
@@ -145,6 +144,24 @@
                 android:layout_toRightOf="@id/dispDeleteText"
                 android:src="@drawable/ic_remove"
                 android:tint="@color/redDelete" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/inactiveRel"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/inactive_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/inactive"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_16sdp" />
 
         </RelativeLayout>
 

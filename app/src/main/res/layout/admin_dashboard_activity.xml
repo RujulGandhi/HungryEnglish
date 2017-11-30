@@ -275,6 +275,7 @@
                 android:layout_marginEnd="@dimen/_2sdp"
                 android:layout_marginRight="@dimen/_2sdp"
                 android:layout_weight="1"
+                android:onClick="onRate"
                 android:background="@color/white"
                 android:gravity="center_vertical"
                 android:orientation="vertical">
@@ -323,8 +324,8 @@
                 android:layout_marginLeft="@dimen/_2sdp"
                 android:layout_marginStart="@dimen/_2sdp"
                 android:layout_weight="1"
+                android:onClick="onMap"
                 android:background="@color/colorPrimary"
-
                 android:orientation="vertical">
 
                 <RelativeLayout

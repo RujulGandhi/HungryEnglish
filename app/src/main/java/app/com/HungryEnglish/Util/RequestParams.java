@@ -1,13 +1,15 @@
 package app.com.HungryEnglish.Util;
 
 /**
- * Created by good on 11/15/2017.
+ * Created by Rujul on 11/15/2017.
  */
 
 public enum RequestParams {
     Lat("lat"),
     Lng("lng"),
     ActionName("action"),
+    Role("role"),
+    Status("status"),
     ActionAddress("get_address");
 
     private String value;

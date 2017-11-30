@@ -1,5 +1,7 @@
 package app.com.HungryEnglish.Activity.Admin;
 
+import android.content.Context;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -22,17 +24,26 @@ import retrofit.client.Response;
 
 
 /**
- * Created by good on 10/2/2017.
+ * Created by Rujul on 10/2/2017.
  */
 
 public class RatingActivity extends BaseActivity {
     ActivityRateListBinding binding;
     RatingAdapter adapter;
 
+    public static void start(Context context) {
+        Intent in = new Intent(context, RatingActivity.class);
+        context.startActivity(in);
+    }
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_rate_list);
+        initUi();
+    }
+
+    private void initUi() {
         getRatingList();
         setTitle("Rating List");
     }

@@ -33,6 +33,28 @@ public class GetDataStudentProfile {
     @SerializedName("is_active")
     @Expose
     private String isActive;
+    @SerializedName("latitude")
+    @Expose
+    private String lat;
+    @SerializedName("longitude")
+    @Expose
+    private String lng;
+
+    public String getLat() {
+        return lat;
+    }
+
+    public void setLat(String lat) {
+        this.lat = lat;
+    }
+
+    public String getLng() {
+        return lng;
+    }
+
+    public void setLng(String lng) {
+        this.lng = lng;
+    }
 
     public String getId() {
         return id;

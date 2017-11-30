@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -35,6 +36,7 @@ import app.com.HungryEnglish.Activity.BaseActivity;
 import app.com.HungryEnglish.Activity.Teacher.TeacherListActivity;
 import app.com.HungryEnglish.Activity.TimePickerActivity;
 import app.com.HungryEnglish.Interface.OnDialogEvent;
+import app.com.HungryEnglish.MapActivity;
 import app.com.HungryEnglish.Model.Address;
 import app.com.HungryEnglish.Model.Profile.StudentGetProfileMainResponse;
 import app.com.HungryEnglish.Model.Profile.StudentProfileMainResponse;
@@ -64,7 +66,7 @@ import static app.com.HungryEnglish.Util.Constant.TIMEPICKER_REQUEST_CODE;
 
 public class StudentProfileActivity extends BaseActivity {
 
-    private EditText fullNameStudentEdit, ageEdit, nearRailwayStationEdit, wechatEdt, userNameEdt, skillEdt, emailEdt;
+    private EditText fullNameStudentEdit, ageEdit, wechatEdt, userNameEdt, skillEdt, emailEdt;
     private RadioGroup radioSex;
     private RadioButton radioMale, radioFemale;
     private RadioButton radioButton;
@@ -76,6 +78,7 @@ public class StudentProfileActivity extends BaseActivity {
             Manifest.permission.ACCESS_COARSE_LOCATION,
             Manifest.permission.ACCESS_FINE_LOCATION};
     private GPSTracker gps;
+    final int SELECT_ADDRESS = 500;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -156,7 +159,6 @@ public class StudentProfileActivity extends BaseActivity {
         fullNameStudentEdit = (EditText) findViewById(R.id.fullNameStudentEdit);
         wechatEdt = (EditText) findViewById(R.id.wechatEdit);
         ageEdit = (EditText) findViewById(R.id.ageEdit);
-        nearRailwayStationEdit = (EditText) findViewById(R.id.nearRailwayStationEdit);
         login_register = (Button) findViewById(R.id.login_register);
         radioSex = (RadioGroup) findViewById(R.id.radioSex);
         radioMale = (RadioButton) findViewById(R.id.radioMale);
@@ -224,10 +226,15 @@ public class StudentProfileActivity extends BaseActivity {
         map.put("age", String.valueOf(ageEdit.getText()));
         map.put("mobile", String.valueOf(wechatEdt.getText()));
         map.put("sex", String.valueOf(sex));
-        map.put("station", String.valueOf(nearRailwayStationEdit.getText()));
+        map.put("station", String.valueOf(binding.nearRailwayStationEdit.getText()));
         map.put("skill", String.valueOf(skillEdt.getText().toString()));
         map.put("username", String.valueOf(userNameEdt.getText().toString()));
-
+        String latLngStr = String.valueOf(binding.nearRailwayStationEdit.getTag());
+        String[] latLngArray = latLngStr.split(",");
+        if (latLngArray.length > 1) {
+            map.put("lat", String.valueOf(latLngArray[0]));
+            map.put("lng", String.valueOf(latLngArray[1]));
+        }
         return map;
     }
 
@@ -262,6 +269,11 @@ public class StudentProfileActivity extends BaseActivity {
         return true;
     }
 
+    public void pickAddress(View view) {
+        Intent in = new Intent(this, MapActivity.class);
+        startActivityForResult(in, SELECT_ADDRESS);
+    }
+
     private void getProfile() {
         if (!Utils.checkNetwork(StudentProfileActivity.this)) {
             Utils.showCustomDialog("Internet Connection !", getResources().getString(R.string.internet_connection_error), StudentProfileActivity.this);
@@ -285,6 +297,10 @@ public class StudentProfileActivity extends BaseActivity {
                 if (studentGetProfileMainResponse.getInfo() != null) {
                     String availableTimeString = studentGetProfileMainResponse.getInfo().getAvailableTime();
                     binding.avaibilityStudentEdit.setTag(availableTimeString);
+                    String lat = studentGetProfileMainResponse.getData().getLat();
+                    String lng = studentGetProfileMainResponse.getData().getLng();
+                    if (lat.length() > 1 && lng.length() > 1)
+                        binding.nearRailwayStationEdit.setTag(lat + "," + lng);
                     binding.avaibilityStudentEdit.setText(Utils.getDisplayString(availableTimeString));
                     ageEdit.setText(studentGetProfileMainResponse.getInfo().getAge());
 
@@ -293,7 +309,7 @@ public class StudentProfileActivity extends BaseActivity {
                     } else {
                         radioFemale.setChecked(true);
                     }
-                    nearRailwayStationEdit.setText(studentGetProfileMainResponse.getInfo().getStation());
+                    binding.nearRailwayStationEdit.setText(studentGetProfileMainResponse.getInfo().getStation());
                     skillEdt.setText(studentGetProfileMainResponse.getInfo().getSkills());
                 }
             }
@@ -328,10 +344,20 @@ public class StudentProfileActivity extends BaseActivity {
                 binding.avaibilityStudentEdit.setText(Utils.getDisplayString(displayString));
                 binding.avaibilityStudentEdit.setTag(displayString);
                 break;
+            case SELECT_ADDRESS:
+                String address = data.getExtras().getString("address");
+                String lat = data.getExtras().getString("lat");
+                String lng = data.getExtras().getString("lng");
+                binding.nearRailwayStationEdit.setText(address);
+                binding.nearRailwayStationEdit.setTag(lat + "," + lng);
+                Log.d("address", String.valueOf(binding.nearRailwayStationEdit.getTag()));
+                break;
         }
     }
 
     public void onUpdateProfile(View view) {
+
+
         if (fullNameStudentEdit.getText().toString().equalsIgnoreCase("")) {
             fullNameStudentEdit.setError("Enter Full Name");
             fullNameStudentEdit.requestFocus();
@@ -344,11 +370,19 @@ public class StudentProfileActivity extends BaseActivity {
             return;
         }
 
-        if (nearRailwayStationEdit.getText().toString().equalsIgnoreCase("")) {
-            nearRailwayStationEdit.setError("Enter Nearest Railway Station");
-            nearRailwayStationEdit.requestFocus();
+        if (binding.nearRailwayStationEdit.getText().toString().equalsIgnoreCase("")) {
+            toast("Enter Nearest Railway Station");
             return;
         }
+
+
+        if (binding.nearRailwayStationEdit.getTag() == null) {
+//            String latLngStr = String.valueOf(binding.nearRailwayStationEdit.getTag());
+//            String[] latLngArray = latLngStr.split(",");
+            toast("Enter Nearest Railway Station");
+            return;
+        }
+
 
         if (binding.avaibilityStudentEdit.getText().toString().equalsIgnoreCase("")) {
             binding.avaibilityStudentEdit.setError("Enter Avaibility");

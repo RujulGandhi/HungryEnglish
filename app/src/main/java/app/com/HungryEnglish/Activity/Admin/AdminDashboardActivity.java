@@ -78,9 +78,6 @@ public class AdminDashboardActivity extends BaseActivity {
                     }
                 });
                 break;
-            case R.id.rate:
-                startActivity(RatingActivity.class);
-                break;
         }
         return true;
     }
@@ -175,4 +172,11 @@ public class AdminDashboardActivity extends BaseActivity {
     }
 
 
+    public void onMap(View view) {
+        AdminMapActivity.start(this);
+    }
+
+    public void onRate(View view) {
+        RatingActivity.start(this);
+    }
 }

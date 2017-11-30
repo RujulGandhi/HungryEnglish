@@ -20,8 +20,10 @@
             android:id="@+id/mapView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            mapbox:mapbox_styleUrl="@string/mapbox_style_satellite_streets">
+            mapbox:mapbox_cameraTargetLat="39.913818"
+            mapbox:mapbox_cameraTargetLng="116.363625"
+            mapbox:mapbox_cameraZoom="11"
+            mapbox:mapbox_styleUrl="@string/mapbox_style_satellite_streets" />
 
-        </com.mapbox.mapboxsdk.maps.MapView>
     </RelativeLayout>
 </layout>

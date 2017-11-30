@@ -16,6 +16,8 @@ import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -185,7 +187,8 @@ public class MainActivity extends BaseActivity {
 
                     }
 //                    binding.viewPager.setAdapter(new CustomPagerAdapter(MainActivity.this, imageArray, linkArray));
-                    binding.viewPager.setAdapter(new ImageAdapter(getSupportFragmentManager(), MainActivity.this, imageArray, linkArray));
+                    Picasso pic = Picasso.with(getApplicationContext());
+                    binding.viewPager.setAdapter(new ImageAdapter(getSupportFragmentManager(), MainActivity.this, imageArray, linkArray, pic));
                     binding.tablayout.setupWithViewPager(binding.viewPager, true);
                     autoScroll();
                 }

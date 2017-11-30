@@ -108,5 +108,4 @@ public class TeacherPendingAdapter extends RecyclerView.Adapter<TeacherPendingAd
         return teacherList.size();
     }
 
-
 }

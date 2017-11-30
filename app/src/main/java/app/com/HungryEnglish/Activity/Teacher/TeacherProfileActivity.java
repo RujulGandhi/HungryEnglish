@@ -79,6 +79,7 @@ import static app.com.HungryEnglish.Util.Constant.SHARED_PREFS.KEY_IS_ACTIVE;
 import static app.com.HungryEnglish.Util.Constant.SHARED_PREFS.KEY_USER_ID;
 import static app.com.HungryEnglish.Util.Constant.SHARED_PREFS.KEY_USER_ROLE;
 import static app.com.HungryEnglish.Util.Constant.TIMEPICKER_REQUEST_CODE;
+import static app.com.HungryEnglish.Util.Utils.alert;
 import static app.com.HungryEnglish.Util.Utils.getPath;
 import static app.com.HungryEnglish.Util.Utils.getRealPathFromURI;
 
@@ -210,6 +211,9 @@ public class TeacherProfileActivity extends BaseActivity implements
             btnAudioFile.setVisibility(View.VISIBLE);
 
             binding.etNearestStation.setKeyListener(null);
+            binding.radioTrue.setKeyListener(null);
+            binding.radioFalse.setKeyListener(null);
+
             btnCvUpload.setKeyListener(null);
             btn_id_proof.setKeyListener(null);
             btnAudioFile.setKeyListener(null);
@@ -314,7 +318,10 @@ public class TeacherProfileActivity extends BaseActivity implements
                         etMobileOrWechatId.requestFocus();
                         return;
                     }
-
+                    if (binding.currnetPlaceTv.getTag() == null) {
+                        toast("Enter Nearest Railway Station");
+                        return;
+                    }
                     updateTeacherProfile();
                     break;
                 }
@@ -349,19 +356,13 @@ public class TeacherProfileActivity extends BaseActivity implements
                 // If request is cancelled, the result arrays are empty.
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
                     toast(R.string.sucess_external_storage_msg);
-
                 } else {
-
                     toast(R.string.error_permission_msg);
-                    // permission denied, boo! Disable the
-                    // functionality that depends on this permission.
                 }
                 return;
             }
         }
-
     }
 
     @Override
@@ -458,15 +459,27 @@ public class TeacherProfileActivity extends BaseActivity implements
                 fullNameTeacherEdit.setText(teacherProfileMain.getData().getFullName());
                 emailEdit.setText(teacherProfileMain.getData().getEmail());
                 // need set tag of current tv fields.
-                Log.d("Lat Lng", teacherProfileMain.getData().getLat() + " , " + teacherProfileMain.getData().getLng());
 
                 userNameEdit.setText(teacherProfileMain.getData().getUsername());
                 etMobileOrWechatId.setText(String.valueOf(teacherProfileMain.getData().getMobNo()));
                 int rating = teacherProfileMain.getData().getRating().equalsIgnoreCase("") ? 0 : Integer.parseInt(teacherProfileMain.getData().getRating());
                 binding.ratingBar.setCount(rating);
+
+                String lat = teacherProfileMain.getData().getLat();
+                String lng = teacherProfileMain.getData().getLng();
+                if (lat.length() > 1 && lng.length() > 1)
+                    binding.currnetPlaceTv.setTag(lat + "," + lng);
+
                 if (teacherProfileMain.getInfo() != null) {
                     String responseString = teacherProfileMain.getInfo().getAvailableTime();
                     binding.avaibilityDateTeacherTv.setTag(responseString);
+
+                    if (teacherProfileMain.getInfo().getOnline_status().equalsIgnoreCase("true")) {
+                        binding.radioTrue.setChecked(true);
+                    } else {
+                        binding.radioFalse.setChecked(true);
+                    }
+
                     binding.avaibilityDateTeacherTv.setText(Utils.getDisplayString(responseString));
                     binding.currnetPlaceTv.setText(teacherProfileMain.getInfo().getAddress());
                     specialSkillTeacherEdit.setText(teacherProfileMain.getInfo().getSkills());
@@ -528,9 +541,7 @@ public class TeacherProfileActivity extends BaseActivity implements
 
         Utils.showDialog(this);
         TypedFile proImage = null, idProof = null, resume = null, audiofile = null;
-
         Map<String, TypedFile> files = new HashMap<String, TypedFile>();
-
         if (pathProfilePic == null && pathIdProofPic == null && pathCvDoc == null && pathAudioFile == null) {
             ApiHandler.getApiService().createTeacherProfile(getTeacherProfileDetail(), new Callback<TeacherProfileMainResponse>() {
                 @Override
@@ -656,6 +667,13 @@ public class TeacherProfileActivity extends BaseActivity implements
         } else {
             map.put("uId", id);
         }
+
+
+        if (binding.radioGroup.getCheckedRadioButtonId() == R.id.radio_true) {
+            map.put("online_class", "1");
+        } else {
+            map.put("online_class", "0");
+        }
         map.put("fullname", String.valueOf(fullNameTeacherEdit.getText()));
         map.put("available_time", String.valueOf(avaibilityTimeTv.getTag()));
         map.put("address", String.valueOf(binding.currnetPlaceTv.getText()));
@@ -706,25 +724,35 @@ public class TeacherProfileActivity extends BaseActivity implements
 
 
     private void RequestToTeacher() {
-        Utils.showDialog(mContext);
-        HashMap<String, String> map = new HashMap<>();
-        map.put("teacherId", id);
-        map.put("studentId", Utils.ReadSharePrefrence(mContext, Constant.SHARED_PREFS.KEY_USER_ID));
-        ApiHandler.getApiService().addRequest(map, new retrofit.Callback<ForgotPasswordModel>() {
+        alert(this, getString(R.string.requst_teacher), getString(R.string.confirm_req), getString(R.string.yes), getString(R.string.no), new OnDialogEvent() {
             @Override
-            public void success(ForgotPasswordModel forgotPasswordModel, Response response) {
-                Utils.dismissDialog();
-                if (forgotPasswordModel.getStatus().toString().equals("true")) {
-                    toast(forgotPasswordModel.getMsg());
-                    sendEmail(Utils.ReadSharePrefrence(mContext, Constant.SHARED_PREFS.KEY_USER_NAME), String.valueOf(userNameEdit.getText()));
-                    onBackPressed();
-                }
+            public void onPositivePressed() {
+                Utils.showDialog(mContext);
+                HashMap<String, String> map = new HashMap<>();
+                map.put("teacherId", id);
+                map.put("studentId", Utils.ReadSharePrefrence(mContext, Constant.SHARED_PREFS.KEY_USER_ID));
+                ApiHandler.getApiService().addRequest(map, new retrofit.Callback<ForgotPasswordModel>() {
+                    @Override
+                    public void success(ForgotPasswordModel forgotPasswordModel, Response response) {
+                        Utils.dismissDialog();
+                        if (forgotPasswordModel.getStatus().toString().equals("true")) {
+                            toast(forgotPasswordModel.getMsg());
+                            sendEmail(Utils.ReadSharePrefrence(mContext, Constant.SHARED_PREFS.KEY_USER_NAME), String.valueOf(userNameEdit.getText()));
+                            onBackPressed();
+                        }
+                    }
+
+                    @Override
+                    public void failure(RetrofitError error) {
+                        Utils.dismissDialog();
+                        toast(getString(R.string.try_again));
+                    }
+                });
             }
 
             @Override
-            public void failure(RetrofitError error) {
-                Utils.dismissDialog();
-                toast(getString(R.string.try_again));
+            public void onNegativePressed() {
+
             }
         });
     }
@@ -821,6 +849,14 @@ public class TeacherProfileActivity extends BaseActivity implements
     public void pickAddress(View view) {
         Intent in = new Intent(this, MapActivity.class);
         startActivityForResult(in, SELECT_ADDRESS);
+    }
+
+    public static void start(Context context, String id) {
+        Intent intent = new Intent(context, TeacherProfileActivity.class);
+        intent.putExtra("id", id);
+        intent.putExtra("role", "teacher");
+        intent.putExtra("callFrom", "Student");
+        context.startActivity(intent);
     }
 
 

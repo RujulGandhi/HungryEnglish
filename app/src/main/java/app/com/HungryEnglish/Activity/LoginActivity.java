@@ -10,9 +10,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import app.com.HungryEnglish.Activity.Admin.AdminDashboardActivity;
+import app.com.HungryEnglish.Activity.Student.StudentDashboardActivity;
 import app.com.HungryEnglish.Activity.Student.StudentProfileActivity;
 import app.com.HungryEnglish.Activity.Teacher.MainActivity;
-import app.com.HungryEnglish.Activity.Teacher.TeacherListActivity;
 import app.com.HungryEnglish.Activity.Teacher.TeacherProfileActivity;
 import app.com.HungryEnglish.Model.login.LoginMainResponse;
 import app.com.HungryEnglish.R;
@@ -84,7 +84,7 @@ public class LoginActivity extends BaseActivity {
                         toast(loginUser.getMsg());
                         finish();
                     } else if (role.equalsIgnoreCase("student") && isActiveStatue.equalsIgnoreCase("1")) {
-                        startActivity(TeacherListActivity.class);
+                        startActivity(StudentDashboardActivity.class);
                         toast(loginUser.getMsg());
                         finish();
                     } else if (role.equalsIgnoreCase("teacher") && isActiveStatue.equalsIgnoreCase("0")) {

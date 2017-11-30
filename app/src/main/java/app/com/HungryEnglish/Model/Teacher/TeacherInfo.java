@@ -45,6 +45,18 @@ public class TeacherInfo {
     @Expose
     private String nearest_station;
 
+    @SerializedName("online_class")
+    @Expose
+    private String online_status;
+
+    public String getOnline_status() {
+        return online_status;
+    }
+
+    public void setOnline_status(String online_status) {
+        this.online_status = online_status;
+    }
+
     public String getHourly_rate() {
         return hourly_rate;
     }

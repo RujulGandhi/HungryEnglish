@@ -12,7 +12,7 @@ import android.widget.TextView;
 import app.com.HungryEnglish.R;
 
 /**
- * Created by good on 10/4/2017.
+ * Created by Rujul on 10/4/2017.
  */
 
 public class TitleView extends View {

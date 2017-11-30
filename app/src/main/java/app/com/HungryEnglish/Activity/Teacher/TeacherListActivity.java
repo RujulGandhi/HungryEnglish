@@ -1,6 +1,8 @@
 package app.com.HungryEnglish.Activity.Teacher;
 
 import android.app.Dialog;
+import android.content.Context;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -44,6 +46,11 @@ public class TeacherListActivity extends BaseActivity {
     private DialogFilterBinding dialogBinding;
     private Dialog dialog;
     private ArrayList<String> daysFilter;
+
+    public static void start(Context context) {
+        Intent intent = new Intent(context, TeacherListActivity.class);
+        context.startActivity(intent);
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -197,7 +204,6 @@ public class TeacherListActivity extends BaseActivity {
         if (daysFilter.contains("Sun")) {
             dialogBinding.daySun.setSelected(true);
         }
-
     }
 
     public void onSubmitFilter(View view) {

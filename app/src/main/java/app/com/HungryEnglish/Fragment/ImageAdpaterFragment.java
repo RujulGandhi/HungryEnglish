@@ -19,7 +19,7 @@ import app.com.HungryEnglish.Util.Utils;
 import app.com.HungryEnglish.databinding.AdapterImageBinding;
 
 /**
- * Created by good on 10/8/2017.
+ * Created by Rujul on 10/8/2017.
  */
 @SuppressLint("ValidFragment")
 public class ImageAdpaterFragment extends Fragment {
