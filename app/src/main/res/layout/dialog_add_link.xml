@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="@dimen/_200sdp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_rect"
+        android:elevation="@dimen/_5sdp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:padding="@dimen/_5sdp"
+            android:text="@string/add_link"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_20sdp" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/txtInput_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp">
+
+
+            <EditText
+                android:id="@+id/edt_title"
+                style="@style/StyledTilEditTextTheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:hint="@string/add_title"
+                android:inputType="text"
+                android:padding="@dimen/_10sdp"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_12sdp" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/txtInput_link"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp">
+
+
+            <EditText
+                android:id="@+id/edt_link"
+                style="@style/StyledTilEditTextTheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:hint="@string/add_link"
+                android:inputType="text"
+                android:padding="@dimen/_10sdp"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_12sdp" />
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/submit_link"
+            style="@style/green_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:text="@string/submit_en" />
+
+    </LinearLayout>
+</layout>

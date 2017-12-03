@@ -9,7 +9,11 @@ public enum RequestParams {
     Lng("lng"),
     ActionName("action"),
     Role("role"),
+    Student("student"),
+    Teacher("teacher"),
     Status("status"),
+    Title("title"),
+    Link("link"),
     ActionAddress("get_address");
 
     private String value;

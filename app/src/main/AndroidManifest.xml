@@ -25,12 +25,7 @@
             android:name=".Activity.SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="adjustPan">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:windowSoftInputMode="adjustPan"></activity>
         <activity
             android:name=".Activity.Admin.AdminTeacherList"
             android:screenOrientation="portrait" />
@@ -85,11 +80,9 @@
         <activity
             android:name=".Activity.Admin.ReportDetails"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".Activity.Admin.AdminMapActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".Activity.Student.StudentDashboardActivity"
             android:screenOrientation="portrait" />
@@ -114,31 +107,32 @@
      See README(https://goo.gl/l4GJaQ) for more.
         -->
         <!--
-         <meta-data
+         <madminAddInfoDetaildata
              android:name="com.google.firebase.messaging.default_notification_icon"
              android:resource="@mipmap/ic_launcher" />
          &lt;!&ndash; Set color used with incoming notification messages. This is used when no color is set for the incoming
               notification message. See README(https://goo.gl/6BKBk7) for more. &ndash;&gt;
-         <meta-data
+         <madminAddInfoDetaildata
              android:name="com.google.firebase.messaging.default_notification_color"
              android:resource="@color/colorAccent" />
         -->
 
 
         <!--
-             <meta-data
+             <madminAddInfoDetaildata
              android:name="com.google.android.gms.version"
              android:value="@integer/google_play_services_version" />
         -->
 
-        <activity android:name=".MapActivity">
+        <activity android:name=".MapActivity"></activity>
 
-        </activity>
         <service android:name=".Services.DownloadService" />
 
         <activity
             android:name=".Main2Activity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait">
+
+        </activity>
         <activity
             android:name=".Activity.TimePickerActivity"
             android:screenOrientation="portrait" />
@@ -146,6 +140,13 @@
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="e9ea167ff0b78b83c9ac8d2c1db7cfe18599f786" />
+
+        <activity android:name=".Activity.Admin.AdminAddInfo">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

@@ -19,6 +19,7 @@ import app.com.HungryEnglish.Model.Teacher.TeacherListMainResponse;
 import app.com.HungryEnglish.Model.Teacher.TeacherPendingRequestMainResponse;
 import app.com.HungryEnglish.Model.Teacher.TeacherProfileMain;
 import app.com.HungryEnglish.Model.admin.AddInfoResponse;
+import app.com.HungryEnglish.Model.admin.AdminAddInfoResponse;
 import app.com.HungryEnglish.Model.admin.CountListMainResponse;
 import app.com.HungryEnglish.Model.admin.UserListResponse;
 import app.com.HungryEnglish.Model.login.LoginMainResponse;
@@ -117,6 +118,9 @@ public interface WebServices {
 
     @POST("/user_isactive.php")
     public void inactiveUser(@QueryMap HashMap<String, String> hashMap, Callback<BasicResponse> callback);
+
+    @POST("/add_links.php")
+    public void addStudentInfo(@QueryMap HashMap<String, String> hashMap, Callback<AdminAddInfoResponse> callback);
 }
 
 

@@ -47,7 +47,6 @@ public class AdminMapPresenter extends BasePresenter<AdminMapView> implements On
 
     public void getList() {
         getMvpView().showProgressDialog();
-
         ApiHandler.getApiService().getUserList(new Callback<UserListResponse>() {
             @Override
             public void success(UserListResponse basicResponse, Response response) {
@@ -97,8 +96,6 @@ public class AdminMapPresenter extends BasePresenter<AdminMapView> implements On
             } else {
                 icon = IconFactory.getInstance(context).fromResource(R.drawable.ic_map_marker);
             }
-
-
             MarkerOptions option = new MarkerOptions()
                     .position(latLng)
                     .title(info.getFullName()).icon(icon)

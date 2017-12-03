@@ -79,7 +79,7 @@ public class MapActivity extends BaseActivity implements MapView {
         switch (item.getItemId()) {
             case R.id.submit:
                 presenter.getCenterLatLng();
-//                getData();
+//                getAdminAddInfoDetail();
                 break;
         }
         return true;
@@ -103,7 +103,7 @@ public class MapActivity extends BaseActivity implements MapView {
         binding.mapView.onPause();
     }
 
-//    public void getData() {
+//    public void getAdminAddInfoDetail() {
 //        if (mapBox != null) {
 //            String lat = String.valueOf(mapBox.getCameraPosition().target.getLatitude());
 //            String lng = String.valueOf(mapBox.getCameraPosition().target.getLongitude());

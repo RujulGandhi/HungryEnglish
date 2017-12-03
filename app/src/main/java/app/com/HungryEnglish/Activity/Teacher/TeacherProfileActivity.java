@@ -368,7 +368,7 @@ public class TeacherProfileActivity extends BaseActivity implements
     @Override
     protected void onActivityResult(int reqCode, int resultCode, Intent data) {
         super.onActivityResult(reqCode, resultCode, data);
-//        getRealPathFromURI(this, data.getData());
+//        getRealPathFromURI(this, data.getAdminAddInfoDetail());
         if (resultCode == Activity.RESULT_OK) {
             switch (reqCode) {
                 case SELECT_PHOTO:
