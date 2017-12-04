@@ -1,10 +1,13 @@
 package app.com.HungryEnglish.Fragment;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,13 +17,24 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.IOException;
+
 import app.com.HungryEnglish.Interface.AdminAddInfoStudentView;
+import app.com.HungryEnglish.Model.admin.AdminAddInfoResponse;
 import app.com.HungryEnglish.Presenter.AdminAddInfoStudentPresenter;
 import app.com.HungryEnglish.R;
 import app.com.HungryEnglish.Util.Utils;
+import app.com.HungryEnglish.databinding.DialogAddImageBinding;
 import app.com.HungryEnglish.databinding.DialogAddLinkBinding;
+
+import static app.com.HungryEnglish.Util.Constant.PICK_IMAGE;
+import static app.com.HungryEnglish.Util.Utils.getBitmapFromUri;
+import static app.com.HungryEnglish.Util.Utils.getPath;
+import static app.com.HungryEnglish.Util.Utils.getRealPathFromURI;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -31,9 +45,10 @@ import app.com.HungryEnglish.databinding.DialogAddLinkBinding;
  */
 public class AdminAddInfoStudent extends Fragment implements View.OnClickListener, AdminAddInfoStudentView {
 
-    private DialogAddLinkBinding dialogBinding;
+    private DialogAddImageBinding dialogBinding;
     private Dialog dialog;
     private AdminAddInfoStudentPresenter presenter;
+    private File pickedFile;
 
     public AdminAddInfoStudent() {
         // Required empty public constructor
@@ -73,13 +88,16 @@ public class AdminAddInfoStudent extends Fragment implements View.OnClickListene
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        int width = (int) (getResources().getDisplayMetrics().widthPixels * 0.90);
         super.onOptionsItemSelected(item);
         switch (item.getItemId()) {
             case R.id.add_link:
                 dialog = new Dialog(getActivity());
-                dialogBinding = DataBindingUtil.inflate(LayoutInflater.from(getActivity()), R.layout.dialog_add_link, null, false);
+                dialogBinding = DataBindingUtil.inflate(LayoutInflater.from(getActivity()), R.layout.dialog_add_image, null, false);
                 dialog.setContentView(dialogBinding.getRoot());
-                dialogBinding.submitLink.setOnClickListener(this);
+                dialogBinding.submitImg.setOnClickListener(this);
+                dialogBinding.imagePick.setOnClickListener(this);
+                dialog.getWindow().setLayout(width, LinearLayout.LayoutParams.WRAP_CONTENT);
                 dialog.show();
                 break;
         }
@@ -99,11 +117,53 @@ public class AdminAddInfoStudent extends Fragment implements View.OnClickListene
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.submit_link:
+            case R.id.submit_img:
                 if (dialogBinding != null && dialog != null) {
-                    presenter.addLink(String.valueOf(dialogBinding.edtLink.getText()), String.valueOf(dialogBinding.edtLink.getText()));
+                    String link = dialogBinding.edtLink.getText().toString();
+                    presenter.addImage(pickedFile, link);
                 }
                 break;
+            case R.id.image_pick:
+                Intent photoPickerIntent = new Intent(Intent.ACTION_GET_CONTENT);
+                photoPickerIntent.setType("image/*");
+                photoPickerIntent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION | Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                startActivityForResult(photoPickerIntent, PICK_IMAGE);
+                break;
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK) {
+            switch (requestCode) {
+                case PICK_IMAGE:
+                    Uri uri = null;
+                    if (data != null) {
+                        uri = data.getData();
+                        String path = "";
+                        if (Build.VERSION.SDK_INT <= 21) {
+                            path = getRealPathFromURI(getActivity(), uri);
+                        } else {
+                            path = getPath(getActivity(), data.getData());
+                        }
+                        pickedFile = new File(path);
+                        try {
+                            dialogBinding.imagePick.setImageBitmap(getBitmapFromUri(getActivity(), uri));
+                        } catch (IOException e) {
+                            Toast.makeText(getActivity(), "Image upload is not working.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                    break;
+            }
+        }
+    }
+
+    @Override
+    public void addData(AdminAddInfoResponse basicResponse) {
+        if (dialog != null) {
+            dialog.dismiss();
+            Toast.makeText(getActivity(), basicResponse.getMsg(), Toast.LENGTH_SHORT).show();
         }
     }
 

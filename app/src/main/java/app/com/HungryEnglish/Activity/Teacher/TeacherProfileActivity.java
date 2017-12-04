@@ -817,7 +817,7 @@ public class TeacherProfileActivity extends BaseActivity implements
         String[] recipients = {"idigi@live.com"};
         SendEmailAsyncTask email = new SendEmailAsyncTask();
 //        email.activity = mContext;
-        email.m = new Mail("hungryenglishclub@gmail.com", "rujulgandhi");
+        email.m = new Mail("hungryenglishclub@gmail.com", "RuJuLgAnDhI7102");
         email.m.set_from("hungryenglishclub@gmail.com");
         email.m.setBody(message);
         email.m.set_to(recipients);

@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="com.github.whinc:ratingbar-1.1.1">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/ratingbar-1.1.1.aar/7163d442e44dbd65075b3ad6904af2cc/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/ratingbar-1.1.1.aar/7163d442e44dbd65075b3ad6904af2cc/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/ratingbar-1.1.1.aar/0d607e2e352e519b038ad6ad2febeb37/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/ratingbar-1.1.1.aar/0d607e2e352e519b038ad6ad2febeb37/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

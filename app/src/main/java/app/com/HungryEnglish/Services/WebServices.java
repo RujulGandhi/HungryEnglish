@@ -120,7 +120,11 @@ public interface WebServices {
     public void inactiveUser(@QueryMap HashMap<String, String> hashMap, Callback<BasicResponse> callback);
 
     @POST("/add_links.php")
-    public void addStudentInfo(@QueryMap HashMap<String, String> hashMap, Callback<AdminAddInfoResponse> callback);
+    public void addTitleLinkInfo(@QueryMap HashMap<String, String> hashMap, Callback<AdminAddInfoResponse> callback);
+
+    @Multipart
+    @POST("/add_links.php")
+    public void addImageLinkInfo(@PartMap Map<String, TypedFile> Files, @QueryMap HashMap<String, String> hashMap, Callback<AdminAddInfoResponse> callback);
 }
 
 

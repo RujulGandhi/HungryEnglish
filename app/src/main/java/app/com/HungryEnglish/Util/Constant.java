@@ -23,6 +23,8 @@ public class Constant {
     public static final int REQUEST_CHECK_LOCATION_SETTINGS = 104;
     public static final int TIMEPICKER_REQUEST_CODE = 401;
 
+    public static final int PICK_IMAGE = 100;
+
     public static final String MAP_BOX = "pk.eyJ1IjoiamFtZXMxMDEyOTMiLCJhIjoiY2o5bjRidWlvNTFwczJxczRjbmp2bmMzbiJ9.VuD1fkmjQtjk_lBP8haXoA";
 
     public static final String BASEURL = "http://smartsquad.pe.hu/HungryEnglish/api/";

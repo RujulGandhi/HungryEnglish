@@ -1,5 +1,6 @@
 package app.com.HungryEnglish.Interface;
 
+import app.com.HungryEnglish.Model.admin.AdminAddInfoResponse;
 import app.com.HungryEnglish.View.MvpView;
 
 /**
@@ -9,5 +10,7 @@ import app.com.HungryEnglish.View.MvpView;
 public interface AdminAddInfoStudentView extends MvpView {
 
     public void getErrorInAddText(String message);
+
+    void addData(AdminAddInfoResponse basicResponse);
 
 }
