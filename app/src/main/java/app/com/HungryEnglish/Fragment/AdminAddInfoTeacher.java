@@ -33,7 +33,12 @@ import com.squareup.picasso.Picasso;
 import java.io.File;
 import java.io.FileDescriptor;
 import java.io.IOException;
+import java.util.ArrayList;
 
+import app.com.HungryEnglish.Activity.Teacher.MainActivity;
+import app.com.HungryEnglish.Adapter.ImageAdapter;
+import app.com.HungryEnglish.Adapter.TeacherImageAdapter;
+import app.com.HungryEnglish.Model.admin.AdminAddInfoDetail;
 import app.com.HungryEnglish.Model.admin.AdminAddInfoResponse;
 import app.com.HungryEnglish.Presenter.AdminAddInfoTeacherPresenter;
 import app.com.HungryEnglish.R;
@@ -41,11 +46,13 @@ import app.com.HungryEnglish.Util.Utils;
 import app.com.HungryEnglish.View.AdminAddInfoTeacherView;
 import app.com.HungryEnglish.databinding.DialogAddImageBinding;
 import app.com.HungryEnglish.databinding.DialogAddLinkBinding;
+import app.com.HungryEnglish.databinding.FragmentAdminAddInfoTeacherBinding;
 
 import static app.com.HungryEnglish.Util.Constant.PICK_IMAGE;
 import static app.com.HungryEnglish.Util.Utils.getBitmapFromUri;
 import static app.com.HungryEnglish.Util.Utils.getPath;
 import static app.com.HungryEnglish.Util.Utils.getRealPathFromURI;
+import static com.mapbox.mapboxsdk.Mapbox.getApplicationContext;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -61,6 +68,7 @@ public class AdminAddInfoTeacher extends Fragment implements View.OnClickListene
     private DialogAddImageBinding dialogAddImageBinding;
     private AdminAddInfoTeacherPresenter presenter;
     private File pickedFile;
+    private FragmentAdminAddInfoTeacherBinding binding;
 
     public AdminAddInfoTeacher() {
     }
@@ -80,6 +88,7 @@ public class AdminAddInfoTeacher extends Fragment implements View.OnClickListene
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         presenter.attachView(this);
+        presenter.getTeacherData();
     }
 
     @Override
@@ -88,7 +97,8 @@ public class AdminAddInfoTeacher extends Fragment implements View.OnClickListene
         // Inflate the layout for this fragment
         presenter = new AdminAddInfoTeacherPresenter(getActivity());
         setHasOptionsMenu(true);
-        return inflater.inflate(R.layout.fragment_admin_add_info_teacher, container, false);
+        binding = FragmentAdminAddInfoTeacherBinding.inflate(inflater, container, false);
+        return binding.getRoot();
     }
 
     @Override
@@ -110,7 +120,6 @@ public class AdminAddInfoTeacher extends Fragment implements View.OnClickListene
                 dialogAddImageBinding.imagePick.setOnClickListener(this);
                 dialog.getWindow().setLayout(width, LinearLayout.LayoutParams.WRAP_CONTENT);
                 dialog.show();
-
                 break;
             case R.id.add_link:
                 dialog = new Dialog(getActivity());
@@ -207,5 +216,16 @@ public class AdminAddInfoTeacher extends Fragment implements View.OnClickListene
             dialog.dismiss();
             Toast.makeText(getActivity(), basicResponse.getMsg(), Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    public void showSliderData(ArrayList<AdminAddInfoDetail> sliderArray) {
+        Picasso pic = Picasso.with(getActivity());
+        binding.viewPager.setAdapter(new TeacherImageAdapter(getActivity(), sliderArray, pic));
+    }
+
+    @Override
+    public void showLinkData(ArrayList<AdminAddInfoDetail> linkArray) {
+        Log.d("Count", "slider" + linkArray.size());
     }
 }

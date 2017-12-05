@@ -3,11 +3,16 @@ package app.com.HungryEnglish.Presenter;
 import android.content.Context;
 
 import java.io.File;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import app.com.HungryEnglish.Activity.Admin.AdminAddInfo;
+import app.com.HungryEnglish.Model.admin.AdminAddInfoDetail;
 import app.com.HungryEnglish.Model.admin.AdminAddInfoResponse;
+import app.com.HungryEnglish.Model.admin.TeacherDashboardInfoMain;
 import app.com.HungryEnglish.R;
 import app.com.HungryEnglish.Services.ApiHandler;
 import app.com.HungryEnglish.Util.RequestParams;
@@ -53,6 +58,7 @@ public class AdminAddInfoTeacherPresenter extends BasePresenter<AdminAddInfoTeac
                         getMvpView().showErrorMsg(basicResponse.getMsg());
                     }
                 }
+
                 @Override
                 public void failure(RetrofitError error) {
                     getMvpView().hideProgressDialog();
@@ -97,5 +103,34 @@ public class AdminAddInfoTeacherPresenter extends BasePresenter<AdminAddInfoTeac
         } else {
             getMvpView().getErrorInAddText(context.getString(R.string.error_data));
         }
+    }
+
+    public void getTeacherData() {
+        getMvpView().showProgressDialog();
+        // Add Link
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put(RequestParams.Role.getValue(), RequestParams.Teacher.getValue());
+        ApiHandler.getApiService().getTeacherDashBoard(hashMap, new Callback<TeacherDashboardInfoMain>() {
+            @Override
+            public void success(TeacherDashboardInfoMain basicResponse, Response response) {
+                getMvpView().hideProgressDialog();
+                ArrayList<AdminAddInfoDetail> sliderArray = new ArrayList<>();
+                ArrayList<AdminAddInfoDetail> linkArray = new ArrayList<>();
+                for (AdminAddInfoDetail infoDetail : basicResponse.getData()) {
+                    if (infoDetail.getImages().length() > 0) {
+                        sliderArray.add(infoDetail);
+                    } else {
+                        linkArray.add(infoDetail);
+                    }
+                }
+                getMvpView().showLinkData(linkArray);
+                getMvpView().showSliderData(sliderArray);
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                getMvpView().hideProgressDialog();
+            }
+        });
     }
 }

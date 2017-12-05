@@ -21,6 +21,7 @@ import app.com.HungryEnglish.Model.Teacher.TeacherProfileMain;
 import app.com.HungryEnglish.Model.admin.AddInfoResponse;
 import app.com.HungryEnglish.Model.admin.AdminAddInfoResponse;
 import app.com.HungryEnglish.Model.admin.CountListMainResponse;
+import app.com.HungryEnglish.Model.admin.TeacherDashboardInfoMain;
 import app.com.HungryEnglish.Model.admin.UserListResponse;
 import app.com.HungryEnglish.Model.login.LoginMainResponse;
 import app.com.HungryEnglish.Model.register.RegisterMainResponse;
@@ -125,6 +126,9 @@ public interface WebServices {
     @Multipart
     @POST("/add_links.php")
     public void addImageLinkInfo(@PartMap Map<String, TypedFile> Files, @QueryMap HashMap<String, String> hashMap, Callback<AdminAddInfoResponse> callback);
+
+    @POST("/links_byrole.php")
+    void getTeacherDashBoard(@QueryMap HashMap<String, String> hashMap, Callback<TeacherDashboardInfoMain> aTrue);
 }
 
 

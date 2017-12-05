@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class AdminAddInfoDetail {
 
-    @SerializedName("images")
+    @SerializedName("image")
     private String images;
 
     @SerializedName("role")
