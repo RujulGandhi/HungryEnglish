@@ -1,13 +1,16 @@
 package app.com.HungryEnglish.Adapter;
 
+import android.content.ActivityNotFoundException;
 import android.content.Context;
-import android.support.v4.app.FragmentManager;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -17,7 +20,7 @@ import app.com.HungryEnglish.Model.admin.AdminAddInfoDetail;
 import app.com.HungryEnglish.R;
 import app.com.HungryEnglish.databinding.AdapterImageBinding;
 
-import static app.com.HungryEnglish.Util.Constant.BASEURL;
+import static app.com.HungryEnglish.Util.RestConstant.BASEURL;
 
 /**
  * Created by Rujul on 10/7/2017.
@@ -45,6 +48,22 @@ public class TeacherImageAdapter extends PagerAdapter {
         View itemView = LayoutInflater.from(mContext).inflate(R.layout.adapter_image, container, false);
         ImageView imageView = (ImageView) itemView.findViewById(R.id.image_adapter);
 //        imageView.setImageResource(mImageResources[position]);
+        final AdminAddInfoDetail info = array.get(position);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    String url = info.getLink();
+                    if (!url.startsWith("http") && !url.startsWith("https")) {
+                        url = "http://" + url;
+                    }
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                    mContext.startActivity(intent);
+                } catch (ActivityNotFoundException e) {
+                    Toast.makeText(mContext, "No Browser", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
         String url = BASEURL+array.get(position).getImages();
         picasso.load(url).placeholder(R.drawable.ic_add_img).error(R.drawable.ic_add_img).into(imageView);
         container.addView(itemView);

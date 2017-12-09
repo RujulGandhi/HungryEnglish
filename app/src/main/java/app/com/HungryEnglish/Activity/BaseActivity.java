@@ -25,11 +25,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 import app.com.HungryEnglish.R;
-import app.com.HungryEnglish.Util.Constant;
+import app.com.HungryEnglish.Util.RestConstant;
 import app.com.HungryEnglish.Util.SetDatePicker;
 import app.com.HungryEnglish.Util.Utils;
 
-import static app.com.HungryEnglish.Util.Constant.REQUEST_CHECK_LOCATION_SETTINGS;
+import static app.com.HungryEnglish.Util.RestConstant.REQUEST_CHECK_LOCATION_SETTINGS;
 
 
 /**
@@ -98,7 +98,7 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     public boolean isLoggedIn() {
-        if (read(Constant.SHARED_PREFS.KEY_USER_ID).equalsIgnoreCase("")) {
+        if (read(RestConstant.SHARED_PREFS.KEY_USER_ID).equalsIgnoreCase("")) {
             return false;
         } else {
             return true;

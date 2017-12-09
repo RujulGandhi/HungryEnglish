@@ -25,7 +25,7 @@ import app.com.HungryEnglish.Model.RemoveTeacher.BasicResponse;
 import app.com.HungryEnglish.Model.Teacher.TeacherListResponse;
 import app.com.HungryEnglish.R;
 import app.com.HungryEnglish.Services.ApiHandler;
-import app.com.HungryEnglish.Util.Constant;
+import app.com.HungryEnglish.Util.RestConstant;
 import app.com.HungryEnglish.Util.Utils;
 import app.com.HungryEnglish.Views.CircleImageView;
 import retrofit.RetrofitError;
@@ -95,7 +95,7 @@ public class TeacherApprovedAdapter extends RecyclerView.Adapter<TeacherApproved
         holder.tvEmail.setText("Email : " + teacherList.get(pos).getEmail());
         if (teacherList.get(pos).getTeacherInfo() != null && teacherList.get(pos).getTeacherInfo().getAvailableTime() != null) {
             holder.tvTeacherAvaibility.setText("Avaibility : " + Utils.getDisplayString(teacherList.get(pos).getTeacherInfo().getAvailableTime()));
-            String imageUrl = Constant.BASEURL + teacherList.get(pos).getTeacherInfo().getProfileImage();
+            String imageUrl = RestConstant.BASEURL + teacherList.get(pos).getTeacherInfo().getProfileImage();
             Picasso.with(mContext).load(imageUrl).placeholder(R.drawable.ic_user_default).error(R.drawable.ic_user_default).into(holder.ivProfilePic);
         }
         holder.tvMobileNo.setText("Mobile No : " + teacherList.get(pos).getMobNo());

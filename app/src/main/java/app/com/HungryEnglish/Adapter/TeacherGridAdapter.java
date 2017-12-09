@@ -9,7 +9,7 @@ import com.squareup.picasso.Picasso;
 
 import app.com.HungryEnglish.Model.Teacher.TeacherListResponse;
 import app.com.HungryEnglish.R;
-import app.com.HungryEnglish.Util.Constant;
+import app.com.HungryEnglish.Util.RestConstant;
 import app.com.HungryEnglish.Views.BaseBindingAdapter;
 import app.com.HungryEnglish.Views.BaseBindingViewHolder;
 import app.com.HungryEnglish.databinding.TeacherGridAdapterBinding;
@@ -36,7 +36,7 @@ public class TeacherGridAdapter extends BaseBindingAdapter<TeacherListResponse> 
         TeacherListResponse obj = items.get(position);
         binding.teacherName.setText(obj.getFullName());
         if (obj.getTeacherInfo() != null && !obj.getTeacherInfo().getProfileImage().equalsIgnoreCase("")) {
-            String imageUrl = Constant.BASEURL + obj.getTeacherInfo().getProfileImage();
+            String imageUrl = RestConstant.BASEURL + obj.getTeacherInfo().getProfileImage();
             Picasso.with(context).load(imageUrl).placeholder(R.drawable.ic_user_default).error(R.drawable.ic_user_default).into(binding.ivTeacherProfilePic);
         } else
             binding.ivTeacherProfilePic.setImageResource(R.drawable.ic_user_default);

@@ -30,7 +30,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/_5sdp"
                 android:gravity="center"
-                android:text="Teacher List are as below" />
+                android:text="@string/teacher_are_below" />
 
             <TextView
                 style="@style/regular_textview"

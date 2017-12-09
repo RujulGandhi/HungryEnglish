@@ -11,7 +11,7 @@ import app.com.HungryEnglish.Activity.Student.StudentProfileActivity;
 import app.com.HungryEnglish.Activity.Teacher.MainActivity;
 import app.com.HungryEnglish.Activity.Teacher.TeacherProfileActivity;
 import app.com.HungryEnglish.R;
-import app.com.HungryEnglish.Util.Constant;
+import app.com.HungryEnglish.Util.RestConstant;
 import app.com.HungryEnglish.Util.GPSTracker;
 import io.fabric.sdk.android.Fabric;
 
@@ -44,8 +44,8 @@ public class SplashActivity extends BaseActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                String isActiveStatue = read(Constant.SHARED_PREFS.KEY_IS_ACTIVE);
-                String role = read(Constant.SHARED_PREFS.KEY_USER_ROLE);
+                String isActiveStatue = read(RestConstant.SHARED_PREFS.KEY_IS_ACTIVE);
+                String role = read(RestConstant.SHARED_PREFS.KEY_USER_ROLE);
 
                 if (role.equalsIgnoreCase("")) {
                     startActivity(LoginActivity.class);

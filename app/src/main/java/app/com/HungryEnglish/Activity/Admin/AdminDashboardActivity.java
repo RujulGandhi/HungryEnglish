@@ -21,7 +21,7 @@ import app.com.HungryEnglish.Interface.OnDialogEvent;
 import app.com.HungryEnglish.Model.admin.CountListMainResponse;
 import app.com.HungryEnglish.R;
 import app.com.HungryEnglish.Services.ApiHandler;
-import app.com.HungryEnglish.Util.Constant;
+import app.com.HungryEnglish.Util.RestConstant;
 import app.com.HungryEnglish.Util.Utils;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
@@ -61,7 +61,7 @@ public class AdminDashboardActivity extends BaseActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        String role = Utils.ReadSharePrefrence(AdminDashboardActivity.this, Constant.SHARED_PREFS.KEY_USER_ROLE);
+        String role = Utils.ReadSharePrefrence(AdminDashboardActivity.this, RestConstant.SHARED_PREFS.KEY_USER_ROLE);
         switch (item.getItemId()) {
             case R.id.logout:
                 Utils.alert(this, getString(R.string.logout), getString(R.string.logout_note), getString(R.string.logout), getString(R.string.cancel), new OnDialogEvent() {
@@ -107,7 +107,7 @@ public class AdminDashboardActivity extends BaseActivity {
         llAddImageOrLink.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(AddImageOrLinkActivity.class);
+                startActivity(AdminAddInfo.class);
             }
         });
         llreport.setOnClickListener(new OnClickListener() {

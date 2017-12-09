@@ -25,7 +25,7 @@ public class AdminAddInfo extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(AdminAddInfoTeacher.newInstance(), "Teacher");
+        adapter.addFragment(AdminAddInfoTeacher.newInstance(true), "Teacher");
         adapter.addFragment(AdminAddInfoStudent.newInstance(), "Student");
         viewPager.setAdapter(adapter);
     }

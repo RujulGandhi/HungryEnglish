@@ -2,17 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/list_item_bg"
     android:layout_marginLeft="@dimen/_5sdp"
     android:layout_marginRight="@dimen/_5sdp"
-    android:layout_marginTop="@dimen/_5sdp">
+    android:layout_marginTop="@dimen/_5sdp"
+    android:background="@drawable/list_item_bg">
 
 
     <LinearLayout
         android:layout_width="@dimen/_6sdp"
         android:layout_height="match_parent"
-        android:background="@drawable/rounded_rect_report"
-        />
+        android:background="@drawable/rounded_rect_report" />
+
     <TextView
         android:id="@+id/report_text"
         android:layout_width="match_parent"

@@ -36,7 +36,7 @@ import app.com.HungryEnglish.Model.Teacher.InfoResponse;
 import app.com.HungryEnglish.Model.admin.AddInfoResponse;
 import app.com.HungryEnglish.R;
 import app.com.HungryEnglish.Services.ApiHandler;
-import app.com.HungryEnglish.Util.Constant;
+import app.com.HungryEnglish.Util.RestConstant;
 import app.com.HungryEnglish.Util.Utils;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
@@ -421,16 +421,16 @@ public class AddImageOrLinkActivity extends BaseActivity {
 
                         infoList = new InfoResponse();
                         infoList = infoMainResponse.getInfo();
-                        image1URL = Constant.BASEURL + infoList.getImage1();
+                        image1URL = RestConstant.BASEURL + infoList.getImage1();
                         ivSelectImage.setScaleType(ScaleType.CENTER_CROP);
                         Picasso.with(AddImageOrLinkActivity.this).load(image1URL).placeholder(R.drawable.ic_add_img).error(R.drawable.ic_add_img).into(ivSelectImage);
 
-                        image2URL = Constant.BASEURL + infoList.getImage2();
+                        image2URL = RestConstant.BASEURL + infoList.getImage2();
                         ivSelectImage.setScaleType(ScaleType.CENTER_CROP);
                         Picasso.with(AddImageOrLinkActivity.this).load(image2URL).placeholder(R.drawable.ic_add_img).error(R.drawable.ic_add_img).into(ivSelectImage2);
 
 
-                        image3URL = Constant.BASEURL + infoList.getImage3();
+                        image3URL = RestConstant.BASEURL + infoList.getImage3();
                         ivSelectImage.setScaleType(ScaleType.CENTER_CROP);
                         Picasso.with(AddImageOrLinkActivity.this).load(image3URL).placeholder(R.drawable.ic_add_img).error(R.drawable.ic_add_img).into(ivSelectImage3);
 

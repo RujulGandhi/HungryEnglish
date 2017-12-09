@@ -17,7 +17,7 @@ import app.com.HungryEnglish.Activity.Teacher.TeacherProfileActivity;
 import app.com.HungryEnglish.Fragment.TeacherApprovedListFragment;
 import app.com.HungryEnglish.Model.Teacher.TeacherListResponse;
 import app.com.HungryEnglish.R;
-import app.com.HungryEnglish.Util.Constant;
+import app.com.HungryEnglish.Util.RestConstant;
 import app.com.HungryEnglish.Util.Utils;
 
 public class TeacherListAdapter extends RecyclerView.Adapter<TeacherListAdapter.MyViewHolder> {
@@ -43,7 +43,7 @@ public class TeacherListAdapter extends RecyclerView.Adapter<TeacherListAdapter.
             tvSpecialSkills = (TextView) view.findViewById(R.id.tvSpecialSkills);
 //            tvTeacherAvaibility = (TextView) view.findViewById(R.id.tvTeacherAvaibility);
             ivProfilePic = (ImageView) view.findViewById(R.id.ivTeacherProfilePic);
-            if (Utils.ReadSharePrefrence(mContext, Constant.SHARED_PREFS.KEY_USER_ROLE).equals("student")) {
+            if (Utils.ReadSharePrefrence(mContext, RestConstant.SHARED_PREFS.KEY_USER_ROLE).equals("student")) {
                 tvReportTeacher = (TextView) view.findViewById(R.id.tvReportTeacher);
             }
 
@@ -77,10 +77,10 @@ public class TeacherListAdapter extends RecyclerView.Adapter<TeacherListAdapter.
         if (teacherList.get(position).getTeacherInfo() != null) {
             holder.tvSpecialSkills.setText(mContext.getString(R.string.special_skils_label) + " " + teacherList.get(position).getTeacherInfo().getSkills());
             holder.tvClosestStation.setText(teacherList.get(position).getTeacherInfo().getNearest_station());
-            String profilePicUrl = Constant.BASEURL + teacherList.get(position).getTeacherInfo().getProfileImage();
+            String profilePicUrl = RestConstant.BASEURL + teacherList.get(position).getTeacherInfo().getProfileImage();
             Picasso.with(mContext).load(profilePicUrl).error(R.drawable.ic_user_default).placeholder(R.drawable.ic_user_default).into(holder.ivProfilePic);
 
-            if (Utils.ReadSharePrefrence(mContext, Constant.SHARED_PREFS.KEY_USER_ROLE).equals("student")) {
+            if (Utils.ReadSharePrefrence(mContext, RestConstant.SHARED_PREFS.KEY_USER_ROLE).equals("student")) {
                 holder.tvReportTeacher.setVisibility(View.VISIBLE);
             } else {
                 holder.tvReportTeacher.setVisibility(View.GONE);

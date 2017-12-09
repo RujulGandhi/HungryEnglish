@@ -10,6 +10,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -30,6 +31,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -54,6 +57,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -63,6 +67,7 @@ import javax.net.ssl.HttpsURLConnection;
 import app.com.HungryEnglish.Activity.LoginActivity;
 import app.com.HungryEnglish.Activity.TimePickerActivity;
 import app.com.HungryEnglish.Interface.OnDialogEvent;
+import app.com.HungryEnglish.Interface.OnLanguageChange;
 import app.com.HungryEnglish.R;
 
 /**
@@ -79,7 +84,7 @@ public class Utils {
 
     public Utils(Context context) {
         this.context = context;
-        sp = context.getSharedPreferences(Constant.Prefrence, Context.MODE_PRIVATE);
+        sp = context.getSharedPreferences(RestConstant.Prefrence, Context.MODE_PRIVATE);
     }
 
     public static boolean checkNetwork(Context context) {
@@ -143,11 +148,10 @@ public class Utils {
 
 
     public static void alert(Context context, String titleHeaerMsg, String titleMsg, String positveBtn, String negativeBtn, final OnDialogEvent listner) {
-        final Dialog dialog = new Dialog(context);
+        final Dialog dialog = new Dialog(context, R.style.ThemeDialogCustomGuest);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.custom_alert_dialog);
         dialog.setCancelable(false);
-
 
         TextView tvHeader = (TextView) dialog.findViewById(R.id.title_header_tv);
         TextView tvTitle = (TextView) dialog.findViewById(R.id.title_tv);
@@ -179,6 +183,47 @@ public class Utils {
         dialog.show();
     }
 
+    public static void alertChangeLanguage(Context context, final OnLanguageChange listner) {
+        final Dialog dialog = new Dialog(context, R.style.ThemeDialogCustomGuest);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_change_language);
+        dialog.setCancelable(false);
+        Locale current = context.getResources().getConfiguration().locale;
+
+        final RadioButton enRadio = (RadioButton) dialog.findViewById(R.id.en);
+        final RadioButton zhRadio = (RadioButton) dialog.findViewById(R.id.zh);
+
+        if (current.getLanguage().equals("en")) {
+            enRadio.setChecked(true);
+        } else {
+            zhRadio.setChecked(true);
+        }
+
+        final RadioGroup radioGroup = (RadioGroup) dialog.findViewById(R.id.ln_radio_group);
+        TextView tvPos = (TextView) dialog.findViewById(R.id.btnPositive);
+        TextView tvNeg = (TextView) dialog.findViewById(R.id.btnNegative);
+
+        tvPos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (radioGroup.getCheckedRadioButtonId() == R.id.en) {
+                    listner.onPositivePressed("en");
+                } else {
+                    listner.onPositivePressed("zh");
+                }
+                dialog.dismiss();
+            }
+        });
+
+        tvNeg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listner.onNegativePressed();
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
+    }
 
     public static String encodeToBase64(Bitmap image, Bitmap.CompressFormat compressFormat, int quality) {
         ByteArrayOutputStream byteArrayOS = new ByteArrayOutputStream();
@@ -671,5 +716,15 @@ public class Utils {
             displayString = mainString;
         }
         return displayString;
+    }
+
+
+    public void changeLanguage(Context context, String languageToLoad) {
+        Locale locale = new Locale(languageToLoad);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        context.getResources().updateConfiguration(config,
+                context.getResources().getDisplayMetrics());
     }
 }

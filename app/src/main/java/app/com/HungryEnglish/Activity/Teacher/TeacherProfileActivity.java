@@ -62,9 +62,9 @@ import app.com.HungryEnglish.Model.RemoveTeacher.BasicResponse;
 import app.com.HungryEnglish.Model.Teacher.TeacherProfileMain;
 import app.com.HungryEnglish.R;
 import app.com.HungryEnglish.Services.ApiHandler;
-import app.com.HungryEnglish.Util.Constant;
 import app.com.HungryEnglish.Util.GPSTracker;
 import app.com.HungryEnglish.Util.Mail;
+import app.com.HungryEnglish.Util.RestConstant;
 import app.com.HungryEnglish.Util.Utils;
 import app.com.HungryEnglish.databinding.ActivityTeacherProfileBinding;
 import retrofit.Callback;
@@ -73,12 +73,12 @@ import retrofit.client.Response;
 import retrofit.mime.TypedFile;
 
 import static app.com.HungryEnglish.R.id.usernameStudentEdit;
-import static app.com.HungryEnglish.Util.Constant.BASEURL;
-import static app.com.HungryEnglish.Util.Constant.ROLE_TEACHER;
-import static app.com.HungryEnglish.Util.Constant.SHARED_PREFS.KEY_IS_ACTIVE;
-import static app.com.HungryEnglish.Util.Constant.SHARED_PREFS.KEY_USER_ID;
-import static app.com.HungryEnglish.Util.Constant.SHARED_PREFS.KEY_USER_ROLE;
-import static app.com.HungryEnglish.Util.Constant.TIMEPICKER_REQUEST_CODE;
+import static app.com.HungryEnglish.Util.RestConstant.BASEURL;
+import static app.com.HungryEnglish.Util.RestConstant.ROLE_TEACHER;
+import static app.com.HungryEnglish.Util.RestConstant.SHARED_PREFS.KEY_IS_ACTIVE;
+import static app.com.HungryEnglish.Util.RestConstant.SHARED_PREFS.KEY_USER_ID;
+import static app.com.HungryEnglish.Util.RestConstant.SHARED_PREFS.KEY_USER_ROLE;
+import static app.com.HungryEnglish.Util.RestConstant.TIMEPICKER_REQUEST_CODE;
 import static app.com.HungryEnglish.Util.Utils.alert;
 import static app.com.HungryEnglish.Util.Utils.getPath;
 import static app.com.HungryEnglish.Util.Utils.getRealPathFromURI;
@@ -189,7 +189,7 @@ public class TeacherProfileActivity extends BaseActivity implements
         btn_id_proof = (EditText) findViewById(R.id.btn_id_proof);
         emailEdit = (EditText) findViewById(R.id.emailEdit);
         btnSubmiTeacherProfile = (Button) findViewById(R.id.btnSubmiTeacherProfile);
-        String currentRole = read(Constant.SHARED_PREFS.KEY_USER_ROLE);
+        String currentRole = read(RestConstant.SHARED_PREFS.KEY_USER_ROLE);
         if (currentRole.equalsIgnoreCase("admin")) {
             ivViewCv.setVisibility(View.VISIBLE);
             ivViewAudio.setVisibility(View.VISIBLE);
@@ -271,13 +271,13 @@ public class TeacherProfileActivity extends BaseActivity implements
         switch (v.getId()) {
             case R.id.ivViewCv:
                 if (resumePath != "")
-                    createDirectory(resumePath, Constant.FILE_TYPE_RESUME);
+                    createDirectory(resumePath, RestConstant.FILE_TYPE_RESUME);
                 else
                     toast(R.string.something_wrong);
                 break;
             case R.id.ivViewAudio:
                 if (resumePath != "")
-                    createDirectory(audioPath, Constant.FILE_TYPE_AUDIO);
+                    createDirectory(audioPath, RestConstant.FILE_TYPE_AUDIO);
                 else
                     toast(R.string.something_wrong);
                 break;
@@ -368,7 +368,6 @@ public class TeacherProfileActivity extends BaseActivity implements
     @Override
     protected void onActivityResult(int reqCode, int resultCode, Intent data) {
         super.onActivityResult(reqCode, resultCode, data);
-//        getRealPathFromURI(this, data.getAdminAddInfoDetail());
         if (resultCode == Activity.RESULT_OK) {
             switch (reqCode) {
                 case SELECT_PHOTO:
@@ -490,7 +489,7 @@ public class TeacherProfileActivity extends BaseActivity implements
                     Picasso.with(getApplicationContext()).load(BASEURL + teacherProfileMain.getInfo().getProfileImage()).placeholder(R.drawable.ic_user_default).error(R.drawable.ic_user_default).into(binding.profileImage);
                     Picasso.with(getApplicationContext()).load(BASEURL + teacherProfileMain.getInfo().getIdImage()).placeholder(R.drawable.ic_user_default).error(R.drawable.ic_user_default).into(idProofImage);
                     resumePath = teacherProfileMain.getInfo().getResume();
-                    String idProof = Constant.BASEURL + teacherProfileMain.getInfo().getIdImage();
+                    String idProof = RestConstant.BASEURL + teacherProfileMain.getInfo().getIdImage();
                     String idImageUrl = teacherProfileMain.getInfo().getIdImage();
                     if (resumePath != null) {
                         String[] cvFileArray = resumePath.split("/");
@@ -629,7 +628,6 @@ public class TeacherProfileActivity extends BaseActivity implements
     private void updateRating() {
         Utils.showDialog(TeacherProfileActivity.this);
         ApiHandler.getApiService().updateRating(getRatingInfo(), new Callback<BasicResponse>() {
-
             @Override
             public void success(BasicResponse teacherProfileMainResponse, Response response) {
                 Utils.dismissDialog();
@@ -730,14 +728,14 @@ public class TeacherProfileActivity extends BaseActivity implements
                 Utils.showDialog(mContext);
                 HashMap<String, String> map = new HashMap<>();
                 map.put("teacherId", id);
-                map.put("studentId", Utils.ReadSharePrefrence(mContext, Constant.SHARED_PREFS.KEY_USER_ID));
+                map.put("studentId", Utils.ReadSharePrefrence(mContext, RestConstant.SHARED_PREFS.KEY_USER_ID));
                 ApiHandler.getApiService().addRequest(map, new retrofit.Callback<ForgotPasswordModel>() {
                     @Override
                     public void success(ForgotPasswordModel forgotPasswordModel, Response response) {
                         Utils.dismissDialog();
                         if (forgotPasswordModel.getStatus().toString().equals("true")) {
                             toast(forgotPasswordModel.getMsg());
-                            sendEmail(Utils.ReadSharePrefrence(mContext, Constant.SHARED_PREFS.KEY_USER_NAME), String.valueOf(userNameEdit.getText()));
+                            sendEmail(Utils.ReadSharePrefrence(mContext, RestConstant.SHARED_PREFS.KEY_USER_NAME), String.valueOf(userNameEdit.getText()));
                             onBackPressed();
                         }
                     }
@@ -811,9 +809,7 @@ public class TeacherProfileActivity extends BaseActivity implements
 
 
     private void sendEmail(String studentName, String TeacherName) {
-
         String message = "Welcome to Hungry English Club " + studentName + "Enquiry for Teacher  " + TeacherName;
-
         String[] recipients = {"idigi@live.com"};
         SendEmailAsyncTask email = new SendEmailAsyncTask();
 //        email.activity = mContext;
@@ -823,8 +819,6 @@ public class TeacherProfileActivity extends BaseActivity implements
         email.m.set_to(recipients);
         email.m.set_subject("Hungry English CLUB");
         email.execute();
-
-
     }
 
     public void rateTeacher(View view) {
@@ -834,7 +828,12 @@ public class TeacherProfileActivity extends BaseActivity implements
 
     public void onOpenTimePickerActivity(View view) {
         Intent in = new Intent(this, TimePickerActivity.class);
-        String availableTimeString = ((TextView) view).getTag().toString();
+        String availableTimeString;
+        if (((TextView) view).getTag() != null)
+            availableTimeString = ((TextView) view).getTag().toString();
+        else {
+            availableTimeString = "";
+        }
         try {
             Type listType = new TypeToken<ArrayList<TimePickerActivity.TimerModel>>() {
             }.getType();

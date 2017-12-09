@@ -29,7 +29,7 @@ import app.com.HungryEnglish.Util.Utils;
 import app.com.HungryEnglish.View.MapView;
 import app.com.HungryEnglish.databinding.ActivityMapBinding;
 
-import static app.com.HungryEnglish.Util.Constant.MAP_BOX;
+import static app.com.HungryEnglish.Util.RestConstant.MAP_BOX;
 
 /**
  * Created by Rujul on 11/9/2017.
@@ -57,7 +57,7 @@ public class MapActivity extends BaseActivity implements MapView {
 
     private void addMarkerToCenter() {
         ImageView imageView = new ImageView(MapActivity.this);
-        imageView.setImageResource(R.drawable.ic_map_marker);
+        imageView.setImageResource(R.drawable.ic_green_marker);
         RelativeLayout.LayoutParams _params = new RelativeLayout.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         _params.addRule(RelativeLayout.CENTER_VERTICAL);

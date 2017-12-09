@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 import app.com.HungryEnglish.Activity.BaseActivity;
+import app.com.HungryEnglish.Activity.FeedbackActivity;
 import app.com.HungryEnglish.Activity.Student.StudentProfileActivity;
 import app.com.HungryEnglish.Adapter.TeacherListAdapter;
 import app.com.HungryEnglish.Interface.OnDialogEvent;
@@ -27,7 +28,7 @@ import app.com.HungryEnglish.Model.Teacher.TeacherListMainResponse;
 import app.com.HungryEnglish.Model.Teacher.TeacherListResponse;
 import app.com.HungryEnglish.R;
 import app.com.HungryEnglish.Services.ApiHandler;
-import app.com.HungryEnglish.Util.Constant;
+import app.com.HungryEnglish.Util.RestConstant;
 import app.com.HungryEnglish.Util.Utils;
 import app.com.HungryEnglish.databinding.ActivityTeacherListBinding;
 import app.com.HungryEnglish.databinding.DialogFilterBinding;
@@ -56,7 +57,7 @@ public class TeacherListActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_teacher_list);
-        if (read(Constant.SHARED_PREFS.KEY_USER_ROLE).equalsIgnoreCase("student")) {
+        if (read(RestConstant.SHARED_PREFS.KEY_USER_ROLE).equalsIgnoreCase("student")) {
             callTeacherListApi();
         }
         daysFilter = new ArrayList<>();
@@ -141,7 +142,7 @@ public class TeacherListActivity extends BaseActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        String role = Utils.ReadSharePrefrence(getApplicationContext(), Constant.SHARED_PREFS.KEY_USER_ROLE);
+        String role = Utils.ReadSharePrefrence(getApplicationContext(), RestConstant.SHARED_PREFS.KEY_USER_ROLE);
         switch (item.getItemId()) {
             case R.id.logout:
                 Utils.alert(this, getString(R.string.logout), getString(R.string.logout_note), getString(R.string.logout), getString(R.string.cancel), new OnDialogEvent() {
@@ -169,7 +170,7 @@ public class TeacherListActivity extends BaseActivity {
                 }
                 break;
             case R.id.contact:
-                startActivity(Contactus.class);
+                FeedbackActivity.start(this);
                 break;
         }
         return true;

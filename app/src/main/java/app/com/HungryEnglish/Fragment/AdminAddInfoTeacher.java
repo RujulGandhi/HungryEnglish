@@ -2,23 +2,14 @@ package app.com.HungryEnglish.Fragment;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.content.Context;
-import android.content.CursorLoader;
 import android.content.Intent;
-import android.database.Cursor;
 import android.databinding.DataBindingUtil;
-import android.databinding.ViewDataBinding;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.ParcelFileDescriptor;
-import android.provider.MediaStore;
 import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
-import android.util.Log;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -31,13 +22,11 @@ import android.widget.Toast;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
-import java.io.FileDescriptor;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import app.com.HungryEnglish.Activity.Teacher.MainActivity;
-import app.com.HungryEnglish.Adapter.ImageAdapter;
 import app.com.HungryEnglish.Adapter.TeacherImageAdapter;
+import app.com.HungryEnglish.Adapter.TitleLinkAdapter;
 import app.com.HungryEnglish.Model.admin.AdminAddInfoDetail;
 import app.com.HungryEnglish.Model.admin.AdminAddInfoResponse;
 import app.com.HungryEnglish.Presenter.AdminAddInfoTeacherPresenter;
@@ -48,11 +37,10 @@ import app.com.HungryEnglish.databinding.DialogAddImageBinding;
 import app.com.HungryEnglish.databinding.DialogAddLinkBinding;
 import app.com.HungryEnglish.databinding.FragmentAdminAddInfoTeacherBinding;
 
-import static app.com.HungryEnglish.Util.Constant.PICK_IMAGE;
+import static app.com.HungryEnglish.Util.RestConstant.PICK_IMAGE;
 import static app.com.HungryEnglish.Util.Utils.getBitmapFromUri;
 import static app.com.HungryEnglish.Util.Utils.getPath;
 import static app.com.HungryEnglish.Util.Utils.getRealPathFromURI;
-import static com.mapbox.mapboxsdk.Mapbox.getApplicationContext;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -62,13 +50,14 @@ import static com.mapbox.mapboxsdk.Mapbox.getApplicationContext;
  * create an instance of this fragment.
  */
 public class AdminAddInfoTeacher extends Fragment implements View.OnClickListener, AdminAddInfoTeacherView {
-
+    public static final String IS_ADMIN = "isAdmin";
     private Dialog dialog;
     private DialogAddLinkBinding dialogAddLinkBinding;
     private DialogAddImageBinding dialogAddImageBinding;
     private AdminAddInfoTeacherPresenter presenter;
     private File pickedFile;
     private FragmentAdminAddInfoTeacherBinding binding;
+    private boolean isAdmin;
 
     public AdminAddInfoTeacher() {
     }
@@ -79,9 +68,22 @@ public class AdminAddInfoTeacher extends Fragment implements View.OnClickListene
         return fragment;
     }
 
+    public static AdminAddInfoTeacher newInstance(Boolean isteacher) {
+        AdminAddInfoTeacher fragment = new AdminAddInfoTeacher();
+        Bundle bundle = new Bundle();
+        bundle.putBoolean(IS_ADMIN, isteacher);
+        fragment.setArguments(bundle);
+        return fragment;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            isAdmin = getArguments().getBoolean(IS_ADMIN);
+        } else {
+            isAdmin = false;
+        }
     }
 
     @Override
@@ -96,7 +98,9 @@ public class AdminAddInfoTeacher extends Fragment implements View.OnClickListene
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         presenter = new AdminAddInfoTeacherPresenter(getActivity());
-        setHasOptionsMenu(true);
+        if (isAdmin) {
+            setHasOptionsMenu(true);
+        }
         binding = FragmentAdminAddInfoTeacherBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
@@ -219,13 +223,27 @@ public class AdminAddInfoTeacher extends Fragment implements View.OnClickListene
     }
 
     @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+            if (presenter != null) {
+                presenter.getTeacherData();
+            }
+
+        }
+    }
+
+    @Override
     public void showSliderData(ArrayList<AdminAddInfoDetail> sliderArray) {
         Picasso pic = Picasso.with(getActivity());
         binding.viewPager.setAdapter(new TeacherImageAdapter(getActivity(), sliderArray, pic));
+        binding.tablayout.setupWithViewPager(binding.viewPager);
     }
 
     @Override
     public void showLinkData(ArrayList<AdminAddInfoDetail> linkArray) {
-        Log.d("Count", "slider" + linkArray.size());
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        binding.recyclerView.setLayoutManager(layoutManager);
+        binding.recyclerView.setAdapter(new TitleLinkAdapter(getActivity(), linkArray));
     }
 }

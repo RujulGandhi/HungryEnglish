@@ -20,7 +20,7 @@ import app.com.HungryEnglish.View.AdminMapView;
 import app.com.HungryEnglish.View.LocationMvpView;
 import app.com.HungryEnglish.databinding.ActivityAdminMapBinding;
 
-import static app.com.HungryEnglish.Util.Constant.MAP_BOX;
+import static app.com.HungryEnglish.Util.RestConstant.MAP_BOX;
 
 /**
  * Created by Rujul on 11/16/2017.

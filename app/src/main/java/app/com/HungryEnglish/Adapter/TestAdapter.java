@@ -14,7 +14,7 @@ import app.com.HungryEnglish.Interface.OnItemClick;
 import app.com.HungryEnglish.Model.Teacher.TeacherInfo;
 import app.com.HungryEnglish.Model.Teacher.TeacherListResponse;
 import app.com.HungryEnglish.R;
-import app.com.HungryEnglish.Util.Constant;
+import app.com.HungryEnglish.Util.RestConstant;
 import app.com.HungryEnglish.databinding.TeacherGridAdapterBinding;
 
 /**
@@ -46,7 +46,7 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.MyViewHolder> 
         TeacherInfo info = teacherInfo.get(i).getTeacherInfo();
         myViewHolder.binding.teacherName.setText(teacherInfo.get(i).getFullName());
         if (info != null) {
-            String imageURL = Constant.BASEURL + info.getProfileImage();
+            String imageURL = RestConstant.BASEURL + info.getProfileImage();
             Picasso.with(context).load(imageURL).placeholder(R.drawable.ic_user_default).into(myViewHolder.binding.ivTeacherProfilePic);
         }
     }

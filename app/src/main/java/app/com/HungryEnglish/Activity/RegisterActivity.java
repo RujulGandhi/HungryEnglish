@@ -18,8 +18,8 @@ import app.com.HungryEnglish.databinding.ActivityRegisterBinding;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
-import static app.com.HungryEnglish.Util.Constant.ROLE_STUDENT;
-import static app.com.HungryEnglish.Util.Constant.ROLE_TEACHER;
+import static app.com.HungryEnglish.Util.RestConstant.ROLE_STUDENT;
+import static app.com.HungryEnglish.Util.RestConstant.ROLE_TEACHER;
 
 public class RegisterActivity extends BaseActivity {
 

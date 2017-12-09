@@ -129,6 +129,9 @@ public interface WebServices {
 
     @POST("/links_byrole.php")
     void getTeacherDashBoard(@QueryMap HashMap<String, String> hashMap, Callback<TeacherDashboardInfoMain> aTrue);
+
+    @POST("/mail.php")
+    void sendMail(@QueryMap HashMap<String, String> hashMap, Callback<BasicResponse> aTrue);
 }
 
 

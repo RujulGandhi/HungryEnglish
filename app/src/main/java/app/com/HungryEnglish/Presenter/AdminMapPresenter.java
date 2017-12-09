@@ -92,13 +92,14 @@ public class AdminMapPresenter extends BasePresenter<AdminMapView> implements On
             //Filling up the list
             Icon icon;
             if (info.getRole().equalsIgnoreCase("student")) {
-                icon = IconFactory.getInstance(context).fromResource(R.drawable.ic_map_blue_marker);
+                icon = IconFactory.getInstance(context).fromResource(R.drawable.ic_blue_marker);
             } else {
-                icon = IconFactory.getInstance(context).fromResource(R.drawable.ic_map_marker);
+                icon = IconFactory.getInstance(context).fromResource(R.drawable.ic_green_marker);
             }
             MarkerOptions option = new MarkerOptions()
                     .position(latLng)
-                    .title(info.getFullName()).icon(icon)
+                    .title(info.getFullName())
+                    .icon(icon)
                     .snippet(info.getRole());                //Adding all the markers to the map
             mapboxMap.addMarker(option);
         }

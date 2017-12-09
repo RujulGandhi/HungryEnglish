@@ -20,8 +20,8 @@
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="@dimen/custom_tab_layout_height"
-            app:tabGravity="fill"
             android:padding="@dimen/_2sdp"
+            app:tabGravity="fill"
             app:tabMode="fixed" />
     </android.support.design.widget.AppBarLayout>
 

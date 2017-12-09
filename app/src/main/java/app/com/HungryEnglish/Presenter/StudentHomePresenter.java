@@ -10,7 +10,7 @@ import app.com.HungryEnglish.Model.Teacher.InfoResponse;
 import app.com.HungryEnglish.Model.Teacher.TeacherListResponse;
 import app.com.HungryEnglish.R;
 import app.com.HungryEnglish.Services.ApiHandler;
-import app.com.HungryEnglish.Util.Constant;
+import app.com.HungryEnglish.Util.RestConstant;
 import app.com.HungryEnglish.Util.RequestParams;
 import app.com.HungryEnglish.View.StudentHomeView;
 import retrofit.RetrofitError;
@@ -55,9 +55,9 @@ public class StudentHomePresenter extends BasePresenter<StudentHomeView> {
                 if (infoMainResponse.getStatus().equals("true")) {
                     infoList = new InfoResponse();
                     infoList = infoMainResponse.getInfo();
-                    imageURL1 = Constant.BASEURL + infoList.getImage1();
-                    imageURL2 = Constant.BASEURL + infoList.getImage2();
-                    imageURL3 = Constant.BASEURL + infoList.getImage3();
+                    imageURL1 = RestConstant.BASEURL + infoList.getImage1();
+                    imageURL2 = RestConstant.BASEURL + infoList.getImage2();
+                    imageURL3 = RestConstant.BASEURL + infoList.getImage3();
 
                     imageArray.add(imageURL1);
                     imageArray.add(imageURL2);

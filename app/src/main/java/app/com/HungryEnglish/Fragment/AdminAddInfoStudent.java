@@ -5,10 +5,10 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.databinding.ViewDataBinding;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -20,18 +20,23 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
+
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
+import app.com.HungryEnglish.Adapter.TeacherImageAdapter;
 import app.com.HungryEnglish.Interface.AdminAddInfoStudentView;
+import app.com.HungryEnglish.Model.admin.AdminAddInfoDetail;
 import app.com.HungryEnglish.Model.admin.AdminAddInfoResponse;
 import app.com.HungryEnglish.Presenter.AdminAddInfoStudentPresenter;
 import app.com.HungryEnglish.R;
 import app.com.HungryEnglish.Util.Utils;
 import app.com.HungryEnglish.databinding.DialogAddImageBinding;
-import app.com.HungryEnglish.databinding.DialogAddLinkBinding;
+import app.com.HungryEnglish.databinding.FragmentAdminAddInfoStudentBinding;
 
-import static app.com.HungryEnglish.Util.Constant.PICK_IMAGE;
+import static app.com.HungryEnglish.Util.RestConstant.PICK_IMAGE;
 import static app.com.HungryEnglish.Util.Utils.getBitmapFromUri;
 import static app.com.HungryEnglish.Util.Utils.getPath;
 import static app.com.HungryEnglish.Util.Utils.getRealPathFromURI;
@@ -49,6 +54,8 @@ public class AdminAddInfoStudent extends Fragment implements View.OnClickListene
     private Dialog dialog;
     private AdminAddInfoStudentPresenter presenter;
     private File pickedFile;
+    private FragmentAdminAddInfoStudentBinding binding;
+    private Handler handler;
 
     public AdminAddInfoStudent() {
         // Required empty public constructor
@@ -77,7 +84,9 @@ public class AdminAddInfoStudent extends Fragment implements View.OnClickListene
         // Inflate the layout for this fragment
         presenter = new AdminAddInfoStudentPresenter(getActivity().getApplicationContext());
         setHasOptionsMenu(true);
-        return inflater.inflate(R.layout.fragment_admin_add_info_student, container, false);
+        handler = new Handler();
+        binding = FragmentAdminAddInfoStudentBinding.inflate(inflater, container, false);
+        return binding.getRoot();
     }
 
     @Override
@@ -186,6 +195,21 @@ public class AdminAddInfoStudent extends Fragment implements View.OnClickListene
     public void getErrorInAddText(String message) {
         if (dialog != null) {
             Toast.makeText(getActivity().getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void showSliderData(ArrayList<AdminAddInfoDetail> data) {
+        Picasso pic = Picasso.with(getActivity());
+        binding.viewPager.setAdapter(new TeacherImageAdapter(getActivity(), data, pic));
+        binding.tablayout.setupWithViewPager(binding.viewPager);
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+            presenter.getStudentData();
         }
     }
 }

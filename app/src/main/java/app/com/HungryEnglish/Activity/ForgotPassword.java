@@ -63,17 +63,13 @@ public class ForgotPassword extends BaseActivity implements View.OnClickListener
     public void onClick(View v) {
 
         if (v.getId() == R.id.activity_forgot_password_submit_btn) {
-
             if (Utils.emailValidator(edtEmail.getText().toString())) {
                 checkEmail();
-
             } else {
                 edtEmail.setError(getString(R.string.email_validation));
                 edtEmail.requestFocus();
             }
-
         } else if (v.getId() == R.id.activity_forgot_password_otp_submit_btn) {
-
             if (edtOtp.getText().toString().trim().equals(String.valueOf(randomNumber).trim())) {
                 llResetPassword.setVisibility(View.VISIBLE);
 
@@ -89,9 +85,7 @@ public class ForgotPassword extends BaseActivity implements View.OnClickListener
         } else if (v.getId() == R.id.activity_forgot_password_submit_password_btn) {
 
             if (edtPassword.getText().toString().equals(edtReEnterPassword.getText().toString()) && edtPassword.getText().toString().length() > 5) {
-                // TODO: 26-07-2017 Call Webservice here
                 ResetPassword();
-
             } else if (edtPassword.getText().length() > 5) {
                 edtPassword.setError(getString(R.string.password_validation));
                 edtPassword.requestFocus();
@@ -118,20 +112,15 @@ public class ForgotPassword extends BaseActivity implements View.OnClickListener
         map.put("email", edtEmail.getText().toString());
 
         ApiHandler.getApiService().checkUser(map, new retrofit.Callback<ForgotPasswordModel>() {
-
             @Override
             public void success(ForgotPasswordModel forgotPasswordModel, Response response) {
-
                 Utils.dismissDialog();
-
                 if (forgotPasswordModel.getStatus().toString().equalsIgnoreCase("true")) {
                     sendEmail();
                     Toast.makeText(getApplicationContext(), forgotPasswordModel.getMsg(), Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(getApplicationContext(), forgotPasswordModel.getMsg(), Toast.LENGTH_SHORT).show();
                 }
-
-
             }
 
             @Override

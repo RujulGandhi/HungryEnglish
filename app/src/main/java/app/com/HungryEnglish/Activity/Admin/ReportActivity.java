@@ -36,7 +36,7 @@ import jxl.write.biff.RowsExceededException;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
-import static app.com.HungryEnglish.Util.Constant.FILE_TYPE_REPORT;
+import static app.com.HungryEnglish.Util.RestConstant.FILE_TYPE_REPORT;
 
 /**
  * Created by Bhadresh Chavada on 27-07-2017.

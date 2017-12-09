@@ -4,11 +4,14 @@ import android.content.Context;
 import android.text.Editable;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 import app.com.HungryEnglish.Interface.AdminAddInfoStudentView;
+import app.com.HungryEnglish.Model.admin.AdminAddInfoDetail;
 import app.com.HungryEnglish.Model.admin.AdminAddInfoResponse;
+import app.com.HungryEnglish.Model.admin.TeacherDashboardInfoMain;
 import app.com.HungryEnglish.Model.admin.UserListResponse;
 import app.com.HungryEnglish.R;
 import app.com.HungryEnglish.Services.ApiHandler;
@@ -94,5 +97,24 @@ public class AdminAddInfoStudentPresenter extends BasePresenter<AdminAddInfoStud
         } else {
             getMvpView().getErrorInAddText(context.getString(R.string.error_data));
         }
+    }
+
+    public void getStudentData() {
+        getMvpView().showProgressDialog();
+        // Add Link
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put(RequestParams.Role.getValue(), RequestParams.Student.getValue());
+        ApiHandler.getApiService().getTeacherDashBoard(hashMap, new Callback<TeacherDashboardInfoMain>() {
+            @Override
+            public void success(TeacherDashboardInfoMain basicResponse, Response response) {
+                getMvpView().hideProgressDialog();
+                getMvpView().showSliderData(basicResponse.getData());
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                getMvpView().hideProgressDialog();
+            }
+        });
     }
 }

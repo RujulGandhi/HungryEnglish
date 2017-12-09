@@ -11,7 +11,7 @@ import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
-import app.com.HungryEnglish.Util.Constant;
+import app.com.HungryEnglish.Util.RestConstant;
 import retrofit.RestAdapter;
 import retrofit.client.OkClient;
 import retrofit.converter.GsonConverter;
@@ -19,7 +19,7 @@ import retrofit.converter.GsonConverter;
 
 public class ApiHandler {
 
-    public static final String BASE_URL = Constant.BASEURL;
+    public static final String BASE_URL = RestConstant.BASEURL;
 
     private static final long HTTP_TIMEOUT = TimeUnit.SECONDS.toMillis(6000);
     private static WebServices apiService;

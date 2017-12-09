@@ -37,6 +37,13 @@
         <item name="rb_max_count">5</item>
     </style>
 
+    <style name="ThemeDialogCustomGuest">
+        <item name="android:padding">@dimen/_5sdp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Toast</item>
+    </style>
 
     <style name="title_textview">
         <item name="android:fontFamily">@font/allerta</item>

@@ -42,7 +42,7 @@ import app.com.HungryEnglish.Model.Profile.StudentGetProfileMainResponse;
 import app.com.HungryEnglish.Model.Profile.StudentProfileMainResponse;
 import app.com.HungryEnglish.R;
 import app.com.HungryEnglish.Services.ApiHandler;
-import app.com.HungryEnglish.Util.Constant;
+import app.com.HungryEnglish.Util.RestConstant;
 import app.com.HungryEnglish.Util.GPSTracker;
 import app.com.HungryEnglish.Util.Utils;
 import app.com.HungryEnglish.databinding.ActivityStudentProfileBinding;
@@ -50,14 +50,14 @@ import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
-import static app.com.HungryEnglish.Util.Constant.MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE;
-import static app.com.HungryEnglish.Util.Constant.ROLE_STUDENT;
-import static app.com.HungryEnglish.Util.Constant.SEX_FEMALE;
-import static app.com.HungryEnglish.Util.Constant.SEX_MALE;
-import static app.com.HungryEnglish.Util.Constant.SHARED_PREFS.KEY_IS_ACTIVE;
-import static app.com.HungryEnglish.Util.Constant.SHARED_PREFS.KEY_USER_ID;
-import static app.com.HungryEnglish.Util.Constant.SHARED_PREFS.KEY_USER_ROLE;
-import static app.com.HungryEnglish.Util.Constant.TIMEPICKER_REQUEST_CODE;
+import static app.com.HungryEnglish.Util.RestConstant.MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE;
+import static app.com.HungryEnglish.Util.RestConstant.ROLE_STUDENT;
+import static app.com.HungryEnglish.Util.RestConstant.SEX_FEMALE;
+import static app.com.HungryEnglish.Util.RestConstant.SEX_MALE;
+import static app.com.HungryEnglish.Util.RestConstant.SHARED_PREFS.KEY_IS_ACTIVE;
+import static app.com.HungryEnglish.Util.RestConstant.SHARED_PREFS.KEY_USER_ID;
+import static app.com.HungryEnglish.Util.RestConstant.SHARED_PREFS.KEY_USER_ROLE;
+import static app.com.HungryEnglish.Util.RestConstant.TIMEPICKER_REQUEST_CODE;
 
 
 /**
@@ -215,7 +215,7 @@ public class StudentProfileActivity extends BaseActivity {
     private Map<String, String> getParentProfileDetail() {
         Map<String, String> map = new HashMap<>();
         if (role.equalsIgnoreCase("")) {
-            String userId = Utils.ReadSharePrefrence(StudentProfileActivity.this, Constant.SHARED_PREFS.KEY_USER_ID);
+            String userId = Utils.ReadSharePrefrence(StudentProfileActivity.this, RestConstant.SHARED_PREFS.KEY_USER_ID);
             map.put("uId", "" + userId);
         } else {
             map.put("uId", id);
@@ -323,7 +323,12 @@ public class StudentProfileActivity extends BaseActivity {
 
     public void onAvailablity(View view) {
         Intent in = new Intent(this, TimePickerActivity.class);
-        String availableTimeString = ((TextView) view).getTag().toString();
+        String availableTimeString;
+        if (((TextView) view).getTag() != null)
+            availableTimeString = ((TextView) view).getTag().toString();
+        else {
+            availableTimeString = "";
+        }
         try {
             Type listType = new TypeToken<ArrayList<TimePickerActivity.TimerModel>>() {
             }.getType();
@@ -356,8 +361,6 @@ public class StudentProfileActivity extends BaseActivity {
     }
 
     public void onUpdateProfile(View view) {
-
-
         if (fullNameStudentEdit.getText().toString().equalsIgnoreCase("")) {
             fullNameStudentEdit.setError("Enter Full Name");
             fullNameStudentEdit.requestFocus();

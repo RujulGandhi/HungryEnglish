@@ -29,8 +29,8 @@ import app.com.HungryEnglish.Util.Utils;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
-import static app.com.HungryEnglish.Util.Constant.SHARED_PREFS.KEY_USER_ID;
-import static app.com.HungryEnglish.Util.Constant.SHARED_PREFS.KEY_USER_ROLE;
+import static app.com.HungryEnglish.Util.RestConstant.SHARED_PREFS.KEY_USER_ID;
+import static app.com.HungryEnglish.Util.RestConstant.SHARED_PREFS.KEY_USER_ROLE;
 import static app.com.HungryEnglish.Util.Utils.checkNetwork;
 import static app.com.HungryEnglish.Util.Utils.showDialog;
 
