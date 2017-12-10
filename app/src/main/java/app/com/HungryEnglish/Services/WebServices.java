@@ -13,6 +13,7 @@ import app.com.HungryEnglish.Model.Rate.RateBasicResponse;
 import app.com.HungryEnglish.Model.RemoveTeacher.BasicResponse;
 import app.com.HungryEnglish.Model.Report.ReportModel;
 import app.com.HungryEnglish.Model.StudentList.InfoWithTeacherList;
+import app.com.HungryEnglish.Model.StudentList.StudentDashboardMainInfo;
 import app.com.HungryEnglish.Model.StudentList.StudentListMainResponse;
 import app.com.HungryEnglish.Model.Teacher.InfoMainResponse;
 import app.com.HungryEnglish.Model.Teacher.TeacherListMainResponse;
@@ -132,6 +133,9 @@ public interface WebServices {
 
     @POST("/mail.php")
     void sendMail(@QueryMap HashMap<String, String> hashMap, Callback<BasicResponse> aTrue);
+
+    @POST("/links_byrole.php")
+    void getStudentDashBorad(@QueryMap HashMap<String, String> hashMap, Callback<StudentDashboardMainInfo> callBack);
 }
 
 

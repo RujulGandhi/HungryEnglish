@@ -719,8 +719,8 @@ public class Utils {
     }
 
 
-    public void changeLanguage(Context context, String languageToLoad) {
-        Locale locale = new Locale(languageToLoad);
+    public void changeLanguage(Context context, String languageToLoad, String countryCode) {
+        Locale locale = new Locale(languageToLoad, countryCode);
         Locale.setDefault(locale);
         Configuration config = new Configuration();
         config.locale = locale;

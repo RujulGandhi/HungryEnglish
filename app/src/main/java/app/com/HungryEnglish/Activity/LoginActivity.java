@@ -14,7 +14,6 @@ import app.com.HungryEnglish.Activity.Student.StudentDashboardActivity;
 import app.com.HungryEnglish.Activity.Student.StudentProfileActivity;
 import app.com.HungryEnglish.Activity.Teacher.MainActivity;
 import app.com.HungryEnglish.Activity.Teacher.TeacherProfileActivity;
-import app.com.HungryEnglish.Interface.OnLanguageChange;
 import app.com.HungryEnglish.Model.login.LoginMainResponse;
 import app.com.HungryEnglish.R;
 import app.com.HungryEnglish.Services.ApiHandler;
@@ -150,20 +149,13 @@ public class LoginActivity extends BaseActivity {
         startActivity(ForgotPassword.class);
     }
 
-    public void onLanguageChange(View view) {
-        utils.alertChangeLanguage(this, new OnLanguageChange() {
-            @Override
-            public void onPositivePressed(String languageCode) {
-                utils.changeLanguage(getApplicationContext(), languageCode);
-                recreate();
-            }
+    public void onChina(View view) {
+        utils.changeLanguage(getApplicationContext(), "zh", "CN");
+        recreate();
+    }
 
-            @Override
-            public void onNegativePressed() {
-
-            }
-        });
-
-
+    public void onUK(View view) {
+        utils.changeLanguage(getApplicationContext(), "en", "US");
+        recreate();
     }
 }

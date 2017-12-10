@@ -35,6 +35,8 @@ public class CircleImageView extends de.hdodenhof.circleimageview.CircleImageVie
 
     public void init(Context context) {
         this.context = context;
+        setDrawingCacheEnabled(true);
+        buildDrawingCache();
         setOnClickListener(this);
     }
 

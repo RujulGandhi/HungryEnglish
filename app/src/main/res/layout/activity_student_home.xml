@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:onClick="onMoreTeachers"
-                android:text="More Teachers"
+                android:text="@string/more_teacher"
                 android:textColor="@color/colorPrimary" />
         </RelativeLayout>
 

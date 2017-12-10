@@ -485,7 +485,6 @@ public class TeacherProfileActivity extends BaseActivity implements
                     binding.ethourlyRate.setText(teacherProfileMain.getInfo().getHourly_rate());
                     binding.etNearestStation.setText(teacherProfileMain.getInfo().getNearest_station());
                     specialSkillTeacherEdit.setText(teacherProfileMain.getInfo().getSkills());
-
                     Picasso.with(getApplicationContext()).load(BASEURL + teacherProfileMain.getInfo().getProfileImage()).placeholder(R.drawable.ic_user_default).error(R.drawable.ic_user_default).into(binding.profileImage);
                     Picasso.with(getApplicationContext()).load(BASEURL + teacherProfileMain.getInfo().getIdImage()).placeholder(R.drawable.ic_user_default).error(R.drawable.ic_user_default).into(idProofImage);
                     resumePath = teacherProfileMain.getInfo().getResume();
@@ -517,8 +516,8 @@ public class TeacherProfileActivity extends BaseActivity implements
                         }
                     }
 
-                    if (teacherProfileMain.getData().getRating() != null && teacherProfileMain.getData().getRating() != "") {
-                        int rategivenbystudent = Integer.parseInt(teacherProfileMain.getData().getRating());
+                    if (teacherProfileMain.getInfo().getRating() != null && teacherProfileMain.getInfo().getRating() != "") {
+                        int rategivenbystudent = Integer.parseInt(teacherProfileMain.getInfo().getRating());
                         binding.studentRate.setCount(rategivenbystudent);
                     }
 

@@ -18,10 +18,12 @@ import javax.mail.AuthenticationFailedException;
 import javax.mail.MessagingException;
 
 import app.com.HungryEnglish.Model.ForgotPassord.ForgotPasswordModel;
+import app.com.HungryEnglish.Model.RemoveTeacher.BasicResponse;
 import app.com.HungryEnglish.R;
 import app.com.HungryEnglish.Services.ApiHandler;
 import app.com.HungryEnglish.Util.Mail;
 import app.com.HungryEnglish.Util.Utils;
+import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
@@ -35,6 +37,7 @@ public class ForgotPassword extends BaseActivity implements View.OnClickListener
     int randomNumber;
     LinearLayout llResetPassword, llEmail, llOTP;
     TextView txtResendOtp;
+    private String email;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -83,7 +86,6 @@ public class ForgotPassword extends BaseActivity implements View.OnClickListener
                 edtOtp.requestFocus();
             }
         } else if (v.getId() == R.id.activity_forgot_password_submit_password_btn) {
-
             if (edtPassword.getText().toString().equals(edtReEnterPassword.getText().toString()) && edtPassword.getText().toString().length() > 5) {
                 ResetPassword();
             } else if (edtPassword.getText().length() > 5) {
@@ -117,6 +119,7 @@ public class ForgotPassword extends BaseActivity implements View.OnClickListener
                 Utils.dismissDialog();
                 if (forgotPasswordModel.getStatus().toString().equalsIgnoreCase("true")) {
                     sendEmail();
+                    email = edtEmail.getText().toString();
                     Toast.makeText(getApplicationContext(), forgotPasswordModel.getMsg(), Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(getApplicationContext(), forgotPasswordModel.getMsg(), Toast.LENGTH_SHORT).show();
@@ -139,7 +142,7 @@ public class ForgotPassword extends BaseActivity implements View.OnClickListener
 
         Utils.showDialog(this);
         HashMap<String, String> map = new HashMap<>();
-        map.put("email", edtEmail.getText().toString());
+        map.put("email", email);
         map.put("password", edtPassword.getText().toString());
 
         ApiHandler.getApiService().resetPassword(map, new retrofit.Callback<ForgotPasswordModel>() {
@@ -173,15 +176,42 @@ public class ForgotPassword extends BaseActivity implements View.OnClickListener
 
         String message = "Welcome to Hungry English Club " + "\n" + "To Reset the Password enter below OTP in ypur application" + "\n" + randomNumber;
 
-        String[] recipients = {edtEmail.getText().toString()};
-        SendEmailAsyncTask email = new SendEmailAsyncTask();
-        email.activity = this;
-        email.m = new Mail("hungryenglishclub@gmail.com", "rujulgandhi");
-        email.m.set_from("hungryenglishclub@gmail.com");
-        email.m.setBody(message);
-        email.m.set_to(recipients);
-        email.m.set_subject("Hungry English CLUB");
-        email.execute();
+
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put("subject", "Hungry English");
+        hashMap.put("message", String.valueOf(message));
+        hashMap.put("email", "Rujul.co@gmail.com");
+//        hashMap.put("email", "idigi@live.com");
+
+
+        ApiHandler.getApiService().sendMail(hashMap, new Callback<BasicResponse>() {
+            @Override
+            public void success(BasicResponse basicResponse, Response response) {
+                if (basicResponse.getStatus().equalsIgnoreCase("true")) {
+                    toast(basicResponse.getMsg());
+
+                } else {
+                    toast(basicResponse.getMsg());
+                }
+                Utils.dismissDialog();
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                Utils.dismissDialog();
+            }
+        });
+
+//
+//        String[] recipients = {edtEmail.getText().toString()};
+//        SendEmailAsyncTask email = new SendEmailAsyncTask();
+//        email.activity = this;
+//        email.m = new Mail("hungryenglishclub@gmail.com", "rujulgandhi");
+//        email.m.set_from("hungryenglishclub@gmail.com");
+//        email.m.setBody(message);
+//        email.m.set_to(recipients);
+//        email.m.set_subject("Hungry English CLUB");
+//        email.execute();
 
         llEmail.setVisibility(View.GONE);
         edtEmail.setVisibility(View.GONE);
@@ -190,6 +220,7 @@ public class ForgotPassword extends BaseActivity implements View.OnClickListener
         edtOtp.setVisibility(View.VISIBLE);
         btnSubmitOtp.setVisibility(View.VISIBLE);
         txtResendOtp.setVisibility(View.VISIBLE);
+        btnSubmitPassword.setVisibility(View.VISIBLE);
     }
 
     private int nDigitRandomNo(int digits) {

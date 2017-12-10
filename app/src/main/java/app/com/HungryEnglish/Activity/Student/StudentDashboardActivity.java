@@ -9,15 +9,15 @@ import android.view.View;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import app.com.HungryEnglish.Activity.BaseActivity;
 import app.com.HungryEnglish.Activity.Teacher.TeacherListActivity;
 import app.com.HungryEnglish.Activity.Teacher.TeacherProfileActivity;
-import app.com.HungryEnglish.Adapter.ImageAdapter;
+import app.com.HungryEnglish.Adapter.TeacherImageAdapter;
 import app.com.HungryEnglish.Adapter.TestAdapter;
 import app.com.HungryEnglish.Interface.OnItemClick;
 import app.com.HungryEnglish.Model.Teacher.TeacherListResponse;
+import app.com.HungryEnglish.Model.admin.AdminAddInfoDetail;
 import app.com.HungryEnglish.Presenter.StudentHomePresenter;
 import app.com.HungryEnglish.R;
 import app.com.HungryEnglish.Util.Utils;
@@ -68,15 +68,14 @@ public class StudentDashboardActivity extends BaseActivity implements StudentHom
     }
 
     @Override
-    public void showSlider(ArrayList<String> imageArray, ArrayList<String> linkArray) {
+    public void showSlider(ArrayList<AdminAddInfoDetail> array) {
         Picasso pic = Picasso.with(getApplicationContext());
-        binding.viewPager.setAdapter(new ImageAdapter(getSupportFragmentManager(), StudentDashboardActivity.this, imageArray, linkArray, pic));
-        binding.tablayout.setupWithViewPager(binding.viewPager, true);
+        binding.viewPager.setAdapter(new TeacherImageAdapter(this, array, pic));
+        binding.tablayout.setupWithViewPager(binding.viewPager);
     }
 
     @Override
-    public void showTeacherList(List<TeacherListResponse> data) {
-//        adapter = new TeacherGridAdapter(getApplicationContext());
+    public void showTeacherList(ArrayList<TeacherListResponse> data) {
         adapter = new TestAdapter(getApplicationContext(), data);
         adapter.setListenr(this);
         GridLayoutManager layoutManager = new GridLayoutManager(this, 2);

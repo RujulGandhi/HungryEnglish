@@ -14,7 +14,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="#ececec"
             android:orientation="vertical">
@@ -122,22 +122,34 @@
                     android:layout_marginTop="@dimen/_5sdp"
                     android:gravity="center"
                     android:onClick="onForgetPassword"
+                    android:padding="@dimen/_5sdp"
                     android:text="@string/forgot_password"
                     android:textColor="@color/colorPrimary"
                     android:textSize="@dimen/_10sdp"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/txt_change_language"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_gravity="center"
                     android:gravity="center"
-                    android:onClick="onLanguageChange"
-                    android:text="@string/change_language"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="@dimen/_10sdp"
-                    android:textStyle="bold" />
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_5sdp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="onChina"
+                        android:padding="@dimen/_5sdp"
+                        android:src="@drawable/ic_ch" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="onUK"
+                        android:padding="@dimen/_5sdp"
+                        android:src="@drawable/ic_uk" />
+                </LinearLayout>
 
                 <TextView
                     android:layout_width="match_parent"

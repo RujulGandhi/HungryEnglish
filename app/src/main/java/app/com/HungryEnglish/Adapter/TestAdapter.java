@@ -6,7 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.List;
 
@@ -47,7 +48,12 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.MyViewHolder> 
         myViewHolder.binding.teacherName.setText(teacherInfo.get(i).getFullName());
         if (info != null) {
             String imageURL = RestConstant.BASEURL + info.getProfileImage();
-            Picasso.with(context).load(imageURL).placeholder(R.drawable.ic_user_default).into(myViewHolder.binding.ivTeacherProfilePic);
+            if (info.getProfileImage().length() > 1) {
+                Glide.with(context).load(imageURL)
+                        .apply(new RequestOptions().placeholder(R.drawable.ic_user_default).error(R.drawable.ic_user_default)).into(myViewHolder.binding.ivTeacherProfilePic);
+            } else {
+                Glide.with(context).load(R.drawable.ic_user_default).into(myViewHolder.binding.ivTeacherProfilePic);
+            }
         }
     }
 
@@ -71,7 +77,7 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.MyViewHolder> 
 
         @Override
         public void onClick(View v) {
-            onItemClick.onItemClick(teacherInfo.get(getAdapterPosition()),getAdapterPosition());
+            onItemClick.onItemClick(teacherInfo.get(getAdapterPosition()), getAdapterPosition());
         }
     }
 

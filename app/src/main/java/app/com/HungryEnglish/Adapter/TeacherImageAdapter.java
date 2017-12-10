@@ -12,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -38,10 +40,6 @@ public class TeacherImageAdapter extends PagerAdapter {
         this.picasso = picasso;
     }
 
-//   @Override
-//    public Fragment getItem(int i) {
-//        return new ImageAdpaterFragment(imagesArray, linkArray, i);
-//    }
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
@@ -64,8 +62,14 @@ public class TeacherImageAdapter extends PagerAdapter {
                 }
             }
         });
-        String url = BASEURL+array.get(position).getImages();
-        picasso.load(url).placeholder(R.drawable.ic_add_img).error(R.drawable.ic_add_img).into(imageView);
+        String imageURL = BASEURL + array.get(position).getImages();
+//        picasso.load(url).placeholder(R.drawable.ic_add_img).error(R.drawable.ic_add_img).into(imageView);
+        if (array.get(position).getImages().length() > 1) {
+            Glide.with(mContext).load(imageURL)
+                    .apply(new RequestOptions().placeholder(R.drawable.ic_user_default).error(R.drawable.ic_user_default)).into(imageView);
+        } else {
+            Glide.with(mContext).load(R.drawable.ic_add_img).into(imageView);
+        }
         container.addView(itemView);
         return itemView;
     }
