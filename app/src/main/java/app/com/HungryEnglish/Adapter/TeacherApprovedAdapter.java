@@ -19,6 +19,7 @@ import com.squareup.picasso.Picasso;
 import java.util.HashMap;
 import java.util.List;
 
+import app.com.HungryEnglish.Activity.ImageActivity;
 import app.com.HungryEnglish.Activity.Teacher.TeacherProfileActivity;
 import app.com.HungryEnglish.Interface.OnDialogEvent;
 import app.com.HungryEnglish.Model.RemoveTeacher.BasicResponse;
@@ -93,9 +94,9 @@ public class TeacherApprovedAdapter extends RecyclerView.Adapter<TeacherApproved
         holder.tvTeacherName.setText(teacherList.get(pos).getUsername());
 
         holder.tvEmail.setText("Email : " + teacherList.get(pos).getEmail());
+        final String imageUrl = RestConstant.BASEURL + teacherList.get(pos).getTeacherInfo().getProfileImage();
         if (teacherList.get(pos).getTeacherInfo() != null && teacherList.get(pos).getTeacherInfo().getAvailableTime() != null) {
             holder.tvTeacherAvaibility.setText("Avaibility : " + Utils.getDisplayString(teacherList.get(pos).getTeacherInfo().getAvailableTime()));
-            String imageUrl = RestConstant.BASEURL + teacherList.get(pos).getTeacherInfo().getProfileImage();
             Picasso.with(mContext).load(imageUrl).placeholder(R.drawable.ic_user_default).error(R.drawable.ic_user_default).into(holder.ivProfilePic);
         }
         holder.tvMobileNo.setText("Mobile No : " + teacherList.get(pos).getMobNo());
@@ -123,7 +124,7 @@ public class TeacherApprovedAdapter extends RecyclerView.Adapter<TeacherApproved
                 Utils.alert(mContext, mContext.getString(R.string.inactive_user), mContext.getString(R.string.confirm_inacitve), mContext.getString(R.string.yes), mContext.getString(R.string.no), new OnDialogEvent() {
                     @Override
                     public void onPositivePressed() {
-                        inactiveTeacher(teacherList.get(pos).getId(),pos);
+                        inactiveTeacher(teacherList.get(pos).getId(), pos);
                     }
 
                     @Override
@@ -131,6 +132,16 @@ public class TeacherApprovedAdapter extends RecyclerView.Adapter<TeacherApproved
 
                     }
                 });
+            }
+        });
+
+        holder.ivProfilePic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent in = new Intent(mContext, ImageActivity.class);
+                in.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                in.putExtra("url", imageUrl);
+                mContext.startActivity(in);
             }
         });
 
@@ -146,7 +157,7 @@ public class TeacherApprovedAdapter extends RecyclerView.Adapter<TeacherApproved
     }
 
     // CALL TEACHER LIST API HERE
-    public void inactiveTeacher(String id,final int pos) {
+    public void inactiveTeacher(String id, final int pos) {
         HashMap<String, String> hashMap = new HashMap<>();
         hashMap.put("uid", id);
         hashMap.put("is_active", "0");

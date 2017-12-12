@@ -78,7 +78,7 @@ public class MapPresenter extends BasePresenter<MapView> implements OnMapReadyCa
         map.put(RequestParams.ActionName.getValue(), RequestParams.ActionAddress.getValue());
         map.put(RequestParams.Lat.getValue(), String.valueOf(lat));
         map.put(RequestParams.Lng.getValue(), String.valueOf(lng));
-        ApiHandler.getApiService().getAddress(map, new retrofit.Callback<Address>() {
+        ApiHandler.getApiService().getAddressAdmin(map, new retrofit.Callback<Address>() {
             @Override
             public void success(final Address address, Response response) {
                 if (address != null) {

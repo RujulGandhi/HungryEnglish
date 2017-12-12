@@ -13,6 +13,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import app.com.HungryEnglish.Activity.ImageActivity;
 import app.com.HungryEnglish.Activity.Teacher.TeacherProfileActivity;
 import app.com.HungryEnglish.Fragment.TeacherApprovedListFragment;
 import app.com.HungryEnglish.Model.Teacher.TeacherListResponse;
@@ -74,18 +75,34 @@ public class TeacherListAdapter extends RecyclerView.Adapter<TeacherListAdapter.
 
             }
         });
+        String profilePicUrl = "";
+        if (teacherList.get(position).getTeacherInfo() != null) {
+            profilePicUrl = RestConstant.BASEURL + teacherList.get(position).getTeacherInfo().getProfileImage();
+        }
         if (teacherList.get(position).getTeacherInfo() != null) {
             holder.tvSpecialSkills.setText(mContext.getString(R.string.special_skils_label) + " " + teacherList.get(position).getTeacherInfo().getSkills());
             holder.tvClosestStation.setText(teacherList.get(position).getTeacherInfo().getNearest_station());
-            String profilePicUrl = RestConstant.BASEURL + teacherList.get(position).getTeacherInfo().getProfileImage();
             Picasso.with(mContext).load(profilePicUrl).error(R.drawable.ic_user_default).placeholder(R.drawable.ic_user_default).into(holder.ivProfilePic);
-
             if (Utils.ReadSharePrefrence(mContext, RestConstant.SHARED_PREFS.KEY_USER_ROLE).equals("student")) {
                 holder.tvReportTeacher.setVisibility(View.VISIBLE);
             } else {
                 holder.tvReportTeacher.setVisibility(View.GONE);
             }
         }
+
+        holder.ivProfilePic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String profilePicUrl = "";
+                if (teacherList.get(position).getTeacherInfo() != null) {
+                    profilePicUrl = RestConstant.BASEURL + teacherList.get(position).getTeacherInfo().getProfileImage();
+                }
+                Intent in = new Intent(mContext, ImageActivity.class);
+                in.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                in.putExtra("url", profilePicUrl);
+                mContext.startActivity(in);
+            }
+        });
     }
 
 

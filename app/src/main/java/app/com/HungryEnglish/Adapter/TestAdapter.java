@@ -1,6 +1,7 @@
 package app.com.HungryEnglish.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import com.bumptech.glide.request.RequestOptions;
 
 import java.util.List;
 
+import app.com.HungryEnglish.Activity.ImageActivity;
 import app.com.HungryEnglish.Interface.OnItemClick;
 import app.com.HungryEnglish.Model.Teacher.TeacherInfo;
 import app.com.HungryEnglish.Model.Teacher.TeacherListResponse;
@@ -47,13 +49,22 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.MyViewHolder> 
         TeacherInfo info = teacherInfo.get(i).getTeacherInfo();
         myViewHolder.binding.teacherName.setText(teacherInfo.get(i).getFullName());
         if (info != null) {
-            String imageURL = RestConstant.BASEURL + info.getProfileImage();
+            final String imageURL = RestConstant.BASEURL + info.getProfileImage();
             if (info.getProfileImage().length() > 1) {
                 Glide.with(context).load(imageURL)
                         .apply(new RequestOptions().placeholder(R.drawable.ic_user_default).error(R.drawable.ic_user_default)).into(myViewHolder.binding.ivTeacherProfilePic);
             } else {
                 Glide.with(context).load(R.drawable.ic_user_default).into(myViewHolder.binding.ivTeacherProfilePic);
             }
+            myViewHolder.binding.ivTeacherProfilePic.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent in = new Intent(context, ImageActivity.class);
+                    in.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    in.putExtra("url", imageURL);
+                    context.startActivity(in);
+                }
+            });
         }
     }
 

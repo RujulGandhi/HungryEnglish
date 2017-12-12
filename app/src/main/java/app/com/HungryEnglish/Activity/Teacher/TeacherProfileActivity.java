@@ -52,6 +52,7 @@ import javax.mail.AuthenticationFailedException;
 import javax.mail.MessagingException;
 
 import app.com.HungryEnglish.Activity.BaseActivity;
+import app.com.HungryEnglish.Activity.ImageActivity;
 import app.com.HungryEnglish.Activity.TimePickerActivity;
 import app.com.HungryEnglish.Interface.OnDialogEvent;
 import app.com.HungryEnglish.MapActivity;
@@ -458,7 +459,6 @@ public class TeacherProfileActivity extends BaseActivity implements
                 fullNameTeacherEdit.setText(teacherProfileMain.getData().getFullName());
                 emailEdit.setText(teacherProfileMain.getData().getEmail());
                 // need set tag of current tv fields.
-
                 userNameEdit.setText(teacherProfileMain.getData().getUsername());
                 etMobileOrWechatId.setText(String.valueOf(teacherProfileMain.getData().getMobNo()));
                 int rating = teacherProfileMain.getData().getRating().equalsIgnoreCase("") ? 0 : Integer.parseInt(teacherProfileMain.getData().getRating());
@@ -520,7 +520,6 @@ public class TeacherProfileActivity extends BaseActivity implements
                         int rategivenbystudent = Integer.parseInt(teacherProfileMain.getInfo().getRating());
                         binding.studentRate.setCount(rategivenbystudent);
                     }
-
                 }
             }
 

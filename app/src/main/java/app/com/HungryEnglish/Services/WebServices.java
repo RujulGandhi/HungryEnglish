@@ -1,6 +1,8 @@
 package app.com.HungryEnglish.Services;
 
 
+import com.squareup.okhttp.ResponseBody;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -98,6 +100,9 @@ public interface WebServices {
 
     @GET("/report_list.php")
     public void getReportList(Callback<ReportModel> callback);
+
+    @GET("/get_data.php")
+    public void getAddressAdmin(@QueryMap Map<String, String> map, Callback<Address> callback);
 
     @GET("/get_data.php")
     public void getAddress(@QueryMap Map<String, String> map, Callback<Address> callback);

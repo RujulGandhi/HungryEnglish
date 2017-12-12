@@ -4,6 +4,9 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.squareup.picasso.Picasso;
@@ -11,15 +14,18 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 import app.com.HungryEnglish.Activity.BaseActivity;
+import app.com.HungryEnglish.Activity.FeedbackActivity;
 import app.com.HungryEnglish.Activity.Teacher.TeacherListActivity;
 import app.com.HungryEnglish.Activity.Teacher.TeacherProfileActivity;
 import app.com.HungryEnglish.Adapter.TeacherImageAdapter;
 import app.com.HungryEnglish.Adapter.TestAdapter;
+import app.com.HungryEnglish.Interface.OnDialogEvent;
 import app.com.HungryEnglish.Interface.OnItemClick;
 import app.com.HungryEnglish.Model.Teacher.TeacherListResponse;
 import app.com.HungryEnglish.Model.admin.AdminAddInfoDetail;
 import app.com.HungryEnglish.Presenter.StudentHomePresenter;
 import app.com.HungryEnglish.R;
+import app.com.HungryEnglish.Util.RestConstant;
 import app.com.HungryEnglish.Util.Utils;
 import app.com.HungryEnglish.View.StudentHomeView;
 import app.com.HungryEnglish.databinding.ActivityStudentHomeBinding;
@@ -95,5 +101,51 @@ public class StudentDashboardActivity extends BaseActivity implements StudentHom
     @Override
     public void onItemClick(TeacherListResponse response, int pos) {
         presenter.onItemClick(response);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_profile, menu);
+        MenuItem item = (MenuItem) menu.findItem(R.id.contact);
+        item.setVisible(true);
+        // return true so that the menu pop up is opened
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        String role = Utils.ReadSharePrefrence(getApplicationContext(), RestConstant.SHARED_PREFS.KEY_USER_ROLE);
+        switch (item.getItemId()) {
+            case R.id.logout:
+                Utils.alert(this, getString(R.string.logout), getString(R.string.logout_note), getString(R.string.logout), getString(R.string.cancel), new OnDialogEvent() {
+                    @Override
+                    public void onPositivePressed() {
+                        clear();
+                        Utils.logout(getApplicationContext());
+                        finish();
+                    }
+
+                    @Override
+                    public void onNegativePressed() {
+
+                    }
+                });
+                break;
+            case R.id.profile:
+                switch (role) {
+                    case "student":
+                        startActivity(StudentProfileActivity.class);
+                        break;
+                    case "teacher":
+                        startActivity(TeacherProfileActivity.class);
+                        break;
+                }
+                break;
+            case R.id.contact:
+                FeedbackActivity.start(this);
+                break;
+        }
+        return true;
     }
 }

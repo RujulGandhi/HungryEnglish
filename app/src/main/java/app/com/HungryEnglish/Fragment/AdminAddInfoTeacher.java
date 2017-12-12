@@ -229,7 +229,6 @@ public class AdminAddInfoTeacher extends Fragment implements View.OnClickListene
             if (presenter != null) {
                 presenter.getTeacherData();
             }
-
         }
     }
 
