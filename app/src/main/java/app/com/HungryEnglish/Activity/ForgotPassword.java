@@ -118,8 +118,8 @@ public class ForgotPassword extends BaseActivity implements View.OnClickListener
             public void success(ForgotPasswordModel forgotPasswordModel, Response response) {
                 Utils.dismissDialog();
                 if (forgotPasswordModel.getStatus().toString().equalsIgnoreCase("true")) {
-                    sendEmail();
                     email = edtEmail.getText().toString();
+                    sendEmail();
                     Toast.makeText(getApplicationContext(), forgotPasswordModel.getMsg(), Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(getApplicationContext(), forgotPasswordModel.getMsg(), Toast.LENGTH_SHORT).show();
@@ -180,7 +180,8 @@ public class ForgotPassword extends BaseActivity implements View.OnClickListener
         HashMap<String, String> hashMap = new HashMap<>();
         hashMap.put("subject", "Hungry English");
         hashMap.put("message", String.valueOf(message));
-        hashMap.put("email", "Rujul.co@gmail.com");
+        hashMap.put("message", email);
+//        hashMap.put("email", "Rujul.co@gmail.com");
 //        hashMap.put("email", "idigi@live.com");
 
 

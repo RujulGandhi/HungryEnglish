@@ -473,7 +473,7 @@ public class TeacherProfileActivity extends BaseActivity implements
                     String responseString = teacherProfileMain.getInfo().getAvailableTime();
                     binding.avaibilityDateTeacherTv.setTag(responseString);
 
-                    if (teacherProfileMain.getInfo().getOnline_status().equalsIgnoreCase("true")) {
+                    if (teacherProfileMain.getInfo().getOnline_status().equalsIgnoreCase("1")) {
                         binding.radioTrue.setChecked(true);
                     } else {
                         binding.radioFalse.setChecked(true);
