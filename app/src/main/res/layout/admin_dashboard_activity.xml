@@ -295,7 +295,7 @@
                         android:layout_gravity="center"
                         android:background="@drawable/dashboard_shape"
                         android:padding="@dimen/_20sdp"
-                        android:src="@drawable/ic_image_link" />
+                        android:src="@drawable/ic_admin_rate" />
 
                 </RelativeLayout>
 
@@ -342,7 +342,7 @@
                         android:layout_gravity="center"
                         android:background="@drawable/dashboard_shape"
                         android:padding="@dimen/_20sdp"
-                        android:src="@drawable/ic_report" />
+                        android:src="@drawable/ic_admin_map" />
 
 
                 </RelativeLayout>

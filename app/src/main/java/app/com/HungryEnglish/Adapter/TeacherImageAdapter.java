@@ -14,7 +14,6 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -32,12 +31,10 @@ public class TeacherImageAdapter extends PagerAdapter {
     private Context mContext;
     ArrayList<AdminAddInfoDetail> array;
     AdapterImageBinding binding;
-    Picasso picasso;
 
-    public TeacherImageAdapter(Context context, ArrayList<AdminAddInfoDetail> array, Picasso picasso) {
+    public TeacherImageAdapter(Context context, ArrayList<AdminAddInfoDetail> array) {
         mContext = context;
         this.array = array;
-        this.picasso = picasso;
     }
 
 

@@ -29,7 +29,7 @@
     <string name="loginfail">Please enter a valid Email Password</string>
     <string name="user_name_validation">Username Must be greater than 4 charcters</string>
     <string name="full_name_validation">Enter Full Name</string>
-    <string name="internet_connection_error">Hungry English requires an internet connection.Make sure Wi-Fi or mobile networks are turned on, then try again.</string>
+    <string name="internet_connection_error" translatable="false">Hungry English requires an internet connection.Make sure Wi-Fi or mobile networks are turned on, then try again.</string>
     <string name="wechat">WeChat ID</string>
     <string name="applyasteacher">Apply as Teacher</string>
     <string name="teacher_profile">Teacher Profile</string>
@@ -40,8 +40,8 @@
     <string name="parent_profile">Parent Profile</string>
     <string name="upload_audio">Upload Audio</string>
     <string name="location">Address ( Location )</string>
-    <string name="sucess_external_storage_msg">Hungry English will use your storage.</string>
-    <string name="error_permission_msg">Hungry English can misbehave.</string>
+    <string name="sucess_external_storage_msg" translatable="false">Hungry English will use your storage.</string>
+    <string name="error_permission_msg" translatable="false">Hungry English can misbehave.</string>
     <string name="logout">Logout</string>
     <string name="teacher_name">Name :</string>
     <string name="teacher_email">Email :</string>
@@ -53,13 +53,13 @@
     <string name="nearest_railway_station_label">Nearest Railway Station : </string>
 
     <string name="alert_msg">Alert Msg</string>
-    <string name="ok">OK</string>
+    <string name="ok" translatable="false">OK</string>
     <string name="choose_file">Choose File</string>
     <string name="internet_error">Internet Connection !</string>
     <string name="accept_invitation">Accept</string>
     <string name="student_list">Student List</string>
     <string name="teacher_list">Teacher List</string>
-    <string name="add_image_link"><![CDATA[Add Image / Links]]></string>
+    <string name="add_image_link" translatable="false"><![CDATA[Add Image / Links]]></string>
     <string name="edit">Edit</string>
     <string name="logout_note">Are you sure you want to logout from Hungry English?</string>
 
@@ -84,7 +84,7 @@
     <string name="loading">Loading..</string>
     <string name="report_sucess">Report created sucessfully.</string>
     <string name="error_something_wrong">Something went wrong.</string>
-    <string name="null_value" />
+    <string name="null_value" translatable="false" />
     <string name="try_again">Please Try Again</string>
     <string name="something_wrong">Something Wrong</string>
     <string name="admin_approve_request">Admin will approve your request.</string>
@@ -96,7 +96,7 @@
     <string name="home_location">Home Location</string>
     <string name="no">No</string>
     <string name="yes">Yes</string>
-    <string name="rating_title">Rate and support your teacher</string>
+    <string name="rating_title" translatable="false">Rate and support your teacher</string>
     <string name="student_rating_sucess_msg">Thank you for your valuable feedback!</string>
     <string name="rate">Rate</string>
     <string name="filter">Filter</string>
@@ -118,7 +118,7 @@
     <string name="inactive">Inactive</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="add_link">Add Link</string>
     <string name="add_image">Add Image</string>
     <string name="add_title">Add Title</string>

@@ -2,14 +2,13 @@ package app.com.HungryEnglish.Activity.Student;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -38,6 +37,20 @@ public class StudentDashboardActivity extends BaseActivity implements StudentHom
     private ActivityStudentHomeBinding binding;
     private StudentHomePresenter presenter;
     private TestAdapter adapter;
+    private Handler handler;
+    private int countOfImages;
+    private Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            int curIndex = binding.viewPager.getCurrentItem() + 1;
+            if (curIndex == countOfImages) {
+                binding.viewPager.setCurrentItem(0);
+            } else {
+                binding.viewPager.setCurrentItem(curIndex);
+            }
+            handler.postDelayed(this, 4000);
+        }
+    };
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -74,10 +87,12 @@ public class StudentDashboardActivity extends BaseActivity implements StudentHom
     }
 
     @Override
-    public void showSlider(ArrayList<AdminAddInfoDetail> array) {
-        Picasso pic = Picasso.with(getApplicationContext());
-        binding.viewPager.setAdapter(new TeacherImageAdapter(this, array, pic));
+    public void showSlider(ArrayList<AdminAddInfoDetail> data) {
+        binding.viewPager.setAdapter(new TeacherImageAdapter(this, data));
         binding.tablayout.setupWithViewPager(binding.viewPager);
+        countOfImages = data.size();
+        handler = new Handler();
+        handler.postDelayed(runnable, 4000);
     }
 
     @Override

@@ -44,11 +44,8 @@ public class AdminDashboardActivity extends BaseActivity {
         click = new AlphaAnimation(1F, 0.5F);
         setContentView(R.layout.admin_dashboard_activity);
         idMapping();
-
         setOnClick();
-
         callGetCountApi();
-
     }
 
     @Override

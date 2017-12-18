@@ -14,7 +14,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.HashMap;
 import java.util.List;
@@ -97,7 +98,7 @@ public class TeacherApprovedAdapter extends RecyclerView.Adapter<TeacherApproved
         final String imageUrl = RestConstant.BASEURL + teacherList.get(pos).getTeacherInfo().getProfileImage();
         if (teacherList.get(pos).getTeacherInfo() != null && teacherList.get(pos).getTeacherInfo().getAvailableTime() != null) {
             holder.tvTeacherAvaibility.setText("Avaibility : " + Utils.getDisplayString(teacherList.get(pos).getTeacherInfo().getAvailableTime()));
-            Picasso.with(mContext).load(imageUrl).placeholder(R.drawable.ic_user_default).error(R.drawable.ic_user_default).into(holder.ivProfilePic);
+            Glide.with(mContext).applyDefaultRequestOptions(new RequestOptions().placeholder(R.drawable.ic_user_default).error(R.drawable.ic_user_default)).load(imageUrl).into(holder.ivProfilePic);
         }
         holder.tvMobileNo.setText("Mobile No : " + teacherList.get(pos).getMobNo());
         holder.ivRemove.setOnClickListener(new View.OnClickListener() {

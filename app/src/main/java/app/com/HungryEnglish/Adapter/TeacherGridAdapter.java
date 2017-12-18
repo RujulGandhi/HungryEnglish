@@ -5,7 +5,8 @@ import android.databinding.ViewDataBinding;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 import app.com.HungryEnglish.Model.Teacher.TeacherListResponse;
 import app.com.HungryEnglish.R;
@@ -37,7 +38,7 @@ public class TeacherGridAdapter extends BaseBindingAdapter<TeacherListResponse> 
         binding.teacherName.setText(obj.getFullName());
         if (obj.getTeacherInfo() != null && !obj.getTeacherInfo().getProfileImage().equalsIgnoreCase("")) {
             String imageUrl = RestConstant.BASEURL + obj.getTeacherInfo().getProfileImage();
-            Picasso.with(context).load(imageUrl).placeholder(R.drawable.ic_user_default).error(R.drawable.ic_user_default).into(binding.ivTeacherProfilePic);
+            Glide.with(context).load(imageUrl).apply(new RequestOptions().placeholder(R.drawable.ic_user_default).error(R.drawable.ic_user_default)).into(binding.ivTeacherProfilePic);
         } else
             binding.ivTeacherProfilePic.setImageResource(R.drawable.ic_user_default);
     }

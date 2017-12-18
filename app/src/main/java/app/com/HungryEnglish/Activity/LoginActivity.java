@@ -124,14 +124,14 @@ public class LoginActivity extends BaseActivity {
     }
 
     public void onLogin(View view) {
-        if (binding.edtUsername.getText().toString().equalsIgnoreCase(getString(R.string.null_value))) {
+        if (binding.edtUsername.getText().toString().equalsIgnoreCase("")) {
             binding.txtInputUsername.setErrorEnabled(true);
             binding.txtInputUsername.setError(getString(R.string.email_validation));
             return;
         } else {
             binding.txtInputUsername.setErrorEnabled(false);
         }
-        if (binding.edtPassword.getText().toString().equalsIgnoreCase(getString(R.string.null_value))) {
+        if (binding.edtPassword.getText().toString().equalsIgnoreCase("")) {
             binding.txtInputPasssword.setErrorEnabled(true);
             binding.txtInputPasssword.setError(getString(R.string.password_validation));
             return;

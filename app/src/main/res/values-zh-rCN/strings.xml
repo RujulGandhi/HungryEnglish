@@ -201,7 +201,6 @@
     <string name="loading">正在加载... </string>
     <string name="report_sucess">成功创建报告</string>
     <string name="error_something_wrong">出错了。</string>
-    <string name="null_value" />
     <string name="try_again">请再试一次</string>
     <string name="something_wrong">出错了。</string>
     <string name="admin_approve_request">管理员将批准您的请求</string>

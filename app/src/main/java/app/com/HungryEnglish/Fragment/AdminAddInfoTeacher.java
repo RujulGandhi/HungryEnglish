@@ -7,6 +7,7 @@ import android.databinding.DataBindingUtil;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -18,8 +19,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.Toast;
-
-import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.io.IOException;
@@ -58,6 +57,20 @@ public class AdminAddInfoTeacher extends Fragment implements View.OnClickListene
     private File pickedFile;
     private FragmentAdminAddInfoTeacherBinding binding;
     private boolean isAdmin;
+    private Handler handler;
+    private int countOfImages;
+    private Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            int curIndex = binding.viewPager.getCurrentItem() + 1;
+            if (curIndex == countOfImages) {
+                binding.viewPager.setCurrentItem(0);
+            } else {
+                binding.viewPager.setCurrentItem(curIndex);
+            }
+            handler.postDelayed(this, 4000);
+        }
+    };
 
     public AdminAddInfoTeacher() {
     }
@@ -234,9 +247,11 @@ public class AdminAddInfoTeacher extends Fragment implements View.OnClickListene
 
     @Override
     public void showSliderData(ArrayList<AdminAddInfoDetail> sliderArray) {
-        Picasso pic = Picasso.with(getActivity());
-        binding.viewPager.setAdapter(new TeacherImageAdapter(getActivity(), sliderArray, pic));
+        binding.viewPager.setAdapter(new TeacherImageAdapter(getActivity(), sliderArray));
         binding.tablayout.setupWithViewPager(binding.viewPager);
+        countOfImages = sliderArray.size();
+        handler = new Handler();
+        handler.postDelayed(runnable, 4000);
     }
 
     @Override

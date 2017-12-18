@@ -9,7 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.List;
 
@@ -82,7 +83,7 @@ public class TeacherListAdapter extends RecyclerView.Adapter<TeacherListAdapter.
         if (teacherList.get(position).getTeacherInfo() != null) {
             holder.tvSpecialSkills.setText(mContext.getString(R.string.special_skils_label) + " " + teacherList.get(position).getTeacherInfo().getSkills());
             holder.tvClosestStation.setText(teacherList.get(position).getTeacherInfo().getNearest_station());
-            Picasso.with(mContext).load(profilePicUrl).error(R.drawable.ic_user_default).placeholder(R.drawable.ic_user_default).into(holder.ivProfilePic);
+            Glide.with(mContext).load(profilePicUrl).apply(new RequestOptions().error(R.drawable.ic_user_default).placeholder(R.drawable.ic_user_default)).into(holder.ivProfilePic);
             if (Utils.ReadSharePrefrence(mContext, RestConstant.SHARED_PREFS.KEY_USER_ROLE).equals("student")) {
                 holder.tvReportTeacher.setVisibility(View.VISIBLE);
             } else {

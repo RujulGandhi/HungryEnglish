@@ -57,6 +57,8 @@ public class TeacherListActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_teacher_list);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         if (read(RestConstant.SHARED_PREFS.KEY_USER_ROLE).equalsIgnoreCase("student")) {
             callTeacherListApi();
         }
@@ -102,6 +104,12 @@ public class TeacherListActivity extends BaseActivity {
                 }
             });
         }
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     private void setTeacherList(List<TeacherListResponse> teacherListMainResponse) {

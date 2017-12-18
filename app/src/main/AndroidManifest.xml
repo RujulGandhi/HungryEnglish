@@ -69,9 +69,6 @@
         <activity
             android:name=".Activity.Student.StudentListActivity"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".Activity.Admin.AddImageOrLinkActivity"
-            android:screenOrientation="portrait" />
         <activity android:name=".Activity.ForgotPassword" />
         <activity
             android:name=".Activity.Teacher.Contactus"

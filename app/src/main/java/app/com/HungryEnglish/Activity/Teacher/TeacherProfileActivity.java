@@ -30,10 +30,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
-import com.squareup.picasso.Picasso;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -52,7 +53,6 @@ import javax.mail.AuthenticationFailedException;
 import javax.mail.MessagingException;
 
 import app.com.HungryEnglish.Activity.BaseActivity;
-import app.com.HungryEnglish.Activity.ImageActivity;
 import app.com.HungryEnglish.Activity.TimePickerActivity;
 import app.com.HungryEnglish.Interface.OnDialogEvent;
 import app.com.HungryEnglish.MapActivity;
@@ -377,7 +377,7 @@ public class TeacherProfileActivity extends BaseActivity implements
                     } else {
                         pathProfilePic = getPath(this, data.getData());
                     }
-                    Picasso.with(getApplicationContext()).load(Uri.fromFile(new File(pathProfilePic))).placeholder(R.drawable.ic_user_default).error(R.drawable.ic_user_default).into(binding.profileImage);
+                    Glide.with(getApplicationContext()).load(Uri.fromFile(new File(pathProfilePic))).apply(new RequestOptions().placeholder(R.drawable.ic_user_default)).into(binding.profileImage);
                     break;
                 case SELECT_ID_PROOF:
                     if (Build.VERSION.SDK_INT <= 21) {
@@ -388,8 +388,7 @@ public class TeacherProfileActivity extends BaseActivity implements
                     String[] spiltFileNameArray = pathIdProofPic.split("/");
                     cvFileName = spiltFileNameArray[spiltFileNameArray.length - 1];
                     btn_id_proof.setText(cvFileName);
-
-                    Picasso.with(getApplicationContext()).load(Uri.fromFile(new File(pathIdProofPic))).placeholder(R.drawable.ic_user_default).error(R.drawable.ic_user_default).into(idProofImage);
+                    Glide.with(getApplicationContext()).load(Uri.fromFile(new File(pathIdProofPic))).apply(new RequestOptions().placeholder(R.drawable.ic_user_default)).into(binding.idProofImage);
                     break;
                 case SELECT_FILE:
                     if (Build.VERSION.SDK_INT <= 21) {
@@ -401,7 +400,7 @@ public class TeacherProfileActivity extends BaseActivity implements
                     cvFileName = spiltArray[spiltArray.length - 1];
                     btnCvUpload.setText(cvFileName);
                     if (!pathCvDoc.equals("")) {
-                        Picasso.with(getApplicationContext()).load(R.drawable.ic_file).placeholder(R.drawable.ic_user_default).error(R.drawable.ic_user_default).into(ivCVFileStatus);
+                        Glide.with(getApplicationContext()).load(R.drawable.ic_file).apply(new RequestOptions().placeholder(R.drawable.ic_user_default)).into(binding.ivCVFileStatus);
                     }
                     break;
                 case SELECT_AUDIO:
@@ -414,7 +413,7 @@ public class TeacherProfileActivity extends BaseActivity implements
                     audioFileName = spiltAudioArray[spiltAudioArray.length - 1];
                     btnAudioFile.setText(audioFileName);
                     if (!btnAudioFile.equals("")) {
-                        Picasso.with(getApplicationContext()).load(R.drawable.ic_file).placeholder(R.drawable.ic_user_default).error(R.drawable.ic_user_default).into(ivAudioFileStatus);
+                        Glide.with(getApplicationContext()).load(R.drawable.ic_file).apply(new RequestOptions().placeholder(R.drawable.ic_user_default)).into(binding.ivAudioFileStatus);
                     }
                     break;
                 case TIMEPICKER_REQUEST_CODE:
@@ -485,8 +484,10 @@ public class TeacherProfileActivity extends BaseActivity implements
                     binding.ethourlyRate.setText(teacherProfileMain.getInfo().getHourly_rate());
                     binding.etNearestStation.setText(teacherProfileMain.getInfo().getNearest_station());
                     specialSkillTeacherEdit.setText(teacherProfileMain.getInfo().getSkills());
-                    Picasso.with(getApplicationContext()).load(BASEURL + teacherProfileMain.getInfo().getProfileImage()).placeholder(R.drawable.ic_user_default).error(R.drawable.ic_user_default).into(binding.profileImage);
-                    Picasso.with(getApplicationContext()).load(BASEURL + teacherProfileMain.getInfo().getIdImage()).placeholder(R.drawable.ic_user_default).error(R.drawable.ic_user_default).into(idProofImage);
+
+                    Glide.with(getApplicationContext()).load(BASEURL + teacherProfileMain.getInfo().getProfileImage()).apply(new RequestOptions().placeholder(R.drawable.ic_user_default)).into(binding.profileImage);
+                    Glide.with(getApplicationContext()).load(BASEURL + teacherProfileMain.getInfo().getIdImage()).apply(new RequestOptions().placeholder(R.drawable.ic_user_default).error(R.drawable.ic_user_default)).into(binding.idProofImage);
+
                     resumePath = teacherProfileMain.getInfo().getResume();
                     String idProof = RestConstant.BASEURL + teacherProfileMain.getInfo().getIdImage();
                     String idImageUrl = teacherProfileMain.getInfo().getIdImage();
@@ -494,16 +495,16 @@ public class TeacherProfileActivity extends BaseActivity implements
                         String[] cvFileArray = resumePath.split("/");
                         if (cvFileArray.length > 1) {
                             btnCvUpload.setText(cvFileArray[cvFileArray.length - 1]);
-                            Picasso.with(getApplicationContext()).load(R.drawable.ic_file).placeholder(R.drawable.ic_user_default).error(R.drawable.ic_user_default).into(ivCVFileStatus);
+                            Glide.with(getApplicationContext()).load(R.drawable.ic_file).apply(new RequestOptions().placeholder(R.drawable.ic_user_default).error(R.drawable.ic_user_default)).into(ivCVFileStatus);
                         }
                     }
                     if (idImageUrl != null) {
                         String[] idFileArray = idImageUrl.split("/");
                         if (idFileArray.length > 1) {
                             btn_id_proof.setText(idFileArray[idFileArray.length - 1]);
-                            Picasso.with(getApplicationContext()).load(idProof).placeholder(R.drawable.ic_user_default).error(R.drawable.ic_user_default).into(idProofImage);
+                            Glide.with(getApplicationContext()).load(idProof).apply(new RequestOptions().placeholder(R.drawable.ic_user_default).error(R.drawable.ic_user_default)).into(idProofImage);
                         } else {
-                            Picasso.with(getApplicationContext()).load(R.drawable.ic_file).placeholder(R.drawable.ic_user_default).error(R.drawable.ic_user_default).into(idProofImage);
+                            Glide.with(getApplicationContext()).load(R.drawable.ic_file).apply(new RequestOptions().placeholder(R.drawable.ic_user_default).error(R.drawable.ic_user_default)).into(idProofImage);
                         }
                     }
 
@@ -512,7 +513,7 @@ public class TeacherProfileActivity extends BaseActivity implements
                         String[] audioFileArray = audioPath.split("/");
                         if (audioFileArray.length > 1) {
                             btnAudioFile.setText(audioFileArray[audioFileArray.length - 1]);
-                            Picasso.with(getApplicationContext()).load(R.drawable.ic_file).placeholder(R.drawable.ic_user_default).error(R.drawable.ic_user_default).into(ivAudioFileStatus);
+                            Glide.with(getApplicationContext()).load(R.drawable.ic_file).apply(new RequestOptions().placeholder(R.drawable.ic_user_default).error(R.drawable.ic_user_default)).into(ivAudioFileStatus);
                         }
                     }
 
@@ -560,7 +561,7 @@ public class TeacherProfileActivity extends BaseActivity implements
                         toast(teacherProfileMainResponse.getMsg());
                         write(KEY_IS_ACTIVE, "2");
 //                        startActivity(MainActivity.class);
-                        finish();
+//                        finish();
                     }
                 }
 
@@ -608,7 +609,8 @@ public class TeacherProfileActivity extends BaseActivity implements
                     }
                     if (teacherProfileMainResponse.getStatus().equals("true")) {
                         toast(teacherProfileMainResponse.getMsg());
-                        finish();
+                        write(KEY_IS_ACTIVE, "2");
+//                        finish();
                     }
                 }
 

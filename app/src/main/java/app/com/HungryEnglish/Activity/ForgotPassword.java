@@ -1,9 +1,7 @@
 package app.com.HungryEnglish.Activity;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,14 +12,10 @@ import android.widget.Toast;
 import java.util.HashMap;
 import java.util.Random;
 
-import javax.mail.AuthenticationFailedException;
-import javax.mail.MessagingException;
-
 import app.com.HungryEnglish.Model.ForgotPassord.ForgotPasswordModel;
 import app.com.HungryEnglish.Model.RemoveTeacher.BasicResponse;
 import app.com.HungryEnglish.R;
 import app.com.HungryEnglish.Services.ApiHandler;
-import app.com.HungryEnglish.Util.Mail;
 import app.com.HungryEnglish.Util.Utils;
 import retrofit.Callback;
 import retrofit.RetrofitError;
@@ -146,7 +140,6 @@ public class ForgotPassword extends BaseActivity implements View.OnClickListener
         map.put("password", edtPassword.getText().toString());
 
         ApiHandler.getApiService().resetPassword(map, new retrofit.Callback<ForgotPasswordModel>() {
-
             @Override
             public void success(ForgotPasswordModel forgotPasswordModel, Response response) {
 
@@ -170,27 +163,29 @@ public class ForgotPassword extends BaseActivity implements View.OnClickListener
 
 
     private void sendEmail() {
-
         int digits = 6;
         randomNumber = nDigitRandomNo(digits);
 
         String message = "Welcome to Hungry English Club " + "\n" + "To Reset the Password enter below OTP in ypur application" + "\n" + randomNumber;
 
-
         HashMap<String, String> hashMap = new HashMap<>();
         hashMap.put("subject", "Hungry English");
         hashMap.put("message", String.valueOf(message));
-        hashMap.put("message", email);
-//        hashMap.put("email", "Rujul.co@gmail.com");
-//        hashMap.put("email", "idigi@live.com");
-
+        hashMap.put("email", email);
 
         ApiHandler.getApiService().sendMail(hashMap, new Callback<BasicResponse>() {
             @Override
             public void success(BasicResponse basicResponse, Response response) {
                 if (basicResponse.getStatus().equalsIgnoreCase("true")) {
                     toast(basicResponse.getMsg());
-
+                    llEmail.setVisibility(View.GONE);
+                    edtEmail.setVisibility(View.GONE);
+                    btnsubmitEmail.setVisibility(View.GONE);
+                    llOTP.setVisibility(View.VISIBLE);
+                    edtOtp.setVisibility(View.VISIBLE);
+                    btnSubmitOtp.setVisibility(View.VISIBLE);
+                    txtResendOtp.setVisibility(View.VISIBLE);
+                    btnSubmitPassword.setVisibility(View.VISIBLE);
                 } else {
                     toast(basicResponse.getMsg());
                 }
@@ -203,25 +198,6 @@ public class ForgotPassword extends BaseActivity implements View.OnClickListener
             }
         });
 
-//
-//        String[] recipients = {edtEmail.getText().toString()};
-//        SendEmailAsyncTask email = new SendEmailAsyncTask();
-//        email.activity = this;
-//        email.m = new Mail("hungryenglishclub@gmail.com", "rujulgandhi");
-//        email.m.set_from("hungryenglishclub@gmail.com");
-//        email.m.setBody(message);
-//        email.m.set_to(recipients);
-//        email.m.set_subject("Hungry English CLUB");
-//        email.execute();
-
-        llEmail.setVisibility(View.GONE);
-        edtEmail.setVisibility(View.GONE);
-        btnsubmitEmail.setVisibility(View.GONE);
-        llOTP.setVisibility(View.VISIBLE);
-        edtOtp.setVisibility(View.VISIBLE);
-        btnSubmitOtp.setVisibility(View.VISIBLE);
-        txtResendOtp.setVisibility(View.VISIBLE);
-        btnSubmitPassword.setVisibility(View.VISIBLE);
     }
 
     private int nDigitRandomNo(int digits) {
@@ -234,39 +210,4 @@ public class ForgotPassword extends BaseActivity implements View.OnClickListener
         return nDigitRandomNo;
     }
 
-
-    class SendEmailAsyncTask extends AsyncTask<Void, Void, Boolean> {
-        Mail m;
-        ForgotPassword activity;
-
-        public SendEmailAsyncTask() {
-        }
-
-        @Override
-        protected Boolean doInBackground(Void... params) {
-            try {
-                if (m.send()) {
-
-
-                } else {
-                }
-
-                return true;
-            } catch (AuthenticationFailedException e) {
-                Log.e(SendEmailAsyncTask.class.getName(), "Bad account details");
-                e.printStackTrace();
-
-                return false;
-            } catch (MessagingException e) {
-                Log.e(SendEmailAsyncTask.class.getName(), "Email failed");
-                e.printStackTrace();
-
-                return false;
-            } catch (Exception e) {
-                e.printStackTrace();
-
-                return false;
-            }
-        }
-    }
 }

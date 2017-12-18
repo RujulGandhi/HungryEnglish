@@ -20,7 +20,6 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.io.IOException;
@@ -56,6 +55,19 @@ public class AdminAddInfoStudent extends Fragment implements View.OnClickListene
     private File pickedFile;
     private FragmentAdminAddInfoStudentBinding binding;
     private Handler handler;
+    private int countOfImages;
+    private Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            int curIndex = binding.viewPager.getCurrentItem() + 1;
+            if (curIndex == countOfImages) {
+                binding.viewPager.setCurrentItem(0);
+            } else {
+                binding.viewPager.setCurrentItem(curIndex);
+            }
+            handler.postDelayed(this, 4000);
+        }
+    };
 
     public AdminAddInfoStudent() {
         // Required empty public constructor
@@ -200,9 +212,11 @@ public class AdminAddInfoStudent extends Fragment implements View.OnClickListene
 
     @Override
     public void showSliderData(ArrayList<AdminAddInfoDetail> data) {
-        Picasso pic = Picasso.with(getActivity());
-        binding.viewPager.setAdapter(new TeacherImageAdapter(getActivity(), data, pic));
+        binding.viewPager.setAdapter(new TeacherImageAdapter(getActivity(), data));
         binding.tablayout.setupWithViewPager(binding.viewPager);
+        countOfImages = data.size();
+        handler = new Handler();
+        handler.postDelayed(runnable, 4000);
     }
 
     @Override
