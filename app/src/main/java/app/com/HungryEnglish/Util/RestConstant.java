@@ -27,11 +27,12 @@ public class RestConstant {
 
     public static final String MAP_BOX = "pk.eyJ1IjoiamFtZXMxMDEyOTMiLCJhIjoiY2o5bjRidWlvNTFwczJxczRjbmp2bmMzbiJ9.VuD1fkmjQtjk_lBP8haXoA";
 
-    //  public static final String BASEURL = "http://smartsquad.pe.hu/HungryEnglish/api/";
+//    public static final String BASEURL = "http://smartsquad.pe.hu/HungryEnglish/api/";
     public static final String HUNGRY_ENGLISH_PRIVACY = "http://drive.google.com/viewerng/viewer?embedded=true&url=http://smartsquad.pe.hu/HungryEnglish/Hungry%20English%20Terms%20of%20Service.pdf";
     public static final String BASEURL = "http://hungryenglish.net/HungryEnglish/api/";
 
-    //    public static final String BASEURL = "http://mygadgetz.co.uk/HungryEnglish/api/";
+//    public static final String BASEURL = "http://mygadgetz.co.uk/HungryEnglish/api/";
+
     public class SHARED_PREFS {
         public static final String KEY_USER_ID = "user_id";
         public static final String KEY_USER_ROLE = "user_role";
