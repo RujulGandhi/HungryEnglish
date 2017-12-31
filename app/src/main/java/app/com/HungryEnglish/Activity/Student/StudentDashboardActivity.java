@@ -128,6 +128,14 @@ public class StudentDashboardActivity extends BaseActivity implements StudentHom
         return true;
     }
 
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        handler.removeCallbacks(runnable);
+    }
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         String role = Utils.ReadSharePrefrence(getApplicationContext(), RestConstant.SHARED_PREFS.KEY_USER_ROLE);

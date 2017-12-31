@@ -246,6 +246,12 @@ public class AdminAddInfoTeacher extends Fragment implements View.OnClickListene
     }
 
     @Override
+    public void onPause() {
+        super.onPause();
+        handler.removeCallbacks(runnable);
+    }
+
+    @Override
     public void showSliderData(ArrayList<AdminAddInfoDetail> sliderArray) {
         binding.viewPager.setAdapter(new TeacherImageAdapter(getActivity(), sliderArray));
         binding.tablayout.setupWithViewPager(binding.viewPager);

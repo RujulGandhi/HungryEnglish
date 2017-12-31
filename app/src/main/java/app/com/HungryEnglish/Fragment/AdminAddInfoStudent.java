@@ -226,4 +226,11 @@ public class AdminAddInfoStudent extends Fragment implements View.OnClickListene
             presenter.getStudentData();
         }
     }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        handler.removeCallbacks(runnable);
+    }
+
 }
