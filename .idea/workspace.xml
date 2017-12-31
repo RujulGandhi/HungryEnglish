@@ -20,7 +20,7 @@
   <component name="ChangeListManager">
     <list default="true" id="755e98d2-ca9e-4770-9c21-ed1a0ea8b71c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Model/Address.java" afterPath="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Model/Address.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/RegisterActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/RegisterActivity.java" />
     </list>
     <ignored path="HungryEnglish.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -70,54 +70,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="AdminAddInfoTeacher.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Fragment/AdminAddInfoTeacher.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3618">
-              <caret line="246" column="0" lean-forward="false" selection-start-line="246" selection-start-column="0" selection-end-line="252" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AdminAddInfoStudent.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Fragment/AdminAddInfoStudent.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3240">
-              <caret line="228" column="0" lean-forward="false" selection-start-line="228" selection-start-column="0" selection-end-line="228" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StudentDashboardActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Student/StudentDashboardActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2034">
-              <caret line="154" column="21" lean-forward="false" selection-start-line="154" selection-start-column="21" selection-end-line="154" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RegisterActivity.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="RegisterActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/RegisterActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="522">
-              <caret line="48" column="60" lean-forward="false" selection-start-line="48" selection-start-column="60" selection-end-line="48" selection-end-column="60" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_register.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_register.xml">
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="168" column="63" lean-forward="true" selection-start-line="168" selection-start-column="63" selection-end-line="168" selection-end-column="63" />
+            <state relative-caret-position="324">
+              <caret line="37" column="0" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -2015,7 +1972,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Presenter/AdminMapPresenter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Interface/OnLanguageChange.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/MapActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_map.xml" />
@@ -2066,6 +2022,7 @@
         <option value="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Fragment/AdminAddInfoTeacher.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Fragment/AdminAddInfoStudent.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/Student/StudentDashboardActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/RegisterActivity.java" />
       </list>
     </option>
   </component>
@@ -2152,7 +2109,7 @@
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="device.picker.selection" value="192.168.58.101:5555" />
-    <property name="SearchEverywhereHistoryKey" value="Regi&#9;PSI&#9;JAVA://app.com.HungryEnglish.Activity.RegisterActivity&#10;Studen&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/Student/StudentDashboardActivity.java&#10;AdminAddINfoSTud&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Fragment/AdminAddInfoStudent.java&#10;Cons&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Util/RestConstant.java&#10;AdminAddInfo&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Fragment/AdminAddInfoTeacher.java&#10;TeacherProfile&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/Teacher/TeacherProfileActivity.java&#10;Forgo&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/ForgotPassword.java&#10;ogin&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/LoginActivity.java&#10;androidmani&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/AndroidManifest.xml&#10;WebA&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/WebActivity.java&#10;TeacherLIstA&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/Teacher/TeacherListActivity.java&#10;STudentDa&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/Student/StudentDashboardActivity.java&#10;adminAddInfoStu&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Fragment/AdminAddInfoStudent.java&#10;Teacher&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Fragment/AdminAddInfoTeacher.java&#10;build&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/build.gradle&#10;AdminDas&#9;PSI&#9;JAVA://app.com.HungryEnglish.Activity.Admin.AdminDashboardActivity&#10;colors.xml&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/res/values/colors.xml&#10;Repo&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/Admin/ReportActivity.java&#10;Feed&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/FeedbackActivity.java&#10;forg&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/ForgotPassword.java&#10;Rest&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Util/RestConstant.java&#10;LoginA&#9;PSI&#9;JAVA://app.com.HungryEnglish.Activity.LoginActivity&#10;MapA&#9;PSI&#9;JAVA://app.com.HungryEnglish.MapActivity&#10;adm&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Fragment/AdminAddInfoTeacher.java&#10;res&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Util/RestConstant.java&#10;COnst&#9;PSI&#9;JAVA://app.com.HungryEnglish.Util.RestConstant&#10;strings.xml&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/res/values-zh-rCN/strings.xml&#10;TeacherProf&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/Teacher/TeacherProfileActivity.java&#10;T&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Adapter/TeacherPendingAdapter.java&#10;TEacherLis&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/Teacher/TeacherListActivity.java&#10;TeacherPe&#9;PSI&#9;JAVA://app.com.HungryEnglish.Adapter.TeacherPendingAdapter&#10;buil&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/build.gradle&#10;TeacherApp&#9;PSI&#9;JAVA://app.com.HungryEnglish.Adapter.TeacherApprovedAdapter&#10;Student&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/Student/StudentDashboardActivity.java&#10;Circl&#9;PSI&#9;JAVA://app.com.HungryEnglish.Views.CircleImageView&#10;StudentDash&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/Student/StudentDashboardActivity.java&#10;TeacherProfi&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/Teacher/TeacherProfileActivity.java&#10;TeacherLis&#9;PSI&#9;JAVA://app.com.HungryEnglish.Activity.Teacher.TeacherListActivity&#10;Rate&#9;PSI&#9;JAVA://app.com.HungryEnglish.Activity.Admin.ReportActivity.GenerateReport&#10;StudentDa&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/Student/StudentDashboardActivity.java&#10;AddINfo&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Fragment/AdminAddInfoTeacher.java&#10;MainA&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/Teacher/MainActivity.java&#10;StudentDas&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/Student/StudentDashboardActivity.java&#10;login&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/LoginActivity.java&#10;Utils&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Util/Utils.java&#10;LoginAc&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/LoginActivity.java&#10;Forgot&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/ForgotPassword.java&#10;STudentD&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/Student/StudentDashboardActivity.java&#10;TEacher&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Fragment/AdminAddInfoTeacher.java&#10;STudent&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/Student/StudentProfileActivity.java" />
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/RegisterActivity.java&#10;Regi&#9;PSI&#9;JAVA://app.com.HungryEnglish.Activity.RegisterActivity&#10;Studen&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/Student/StudentDashboardActivity.java&#10;AdminAddINfoSTud&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Fragment/AdminAddInfoStudent.java&#10;Cons&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Util/RestConstant.java&#10;AdminAddInfo&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Fragment/AdminAddInfoTeacher.java&#10;TeacherProfile&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/Teacher/TeacherProfileActivity.java&#10;Forgo&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/ForgotPassword.java&#10;ogin&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/LoginActivity.java&#10;androidmani&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/AndroidManifest.xml&#10;WebA&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/WebActivity.java&#10;TeacherLIstA&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/Teacher/TeacherListActivity.java&#10;STudentDa&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/Student/StudentDashboardActivity.java&#10;adminAddInfoStu&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Fragment/AdminAddInfoStudent.java&#10;Teacher&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Fragment/AdminAddInfoTeacher.java&#10;build&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/build.gradle&#10;AdminDas&#9;PSI&#9;JAVA://app.com.HungryEnglish.Activity.Admin.AdminDashboardActivity&#10;colors.xml&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/res/values/colors.xml&#10;Repo&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/Admin/ReportActivity.java&#10;Feed&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/FeedbackActivity.java&#10;forg&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/ForgotPassword.java&#10;Rest&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Util/RestConstant.java&#10;LoginA&#9;PSI&#9;JAVA://app.com.HungryEnglish.Activity.LoginActivity&#10;MapA&#9;PSI&#9;JAVA://app.com.HungryEnglish.MapActivity&#10;adm&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Fragment/AdminAddInfoTeacher.java&#10;res&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Util/RestConstant.java&#10;COnst&#9;PSI&#9;JAVA://app.com.HungryEnglish.Util.RestConstant&#10;strings.xml&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/res/values-zh-rCN/strings.xml&#10;TeacherProf&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/Teacher/TeacherProfileActivity.java&#10;T&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Adapter/TeacherPendingAdapter.java&#10;TEacherLis&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/Teacher/TeacherListActivity.java&#10;TeacherPe&#9;PSI&#9;JAVA://app.com.HungryEnglish.Adapter.TeacherPendingAdapter&#10;buil&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/build.gradle&#10;TeacherApp&#9;PSI&#9;JAVA://app.com.HungryEnglish.Adapter.TeacherApprovedAdapter&#10;Student&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/Student/StudentDashboardActivity.java&#10;Circl&#9;PSI&#9;JAVA://app.com.HungryEnglish.Views.CircleImageView&#10;StudentDash&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/Student/StudentDashboardActivity.java&#10;TeacherProfi&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/Teacher/TeacherProfileActivity.java&#10;TeacherLis&#9;PSI&#9;JAVA://app.com.HungryEnglish.Activity.Teacher.TeacherListActivity&#10;Rate&#9;PSI&#9;JAVA://app.com.HungryEnglish.Activity.Admin.ReportActivity.GenerateReport&#10;StudentDa&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/Student/StudentDashboardActivity.java&#10;AddINfo&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Fragment/AdminAddInfoTeacher.java&#10;MainA&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/Teacher/MainActivity.java&#10;StudentDas&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/Student/StudentDashboardActivity.java&#10;login&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/LoginActivity.java&#10;Utils&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Util/Utils.java&#10;LoginAc&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/LoginActivity.java&#10;Forgot&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/ForgotPassword.java&#10;STudentD&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Activity/Student/StudentDashboardActivity.java&#10;TEacher&#9;FILE&#9;file:///home/rujul/Desktop/Rujul/Android/Projects/HungryEnglish/app/src/main/java/app/com/HungryEnglish/Fragment/AdminAddInfoTeacher.java" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../.." />
     <property name="ScreenshotViewer.SavePath" value="$PROJECT_DIR$/../../../.." />
     <property name="android.project.structure.last.selected" value="app" />
@@ -2279,7 +2236,7 @@
       <option name="DEEP_LINK" value="" />
       <option name="ACTIVITY_CLASS" value="" />
       <method>
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1514731274526" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1514732160665" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -2326,7 +2283,7 @@
         <option name="ADVANCED_PROFILING_ENABLED" value="false" />
       </Profilers>
       <method>
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1514731274526" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1514732160666" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -2508,7 +2465,7 @@
       <option name="DEEP_LINK" value="" />
       <option name="ACTIVITY_CLASS" value="" />
       <method>
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1514731274528" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1514732160669" />
       </method>
     </configuration>
     <list size="1">
@@ -3350,21 +3307,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/RegisterActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="48" column="60" lean-forward="false" selection-start-line="48" selection-start-column="60" selection-end-line="48" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_register.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="168" column="63" lean-forward="true" selection-start-line="168" selection-start-column="63" selection-end-line="168" selection-end-column="63" />
+        <state relative-caret-position="479">
+          <caret line="178" column="59" lean-forward="true" selection-start-line="178" selection-start-column="59" selection-end-line="178" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/HungryEnglish/Activity/RegisterActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="37" column="0" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
           <folding />
         </state>
       </provider>

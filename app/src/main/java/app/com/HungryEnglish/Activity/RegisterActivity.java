@@ -21,11 +21,12 @@ import retrofit.client.Response;
 import static app.com.HungryEnglish.Util.RestConstant.ROLE_STUDENT;
 import static app.com.HungryEnglish.Util.RestConstant.ROLE_TEACHER;
 
+// TODO: 31/12/17 Rujul
 public class RegisterActivity extends BaseActivity {
 
     private boolean isTeacher;
     private ActivityRegisterBinding binding;
-
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
