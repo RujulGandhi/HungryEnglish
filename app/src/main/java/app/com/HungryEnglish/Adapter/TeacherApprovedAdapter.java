@@ -93,10 +93,9 @@ public class TeacherApprovedAdapter extends RecyclerView.Adapter<TeacherApproved
         final int pos = position;
         //        Movie movie = teacherList.get(position);
         holder.tvTeacherName.setText(teacherList.get(pos).getUsername());
-
         holder.tvEmail.setText("Email : " + teacherList.get(pos).getEmail());
-        final String imageUrl = RestConstant.BASEURL + teacherList.get(pos).getTeacherInfo().getProfileImage();
         if (teacherList.get(pos).getTeacherInfo() != null && teacherList.get(pos).getTeacherInfo().getAvailableTime() != null) {
+            String imageUrl = RestConstant.BASEURL + teacherList.get(pos).getTeacherInfo().getProfileImage();
             holder.tvTeacherAvaibility.setText("Avaibility : " + Utils.getDisplayString(teacherList.get(pos).getTeacherInfo().getAvailableTime()));
             Glide.with(mContext).applyDefaultRequestOptions(new RequestOptions().placeholder(R.drawable.ic_user_default).error(R.drawable.ic_user_default)).load(imageUrl).into(holder.ivProfilePic);
         }
@@ -141,7 +140,7 @@ public class TeacherApprovedAdapter extends RecyclerView.Adapter<TeacherApproved
             public void onClick(View view) {
                 Intent in = new Intent(mContext, ImageActivity.class);
                 in.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                in.putExtra("url", imageUrl);
+                in.putExtra("url", RestConstant.BASEURL + teacherList.get(pos).getTeacherInfo().getProfileImage());
                 mContext.startActivity(in);
             }
         });
